@@ -64,19 +64,19 @@ async function getStatsFromUUID(name, profile) {
                         rank = "champ"
                         return rank
                     }
-                    if (cata >= 30 && farming >= 40) {
+                    else if (cata >= 30 && farming >= 40) {
                         rank = "champ"
                         return rank
                     }
-                    if (cata >= 30 && fishing >= 40) {
+                    else if (cata >= 30 && fishing >= 40) {
                         rank = "champ"
                         return rank
                     }
-                    if (farming >= 40 && slayerEXP >= 300000) {
+                    else if (farming >= 40 && slayerEXP >= 300000) {
                         rank = "champ"
                         return rank
                     }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
+                    else if (fishing >= 40 && slayerEXP >= 300000) {
                         rank = "champ"
                         return rank
                     }
@@ -90,19 +90,19 @@ async function getStatsFromUUID(name, profile) {
                         rank = "vet"
                         return rank
                     }
-                    if (cata >= 30 && farming >= 40) {
+                    else if (cata >= 30 && farming >= 40) {
                         rank = "vet"
                         return rank
                     }
-                    if (cata >= 30 && fishing >= 40) {
+                    else if (cata >= 30 && fishing >= 40) {
                         rank = "vet"
                         return rank
                     }
-                    if (farming >= 40 && slayerEXP >= 300000) {
+                    else if (farming >= 40 && slayerEXP >= 300000) {
                         rank = "vet"
                         return rank
                     }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
+                    else if (fishing >= 40 && slayerEXP >= 300000) {
                         rank = "vet"
                         return rank
                     }
@@ -116,19 +116,19 @@ async function getStatsFromUUID(name, profile) {
                         rank = "adv"
                         return rank
                     }
-                    if (cata >= 30 && farming >= 40) {
+                    else if (cata >= 30 && farming >= 40) {
                         rank = "adv"
                         return rank
                     }
-                    if (cata >= 30 && fishing >= 40) {
+                    else if (cata >= 30 && fishing >= 40) {
                         rank = "adv"
                         return rank
                     }
-                    if (farming >= 40 && slayerEXP >= 300000) {
+                    else if (farming >= 40 && slayerEXP >= 300000) {
                         rank = "adv"
                         return rank
                     }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
+                    else if (fishing >= 40 && slayerEXP >= 300000) {
                         rank = "adv"
                         return rank
                     }
