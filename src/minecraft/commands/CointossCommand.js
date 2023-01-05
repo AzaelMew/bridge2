@@ -15,7 +15,7 @@ class CointossCommand extends MinecraftCommand {
     super(minecraft)
 
     this.name = 'cointoss'
-    this.description = 'cointoss'
+    this.description = 'cointosses'
   }
 
   onCommand(username, message) {
