@@ -106,7 +106,7 @@ class InactiveCommand extends DiscordCommand {
       for (let index = 0; index < kickables.length; ++index) {
         let el = kickables[index]
         setTimeout(() => {
-          this.sendMinecraftMessage(`/gc Kick ${el}`)
+          this.sendMinecraftMessage(`/g kick ${el} Kicked due to inactivity, you're free to re apply once you're active.`)
         }, index * interval);
       };
     })
