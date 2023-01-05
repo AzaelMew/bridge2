@@ -410,6 +410,7 @@ class StateHandler extends EventHandler {
     }
 
     if (message.startsWith('Total Members:')) {
+      reta += "\n" + message
       reta += "\n" + message + "/125"
       return reta
     }
