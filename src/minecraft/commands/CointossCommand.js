@@ -10,12 +10,12 @@ async function ask() {
 
 
 }
-class EightBallCommand extends MinecraftCommand {
+class CointossCommand extends MinecraftCommand {
   constructor(minecraft) {
     super(minecraft)
 
-    this.name = '8ball'
-    this.description = '8ball'
+    this.name = 'cointoss'
+    this.description = 'cointoss'
   }
 
   onCommand(username, message) {
@@ -27,4 +27,4 @@ class EightBallCommand extends MinecraftCommand {
   }
 }
 
-module.exports = EightBallCommand
+module.exports = CointossCommand
