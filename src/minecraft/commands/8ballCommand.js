@@ -35,9 +35,9 @@ async function ask() {
         'Good Luck',
     ];
     let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
-    setTimeout(() => {
-        return eightball[index]
-    }, 1000);
+    return eightball[index]
+
+
 }
 class FragCommand extends MinecraftCommand {
   constructor(minecraft) {
@@ -50,7 +50,9 @@ class FragCommand extends MinecraftCommand {
 
   onCommand(username, message) {
     ask().then(ans => {
-        this.send(`/gc ${ans}`)
+        setTimeout(() => {
+            this.send(`/gc ${ans}`)
+        }, 1000);
       })
   }
 }
