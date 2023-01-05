@@ -408,13 +408,14 @@ class StateHandler extends EventHandler {
     if (message.endsWith('-- Initiate --')) {
       reta += message + "\n"
     }
-    if (message.startsWith("Online Members")) {
-      reta += "\n" + message
-    }
     if (message.startsWith('Total Members:')) {
       reta += "\n" + message + "/125"
+    }
+    if (message.startsWith("Online Members")) {
+      reta += "\n" + message
       return reta
     }
+
   }
 
   isGTopMessage(message) {
