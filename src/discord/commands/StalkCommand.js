@@ -42,8 +42,8 @@ async function getLocationFromUUID(uuid){
             if (data.session.mode == "combat_1"){
                 location = "Spider's Den"
             }
-            if (data.session.mode == "combat_2"){
-                location = "Blazing Fortress"
+            if (data.session.mode == "crimson_isle"){
+                location = "Crimson Isle"
             }
             if (data.session.mode == "combat_3"){
                 location = "The End"
