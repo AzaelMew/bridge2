@@ -29,7 +29,7 @@ async function getStatsFromUUID(name, profile) {
             name = "a"
         }
         if (profile == undefined){
-            profile = "b"
+            profile = "a"
         }
         if(name == "a7cb7319ac7547f0802116f38dc5ca85"){
             rank = "champ"
