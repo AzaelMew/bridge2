@@ -39,13 +39,12 @@ async function ask() {
 
 
 }
-class FragCommand extends MinecraftCommand {
+class EightBallCommand extends MinecraftCommand {
   constructor(minecraft) {
     super(minecraft)
 
-    this.name = 'join'
-    this.aliases = ['joinme','frag']
-    this.description = 'Joins users party'
+    this.name = '8ball'
+    this.description = '8ball'
   }
 
   onCommand(username, message) {
@@ -57,4 +56,4 @@ class FragCommand extends MinecraftCommand {
   }
 }
 
-module.exports = FragCommand
+module.exports = EightBallCommand
