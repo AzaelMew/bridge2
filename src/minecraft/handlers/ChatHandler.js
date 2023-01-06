@@ -74,7 +74,7 @@ async function getGMemberFromUUID(uuid) {
 }
 async function getStatsFromUUID(name) {
   try {
-    const { data } = await axios.get('https://api.altpapier.dev/v1/profiles/' + name + '?key=IPke2LEKG1ShqOlY8KIM7Uv8oA05p6Ek')
+    const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let nw = numberWithCommas(data.data[0].networth.networth)
     let farming = data.data[0]?.skills?.farming.level
     let mining = data.data[0]?.skills?.mining.level
