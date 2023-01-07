@@ -29,7 +29,7 @@ async function getDungeonFromUUID(name) {
     if (name == undefined){
       name = "a"
     }
-    const { data } = await axios.get('https://api.altpapier.dev/v1/profiles/' + name + '?key=IPke2LEKG1ShqOlY8KIM7Uv8oA05p6Ek')
+    const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let secrets = data.data[0]?.dungeons.secrets_found
     let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress
     let h = data.data[0].dungeons?.classes?.healer?.levelWithProgress
