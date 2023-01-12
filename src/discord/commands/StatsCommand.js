@@ -50,7 +50,7 @@ async function getStatsFromUUID(name,profile) {
         let sslayer = data.data[i]?.slayer?.spider.xp
         let eslayer = data.data[i]?.slayer?.enderman.xp
         let bslayer = data.data[i]?.slayer?.blaze.xp
-        let sblvl = data.data[i]?.sblevel || 0
+        let sblvl = data.data[i]?.sblevel
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
         let stats = `On ${profile}: \nSkill Avg: ${sa}; Skyblock Level: ${sblvl}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}`
         return stats
@@ -73,7 +73,7 @@ async function getStatsFromUUID(name,profile) {
         let sslayer = data.data[0]?.slayer?.spider.xp
         let eslayer = data.data[0]?.slayer?.enderman.xp
         let bslayer = data.data[0]?.slayer?.blaze.xp
-        let sblvl = data.data[i]?.sblevel || 0
+        let sblvl = data.data[i]?.sblevel
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
         let stats = `Skill Avg: ${sa}; Skyblock Level: ${sblvl}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
         return stats
