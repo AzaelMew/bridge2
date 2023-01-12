@@ -50,8 +50,9 @@ async function getStatsFromUUID(name,profile) {
         let sslayer = data.data[i]?.slayer?.spider.xp
         let eslayer = data.data[i]?.slayer?.enderman.xp
         let bslayer = data.data[i]?.slayer?.blaze.xp
+        let sblvl = data.data[i]?.sblevel || 0
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = ` on ${profile}: \nSkill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}`
+        let stats = `On ${profile}: \nSkill Avg: ${sa}; Skyblock Level: ${sblvl}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}`
         return stats
       }
       else if (i == Object.keys(data.data).length - 1){
@@ -72,8 +73,9 @@ async function getStatsFromUUID(name,profile) {
         let sslayer = data.data[0]?.slayer?.spider.xp
         let eslayer = data.data[0]?.slayer?.enderman.xp
         let bslayer = data.data[0]?.slayer?.blaze.xp
+        let sblvl = data.data[i]?.sblevel || 0
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
+        let stats = `Skill Avg: ${sa}; Skyblock Level: ${sblvl}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
         return stats
       }
     }
@@ -105,10 +107,10 @@ class StatsCommand extends DiscordCommand {
       let args = this.getArgs(message)
       let user = args.shift()
       getStatsFromUsername(user).then(stats=>{
-      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";",",")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";",",").replaceAll("\n","")}`)
       message.channel.send({
         embed: {
-          description: stats.replaceAll(";","\n"),
+          description: stats.replaceAll("; ","\n"),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
