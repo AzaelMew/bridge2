@@ -1,11 +1,11 @@
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
 function numberWithCommas(x) {
-  if(x>999815672){
+  if (x > 999815672) {
     x = x.toString().split(".")[0]
     x = x.toString().slice(0, -6) + "815672";
   }
-  else{
+  else {
     x = x.toString().split(".")[0]
   }
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -26,7 +26,7 @@ async function getDungeonFromUsername(username) {
 }
 async function getDungeonFromUUID(name) {
   try {
-    if (name == undefined){
+    if (name == undefined) {
       name = "a"
     }
     const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
@@ -37,7 +37,7 @@ async function getDungeonFromUUID(name) {
     let b = data.data[0].dungeons?.classes?.berserk?.levelWithProgress
     let a = data.data[0].dungeons?.classes?.archer?.levelWithProgress
     let t = data.data[0].dungeons?.classes?.tank?.levelWithProgress
-    let av = ((h+m+b+a+t)/5)
+    let av = ((h + m + b + a + t) / 5)
 
     let stats = "Cata: " + lvl.toFixed(2) + " Average: " + av.toFixed(2) + " Archer: " + a.toFixed(2) + " Berserk: " + b.toFixed(2) + " Healer: " + h.toFixed(2) + " Mage: " + m.toFixed(2) + " Tank: " + t.toFixed(2) + " Secrets: " + numberWithCommas(secrets)
     return stats
@@ -45,39 +45,40 @@ async function getDungeonFromUUID(name) {
   }
   catch (error) {
     e = error.message
-    if(e.includes("status code 500")){
+    if (e.includes("status code 500")) {
       return "is an Invalid Username"
     }
-    if(e.includes("status code 404")){
+    if (e.includes("status code 404")) {
       return "has no Skyblock Profiles"
     }
-    else{
+    else {
       return error
     }
   }
 }
 class CatacombsCommand extends MinecraftCommand {
-    constructor(minecraft) {
-      super(minecraft)
-  
-      this.name = 'cata'
-      this.description = "Says users dungeon stats"
-    }
-  
-    async onCommand(username, message) {
-      let args = message.split(" ")
-      if (message.endsWith("!cata")){
-        getDungeonFromUsername(username).then(stats=>{
-            this.send(`/gc ${username}'s Cata Stats: ${stats.replaceAll(";",",")}`)
+  constructor(minecraft) {
+    super(minecraft)
+
+    this.name = 'cata'
+    this.description = "Says users dungeon stats"
+  }
+
+  async onCommand(username, message) {
+    let args = message.split(" ")
+    if (message.endsWith("!cata")) {
+      getDungeonFromUsername(username).then(stats => {
+        this.send(`/gc ${username}'s cata: ${stats.replaceAll(";", ",").replaceAll("\n", "")}`)
+        this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
       })
     }
-      else {
-          getDungeonFromUsername(args[1]).then(stats=>{
-            this.send(`/gc ${args[1]}'s Cata Stats: ${stats.replaceAll(";",",")}`)
-          })
-        
-      }
+    else {
+      getDungeonFromUsername(args[1]).then(stats => {
+        this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll(";", ",").replaceAll("\n", "")}`)
+        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
+      })
     }
   }
-  
-  module.exports = CatacombsCommand
+}
+
+module.exports = CatacombsCommand
