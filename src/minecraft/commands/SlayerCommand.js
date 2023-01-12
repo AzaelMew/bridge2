@@ -41,7 +41,7 @@ async function getSlayerFromUUID(name){
     let sslayerLVL = data.data[0].slayer.spider.level
     let eslayerLVL = data.data[0].slayer.enderman.level
     let bslayerLVL = data.data[0]?.slayer?.blaze.level
-    let stats = "Total Slayer EXP: "+ slayerEXP + " Zombie level: " + zslayerLVL+" -  "+numberWithCommas(zslayerEXP)+"xp" + " Spider level: " + sslayerLVL+" -  "+numberWithCommas(sslayerEXP)+"xp" + " Wolf level: " + wslayerLVL+" -  "+numberWithCommas(wslayerEXP)+"xp" + " Enderman level: " + eslayerLVL+" -  "+numberWithCommas(eslayerEXP)+"xp" + " Blaze level: " + bslayerLVL+" -  "+numberWithCommas(bslayerEXP)+"xp"
+    let stats = `: \nTotal Slayer EXP: ${slayerEXP} ;Zombie level: ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;Spider level: ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;Wolf level: ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;Enderman level: ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;Blaze level: ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp`
     return stats
 }
 catch (error) {
@@ -63,19 +63,21 @@ class SlayerCommand extends MinecraftCommand {
       super(minecraft)
   
       this.name = 'slayer'
-      this.description = "Says users stats"
+      this.description = "Says users slayers"
     }
   
     async onCommand(username, message) {
       let args = message.split(" ")
       if (message.endsWith("!slayer")){
         getSlayerFromUser(username).then(stats=>{
-            this.send(`/gc ${username}'s Slayers: ${stats.replaceAll(";",",")}`)
+            this.send(`/gc ${username}'s slayers${stats.replaceAll(";","").replaceAll("\n","")}`)
+            this.minecraft.broadcastCleanEmbed({ message: `${username}'s Slayers${stats.replaceAll(";", "\n")}`, color: "47F049" })
       })
     }
       else {
         getSlayerFromUser(args[1]).then(stats=>{
-            this.send(`/gc ${args[1]}'s Slayers: ${stats.replaceAll(";",",")}`)
+            this.send(`/gc ${args[1]}'s slayers${stats.replaceAll(";","").replaceAll("\n","")}`)
+            this.minecraft.broadcastCleanEmbed({ message: `${username}'s slayers${stats.replaceAll(";", "\n")}`, color: "47F049" })
           })
       }
     }
