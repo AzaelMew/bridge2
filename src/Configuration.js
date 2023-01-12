@@ -15,6 +15,7 @@ class Configuration {
     discord: {
       token: null,
       channel: null,
+      channel2: null,
       newchannel: null,
       commandRole: '',
       ownerId: '',
