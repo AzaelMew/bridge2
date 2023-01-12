@@ -114,10 +114,10 @@ class DiscordManager extends CommunicationBridge {
           channel2.send({
             embed: {
               color: color,
+              description: `${message}`,
               timestamp: new Date(),
               author: {
                 name: `${username}`,
-                description: `${message}`,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
             }
