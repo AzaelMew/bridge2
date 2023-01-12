@@ -94,14 +94,14 @@ class NetworthCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!nw")) {
       getNetworthFromUsername(username).then(nw => {
-        this.send(`/gc ${username}'s nw: ${nw.replaceAll(".", ",").replaceAll("\n", "")}`)
+        this.send(`/gc ${username}'s nw: ${nw.replaceAll("\n", "")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${username}'s nw`, message: `${nw.replaceAll(".", "\n")}` })
 
       })
     }
     else {
       getNetworthFromUsername(args[1]).then(nw => {
-        this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll(".", ",").replaceAll("\n", "")}`)
+        this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll("\n", "")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
 
       })
