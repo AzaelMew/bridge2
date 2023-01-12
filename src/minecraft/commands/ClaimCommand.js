@@ -38,105 +38,17 @@ async function getStatsFromUUID(name, profile) {
         const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
         for (let i = 0; i < Object.keys(data.data).length ; i++) {
             if (data.data[i].name.toLowerCase() == profile.toString().toLowerCase()) {
-                console.log(i + " in")
-                console.log(data.data[i].name.toLowerCase())
-                let nw = data.data[i].networth.networth
-                let farming = data.data[i]?.skills?.farming.level
-                let mining = data.data[i]?.skills?.mining.level
-                let combat = data.data[i]?.skills?.combat.level
-                let foraging = data.data[i]?.skills?.foraging.level
-                let fishing = data.data[i]?.skills?.fishing.level
-                let enchant = data.data[i]?.skills?.enchanting.level
-                let alch = data.data[i]?.skills?.alchemy.level
-                let taming = data.data[i]?.skills?.taming.level
-                let cata = data.data[i].dungeons?.catacombs?.skill?.level
-                let carp = data.data[i]?.skills?.carpentry.level
-                let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-                let wslayerEXP = data.data[i].slayer.wolf.xp
-                let zslayerEXP = data.data[i].slayer.zombie.xp
-                let sslayerEXP = data.data[i].slayer.spider.xp
-                let eslayerEXP = data.data[i].slayer.enderman.xp
-                let bslayerEXP = data.data[i]?.slayer?.blaze.xp
-                let slayerEXP = wslayerEXP + zslayerEXP + sslayerEXP + eslayerEXP + bslayerEXP
-
-                if (sa >= 42 && nw >= 1300000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else if (cata >= 30 && farming >= 40) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else if (cata >= 30 && fishing >= 40) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
+                let sblvl = data.data[i]?.sblevel
+                if (sblvl >= 225){
+                    rank = "champ"
                 }
-                else if (sa >= 35 && nw >= 500000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else if (cata >= 30 && farming >= 40) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else if (cata >= 30 && fishing >= 40) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
+                else if (sblvl >= 185){
+                    rank = "vet"
+                    return rank
                 }
-                else if (sa >= 32 && nw >= 250000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else if (cata >= 30 && farming >= 40) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else if (cata >= 30 && fishing >= 40) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
-
+                else if (sblvl >= 150){
+                    rank = "adv"
+                    return rank
                 }
                 else {
                     rank = "ini"
@@ -144,103 +56,18 @@ async function getStatsFromUUID(name, profile) {
                 }
             }
             else if (i == Object.keys(data.data).length - 1) {
-                console.log(i + " out")
-                let nw = data.data[0].networth.networth
-                let farming = data.data[0]?.skills?.farming.level
-                let mining = data.data[0]?.skills?.mining.level
-                let combat = data.data[0]?.skills?.combat.level
-                let foraging = data.data[0]?.skills?.foraging.level
-                let fishing = data.data[0]?.skills?.fishing.level
-                let enchant = data.data[0]?.skills?.enchanting.level
-                let alch = data.data[0]?.skills?.alchemy.level
-                let taming = data.data[0]?.skills?.taming.level
-                let cata = data.data[0].dungeons?.catacombs?.skill?.level
-                let carp = data.data[0]?.skills?.carpentry.level
-                let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-                let wslayerEXP = data.data[0].slayer.wolf.xp
-                let zslayerEXP = data.data[0].slayer.zombie.xp
-                let sslayerEXP = data.data[0].slayer.spider.xp
-                let eslayerEXP = data.data[0].slayer.enderman.xp
-                let bslayerEXP = data.data[0]?.slayer?.blaze.xp
-                let slayerEXP = wslayerEXP + zslayerEXP + sslayerEXP + eslayerEXP + bslayerEXP
-                if (sa >= 42 && nw >= 1300000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    if (cata >= 30 && farming >= 40) {
-                        rank = "champ"
-                        return rank
-                    }
-                    if (cata >= 30 && fishing >= 40) {
-                        rank = "champ"
-                        return rank
-                    }
-                    if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "champ"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
+                let sblvl = data.data[0]?.sblevel
+                if (sblvl >= 225){
+                    rank = "champ"
+                    return rank
                 }
-                else if (sa >= 35 && nw >= 500000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    if (cata >= 30 && farming >= 40) {
-                        rank = "vet"
-                        return rank
-                    }
-                    if (cata >= 30 && fishing >= 40) {
-                        rank = "vet"
-                        return rank
-                    }
-                    if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "vet"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
+                else if (sblvl >= 185){
+                    rank = "vet"
+                    return rank
                 }
-                else if (sa >= 32 && nw >= 250000000) {
-                    if (cata >= 30 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    if (cata >= 30 && farming >= 40) {
-                        rank = "adv"
-                        return rank
-                    }
-                    if (cata >= 30 && fishing >= 40) {
-                        rank = "adv"
-                        return rank
-                    }
-                    if (farming >= 40 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    if (fishing >= 40 && slayerEXP >= 300000) {
-                        rank = "adv"
-                        return rank
-                    }
-                    else {
-                        rank = "ini"
-                        return rank
-                    }
-
+                else if (sblvl >= 150){
+                    rank = "adv"
+                    return rank
                 }
                 else {
                     rank = "ini"
