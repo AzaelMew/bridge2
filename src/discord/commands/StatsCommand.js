@@ -73,7 +73,7 @@ async function getStatsFromUUID(name,profile) {
         let eslayer = data.data[0]?.slayer?.enderman.xp
         let bslayer = data.data[0]?.slayer?.blaze.xp
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `: \nSkill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
+        let stats = `Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
         return stats
       }
     }
@@ -105,7 +105,7 @@ class StatsCommand extends DiscordCommand {
       let args = this.getArgs(message)
       let user = args.shift()
       getStatsFromUsername(user).then(stats=>{
-      this.sendMinecraftMessage(`/gc ${user}'s stats${stats.replaceAll(";",",")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";",",")}`)
       message.channel.send({
         embed: {
           description: stats.replaceAll(";","\n"),
