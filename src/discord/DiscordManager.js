@@ -83,7 +83,7 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
-  onBroadcastLogEmbed({ username, message, color }) {
+  onBroadcastLog({ username, message, color }) {
     this.app.log.broadcast(username + ' ' + message, 'Event')
 
     switch (this.app.config.discord.messageMode.toLowerCase()) {
