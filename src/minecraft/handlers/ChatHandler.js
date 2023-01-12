@@ -149,6 +149,7 @@ class StateHandler extends EventHandler {
             }
           }, 60000)
           console.log(`Joined the party of ${userp}`)
+          this.minecraft.broadcastLogEmbed({ username: userp, message: `used the fragbot.`, color: '0000FF' })
           return this.bot.chat(`/p join ${userp}`)
         }
         else{
