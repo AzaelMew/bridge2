@@ -83,17 +83,37 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
-  onBroadcastLogEmbed({ message, color }) {
-    this.app.log.broadcast(message, 'Event')
+  onBroadcastLogEmbed({ username, message, color }) {
+    this.app.log.broadcast(username + ' ' + message, 'Event')
 
-    this.app.discord.client.channels.fetch(this.app.config.discord.channel2).then(channel2 => {
-      channel2.send({
-        embed: {
-          color: color,
-          description: message,
-        }
-      })
-    })
+    switch (this.app.config.discord.messageMode.toLowerCase()) {
+      case 'bot':
+        this.app.discord.client.channels.fetch(this.app.config.discord.channel2).then(channel2 => {
+          channel2.send({
+            embed: {
+              color: color,
+              timestamp: new Date(),
+              author: {
+                name: `${username} ${message}`,
+                icon_url: 'https://www.mc-heads.net/avatar/' + username,
+              },
+            }
+          })
+        })
+        break
+
+      case 'webhook':
+        this.app.discord.webhook.send({
+          username: username, avatarURL: 'https://www.mc-heads.net/avatar/' + username, embeds: [{
+            color: color,
+            description: `${username} ${message}`,
+          }]
+        })
+        break
+
+      default:
+        throw new Error('Invalid message mode: must be bot or webhook')
+    }
   }
 
   onBroadcastHeadedEmbed({ message, title, icon, color }) {
