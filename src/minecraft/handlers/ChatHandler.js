@@ -199,9 +199,9 @@ class StateHandler extends EventHandler {
       getStatsFromUsername(user).then(stats => {
       setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",")}`)
-          this.minecraft.broadcastCleanEmbed({ message: `${user}'s stats: \n${stats.replaceAll(";", "\n")}`, color: "47F049" })
+          this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         
-      }, 3500)})
+      }, 1500)})
     }
     if (this.isLeaveMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
