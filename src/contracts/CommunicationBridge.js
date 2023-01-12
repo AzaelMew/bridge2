@@ -26,7 +26,7 @@ class CommunicationBridge {
     return this.bridge.onBroadcastCleanEmbed(event)
   }
 
-  broadcastLogsEmbed(event) {
+  broadcastLogEmbed(event) {
     return this.bridge.onBroadcastLog(event)
   }
 
