@@ -87,6 +87,7 @@ class DiscordManager extends CommunicationBridge {
     this.app.log.broadcast(message, 'Event')
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
+      let icon = username.split(" ")
       channel.send({
         embed: {
           description: message,
@@ -97,7 +98,7 @@ class DiscordManager extends CommunicationBridge {
           },
           author: {
             name: username,
-            icon_url: 'https://www.mc-heads.net/avatar/' + username,
+            icon_url: 'https://www.mc-heads.net/avatar/' + icon[0],
           },
         },
       })
