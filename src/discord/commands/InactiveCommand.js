@@ -100,8 +100,8 @@ class InactiveCommand extends DiscordCommand {
   onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
+    kickables = []
     getGMemberFromUsername("xephor_ex", message).then(kickables => {
-      console.log(kickables)
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < kickables.length; ++index) {
         let el = kickables[index]
