@@ -94,7 +94,8 @@ class DiscordManager extends CommunicationBridge {
               color: color,
               timestamp: new Date(),
               author: {
-                name: `${username} ${message}`,
+                name: `${username}`,
+                description: `${message}`,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
             }
