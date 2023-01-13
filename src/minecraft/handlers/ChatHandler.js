@@ -386,9 +386,11 @@ class StateHandler extends EventHandler {
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
       reta += message + "\n"
+      console.log(reta)
     }
     if (message.endsWith(' ●')) {
       reta += message + "\n"
+      console.log(reta)
     }
     if (message.endsWith('-- Elder --')) {
       reta += message + "\n"
