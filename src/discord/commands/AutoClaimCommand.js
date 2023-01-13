@@ -109,9 +109,48 @@ class AutoclaimCommand extends DiscordCommand {
     getGMemberFromUsername("xephor_ex", message).then(ini => {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       console.log(ini)
-      console.log(adv)
-      console.log(vet)
-      console.log(champ)
+      for (let index = 0; index < ini.length; ++index) {
+        let el = ini[index]
+        console.log(el)
+        setTimeout(() => {
+          //this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
+        }, index * interval);
+        if (index == ini.length) {
+          console.log(adv)
+          for (let index = 0; index < adv.length; ++index) {
+
+            let el = adv[index]
+            console.log(el)
+
+            setTimeout(() => {
+              //this.sendMinecraftMessage(`/g setrank ${el} Adventurer`)
+            }, index * interval);
+            if (index == adv.length) {
+              console.log(vet)
+
+              for (let index = 0; index < vet.length; ++index) {
+                let el = vet[index]
+                console.log(el)
+
+                setTimeout(() => {
+                  //this.sendMinecraftMessage(`/g setrank ${el} Veteran`)
+                }, index * interval);
+                if (index == adv.length) {
+                  console.log(champ)
+                  for (let index = 0; index < champ.length; ++index) {
+                    let el = champ[index]
+                    console.log(el)
+
+                    setTimeout(() => {
+                      //this.sendMinecraftMessage(`/g setrank ${el} Champion`)
+                    }, index * interval);
+                  };
+                };
+              };
+            }
+          };
+        }
+      }
     })
     message.channel.send({
       embed: {
