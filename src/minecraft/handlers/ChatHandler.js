@@ -193,7 +193,7 @@ class StateHandler extends EventHandler {
       setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
-        
+          console.log("a")
       }, 500)})
 
     }
