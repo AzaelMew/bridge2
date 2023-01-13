@@ -394,21 +394,7 @@ class StateHandler extends EventHandler {
       reta += message + "\n"
     }
 
-    if (message.endsWith('-- Champion --')) {
-      reta += message + "\n"
-    }
 
-    if (message.endsWith('-- Veteran --')) {
-      reta += message + "\n"
-    }
-
-    if (message.endsWith('-- Adventurer --')) {
-      reta += message + "\n"
-    }
-
-    if (message.endsWith('-- Initiate --')) {
-      reta += message + "\n"
-    }
     if (message.startsWith('Total Members:')) {
       reta += "\n" + message + "/125"
     }
