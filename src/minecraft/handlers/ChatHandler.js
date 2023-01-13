@@ -365,7 +365,7 @@ class StateHandler extends EventHandler {
     if (playerMessage == '@') {
       return
     }
-    console.log(`" message "`)
+    console.log(`" ${message} "`)
     this.minecraft.broadcastMessage({
       username: username,
       message: playerMessage,
