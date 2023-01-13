@@ -77,19 +77,19 @@ async function getActivity(uuid, message) {
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
-    this.app.minecraft.bot.chat(`/g setrank ${data.data[0].username} Champion`)
+    this.app.chat(`/g setrank ${data.data[0].username} Champion`)
     return
   }
   else if (sblvl >= 185) {
-    this.app.minecraft.bot.chat(`/g setrank ${data.data[0].username} Veteran`)
+    this.app.chat(`/g setrank ${data.data[0].username} Veteran`)
     return
   }
   else if (sblvl >= 150) {
-    this.app.minecraft.bot.chat(`/g setrank ${data.data[0].username} Adventurer`)
+    this.app.chat(`/g setrank ${data.data[0].username} Adventurer`)
     return
   }
   else {
-    this.app.minecraft.bot.chat(`/g setrank ${data.data[0].username} Initiate`)
+    this.app.chat(`/g setrank ${data.data[0].username} Initiate`)
     return
   }
 }
