@@ -414,7 +414,7 @@ class StateHandler extends EventHandler {
     }
     if (message.startsWith("Online Members")) {
       reta += "\n" + message
-      return reta
+      console.log(reta)
     }
 
   }
