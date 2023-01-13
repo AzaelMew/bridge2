@@ -72,26 +72,24 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, message) {
-  const DiscordCommand = require('../../contracts/DiscordCommand')
-
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
 
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
-    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Champion`)
+    champ.push(data.data[0].username)
     return
   }
   else if (sblvl >= 185) {
-    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Veteran`)
+    vet.push(data.data[0].username)
     return
   }
   else if (sblvl >= 150) {
-    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Adventurer`)
+    adv.push(data.data[0].username)
     return
   }
   else {
-    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Initiate`)
+    ini.push(data.data[0].username)
     return
   }
 }
@@ -110,11 +108,14 @@ class AutoclaimCommand extends DiscordCommand {
   onCommand(message) {
     getGMemberFromUsername("xephor_ex", message).then(ini => {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
-
+      console.log(ini)
+      console.log(adv)
+      console.log(vet)
+      console.log(champ)
     })
     message.channel.send({
       embed: {
-        description: `Checking peoples ranks...`,
+        description: `Kicking inactive users...`,
         color: '47F049'
       }
     })
