@@ -72,27 +72,26 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, message) {
-  const MinecraftManager = require('/home/azael/bridge/src/minecraft/MinecraftManager')
-  this.minecraft = new MinecraftManager(this)
+  const DiscordCommand = require('../../contracts/DiscordCommand')
 
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
 
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
-    this.bot.chat(`/g setrank ${data.data[0].username} Champion`)
+    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Champion`)
     return
   }
   else if (sblvl >= 185) {
-    this.bot.chat(`/g setrank ${data.data[0].username} Veteran`)
+    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Veteran`)
     return
   }
   else if (sblvl >= 150) {
-    this.bot.chat(`/g setrank ${data.data[0].username} Adventurer`)
+    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Adventurer`)
     return
   }
   else {
-    this.bot.chat(`/g setrank ${data.data[0].username} Initiate`)
+    this.sendMinecraftMessage(`/g setrank ${data.data[0].username} Initiate`)
     return
   }
 }
