@@ -327,10 +327,6 @@ class StateHandler extends EventHandler {
       return this.minecraft.broadcastCleanEmbed({ message: `${user} is already the lowest guild rank!`, color: 'DC143C' })
     }
 
-    if (this.isAlreadyHasRank(message)) {
-      return this.minecraft.broadcastCleanEmbed({ message: `They already have that rank!`, color: 'DC143C' })
-    }
-
     if (this.isTooFast(message)) {
       return this.minecraft.app.log.warn(message)
     }
