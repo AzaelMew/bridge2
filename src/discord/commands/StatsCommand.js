@@ -19,19 +19,19 @@ function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
 }
-async function getStatsFromUsername(username,profile) {
-  return await getStatsFromUUID(await getUUIDFromUsername(username),profile)
+async function getStatsFromUsername(username, profile) {
+  return await getStatsFromUUID(await getUUIDFromUsername(username), profile)
 }
-async function getStatsFromUUID(name,profile) {
+async function getStatsFromUUID(name, profile) {
   try {
-    if (name == undefined){
+    if (name == undefined) {
       name = "a"
     }
-    if (profile == undefined){
+    if (profile == undefined) {
       profile = "a"
-  }
+    }
     const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-    for (i = 0; i < Object.keys(data.data).length ; i++) {
+    for (i = 0; i < Object.keys(data.data).length; i++) {
       if (data.data[i].name.toLowerCase() == profile.toLowerCase()) {
         let nw = numberWithCommas(data.data[i].networth.networth)
         let farming = data.data[i]?.skills?.farming.level
@@ -56,7 +56,7 @@ async function getStatsFromUUID(name,profile) {
         let stats = `On ${profile}: \nSkyblock Level: ${sblvl.toFixed(0)}; Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}`
         return stats
       }
-      else if (i == Object.keys(data.data).length - 1){
+      else if (i == Object.keys(data.data).length - 1) {
         let nw = numberWithCommas(data.data[0].networth.networth)
         let farming = data.data[0]?.skills?.farming.level
         let mining = data.data[0]?.skills?.mining.level
@@ -77,20 +77,20 @@ async function getStatsFromUUID(name,profile) {
         let sblvl = data.data[0]?.sblevel
 
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `Skyblock Level: ${sblvl.toFixed(0)}; Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; `
+        let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
         return stats
       }
     }
   }
   catch (error) {
     e = error.message
-    if(e.includes("status code 500")){
+    if (e.includes("status code 500")) {
       return "is an Invalid Username"
     }
-    if(e.includes("status code 404")){
+    if (e.includes("status code 404")) {
       return "has no Skyblock Profiles"
     }
-    else{
+    else {
       return error
     }
   }
@@ -106,13 +106,13 @@ class StatsCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-      let args = this.getArgs(message)
-      let user = args.shift()
-      getStatsFromUsername(user).then(stats=>{
-      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";",",")}`)
+    let args = this.getArgs(message)
+    let user = args.shift()
+    getStatsFromUsername(user).then(stats => {
+      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣","")}`)
       message.channel.send({
         embed: {
-          description: stats.replaceAll("; ","\n"),
+          description: stats.replaceAll("; ", "\n"),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
