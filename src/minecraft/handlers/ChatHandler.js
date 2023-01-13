@@ -2,7 +2,7 @@ const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants')
 const EventHandler = require('../../contracts/EventHandler')
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
-const { setInterval } = require('timers/promises');
+const { setInterval, setTimeout } = require('timers/promises');
 
 let reta = ''
 var ret = "";
@@ -93,17 +93,8 @@ async function getStatsFromUUID(name) {
     let eslayer = data.data[0]?.slayer?.enderman.xp
     let bslayer = data.data[0]?.slayer?.blaze.xp
     let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-    let faction = data.data[0]?.crimson.factions.selected_faction
-    if (faction == undefined) {
-      faction = "none"
-    }
-    if (faction == "mages") {
-      faction = "Mages"
-    }
-    if (faction == "barbarians") {
-      faction = "Barbarians"
-    }
-    let stats = `Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; Faction: ${faction}`
+    let sblvl = data.data[i]?.sblevel
+    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
     return stats
   }
   catch {
@@ -198,10 +189,11 @@ class StateHandler extends EventHandler {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[1]
       getStatsFromUsername(user).then(stats => {
       setTimeout(() => {
-          this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",")}`)
+          this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         
-      }, 1500)})
+      }, 500)})
+
     }
     if (this.isLeaveMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
