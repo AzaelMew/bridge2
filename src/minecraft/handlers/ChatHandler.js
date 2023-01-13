@@ -261,7 +261,7 @@ class StateHandler extends EventHandler {
       mes = reta
       reta = ""
       mes = mes.replaceAll("_", "\\_").replaceAll("-- ","\n**").replaceAll(" --","**")
-      return this.minecraft.broadcastOnEmbed({ username: "Players currently online",message: mes })
+      return this.minecraft.broadcastOnEmbed({ username: "**Players currently online**",message: mes })
     }
 
     if (this.isGTopMessage(message)) {
