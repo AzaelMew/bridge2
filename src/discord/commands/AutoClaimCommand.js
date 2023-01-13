@@ -118,6 +118,7 @@ class AutoclaimCommand extends DiscordCommand {
           cat =+ 1
         }, index * interval);
         if (cat == ini.length - 1) {
+          console.log("a")
           for (let index = 0; index < adv.length; ++index) {
 
             let el = adv[index]
@@ -136,10 +137,10 @@ class AutoclaimCommand extends DiscordCommand {
                   cat3 =+ 1
                 }, index * interval);
                 if (cat3 == vet.length - 1) {
+                
                   for (let index = 0; index < champ.length; ++index) {
                     let el = champ[index]
-
-
+                    
                     setTimeout(() => {
                       this.sendMinecraftMessage(`/g setrank ${el} Champion`)
                     }, index * interval);
