@@ -195,7 +195,12 @@ class StateHandler extends EventHandler {
         setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${user}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
-        }, 1500)
+        }, 750)
+        setTimeout(() => {
+          if (stats.endsWith("Accepted")){
+            this.bot.chat(`/g accept ${user}`)
+          }
+        }, 1750);
       })
     }
     if (this.isLeaveMessage(message)) {
