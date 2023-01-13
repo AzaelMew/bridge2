@@ -72,7 +72,7 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, message) {
-  const MinecraftManager = require('./minecraft/MinecraftManager')
+  const MinecraftManager = require('../src/minecraft/MinecraftManager')
   this.minecraft = new MinecraftManager(this)
 
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
