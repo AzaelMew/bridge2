@@ -3,6 +3,7 @@ const EventHandler = require('../../contracts/EventHandler')
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
 const { setInterval, setTimeout } = require('timers/promises');
+const { Console } = require('console');
 
 let reta = ''
 var ret = "";
@@ -187,6 +188,7 @@ class StateHandler extends EventHandler {
 
     if (this.isApplyMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[1]
+      console.log("a")
       getStatsFromUsername(user).then(stats => {
       setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
