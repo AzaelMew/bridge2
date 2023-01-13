@@ -4,7 +4,7 @@ const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
 const { setInterval } = require('timers/promises');
 
-let reta = ''
+let reta = []
 var ret = "";
 let mes = "";
 let reg = /(\[\w{3,}\+{0,2}\] )?(\w{1,16}) has invited you to join their party!/
@@ -259,8 +259,8 @@ class StateHandler extends EventHandler {
 
     if (this.isGuildRank(message)) {
       mes = reta
-      reta = ""
-      mes = mes.replaceAll("_", "\\_").replaceAll("-- ", "\n**").replaceAll(" --", "**")
+      reta = []
+      mes = mes.toString().replaceAll(","," ").replaceAll("_", "\\_").replaceAll("-- ", "\n**").replaceAll(" --", "**")
       return this.minecraft.broadcastOnEmbed({ username: "Players currently online", message: mes })
     }
 
@@ -381,35 +381,35 @@ class StateHandler extends EventHandler {
 
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
     if (message.endsWith(' ●')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
     if (message.endsWith('-- Elder --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Champion --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Veteran --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Adventurer --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Initiate --')) {
-      reta += message + "\n"
+      reta.push(message + "\n")
     }
     if (message.startsWith('Total Members:')) {
-      reta += "\n" + message + "/125"
+      reta.push("\n" + message + "/125")
     }
     if (message.startsWith("Online Members")) {
-      reta += "\n" + message
+      reta.push("\n" + message)
       return reta
     }
 
