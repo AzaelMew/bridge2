@@ -203,7 +203,7 @@ class StalkCommand extends DiscordCommand {
                         embed: {
                             description: "does not exist",
                             color: 'FF0000',
-                            timestamp: "test",
+                            timestamp: new Date(),
                             footer: {
                                 text: "BOT",
                             },
