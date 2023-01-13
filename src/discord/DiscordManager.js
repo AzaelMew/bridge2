@@ -112,14 +112,12 @@ class DiscordManager extends CommunicationBridge {
       let icon = username.split("'")
       channel.send({
         embed: {
+          title: username,
           description: message,
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
             text: "BOT",
-          },
-          author: {
-            name: username,
           },
         },
       })
