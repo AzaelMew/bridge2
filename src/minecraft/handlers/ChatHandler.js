@@ -73,7 +73,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  try {
+  
     const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let nw = numberWithCommas(data.data[0].networth.networth)
     let farming = data.data[0]?.skills?.farming.level
@@ -92,23 +92,10 @@ async function getStatsFromUUID(name) {
     let sslayer = data.data[0]?.slayer?.spider.xp
     let eslayer = data.data[0]?.slayer?.enderman.xp
     let bslayer = data.data[0]?.slayer?.blaze.xp
+    let sblvl = data.data[0]?.sblevel
     let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-    let sblvl = data.data[i]?.sblevel
-    if (faction == undefined) {
-      faction = "none"
-    }
-    if (faction == "mages") {
-      faction = "Mages"
-    }
-    if (faction == "barbarians") {
-      faction = "Barbarians"
-    }
-    let stats = `Skill Avg: ${sa}; Slayer: ${slayer}; Cata: ${cata}; Networth: $${nw}; Faction: ${faction}`
+    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
     return stats
-  }
-  catch {
-    return "Error"
-  }
 }
 
 class StateHandler extends EventHandler {
