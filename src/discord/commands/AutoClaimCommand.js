@@ -113,10 +113,9 @@ class AutoclaimCommand extends DiscordCommand {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
-        console.log(ini)
         setTimeout(() => {
           
-          //this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
+          this.sendMinecraftMessage(`/g setrank ${el}`)
         }, index * interval);
       }
     })
