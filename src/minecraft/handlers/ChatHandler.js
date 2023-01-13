@@ -261,7 +261,7 @@ class StateHandler extends EventHandler {
       mes = reta
       reta = ""
       mes = mes.replaceAll("_", "\\_")
-      return this.minecraft.broadcastCommandEmbed({ username: "Players currently online", message: mes, color: '47F049' })
+      return this.minecraft.broadcastCommandEmbed({ username: "Players currently online", message: mes })
     }
 
     if (this.isGTopMessage(message)) {
