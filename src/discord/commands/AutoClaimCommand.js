@@ -97,11 +97,11 @@ async function getActivity(uuid, message) {
 async function getGMemberFromUsername(username, message) {
   return await getGMemberFromUUID(await getUUIDFromUsername(username), message)
 }
-class InactiveCommand extends DiscordCommand {
+class AutoclaimCommand extends DiscordCommand {
   constructor(discord) {
     super(discord)
 
-    this.name = 'kickinactive'
+    this.name = 'autoclaim'
     this.description = 'Kicks inactive people.'
   }
 
@@ -141,4 +141,4 @@ class InactiveCommand extends DiscordCommand {
     })
   }
 }
-module.exports = InactiveCommand
+module.exports = AutoclaimCommand
