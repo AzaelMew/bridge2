@@ -188,12 +188,11 @@ class StateHandler extends EventHandler {
 
     if (this.isApplyMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[1]
-      console.log("a")
       getStatsFromUsername(user).then(stats => {
+        console.log("a")
       setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
-          console.log("a")
       }, 500)})
 
     }
