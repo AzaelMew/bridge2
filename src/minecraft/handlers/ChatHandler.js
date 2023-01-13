@@ -122,6 +122,7 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
+    console.log(`" ${message} "`)
 
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('/ac §§§§§§§§§')
@@ -365,7 +366,6 @@ class StateHandler extends EventHandler {
     if (playerMessage == '@') {
       return
     }
-    console.log(`" ${message} "`)
     this.minecraft.broadcastMessage({
       username: username,
       message: playerMessage,
