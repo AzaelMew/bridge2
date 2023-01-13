@@ -381,35 +381,35 @@ class StateHandler extends EventHandler {
 
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
     if (message.endsWith(' ●')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
     if (message.endsWith('-- Elder --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Champion --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Veteran --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Adventurer --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Initiate --')) {
-      //reta.push(message + "\n")
+      reta.push(message + "\n")
     }
     if (message.startsWith('Total Members:')) {
-      //reta.push("\n" + message + "/125")
+      reta.push("\n" + message + "/125")
     }
     if (message.startsWith("Online Members")) {
-      //reta.push("\n" + message)
+      reta.push("\n" + message)
       return reta
     }
 
