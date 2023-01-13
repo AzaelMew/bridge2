@@ -14,11 +14,11 @@ var lastTime = new Date()
 let failSafeCD = new Date();
 
 function numberWithCommas(x) {
-  if(x>999815672){
+  if (x > 999815672) {
     x = x.toString().split(".")[0]
     x = x.toString().slice(0, -6) + "815672";
   }
-  else{
+  else {
     x = x.toString().split(".")[0]
   }
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -73,29 +73,37 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  
-    const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-    let nw = numberWithCommas(data.data[0].networth.networth)
-    let farming = data.data[0]?.skills?.farming.level
-    let mining = data.data[0]?.skills?.mining.level
-    let combat = data.data[0]?.skills?.combat.level
-    let foraging = data.data[0]?.skills?.foraging.level
-    let fishing = data.data[0]?.skills?.fishing.level
-    let enchant = data.data[0]?.skills?.enchanting.level
-    let alch = data.data[0]?.skills?.alchemy.level
-    let taming = data.data[0]?.skills?.taming.level
-    let carp = data.data[0]?.skills?.carpentry.level
-    let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-    let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
-    let wslayer = data.data[0]?.slayer?.wolf.xp
-    let zslayer = data.data[0]?.slayer?.zombie.xp
-    let sslayer = data.data[0]?.slayer?.spider.xp
-    let eslayer = data.data[0]?.slayer?.enderman.xp
-    let bslayer = data.data[0]?.slayer?.blaze.xp
-    let sblvl = data.data[0]?.sblevel
-    let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
+
+  const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
+  let nw = numberWithCommas(data.data[0].networth.networth)
+  let farming = data.data[0]?.skills?.farming.level
+  let mining = data.data[0]?.skills?.mining.level
+  let combat = data.data[0]?.skills?.combat.level
+  let foraging = data.data[0]?.skills?.foraging.level
+  let fishing = data.data[0]?.skills?.fishing.level
+  let enchant = data.data[0]?.skills?.enchanting.level
+  let alch = data.data[0]?.skills?.alchemy.level
+  let taming = data.data[0]?.skills?.taming.level
+  let carp = data.data[0]?.skills?.carpentry.level
+  let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
+  let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
+  let wslayer = data.data[0]?.slayer?.wolf.xp
+  let zslayer = data.data[0]?.slayer?.zombie.xp
+  let sslayer = data.data[0]?.slayer?.spider.xp
+  let eslayer = data.data[0]?.slayer?.enderman.xp
+  let bslayer = data.data[0]?.slayer?.blaze.xp
+  let sblvl = data.data[0]?.sblevel
+  let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
+  if (sblvl >= 125) {
+    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
     return stats
+
+  }
+  else {
+    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
+    return stats
+
+  }
 }
 
 class StateHandler extends EventHandler {
@@ -105,7 +113,7 @@ class StateHandler extends EventHandler {
     this.minecraft = minecraft
     this.command = command
   }
-  
+
   registerEvents(bot) {
     this.bot = bot
 
@@ -126,12 +134,12 @@ class StateHandler extends EventHandler {
       res = message.match(reg)
       let userp = res[2]
       getGMemberFromUsername(userp).then(ret => {
-        if(ret == "join"){
+        if (ret == "join") {
           ret = ""
           inParty = true
-          
+
           setTimeout(() => {
-            if(inParty){
+            if (inParty) {
               this.bot.chat(`/p leave`)
             }
           }, 60000)
@@ -139,7 +147,7 @@ class StateHandler extends EventHandler {
           this.minecraft.broadcastLogEmbed({ username: userp, message: `Partied the bot.`, color: '0000FF' })
           return this.bot.chat(`/p join ${userp}`)
         }
-        else{
+        else {
           return
         }
       })
@@ -159,8 +167,8 @@ class StateHandler extends EventHandler {
 
     if (this.isLogoutMessage(message)) {
       let user = message.split('>')[1].trim().split('left.')[0].trim()
-      if (user == "Azael_Nyaa"){
-        return this.minecraft.broadcastPlayerToggle2({ content: "<@115873189296340997>",username: user, message: `left.`, color: 'F04947' })
+      if (user == "Azael_Nyaa") {
+        return this.minecraft.broadcastPlayerToggle2({ content: "<@115873189296340997>", username: user, message: `left.`, color: 'F04947' })
       }
       return this.minecraft.broadcastPlayerToggle({ username: user, message: `left.`, color: 'F04947' })
     }
@@ -184,11 +192,11 @@ class StateHandler extends EventHandler {
     if (this.isApplyMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[1]
       getStatsFromUsername(user).then(stats => {
-      setTimeout(() => {
-          this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
+        setTimeout(() => {
+          this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${user}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
-        
-      }, 1500)})
+        }, 1500)
+      })
     }
     if (this.isLeaveMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
@@ -247,8 +255,8 @@ class StateHandler extends EventHandler {
     if (this.isGuildRank(message)) {
       mes = reta
       reta = ""
-      mes = mes.replaceAll("_", "\\_").replaceAll("-- ","\n**").replaceAll(" --","**")
-      return this.minecraft.broadcastOnEmbed({ username: "Players currently online",message: mes })
+      mes = mes.replaceAll("_", "\\_").replaceAll("-- ", "\n**").replaceAll(" --", "**")
+      return this.minecraft.broadcastOnEmbed({ username: "Players currently online", message: mes })
     }
 
     if (this.isGTopMessage(message)) {
@@ -401,7 +409,7 @@ class StateHandler extends EventHandler {
     }
     if (message.startsWith("Online Members")) {
       reta += "\n" + message
-    return reta
+      return reta
     }
 
   }
@@ -461,7 +469,7 @@ class StateHandler extends EventHandler {
   isOnlineMessage(message) {
     return message.endsWith(' ●')
   }
-  
+
   isPartyMessage2(message) {
     return message.includes("has invited you to join their party!")
   }
