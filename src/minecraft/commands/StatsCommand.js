@@ -115,20 +115,20 @@ class StatsCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!stats")) {
       getStatsFromUsername(username).then(stats => {
-        this.send(`/gc ${username}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣","")}`)
+        this.send(`/gc ${username}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
       })
     }
     else{
       if(args[2] != undefined){
         getStatsFromUsername(args[1],args[2]).then(stats => {
-          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣","")}`)
+          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         })
       }
       else {
         getStatsFromUsername(args[1]).then(stats => {
-          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣","")}`)
+          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
           this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         })
       }
