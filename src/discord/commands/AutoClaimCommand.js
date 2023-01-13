@@ -77,19 +77,19 @@ async function getActivity(uuid, message) {
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
-    champ.push(data.data[0].username)
+    ini.push(`${data.data[0].username} Champion`)
     return
   }
   else if (sblvl >= 185) {
-    vet.push(data.data[0].username)
+    ini.push(`${data.data[0].username} Veteran`)
     return
   }
   else if (sblvl >= 150) {
-    adv.push(data.data[0].username)
+    ini.push(`${data.data[0].username} Adventurer`)
     return
   }
   else {
-    ini.push(data.data[0].username)
+    ini.push(`${data.data[0].username} Initiate`)
     return
   }
 }
@@ -113,43 +113,11 @@ class AutoclaimCommand extends DiscordCommand {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
+        console.log(ini)
         setTimeout(() => {
-          this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
-          cat =+ 1
+          
+          //this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
         }, index * interval);
-        if (cat == ini.length - 1) {
-          console.log("a")
-          for (let index = 0; index < adv.length; ++index) {
-
-            let el = adv[index]
-
-            setTimeout(() => {
-              this.sendMinecraftMessage(`/g setrank ${el} Adventurer`)
-              cat2 =+ 1
-            }, index * interval);
-            if (cat2 == adv.length - 1) {
-
-              for (let index = 0; index < vet.length; ++index) {
-                let el = vet[index]
-
-                setTimeout(() => {
-                  this.sendMinecraftMessage(`/g setrank ${el} Veteran`)
-                  cat3 =+ 1
-                }, index * interval);
-                if (cat3 == vet.length - 1) {
-                
-                  for (let index = 0; index < champ.length; ++index) {
-                    let el = champ[index]
-                    
-                    setTimeout(() => {
-                      this.sendMinecraftMessage(`/g setrank ${el} Champion`)
-                    }, index * interval);
-                  };
-                };
-              };
-            }
-          };
-        }
       }
     })
     message.channel.send({
