@@ -111,25 +111,25 @@ class AutoclaimCommand extends DiscordCommand {
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
         setTimeout(() => {
-          this.sendMinecraftMessage(`/gc setrank ${el} Initiate`)
+          this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
         }, index * interval);
       };
       for (let index = 0; index < adv.length; ++index) {
         let el = kickables[index]
         setTimeout(() => {
-          this.sendMinecraftMessage(`/gc setrank ${el} Adventurer`)
+          this.sendMinecraftMessage(`/g setrank ${el} Adventurer`)
         }, index * interval);
       };
       for (let index = 0; index < vet.length; ++index) {
         let el = kickables[index]
         setTimeout(() => {
-          this.sendMinecraftMessage(`/gc setrank ${el} Veteran`)
+          this.sendMinecraftMessage(`/g setrank ${el} Veteran`)
         }, index * interval);
       };
       for (let index = 0; index < champ.length; ++index) {
         let el = kickables[index]
         setTimeout(() => {
-          this.sendMinecraftMessage(`/gc setrank ${el} Champion`)
+          this.sendMinecraftMessage(`/g setrank ${el} Champion`)
         }, index * interval);
       };
     })
