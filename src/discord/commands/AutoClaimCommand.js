@@ -77,19 +77,19 @@ async function getActivity(uuid, message) {
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
-    champ.push(data.data[0].username)
+    this.minecraft.bot.chat(`/g setrank ${data.data[0].username} Champion`)
     return
   }
   else if (sblvl >= 185) {
-    vet.push(data.data[0].username)
+    this.minecraft.bot.chat(`/g setrank ${data.data[0].username} Veteran`)
     return
   }
   else if (sblvl >= 150) {
-    adv.push(data.data[0].username)
+    this.minecraft.bot.chat(`/g setrank ${data.data[0].username} Adventurer`)
     return
   }
   else {
-    ini.push(data.data[0].username)
+    this.minecraft.bot.chat(`/g setrank ${data.data[0].username} Initiate`)
     return
   }
 }
@@ -108,30 +108,7 @@ class AutoclaimCommand extends DiscordCommand {
   onCommand(message) {
     getGMemberFromUsername("xephor_ex", message).then(ini => {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
-      for (let index = 0; index < ini.length; ++index) {
-        let el = ini[index]
-        setTimeout(() => {
-          this.sendMinecraftMessage(`/g setrank ${el} Initiate`)
-        }, index * interval);
-      };
-      for (let index = 0; index < adv.length; ++index) {
-        let el = kickables[index]
-        setTimeout(() => {
-          this.sendMinecraftMessage(`/g setrank ${el} Adventurer`)
-        }, index * interval);
-      };
-      for (let index = 0; index < vet.length; ++index) {
-        let el = kickables[index]
-        setTimeout(() => {
-          this.sendMinecraftMessage(`/g setrank ${el} Veteran`)
-        }, index * interval);
-      };
-      for (let index = 0; index < champ.length; ++index) {
-        let el = kickables[index]
-        setTimeout(() => {
-          this.sendMinecraftMessage(`/g setrank ${el} Champion`)
-        }, index * interval);
-      };
+
     })
     message.channel.send({
       embed: {
