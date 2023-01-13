@@ -260,7 +260,7 @@ class StateHandler extends EventHandler {
     if (this.isGuildRank(message)) {
       mes = reta
       reta = ""
-      mes = mes.replaceAll("_", "\\_").replaceAll("-- ","\n**").replaceAll(" --","**").replaceAll(" ● "," ")
+      mes = mes.replaceAll("_", "\\_").replaceAll("-- ","\n**").replaceAll(" --","**").replaceAll("●","")
       return this.minecraft.broadcastOnEmbed({ username: "Players currently online",message: mes })
     }
 
