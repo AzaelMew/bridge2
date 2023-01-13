@@ -185,17 +185,33 @@ class StalkCommand extends DiscordCommand {
                 if (location == "Player is Offline") {
                     message.channel.send({
                         embed: {
-                            description: `${user} is **offline**`,
-                            color: 'FF0000'
-                        }
+                            description: "is currently offline.",
+                            color: 'FF0000',
+                            timestamp: new Date(),
+                            footer: {
+                                text: "BOT",
+                            },
+                            author: {
+                                name: `${user}`,
+                                icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            },
+                        },
                     })
                 }
                 else if (location == "Player doesn't exist") {
                     message.channel.send({
                         embed: {
-                            description: `${user} doesn't exist`,
-                            color: 'FF0000'
-                        }
+                            description: "does not exist",
+                            color: 'FF0000',
+                            timestamp: new Date(),
+                            footer: {
+                                text: "BOT",
+                            },
+                            author: {
+                                name: `${user}`,
+                                icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            },
+                        },
                     })
                 }
                 else if (location != "Player is Offline") {
