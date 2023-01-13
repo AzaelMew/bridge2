@@ -265,9 +265,9 @@ class StateHandler extends EventHandler {
     }
 
     if (this.isGTopMessage(message)) {
-      mes = ret
-      ret = ""
-      mes = mes.replaceAll("_", "\\_")
+      mes = ret;
+      ret = "";
+      mes = mes.replaceAll("_", "\\_");
       return this.minecraft.broadcastCleanEmbed({ message: mes, color: '47F049' })
     }
 
@@ -386,11 +386,9 @@ class StateHandler extends EventHandler {
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
       reta += message + "\n"
-      console.log(reta)
     }
     if (message.endsWith(' ●')) {
       reta += message + "\n"
-      console.log(reta)
     }
     if (message.endsWith('-- Elder --')) {
       reta += message + "\n"
@@ -416,7 +414,7 @@ class StateHandler extends EventHandler {
     }
     if (message.startsWith("Online Members")) {
       reta += "\n" + message
-      console.log(reta)
+    return reta
     }
 
   }
