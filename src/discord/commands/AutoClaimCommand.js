@@ -135,7 +135,7 @@ class AutoclaimCommand extends DiscordCommand {
     })
     message.channel.send({
       embed: {
-        description: `Kicking inactive users...`,
+        description: `Checking peoples ranks...`,
         color: '47F049'
       }
     })
