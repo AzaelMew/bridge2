@@ -261,7 +261,7 @@ class StateHandler extends EventHandler {
       mes = reta
       reta = ""
       mes = mes.replaceAll("_", "\\_")
-      return this.minecraft.broadcastCleanEmbed({ message: mes, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: mes, color: '2A2A2A' })
     }
 
     if (this.isGTopMessage(message)) {
