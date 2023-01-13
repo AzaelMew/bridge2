@@ -199,7 +199,7 @@ class StateHandler extends EventHandler {
       getStatsFromUsername(user).then(stats => {
       setTimeout(() => {
           this.bot.chat(`/gc ${user}'s stats: ${stats.replaceAll(";", ",")}`)
-          this.minecraft.broadcastCommandEmbed({ username: `${username}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
+          this.minecraft.broadcastCommandEmbed({ username: `${user}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         
       }, 1500)})
     }
