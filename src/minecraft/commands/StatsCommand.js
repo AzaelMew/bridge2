@@ -58,7 +58,7 @@ async function getStatsFromUUID(name,profile) {
         let bslayer = data.data[i]?.slayer?.blaze.xp
         let sblvl = data.data[i]?.sblevel
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**On ${profile}:** \n**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};`
+        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl.toFixed(0)}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw};`
         return stats
       }
       else if (i == Object.keys(data.data).length - 1){
@@ -81,7 +81,7 @@ async function getStatsFromUUID(name,profile) {
         let bslayer = data.data[0]?.slayer?.blaze.xp
         let sblvl = data.data[0]?.sblevel
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
+        let stats = `**Skyblock Level:** \n➣ ${sblvl.toFixed(0)}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw}; `
         return stats
       }
     }
@@ -123,13 +123,13 @@ class StatsCommand extends MinecraftCommand {
       if(args[2] != undefined){
         getStatsFromUsername(args[1],args[2]).then(stats => {
           this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
-          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
+          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
         })
       }
       else {
         getStatsFromUsername(args[1]).then(stats => {
           this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
-          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
+          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
         })
       }
     }
