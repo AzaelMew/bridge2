@@ -53,7 +53,7 @@ async function getStatsFromUUID(name, profile) {
         let sblvl = data.data[i]?.sblevel
 
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**On ${profile}:** \n**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};`
+        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl.toFixed(0)}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw};`
         return stats
       }
       else if (i == Object.keys(data.data).length - 1) {
@@ -77,7 +77,7 @@ async function getStatsFromUUID(name, profile) {
         let sblvl = data.data[0]?.sblevel
 
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw}; `
+        let stats = `**Skyblock Level:** \n➣ ${sblvl.toFixed(0)}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw}; `
         return stats
       }
     }
@@ -112,7 +112,7 @@ class StatsCommand extends DiscordCommand {
       this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
       message.channel.send({
         embed: {
-          description: stats.replaceAll("; ", "\n"),
+          description: stats.replaceAll("; ", "\n").replaceAll(":",""),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
