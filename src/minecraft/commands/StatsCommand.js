@@ -122,8 +122,8 @@ class StatsCommand extends MinecraftCommand {
     else{
       if(args[2] != undefined){
         getStatsFromUsername(args[1],args[2]).then(stats => {
-          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
-          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n").replaceAll(":","").replaceAll("\n","")}` })
+          this.send(`/gc ${args[1]}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","").replaceAll("\n","")}`)
+          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s stats`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
         })
       }
       else {
