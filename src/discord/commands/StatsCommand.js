@@ -109,7 +109,7 @@ class StatsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getStatsFromUsername(user).then(stats => {
-      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","").replaceAll("\n ","")}`)
       message.channel.send({
         embed: {
           description: stats.replaceAll("; ", "\n").replaceAll(":",""),
