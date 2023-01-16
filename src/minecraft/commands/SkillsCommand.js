@@ -82,7 +82,7 @@ class SkillsCommand extends MinecraftCommand {
     if (message.endsWith("!skills")) {
       getSkillsFromUsername(username).then(skills => {
         this.send(`/gc ${username}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "")}` })
+        this.minecraft.broadcastCommandEmbed({ username: `${username}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "")}` })
 
       })
     }
