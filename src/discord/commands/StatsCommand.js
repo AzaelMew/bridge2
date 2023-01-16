@@ -101,7 +101,6 @@ class StatsCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'stats'
-    this.aliases = ['skills']
     this.description = `Checks user's stats`
   }
 
