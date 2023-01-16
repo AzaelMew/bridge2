@@ -41,7 +41,7 @@ async function getSlayerFromUUID(name){
     let sslayerLVL = data.data[0].slayer.spider.level
     let eslayerLVL = data.data[0].slayer.enderman.level
     let bslayerLVL = data.data[0]?.slayer?.blaze.level
-    let stats = `Total Slayer EXP: ${slayerEXP} ;Zombie level: ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;Spider level: ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;Wolf level: ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;Enderman level: ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;Blaze level: ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp`
+    let stats = `**Total Slayer EXP**:\n➣  ${slayerEXP} ;**Zombie level**:\n➣  ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;**Spider level**:\n➣  ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;**Wolf level**:\n➣  ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;**Enderman level**:\n➣  ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;**Blaze level**:\n➣  ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp`
     return stats
 }
 catch (error) {
