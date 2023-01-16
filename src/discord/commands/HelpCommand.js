@@ -30,7 +30,7 @@ class HelpCommand extends DiscordCommand {
         fields: [
           {
             name: 'Discord Commands',
-            value: `These commands can only be used in this channel.\n\n\`!help\`: Shows the entire bot's commands list.\n\`!top:\` Shows Top Guild EXP from the specified day.\n\`!member\`: Shows weekly Guild EXP of a specified member.\n\`!online (!on)\`: Shows a list of guild members online.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!stats\`: Shows a specified player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!networth (!nw)\`: Shows a player's networth.`
+            value: `These commands can only be used in this channel.\n\n\`!help\`: Shows the entire bot's commands list.\n\`!top:\` Shows Top Guild EXP from the specified day.\n\`!online (!on)\`: Shows a list of guild members online.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!stats\`: Shows a specified player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!networth (!nw)\`: Shows a player's networth.`
           },
           {
             name: 'Minecraft Commands',
