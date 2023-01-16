@@ -76,6 +76,7 @@ async function getActivity(uuid, rank) {
 
   let sblvl = data.data[0]?.sblevel
   if(rank=="Elder") return
+  if(rank=="Guild Master") return
 
   if (sblvl >= 225) {
     if(rank=="Champion") return
