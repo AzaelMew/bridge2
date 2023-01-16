@@ -39,7 +39,7 @@ async function getDungeonFromUUID(name) {
     let t = data.data[0].dungeons?.classes?.tank?.levelWithProgress
     let av = ((h + m + b + a + t) / 5)
 
-    let stats = "**Cata**: \n" + lvl.toFixed(2) + " **;Average**: \n" + av.toFixed(2) + " **;Archer**: \n" + a.toFixed(2) + " **;Berserk**: \n" + b.toFixed(2) + " **;Healer**: \n" + h.toFixed(2) + " **;Mage**: \n" + m.toFixed(2) + " **;Tank**: \n" + t.toFixed(2) + " **;Secrets**: \n" + numberWithCommas(secrets)
+    let stats = "**Cata**: \n➣" + lvl.toFixed(2) + " **;Average**: \n➣" + av.toFixed(2) + " **;Archer**: \n➣" + a.toFixed(2) + " **;Berserk**: \n➣" + b.toFixed(2) + " **;Healer**: \n➣" + h.toFixed(2) + " **;Mage**: \n➣" + m.toFixed(2) + " **;Tank**: \n➣" + t.toFixed(2) + " **;Secrets**: \n➣" + numberWithCommas(secrets)
     return stats
 
   }
@@ -71,7 +71,7 @@ class CatacombsCommand extends DiscordCommand {
       this.sendMinecraftMessage(`/gc ${user}'s cata: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
       message.channel.send({
         embed: {
-          description: stats.replaceAll(";", "\n"),
+          description: stats.replaceAll(";", "\n").replaceAll(":",""),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
