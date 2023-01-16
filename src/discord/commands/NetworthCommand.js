@@ -64,11 +64,11 @@ async function getNetworthFromUUID(name) {
     let storageec
 
     storageec = ec + storage
-    ret = "**Total**:\n $" + numberWithCommas(total) + ". **Purse:**\n $" + numberWithCommas(purse) + ". **Bank:**\n $" + numberWithCommas(bank) + ". **Armor:**\n $" + numberWithCommas(armor) + ". **Equipment:**\n $" + numberWithCommas(equ) + ". **Wardrobe:**\n $" + numberWithCommas(wardrobe) + ". **Inv:**\n $" + numberWithCommas(inventory) + ". **Storage:**\n $" + numberWithCommas(storageec) + ". **Pets:**\n $" + numberWithCommas(pets) + ". **Talis:**\n $" + numberWithCommas(acc)
+    ret = "**Total**:!n\n➣ $" + numberWithCommas(total) + ". **Purse:**\n➣ $" + numberWithCommas(purse) + ". **Bank:**\n➣ $" + numberWithCommas(bank) + ". **Armor:**\n➣ $" + numberWithCommas(armor) + ". **Equipment:**\n➣ $" + numberWithCommas(equ) + ". **Wardrobe:**\n➣ $" + numberWithCommas(wardrobe) + ". **Inv:**\n➣ $" + numberWithCommas(inventory) + ". **Storage:**\n➣ $" + numberWithCommas(storageec) + ". **Pets:**\n➣ $" + numberWithCommas(pets) + ". **Talis:**\n➣ $" + numberWithCommas(acc)
     return ret
 
   }
-  catch (error) {
+  catch (error) {!stats 
     e = error.message
     if (e.includes("status code 500")) {
       return "is an Invalid Username"
@@ -97,7 +97,7 @@ class NetworthCommand extends DiscordCommand {
       this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "").replaceAll("*","")}`)
       message.channel.send({
         embed: {
-          description: ret.replaceAll(".", "\n"),
+          description: ret.replaceAll(".", "\n").replaceAll(":",""),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
