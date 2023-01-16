@@ -80,7 +80,7 @@ class SkillsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getSkillsFromUsername(user).then(skills => {
-      this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
       message.channel.send({
         embed: {
           description: skills.replaceAll("; ", "\n").replaceAll(":", ""),
