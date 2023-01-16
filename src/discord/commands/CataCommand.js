@@ -60,11 +60,11 @@ class CatacombsCommand extends DiscordCommand {
   constructor(discord) {
       super(discord)
 
-      this.name = 'stalk'
-      this.description = `Checks user's location`
-  }
+      this.name = 'cata'
+      this.description = "Says users dungeon stats"
+    }
 
-  async onCommand(username, message) {
+  onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
     getDungeonFromUsername(user).then(stats => {
