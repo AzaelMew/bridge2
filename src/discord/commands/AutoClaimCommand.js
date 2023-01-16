@@ -46,7 +46,7 @@ async function getGMemberFromUUID(uuid, message) {
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
-            getActivity(data.guild.members[i].uuid, message)
+            getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
           }
           catch {
             console.log("fuck you azael.")
@@ -71,24 +71,28 @@ async function getGMemberFromUUID(uuid, message) {
     }
   }
 }
-async function getActivity(uuid, message) {
+async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
 
   let sblvl = data.data[0]?.sblevel
 
   if (sblvl >= 225) {
+    if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
     return
   }
   else if (sblvl >= 185) {
+    if(rank=="Veteran") return
     ini.push(`${data.data[0].username} Veteran`)
     return
   }
   else if (sblvl >= 150) {
+    if(rank=="Adventurer") return
     ini.push(`${data.data[0].username} Adventurer`)
     return
   }
   else {
+    if(rank=="Initiate") return
     ini.push(`${data.data[0].username} Initiate`)
     return
   }
