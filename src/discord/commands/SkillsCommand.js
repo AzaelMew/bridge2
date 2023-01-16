@@ -49,7 +49,7 @@ async function getSkillsFromUUID(name) {
 
     let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
 
-    let skills = `Skill Avg: ${sa}; Farm: ${farming}; Mine: ${mining}; Comb: ${combat}; Forage: ${foraging}; Fish: ${fishing}; Ench: ${enchant}; Alch: ${alch}; Carp: ${carp}; Rune: ${rune}; Soci: ${soci}; Taming: ${taming};`
+    let skills = `**Skill Avg**:\n➣ ${sa}; **Farm**:\n➣ ${farming}; **Mine**:\n➣ ${mining}; **Comb**:\n➣ ${combat}; **Forage**:\n➣ ${foraging}; **Fish**:\n➣ ${fishing}; **Ench**:\n➣ ${enchant}; **Alch**:\n➣ ${alch}; **Carp**:\n➣ ${carp}; **Rune**:\n➣ ${rune}; **Soci**:\n➣ ${soci}; **Taming**:\n➣ ${taming}; `
     return skills
   }
   catch (error) {
