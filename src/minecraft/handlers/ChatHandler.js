@@ -167,9 +167,9 @@ class StateHandler extends EventHandler {
 
     if (this.isLogoutMessage(message)) {
       let user = message.split('>')[1].trim().split('left.')[0].trim()
-      if (user == "Azael_Nyaa") {
+      /*if (user == "Azael_Nyaa") {
         return this.minecraft.broadcastPlayerToggle2({ content: "<@115873189296340997>", username: user, message: `left.`, color: 'F04947' })
-      }
+      }*/
       return this.minecraft.broadcastPlayerToggle({ username: user, message: `left.`, color: 'F04947' })
     }
 

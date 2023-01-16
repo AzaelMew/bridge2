@@ -10,7 +10,7 @@ class ReqsCommand extends MinecraftCommand {
   }
 
   onCommand(username, message) {
-    this.send(`/gc Rank Requirements; Adventurer - SA 32 & 250 Million Networth | Veteran - SA 35 & 500 Million Networth | Champion - SA 42 & Networth 1.3 Billion Networth`)
+    this.send(`/gc Rank Requirements; Adventurer - Skyblock Level 150 | Veteran - Skyblock Level 185 | Champion - Skyblock Level 225`)
   }
 }
 
