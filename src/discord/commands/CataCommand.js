@@ -68,7 +68,7 @@ class CatacombsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getDungeonFromUsername(user).then(stats => {
-      this.sendMinecraftMessage(`/gc ${user}'s cata: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ",")}`)
       message.channel.send({
         embed: {
           description: stats.replaceAll(";", "\n").replaceAll(":",""),
