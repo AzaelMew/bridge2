@@ -41,7 +41,7 @@ async function getSlayerFromUUID(name){
     let sslayerLVL = data.data[0].slayer.spider.level
     let eslayerLVL = data.data[0].slayer.enderman.level
     let bslayerLVL = data.data[0]?.slayer?.blaze.level
-    let stats = `**Total Slayer EXP**:\n➣  ${slayerEXP} ;**Zombie level**:\n➣  ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;**Spider level**:\n➣  ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;**Wolf level**:\n➣  ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;**Enderman level**:\n➣  ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;**Blaze level**:\n➣  ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp`
+    let stats = `**Total Slayer EXP**:\n➣ ${slayerEXP} ;**Zombie level**:\n➣ ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;**Spider level**:\n➣ ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;**Wolf level**:\n➣ ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;**Enderman level**:\n➣ ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;**Blaze level**:\n➣ ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp`
     return stats
 }
 catch (error) {
@@ -71,12 +71,12 @@ class SlayerCommand extends MinecraftCommand {
       if (message.endsWith("!slayer")){
         getSlayerFromUser(username).then(stats=>{
             this.send(`/gc ${username}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","")}`)
-            this.minecraft.broadcastCommandEmbed({ username: `${username}'s slayers`, message: `${stats.replaceAll(";", "\n")}` })          })
+            this.minecraft.broadcastCommandEmbed({ username: `${username}'s slayers`, message: `${stats.replaceAll(";", "\n")}` }) })
     }
       else {
         getSlayerFromUser(args[1]).then(stats=>{
             this.send(`/gc ${args[1]}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","")}`)
-            this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s slayers`, message: `${stats.replaceAll(";", "\n")}` })          })
+            this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s slayers`, message: `${stats.replaceAll(";", "\n").replace("➣")}` }) })
       }
     }
   }
