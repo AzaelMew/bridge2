@@ -75,6 +75,7 @@ async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
 
   let sblvl = data.data[0]?.sblevel
+  if(rank=="Elder") return
 
   if (sblvl >= 225) {
     if(rank=="Champion") return
