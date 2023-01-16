@@ -64,7 +64,7 @@ async function getNetworthFromUUID(name) {
     let storageec
 
     storageec = ec + storage
-    ret = "**Total**:**\n $" + numberWithCommas(total) + ". **Purse:**\n $" + numberWithCommas(purse) + ". **Bank:**\n $" + numberWithCommas(bank) + ". **Armor:**\n $" + numberWithCommas(armor) + ". **Equipment:**\n $" + numberWithCommas(equ) + ". **Wardrobe:**\n $" + numberWithCommas(wardrobe) + ". **Inv:**\n $" + numberWithCommas(inventory) + ". **Storage:**\n $" + numberWithCommas(storageec) + ". **Pets:**\n $" + numberWithCommas(pets) + ". **Talis:**\n $" + numberWithCommas(acc)
+    ret = "**Total**:\n $" + numberWithCommas(total) + ". **Purse:**\n $" + numberWithCommas(purse) + ". **Bank:**\n $" + numberWithCommas(bank) + ". **Armor:**\n $" + numberWithCommas(armor) + ". **Equipment:**\n $" + numberWithCommas(equ) + ". **Wardrobe:**\n $" + numberWithCommas(wardrobe) + ". **Inv:**\n $" + numberWithCommas(inventory) + ". **Storage:**\n $" + numberWithCommas(storageec) + ". **Pets:**\n $" + numberWithCommas(pets) + ". **Talis:**\n $" + numberWithCommas(acc)
     return ret
 
   }
