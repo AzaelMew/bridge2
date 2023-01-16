@@ -1,4 +1,4 @@
-const MinecraftCommand = require('../../contracts/MinecraftCommand')
+const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 function numberWithCommas(x) {
   if (x > 999815672) {
@@ -56,28 +56,34 @@ async function getDungeonFromUUID(name) {
     }
   }
 }
-class CatacombsCommand extends MinecraftCommand {
-  constructor(minecraft) {
-    super(minecraft)
+class CatacombsCommand extends DiscordCommand {
+  constructor(discord) {
+      super(discord)
 
-    this.name = 'cata'
-    this.description = "Says users dungeon stats"
+      this.name = 'stalk'
+      this.description = `Checks user's location`
   }
 
   async onCommand(username, message) {
-    let args = message.split(" ")
-    if (message.endsWith("!cata")) {
-      getDungeonFromUsername(username).then(stats => {
-        this.send(`/gc ${username}'s cata: ${stats.replaceAll(" ;", ", ").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
+    let args = this.getArgs(message)
+    let user = args.shift()
+    getDungeonFromUsername(user).then(stats => {
+      this.sendMinecraftMessage(`/gc ${user}'s cata: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
+      message.channel.send({
+        embed: {
+          description: stats.replaceAll("; ", "\n").replaceAll(":", ""),
+          color: '2A2A2A',
+          timestamp: new Date(),
+          footer: {
+            text: "BOT",
+          },
+          author: {
+            name: `${user}'s cata`,
+            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+          },
+        },
       })
-    }
-    else {
-      getDungeonFromUsername(args[1]).then(stats => {
-        this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll(" ;", ", ").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
-      })
-    }
+    })
   }
 }
 
