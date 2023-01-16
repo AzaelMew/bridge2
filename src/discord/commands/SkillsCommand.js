@@ -76,7 +76,7 @@ class SkillsCommand extends DiscordCommand {
     this.description = `Checks user's location`
   }
 
-  async onCommand(username, message) {
+  onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
     getSkillsFromUsername(user).then(skills => {
