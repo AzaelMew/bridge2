@@ -85,7 +85,8 @@ class NetworthCommand extends DiscordCommand {
   constructor(discord) {
       super(discord)
 
-      this.name = 'stalk'
+      this.name = 'networth'
+      this.alias = ["nw"]
       this.description = `Checks user's location`
   }
 
