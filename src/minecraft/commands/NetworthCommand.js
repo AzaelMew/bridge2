@@ -64,7 +64,7 @@ async function getNetworthFromUUID(name) {
     let storageec
 
     storageec = ec + storage
-    ret = "Total: $" + numberWithCommas(total) + ". Purse: $" + numberWithCommas(purse) + ". Bank: $" + numberWithCommas(bank) + ". Armor: $" + numberWithCommas(armor) + ". Equipment: $" + numberWithCommas(equ) + ". Wardrobe: $" + numberWithCommas(wardrobe) + ". Inv: $" + numberWithCommas(inventory) + ". Storage: $" + numberWithCommas(storageec) + ". Pets: $" + numberWithCommas(pets) + ". Talis: $" + numberWithCommas(acc)
+    ret = "**Total**:Ignore\n➣ $" + numberWithCommas(total) + ". **Purse:**\n➣ $" + numberWithCommas(purse) + ". **Bank:**\n➣ $" + numberWithCommas(bank) + ". **Armor:**\n➣ $" + numberWithCommas(armor) + ". **Equipment:**\n➣ $" + numberWithCommas(equ) + ". **Wardrobe:**\n➣ $" + numberWithCommas(wardrobe) + ". **Inv:**\n➣ $" + numberWithCommas(inventory) + ". **Storage:**\n➣ $" + numberWithCommas(storageec) + ". **Pets:**\n➣ $" + numberWithCommas(pets) + ". **Talis:**\n➣ $" + numberWithCommas(acc)
     return ret
 
   }
@@ -94,14 +94,14 @@ class NetworthCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!nw")) {
       getNetworthFromUsername(username).then(nw => {
-        this.send(`/gc ${username}'s networth: ${nw.replaceAll("\n", "")}`)
+        this.send(`/gc ${username}'s networth: ${nw.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${username}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
 
       })
     }
     else {
       getNetworthFromUsername(args[1]).then(nw => {
-        this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll("\n", "")}`)
+        this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
 
       })
