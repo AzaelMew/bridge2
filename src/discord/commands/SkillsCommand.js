@@ -1,11 +1,11 @@
 const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 function numberWithCommas(x) {
-  if(x>999815672){
+  if (x > 999815672) {
     x = x.toString().split(".")[0]
     x = x.toString().slice(0, -6) + "815672";
   }
-  else{
+  else {
     x = x.toString().split(".")[0]
   }
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -30,11 +30,11 @@ async function getSkillsFromUsername(username) {
 }
 async function getSkillsFromUUID(name) {
   try {
-    if (name == undefined){
+    if (name == undefined) {
       name = "a"
     }
     const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-    
+
     let farming = data.data[0]?.skills?.farming.level
     let mining = data.data[0]?.skills?.mining.level
     let combat = data.data[0]?.skills?.combat.level
@@ -54,13 +54,13 @@ async function getSkillsFromUUID(name) {
   }
   catch (error) {
     e = error.message
-    if(e.includes("status code 500")){
+    if (e.includes("status code 500")) {
       return "is an Invalid Username"
     }
-    if(e.includes("status code 404")){
+    if (e.includes("status code 404")) {
       return "has no Skyblock Profiles"
     }
-    else{
+    else {
       return error
     }
   }
@@ -70,29 +70,31 @@ async function getSkillsFromUUID(name) {
 
 class SkillsCommand extends DiscordCommand {
   constructor(discord) {
-      super(discord)
+    super(discord)
 
-      this.name = 'stalk'
-      this.description = `Checks user's location`
+    this.name = 'stalk'
+    this.description = `Checks user's location`
   }
 
   async onCommand(username, message) {
     let args = this.getArgs(message)
     let user = args.shift()
-    this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","").replaceAll("\n","")}`)
-    message.channel.send({
-      embed: {
-        description: skills.replaceAll("; ", "\n").replaceAll(":",""),
-        color: '2A2A2A',
-        timestamp: new Date(),
-        footer: {
-          text: "BOT",
+    getSkillsFromUsername(user).then(skills => {
+      this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
+      message.channel.send({
+        embed: {
+          description: skills.replaceAll("; ", "\n").replaceAll(":", ""),
+          color: '2A2A2A',
+          timestamp: new Date(),
+          footer: {
+            text: "BOT",
+          },
+          author: {
+            name: `${user}'s skills`,
+            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+          },
         },
-        author: {
-          name: `${user}'s skills`,
-          icon_url: 'https://www.mc-heads.net/avatar/' + user,
-        },
-      },
+      })
     })
   }
 }
