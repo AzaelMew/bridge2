@@ -76,7 +76,7 @@ class SlayerCommand extends MinecraftCommand {
       else {
         getSlayerFromUser(args[1]).then(stats=>{
             this.send(`/gc ${args[1]}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
-            this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s slayers`, message: `${stats.replaceAll(";", "\n")}` })})
+            this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s slayers`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })})
       }
     }
   }
