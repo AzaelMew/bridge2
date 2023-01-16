@@ -86,7 +86,7 @@ class NetworthCommand extends DiscordCommand {
       super(discord)
 
       this.name = 'networth'
-      this.alias = ["nw"]
+      this.aliases = ["nw"]
       this.description = `Checks user's location`
   }
 
