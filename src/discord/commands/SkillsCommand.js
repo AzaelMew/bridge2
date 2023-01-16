@@ -72,7 +72,7 @@ class SkillsCommand extends DiscordCommand {
   constructor(discord) {
     super(discord)
 
-    this.name = 'stalk'
+    this.name = 'skills'
     this.description = `Checks user's location`
   }
 
