@@ -118,7 +118,7 @@ class AutoclaimCommand extends DiscordCommand {
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
         setTimeout(() => {
-          
+          console.log(el)
           this.sendMinecraftMessage(`/g setrank ${el}`)
         }, index * interval);
       }
