@@ -1,4 +1,4 @@
-const MinecraftCommand = require('../../contracts/MinecraftCommand')
+const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
@@ -81,31 +81,34 @@ async function getNetworthFromUUID(name) {
     }
   }
 }
-class NetworthCommand extends MinecraftCommand {
-  constructor(minecraft) {
-    super(minecraft)
+class NetworthCommand extends DiscordCommand {
+  constructor(discord) {
+      super(discord)
 
-    this.name = 'networth'
-    this.aliases = ['nw']
-    this.description = "Says users networth"
+      this.name = 'stalk'
+      this.description = `Checks user's location`
   }
 
   async onCommand(username, message) {
-    let args = message.split(" ")
-    if (message.endsWith("!nw")) {
-      getNetworthFromUsername(username).then(nw => {
-        this.send(`/gc ${username}'s networth: ${nw.replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${username}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
-
+    let args = this.getArgs(message)
+    let user = args.shift()
+    getNetworthFromUsername(user).then(ret => {
+      this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "")}`)
+      message.channel.send({
+        embed: {
+          description: ret.replaceAll(".", "\n"),
+          color: '2A2A2A',
+          timestamp: new Date(),
+          footer: {
+            text: "BOT",
+          },
+          author: {
+            name: `${user}'s networth`,
+            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+          },
+        },
       })
-    }
-    else {
-      getNetworthFromUsername(args[1]).then(nw => {
-        this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
-
-      })
-    }
+    })
   }
 }
 
