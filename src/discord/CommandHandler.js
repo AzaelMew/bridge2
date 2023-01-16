@@ -46,7 +46,7 @@ class CommandHandler {
           }
         })
       }
-      else if (command.name == "help" || command.name == "online" || command.name == "stats"|| command.name == "top"){
+      else if (command.name == "help" || command.name == "online" || command.name == "stats"|| command.name == "top"|| command.name == "stalk"|| command.name == "cata"|| command.name == "skills"|| command.name == "networth"){
         this.discord.app.log.discord(`[${command.name}] ${message.content}`)
         command.onCommand(message)
   
