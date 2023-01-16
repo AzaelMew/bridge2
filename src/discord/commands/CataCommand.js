@@ -39,7 +39,7 @@ async function getDungeonFromUUID(name) {
     let t = data.data[0].dungeons?.classes?.tank?.levelWithProgress
     let av = ((h + m + b + a + t) / 5)
 
-    let stats = "Cata: " + lvl.toFixed(2) + " ;Average: " + av.toFixed(2) + " ;Archer: " + a.toFixed(2) + " ;Berserk: " + b.toFixed(2) + " ;Healer: " + h.toFixed(2) + " ;Mage: " + m.toFixed(2) + " ;Tank: " + t.toFixed(2) + " ;Secrets: " + numberWithCommas(secrets)
+    let stats = "**Cata**: \n + lvl.toFixed(2) + " **;Average**: \n + av.toFixed(2) + " **;Archer**: \n + a.toFixed(2) + " **;Berserk**: \n + b.toFixed(2) + " **;Healer**: \n + h.toFixed(2) + " **;Mage**: \n + m.toFixed(2) + " **;Tank**: \n + t.toFixed(2) + " **;Secrets**: \n + numberWithCommas(secrets)
     return stats
 
   }
