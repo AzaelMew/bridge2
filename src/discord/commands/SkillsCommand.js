@@ -83,7 +83,7 @@ class SkillsCommand extends DiscordCommand {
       this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
       message.channel.send({
         embed: {
-          description: skills.replaceAll("; ", "\n").replaceAll(":", ""),
+          description: skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg","Skill Average").replace("Farm","Farming").replace("Mine","Mining").replace("Comb","Combat").replace("Forage","Foraging").replace("Fish","Fishing").replace("Ench","Enchanting").replace("Alch","Alchemy").replace("Carp","Carpentry").replace("Rune","Runecrafting").replace("Soci","Social"),
           color: '2A2A2A',
           timestamp: new Date(),
           footer: {
