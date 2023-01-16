@@ -68,14 +68,14 @@ class CatacombsCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!cata")) {
       getDungeonFromUsername(username).then(stats => {
-        this.send(`/gc ${username}'s cata: ${stats.replaceAll(" ;", ", ").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
+        this.send(`/gc ${username}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
+        this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
       })
     }
     else {
       getDungeonFromUsername(args[1]).then(stats => {
-        this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll(" ;", ", ").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n")}` })
+        this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
+        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
       })
     }
   }
