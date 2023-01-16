@@ -64,7 +64,7 @@ async function getNetworthFromUUID(name) {
     let storageec
 
     storageec = ec + storage
-    ret = "Total: $" + numberWithCommas(total) + ". Purse: $" + numberWithCommas(purse) + ". Bank: $" + numberWithCommas(bank) + ". Armor: $" + numberWithCommas(armor) + ". Equipment: $" + numberWithCommas(equ) + ". Wardrobe: $" + numberWithCommas(wardrobe) + ". Inv: $" + numberWithCommas(inventory) + ". Storage: $" + numberWithCommas(storageec) + ". Pets: $" + numberWithCommas(pets) + ". Talis: $" + numberWithCommas(acc)
+    ret = "**Total**:**\n $" + numberWithCommas(total) + ". **Purse:**\n $" + numberWithCommas(purse) + ". **Bank:**\n $" + numberWithCommas(bank) + ". **Armor:**\n $" + numberWithCommas(armor) + ". **Equipment:**\n $" + numberWithCommas(equ) + ". **Wardrobe:**\n $" + numberWithCommas(wardrobe) + ". **Inv:**\n $" + numberWithCommas(inventory) + ". **Storage:**\n $" + numberWithCommas(storageec) + ". **Pets:**\n $" + numberWithCommas(pets) + ". **Talis:**\n $" + numberWithCommas(acc)
     return ret
 
   }
@@ -94,7 +94,7 @@ class NetworthCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getNetworthFromUsername(user).then(ret => {
-      this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "").replaceAll("*","")}`)
       message.channel.send({
         embed: {
           description: ret.replaceAll(".", "\n"),
