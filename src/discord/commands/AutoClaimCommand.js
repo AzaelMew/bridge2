@@ -73,28 +73,32 @@ async function getGMemberFromUUID(uuid, message) {
 }
 async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
+  let newlvl = 0
+  for (i = 0; i < Object.keys(data.data).length; i++) {
+    if (newlvl < data.data[i].sblevel) {
+      newlvl = data.data[i].sblevel
+    }
+  }
+  if (rank == "Elder") return
+  if (rank == "Guild Master") return
 
-  let sblvl = data.data[0]?.sblevel
-  if(rank=="Elder") return
-  if(rank=="Guild Master") return
-
-  if (sblvl >= 225) {
-    if(rank=="Champion") return
+  if (newlvl >= 225) {
+    if (rank == "Champion") return
     ini.push(`${data.data[0].username} Champion`)
     return
   }
-  else if (sblvl >= 185) {
-    if(rank=="Veteran") return
+  else if (newlvl >= 185) {
+    if (rank == "Veteran") return
     ini.push(`${data.data[0].username} Veteran`)
     return
   }
-  else if (sblvl >= 150) {
-    if(rank=="Adventurer") return
+  else if (newlvl >= 150) {
+    if (rank == "Adventurer") return
     ini.push(`${data.data[0].username} Adventurer`)
     return
   }
   else {
-    if(rank=="Initiate") return
+    if (rank == "Initiate") return
     ini.push(`${data.data[0].username} Initiate`)
     return
   }
