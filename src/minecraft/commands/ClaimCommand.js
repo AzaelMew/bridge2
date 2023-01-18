@@ -28,52 +28,34 @@ async function getStatsFromUUID(name, profile) {
         if (name == undefined) {
             name = "a"
         }
-        if (profile == undefined){
+        if (profile == undefined) {
             profile = "b"
         }
-        if(name == "a7cb7319ac7547f0802116f38dc5ca85"){
+        if (name == "a7cb7319ac7547f0802116f38dc5ca85") {
             rank = "champ"
             return rank
         }
         const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-        for (let i = 0; i < Object.keys(data.data).length ; i++) {
-            if (data.data[i].name.toLowerCase() == profile.toString().toLowerCase()) {
-                let sblvl = data.data[i]?.sblevel
-                if (sblvl >= 225){
-                    rank = "champ"
-                }
-                else if (sblvl >= 185){
-                    rank = "vet"
-                    return rank
-                }
-                else if (sblvl >= 150){
-                    rank = "adv"
-                    return rank
-                }
-                else {
-                    rank = "ini"
-                    return rank
-                }
+        let newlvl = 0
+        for (b = 0; b < Object.keys(data.data).length; b++) {
+            if (newlvl < data.data[b].sblevel) {
+                newlvl = data.data[b].sblevel
             }
-            else if (i == Object.keys(data.data).length - 1) {
-                let sblvl = data.data[0]?.sblevel
-                if (sblvl >= 225){
-                    rank = "champ"
-                    return rank
-                }
-                else if (sblvl >= 185){
-                    rank = "vet"
-                    return rank
-                }
-                else if (sblvl >= 150){
-                    rank = "adv"
-                    return rank
-                }
-                else {
-                    rank = "ini"
-                    return rank
-                }
-            }
+        }
+        if (newlvl >= 225) {
+            rank = "champ"
+        }
+        else if (newlvl >= 185) {
+            rank = "vet"
+            return rank
+        }
+        else if (newlvl >= 150) {
+            rank = "adv"
+            return rank
+        }
+        else {
+            rank = "ini"
+            return rank
         }
 
     }
