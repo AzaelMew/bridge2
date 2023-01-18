@@ -74,9 +74,9 @@ async function getGMemberFromUUID(uuid, message) {
 async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
-  for (i = 0; i < Object.keys(data.data).length; i++) {
-  if(newlvl < data.data[i].sblevel){
-    newlvl = data.data[i].sblevel
+  for (b = 0; b < Object.keys(data.data).length; b++) {
+  if(newlvl < data.data[b].sblevel){
+    newlvl = data.data[b].sblevel
   }
   }
   if(rank=="Elder") return
