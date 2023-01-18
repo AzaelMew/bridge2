@@ -67,9 +67,6 @@ async function getStatsFromUUID(name, profile) {
         if (e.includes("status code 404")) {
             return "has no Skyblock Profiles"
         }
-        else {
-            return error
-        }
     }
 
 }
