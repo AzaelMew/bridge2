@@ -40,6 +40,19 @@ async function getStatsFromUsername(username) {
 async function getGMemberFromUsername(username) {
   return await getGMemberFromUUID(await getUUIDFromUsername(username))
 }
+async function getScamFromUsername(username) {
+  return await getScamFromUUID(await getUUIDFromUsername(username))
+
+}
+async function getScamFromUUID(uuid) {
+  const { data } = await axios.get('https://api.skytils.gg/api/scams/check?uuid=' + uuid)
+  if (data.isScammer == true){
+    return `User is a scammer!`
+  }
+  else{
+    return `User is not a scammer.`
+  }
+}
 function round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
@@ -200,9 +213,16 @@ class StateHandler extends EventHandler {
           this.minecraft.broadcastCommandEmbed({ username: `${user}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         }, 750)
         setTimeout(() => {
-          if (stats.endsWith("Accepted")){
-            this.bot.chat(`/g accept ${user}`)
-          }
+          getScamFromUsername(user).then(scam => {
+            if(scam == `User is a scammer!`){
+              this.bot.chat(`/gc User is a scammer!`)
+            }
+            else {
+              if (stats.endsWith("Accepted")){
+                this.bot.chat(`/g accept ${user}`)
+              }
+            }
+          })
         }, 1750);
       })
     }
