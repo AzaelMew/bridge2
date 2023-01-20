@@ -12,16 +12,16 @@ class SetrankCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     let rank = args.shift()
-    if (rank == "ini"){
+    if (rank.toLowerCase() == "ini"){
       rank = "Initiate"
     }
-    if (rank == "adv"){
+    if (rank.toLowerCase() == "adv"){
       rank = "Adventurer"
     }
-    if (rank == "vet"){
+    if (rank.toLowerCase() == "vet"){
       rank = "Veteran"
     }
-    if (rank == "champ"){
+    if (rank.toLowerCase() == "champ"){
       rank = "Champion"
     }
     console.log(user, rank)

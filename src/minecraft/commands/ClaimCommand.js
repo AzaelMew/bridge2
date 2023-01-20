@@ -35,7 +35,7 @@ async function getStatsFromUUID(name, profile) {
             rank = "champ"
             return rank
         }
-        const { data } = await axios.get('http://161.35.22.13:187/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
+        const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
         let newlvl = 0
         for (b = 0; b < Object.keys(data.data).length; b++) {
             if (newlvl < data.data[b].sblevel) {

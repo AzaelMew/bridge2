@@ -47,7 +47,7 @@ async function getNetworthFromUUID(name) {
     }
 
 
-    const { data } = await axios.get("http://161.35.22.13:187/v2/profiles/" + name + "?key=77ac89bad625453facaa36457eb3cf5c")
+    const { data } = await axios.get("http://192.168.100.197:3000/v2/profiles/" + name + "?key=77ac89bad625453facaa36457eb3cf5c")
     let total = data.data[0]?.networth?.networth ?? 0
     let purse = data.data[0]?.purse ?? 0
     let bank = data.data[0]?.bank ?? 0
