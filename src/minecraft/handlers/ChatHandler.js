@@ -46,6 +46,7 @@ async function getScamFromUsername(username) {
 }
 async function getScamFromUUID(uuid) {
   const { data } = await axios.get('https://api.skytils.gg/api/scams/check?uuid=' + uuid)
+  console.log("checking")
   if (data.isScammer == true){
     return `User is a scammer!`
   }
