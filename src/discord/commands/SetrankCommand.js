@@ -12,7 +12,6 @@ class SetrankCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     let rank = args.shift()
-    console.log(user, rank)
     if (rank = "ini"){
       rank = "Initiate"
     }
@@ -25,6 +24,7 @@ class SetrankCommand extends DiscordCommand {
     if (rank = "champ"){
       rank = "Champion"
     }
+    console.log(user, rank)
     this.sendMinecraftMessage(`/g setrank ${user ? user : ''} ${rank ? rank: ''}`)
   }
 }
