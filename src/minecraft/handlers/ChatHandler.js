@@ -419,15 +419,15 @@ class StateHandler extends EventHandler {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Veteran --')) {
+    if (message.endsWith('-- Knight --')) {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Adventurer --')) {
+    if (message.endsWith('-- Apprentice --')) {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Initiate --')) {
+    if (message.endsWith('-- Recruit --')) {
       reta.push(message + "\n")
     }
     if (message.startsWith('Total Members:')) {
