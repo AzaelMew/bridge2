@@ -89,21 +89,21 @@ class ClaimCommand extends MinecraftCommand {
                 }, 1000);
             }
             if (rank == "vet") {
-                this.send(`/g setrank ${username} Veteran`)
+                this.send(`/g setrank ${username} Knight`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s Your rank has been set to Veteran! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s Your rank has been set to Knight! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             if (rank == "adv") {
-                this.send(`/g setrank ${username} Adventurer`)
+                this.send(`/g setrank ${username} Apprentice`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Adventurer! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s rank has been set to Apprentice! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             if (rank == "ini") {
-                this.send(`/g setrank ${username} Initiate`)
+                this.send(`/g setrank ${username} Recruit`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Initiate! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s rank has been set to Recruit! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             else (
