@@ -88,18 +88,18 @@ async function getActivity(uuid, rank) {
     return
   }
   else if (newlvl >= 185) {
-    if(rank=="Veteran") return
-    ini.push(`${data.data[0].username} Veteran`)
+    if(rank=="Knight") return
+    ini.push(`${data.data[0].username} Knight`)
     return
   }
   else if (newlvl >= 150) {
-    if(rank=="Adventurer") return
-    ini.push(`${data.data[0].username} Adventurer`)
+    if(rank=="Apprentice") return
+    ini.push(`${data.data[0].username} Apprentice`)
     return
   }
   else {
-    if(rank=="Initiate") return
-    ini.push(`${data.data[0].username} Initiate`)
+    if(rank=="Recruit") return
+    ini.push(`${data.data[0].username} Recruit`)
     return
   }
 }
