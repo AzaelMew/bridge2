@@ -14,7 +14,7 @@ async function getStatsFromUsername(username, profile) {
 }
 async function getUUIDFromUsername(username) {
     if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
-        return "Error"
+        return "Username Error"
     }
     else {
         const { data } = await axios.get('https://api.mojang.com/users/profiles/minecraft/' + username)
