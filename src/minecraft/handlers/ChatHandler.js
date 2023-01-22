@@ -110,7 +110,11 @@ async function getStatsFromUUID(name) {
   let bslayer = data.data[0]?.slayer?.blaze.xp
   let sblvl = data.data[0]?.sblevel
   let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-  if (sblvl >= 125) {
+  if (name == "a7cb7319ac7547f0802116f38dc5ca85"){
+    let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
+    return stats
+  }
+  else if (sblvl >= 125) {
     let stats = `**Skyblock Level** \n➣ ${sblvl.toFixed(0)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
     return stats
 
