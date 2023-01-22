@@ -44,6 +44,7 @@ async function getStatsFromUUID(name, profile) {
         }
         if (newlvl >= 225) {
             rank = "champ"
+            return rank
         }
         else if (newlvl >= 185) {
             rank = "vet"
