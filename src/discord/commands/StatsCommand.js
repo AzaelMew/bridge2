@@ -77,7 +77,7 @@ async function getStatsFromUUID(name, profile) {
         let bslayer = data.data[0]?.slayer?.blaze.xp
         let sblvl = data.data[0]?.sblevel
         sblvl = sblvl.toString().split(".")
-
+        console.log(sblvl)
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
         let stats = `**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw}; `
         return stats
