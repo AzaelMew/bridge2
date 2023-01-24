@@ -83,7 +83,7 @@ async function getActivity(uuid, rank) {
   if(rank=="Guild Master") return
 
   if (newlvl < 125) {
-    ini.push(`${data.data[0].username}`)
+    ini.push(`${data.data[0].username} + ${newlvl}`)
     return
   }
   else{
