@@ -118,7 +118,7 @@ class AutoKickCommand extends DiscordCommand {
     })
     message.channel.send({
       embed: {
-        description: `Checking skyblock levels...`,
+        description: `Let the purge... **BEGIN!**`,
         color: '47F049'
       }
     })
