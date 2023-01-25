@@ -91,6 +91,12 @@ async function getGMemberFromUUID(uuid) {
 async function getStatsFromUUID(name) {
 
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
+  let newlvl = 0
+  for (b = 0; b < Object.keys(data.data).length; b++) {
+      if (newlvl < data.data[b].sblevel) {
+          newlvl = data.data[b].sblevel
+      }
+  }
   let nw = numberWithCommas(data.data[0].networth.networth)
   let farming = data.data[0]?.skills?.farming.level
   let mining = data.data[0]?.skills?.mining.level
@@ -108,11 +114,10 @@ async function getStatsFromUUID(name) {
   let sslayer = data.data[0]?.slayer?.spider.xp
   let eslayer = data.data[0]?.slayer?.enderman.xp
   let bslayer = data.data[0]?.slayer?.blaze.xp
-  let sblvl = data.data[0]?.sblevel
 
   let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-  if (sblvl >= 125) {
-    let stats = `**Skyblock Level** \n➣ ${Math.floor(sblvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
+  if (newlvl >= 125) {
+    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
     return stats
 
   }
