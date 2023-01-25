@@ -112,11 +112,7 @@ async function getStatsFromUUID(name) {
   sblvl = sblvl.toString().split(".")
 
   let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-  if (name == "a7cb7319ac7547f0802116f38dc5ca85"){
-    let stats = `**Skyblock Level** \n➣ ${sblvl[0]}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
-    return stats
-  }
-  else if (sblvl >= 125) {
+  if (sblvl >= 125) {
     let stats = `**Skyblock Level** \n➣ ${sblvl[0]}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
     return stats
 
