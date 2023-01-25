@@ -45,14 +45,14 @@ async function getScamFromUsername(username) {
 
 }
 async function getScamFromUUID(uuid) {
-  uuid =uuid.substr(0,8)+"-"+uuid.substr(8,4)+"-"+uuid.substr(12,4)+"-"+uuid.substr(16,4)+"-"+uuid.substr(20);
+  uuid = uuid.substr(0, 8) + "-" + uuid.substr(8, 4) + "-" + uuid.substr(12, 4) + "-" + uuid.substr(16, 4) + "-" + uuid.substr(20);
 
   const { data } = await axios.get('https://api.skytils.gg/api/scams/check?uuid=' + uuid)
   console.log("checking")
-  if (data.isScammer == true){
+  if (data.isScammer == true) {
     return `User is a scammer!`
   }
-  else{
+  else {
     return `User is not a scammer.`
   }
 }
@@ -198,7 +198,7 @@ class StateHandler extends EventHandler {
     if (this.isJoinMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
       setTimeout(() => {
-            this.bot.chat(`/gc Welcome to TempestSky ${user}! Run !claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
+        this.bot.chat(`/gc Welcome to TempestSky ${user}! Run !claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
       }, Math.floor(Math.random() * (6500 - 4500 + 1) + 4500));
 
       return this.minecraft.broadcastHeadedEmbed({
@@ -217,16 +217,9 @@ class StateHandler extends EventHandler {
           this.minecraft.broadcastCommandEmbed({ username: `${user}'s stats`, message: `${stats.replaceAll(";", "\n")}` })
         }, 750)
         setTimeout(() => {
-          getScamFromUsername(user).then(scam => {
-            if(scam == `User is a scammer!`){
-              this.bot.chat(`/gc User is a scammer!`)
-            }
-            else {
-              if (stats.endsWith("Accepted")){
-                this.bot.chat(`/g accept ${user}`)
-              }
-            }
-          })
+          if (stats.endsWith("Accepted")) {
+            this.bot.chat(`/g accept ${user}`)
+          }
         }, 1750);
       })
     }
@@ -287,7 +280,7 @@ class StateHandler extends EventHandler {
     if (this.isGuildRank(message)) {
       mes = reta
       reta = []
-      mes = mes.toString().replaceAll(","," ").replaceAll("_", "\\_").replaceAll("-- ", "\n**").replaceAll(" --", "**")
+      mes = mes.toString().replaceAll(",", " ").replaceAll("_", "\\_").replaceAll("-- ", "\n**").replaceAll(" --", "**")
       return this.minecraft.broadcastOnEmbed({ username: "Players currently online", message: mes })
     }
 
