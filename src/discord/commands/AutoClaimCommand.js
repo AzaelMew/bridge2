@@ -93,8 +93,8 @@ async function getActivity(uuid, rank) {
     return
   }
   else if (newlvl >= 150) {
-    if(rank=="Apprentice") return
-    ini.push(`${data.data[0].username} Apprentice`)
+    if(rank=="Squire") return
+    ini.push(`${data.data[0].username} Squire`)
     return
   }
   else {

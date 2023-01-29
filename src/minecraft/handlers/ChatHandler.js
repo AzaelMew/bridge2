@@ -425,7 +425,7 @@ class StateHandler extends EventHandler {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Apprentice --')) {
+    if (message.endsWith('-- Squire --')) {
       reta.push(message + "\n")
     }
 

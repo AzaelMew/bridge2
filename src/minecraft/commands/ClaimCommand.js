@@ -96,9 +96,9 @@ class ClaimCommand extends MinecraftCommand {
                 }, 1000);
             }
             if (rank == "adv") {
-                this.send(`/g setrank ${username} Apprentice`)
+                this.send(`/g setrank ${username} Squire`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Apprentice! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s rank has been set to Squire! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             if (rank == "ini") {

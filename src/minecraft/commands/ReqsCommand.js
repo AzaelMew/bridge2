@@ -10,7 +10,7 @@ class ReqsCommand extends MinecraftCommand {
   }
 
   onCommand(username, message) {
-    this.send(`/gc Rank Requirements; Apprentice - Skyblock Level 150 | Knight - Skyblock Level 185 | Champion - Skyblock Level 225`)
+    this.send(`/gc Rank Requirements; Squire - Skyblock Level 150 | Knight - Skyblock Level 185 | Champion - Skyblock Level 225`)
   }
 }
 
