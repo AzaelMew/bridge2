@@ -192,9 +192,6 @@ class StateHandler extends EventHandler {
       if (user == "Shana_Splatoon") {
         return this.minecraft.broadcastPlayerToggle2({ content: "<@403942334766514196>", username: user, message: `left.`, color: 'F04947' })
       }
-      if (user == "Vallekoen") {
-        return this.minecraft.broadcastPlayerToggle2({ content: "<@524222836949123084>", username: user, message: `left.`, color: 'F04947' })
-      }
       if (user == "Azael_Nyaa") {
         return this.minecraft.broadcastPlayerToggle2({ content: "<@115873189296340997>", username: user, message: `left.`, color: 'F04947' })
       }
