@@ -29,7 +29,6 @@ async function getDungeonFromUUID(name) {
     if (name == undefined) {
       name = "a"
     }
-    console.log(name)
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let secrets = data.data[0]?.dungeons.secrets_found
     let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress
@@ -41,6 +40,7 @@ async function getDungeonFromUUID(name) {
     let av = ((h + m + b + a + t) / 5)
 
     let stats = "**Cata**: \n➣ " + lvl.toFixed(2) + " **;Average**: \n➣ " + av.toFixed(2) + " **;Archer**: \n➣ " + a.toFixed(2) + " **;Berserk**: \n➣ " + b.toFixed(2) + " **;Healer**: \n➣ " + h.toFixed(2) + " **;Mage**: \n➣ " + m.toFixed(2) + " **;Tank**: \n➣ " + t.toFixed(2) + " **;Secrets**: \n➣ " + numberWithCommas(secrets)
+    console.log(stats)
     return stats
 
   }
