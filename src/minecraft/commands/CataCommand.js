@@ -31,12 +31,12 @@ async function getDungeonFromUUID(name) {
     }
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let secrets = data.data[0]?.dungeons.secrets_found
-    let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress && 0
-    let h = data.data[0].dungeons?.classes?.healer?.levelWithProgress && 0
-    let m = data.data[0].dungeons?.classes?.mage?.levelWithProgress && 0
-    let b = data.data[0].dungeons?.classes?.berserk?.levelWithProgress && 0
-    let a = data.data[0].dungeons?.classes?.archer?.levelWithProgress && 0
-    let t = data.data[0].dungeons?.classes?.tank?.levelWithProgress && 0
+    let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress || 0
+    let h = data.data[0].dungeons?.classes?.healer?.levelWithProgress || 0
+    let m = data.data[0].dungeons?.classes?.mage?.levelWithProgress || 0
+    let b = data.data[0].dungeons?.classes?.berserk?.levelWithProgress || 0
+    let a = data.data[0].dungeons?.classes?.archer?.levelWithProgress || 0
+    let t = data.data[0].dungeons?.classes?.tank?.levelWithProgress || 0
     let av = ((h + m + b + a + t) / 5)
     let stats = "**Cata**: \n➣ " + lvl.toFixed(2) + " **;Average**: \n➣ " + av.toFixed(2) + " **;Archer**: \n➣ " + a.toFixed(2) + " **;Berserk**: \n➣ " + b.toFixed(2) + " **;Healer**: \n➣ " + h.toFixed(2) + " **;Mage**: \n➣ " + m.toFixed(2) + " **;Tank**: \n➣ " + t.toFixed(2) + " **;Secrets**: \n➣ " + numberWithCommas(secrets)
     return stats
