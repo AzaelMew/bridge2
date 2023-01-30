@@ -41,7 +41,6 @@ async function getDungeonFromUUID(name) {
     let av = ((h + m + b + a + t) / 5)
 
     let stats = "**Cata**: \n➣ " + lvl.toFixed(2) + " **;Average**: \n➣ " + av.toFixed(2) + " **;Archer**: \n➣ " + a.toFixed(2) + " **;Berserk**: \n➣ " + b.toFixed(2) + " **;Healer**: \n➣ " + h.toFixed(2) + " **;Mage**: \n➣ " + m.toFixed(2) + " **;Tank**: \n➣ " + t.toFixed(2) + " **;Secrets**: \n➣ " + numberWithCommas(secrets)
-    console.log(stats)
     return stats
 
   }
