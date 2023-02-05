@@ -55,7 +55,7 @@ class MessageHandler {
     return message
       .replace(/<[@|#|!|&]{1,2}(\d+){16,}>/g, '\n')
       .replace(/<:\w+:(\d+){16,}>/g, '\n')
-      .replace(/<.*:\d{18}>/g,"\n")
+      .replace(/<.*:\d{16,20}>/g,"\n")
       .split('\n')
       .map(part => {
         part = part.trim()
