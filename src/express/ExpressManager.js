@@ -323,6 +323,7 @@ class ExpressManager {
 
   invite(request, response) {
     try {
+      console.log("hi")
       console.log(request.body.username)
       if (this.app.minecraft.bot?.player) {
         this.app.minecraft.bot.chat(`/guild invite ${request.body.username}`)
