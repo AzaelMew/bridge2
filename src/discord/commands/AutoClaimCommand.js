@@ -54,7 +54,9 @@ async function getGMemberFromUUID(uuid, message) {
         }
       }
       for (let index = 0; index < cat.length; ++index) {
+        console.log("a")
         await new Promise(resolve => setTimeout(resolve, 100));
+        console.log("b")
         cat.split(" ")
         getActivity(cat[0],cat[1])
       };
