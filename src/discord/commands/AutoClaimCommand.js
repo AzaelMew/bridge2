@@ -42,10 +42,9 @@ async function getGMemberFromUUID(uuid, message) {
       adv = []
       vet = []
       champ = []
-      console.log(data.guild.members.length)
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        
+        await new Promise(resolve => setTimeout(resolve, 1100));
+        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
             getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
@@ -54,11 +53,12 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
+        else if (i == data.guild.members.length + 1) {
+          return ini
+        }
       }
-      while (num = data.guild.members.length){
-        console.log("Welp fuck you.")
-        num = 0
-        return ini
+      while(num == data.guild.members.length){
+        console.log("Hey.")
       }
     }
   }
@@ -78,13 +78,12 @@ async function getGMemberFromUUID(uuid, message) {
 async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
-  console.log(num)
   num = num + 1
+  console.log(num)
   for (b = 0; b < Object.keys(data.data).length; b++) {
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
-
   }
   if(rank=="Elder") return
   if(rank=="Guild Master") return
@@ -92,28 +91,28 @@ async function getActivity(uuid, rank) {
   if (newlvl >= 230) {
     if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
-    console.log(data.data[0].username + " champ")
+    console.log(data.data[0].username + "champ")
 
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
     ini.push(`${data.data[0].username} Knight`)
-    console.log(data.data[0].username + " knight")
+    console.log(data.data[0].username + "knight")
 
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
     ini.push(`${data.data[0].username} Squire`)
-    console.log(data.data[0].username + " squ")
+    console.log(data.data[0].username + "squ")
 
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${data.data[0].username} Recruit`)
-    console.log(data.data[0].username + " rec")
+    console.log(data.data[0].username + "rec")
 
     return
   }
@@ -136,7 +135,6 @@ class AutoclaimCommand extends DiscordCommand {
       let cat2 = 0
       let cat3 = 0
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
-      console.log(ini)
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
         setTimeout(() => {
