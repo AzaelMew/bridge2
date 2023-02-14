@@ -79,28 +79,35 @@ async function getActivity(uuid, rank) {
     newlvl = data.data[b].sblevel
   }
   }
-  console.log(data.data[0].username)
   if(rank=="Elder") return
   if(rank=="Guild Master") return
 
   if (newlvl >= 230) {
     if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
+    console.log(data.data[0].username + "champ")
+
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
     ini.push(`${data.data[0].username} Knight`)
+    console.log(data.data[0].username + "knight")
+
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
     ini.push(`${data.data[0].username} Squire`)
+    console.log(data.data[0].username + "squ")
+
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${data.data[0].username} Recruit`)
+    console.log(data.data[0].username + "rec")
+
     return
   }
 }
