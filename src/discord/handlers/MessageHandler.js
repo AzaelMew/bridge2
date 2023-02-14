@@ -22,7 +22,12 @@ class MessageHandler {
 
 
     if (!this.shouldBroadcastMessage(message)) {
-      return
+      if(!this.shouldBroadcastOfficerMessage(message)) {
+        
+      }
+      else{
+        return
+      }
     }
 
     if (this.command.handle(message)) {
