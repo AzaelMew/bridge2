@@ -69,6 +69,7 @@ async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
   num = num + 1
+  console.log(num)
   if (num == cats){
     done = true
   }
@@ -128,6 +129,7 @@ class AutoclaimCommand extends DiscordCommand {
       let cat3 = 0
     })
     while (done){
+      console.log("doing stuff...")
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
