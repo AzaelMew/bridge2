@@ -42,7 +42,6 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100));
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
@@ -54,10 +53,11 @@ async function getGMemberFromUUID(uuid, message) {
           }
         }
       }
-      adv.forEach(cat => {
+      for (let index = 0; index < cat.length; ++index) {
+        await new Promise(resolve => setTimeout(resolve, 100));
         cat.split(" ")
         getActivity(cat[0],cat[1])
-      });
+      };
     }
   }
   catch (error) {
