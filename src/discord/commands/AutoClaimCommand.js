@@ -124,7 +124,7 @@ class AutoclaimCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    getGMemberFromUsername("xephor_ex", message).then(ini => {
+    getGMemberFromUsername("xephor_ex", message).then(init => {
       let cat = 0
       let cat2 = 0
       let cat3 = 0
