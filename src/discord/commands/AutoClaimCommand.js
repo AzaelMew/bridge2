@@ -87,7 +87,7 @@ async function getActivity(uuid, rank) {
   let newlvl = 0
   
   for (b = 0; b < Object.keys(data.data).length; b++) {
-    if (b>=lengthss) done = true
+    if (b>=lengthss-1) done = true
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
@@ -98,28 +98,28 @@ async function getActivity(uuid, rank) {
   if (newlvl >= 230) {
     if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
-    console.log(data.data[0].username + "champ")
+    console.log(data.data[0].username + " champ")
 
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
     ini.push(`${data.data[0].username} Knight`)
-    console.log(data.data[0].username + "knight")
+    console.log(data.data[0].username + " knight")
 
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
     ini.push(`${data.data[0].username} Squire`)
-    console.log(data.data[0].username + "squ")
+    console.log(data.data[0].username + " squ")
 
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${data.data[0].username} Recruit`)
-    console.log(data.data[0].username + "rec")
+    console.log(data.data[0].username + " rec")
 
     return
   }
