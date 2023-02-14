@@ -71,7 +71,7 @@ class DiscordManager extends CommunicationBridge {
   }
 
   onOfficerBroadcast({ username, message, guildRank }) {
-    this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Discord`)
+    this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Officer`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.officer).then(channel => {
