@@ -79,6 +79,7 @@ async function getActivity(uuid, rank) {
     newlvl = data.data[b].sblevel
   }
   }
+  console.log(data.data[0].username)
   if(rank=="Elder") return
   if(rank=="Guild Master") return
 
