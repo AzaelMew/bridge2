@@ -93,7 +93,7 @@ async function getActivity(uuid, rank) {
   }
   }
   if(rank=="Elder") return
-  if(rank=="Guild Master") return
+  if(rank=="Guild") return
 
   if (newlvl >= 230) {
     if(rank=="Champion") return
