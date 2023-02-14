@@ -91,21 +91,28 @@ async function getActivity(uuid, rank) {
   if (newlvl >= 230) {
     if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
+    console.log(ini)
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
     ini.push(`${data.data[0].username} Knight`)
+    console.log(ini)
+
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
     ini.push(`${data.data[0].username} Squire`)
+    console.log(ini)
+
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${data.data[0].username} Recruit`)
+    console.log(ini)
+
     return
   }
 }
