@@ -19,14 +19,8 @@ class MessageHandler {
         message.content = message.content.replace("EZ","E Z")
       }
     }
-    if (this.shouldBroadcastOfficerMessage(message)) {
-      this.discord.broadcastOfficerMessage({
-        username: message.member.displayName,
-        message: this.stripDiscordContent(message.content),
-        replyingTo: await this.fetchReply(message),
-      })
-    }
-    if (!this.shouldBroadcastMessage(message)) {
+
+    if (!this.shouldBroadcastMessage(message) || !shouldBroadcastOfficerMessage(message)) {
       return
     }
 
@@ -38,7 +32,13 @@ class MessageHandler {
     if (content.length == 0) {
       return
     }
-
+    if (this.shouldBroadcastOfficerMessage(message)) {
+      this.discord.broadcastOfficerMessage({
+        username: message.member.displayName,
+        message: this.stripDiscordContent(message.content),
+        replyingTo: await this.fetchReply(message),
+      })
+    }
     this.discord.broadcastMessage({
       username: message.member.displayName,
       message: this.stripDiscordContent(message.content),
