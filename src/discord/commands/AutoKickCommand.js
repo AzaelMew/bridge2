@@ -84,7 +84,7 @@ async function getActivity(uuid, rank) {
   if(rank=="Guild Master") return
 
   if (newlvl < 125) {
-    ini.push(`${data.data[0].username} + ${newlvl}`)
+    ini.push(`${data.data[0].username}`)
     return
   }
   else{
@@ -113,7 +113,7 @@ class AutoKickCommand extends DiscordCommand {
         let el = ini[index]
         setTimeout(() => {
           console.log(el)
-          /*this.sendMinecraftMessage(`/g kick ${el}`)*/
+          this.sendMinecraftMessage(`/g kick ${el} You do not meet the reqs for the guild.`)
         }, index * interval);
       }
     })
