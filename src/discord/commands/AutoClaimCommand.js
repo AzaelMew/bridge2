@@ -55,7 +55,7 @@ async function getGMemberFromUUID(uuid, message) {
         else if (i == data.guild.members.length + 1) {
           setTimeout(() => {
             return ini
-          }, 5000);
+          }, 6000);
         }
       }
     }
