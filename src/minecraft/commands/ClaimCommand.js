@@ -42,15 +42,15 @@ async function getStatsFromUUID(name, profile) {
                 newlvl = data.data[b].sblevel
             }
         }
-        if (newlvl >= 225) {
+        if (newlvl >= 230) {
             rank = "champ"
             return rank
         }
-        else if (newlvl >= 185) {
+        else if (newlvl >= 190) {
             rank = "vet"
             return rank
         }
-        else if (newlvl >= 150) {
+        else if (newlvl >= 160) {
             rank = "adv"
             return rank
         }
