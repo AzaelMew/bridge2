@@ -54,7 +54,10 @@ async function getGMemberFromUUID(uuid, message) {
           }
         }
       }
-      console.log(adv)
+      adv.forEach(cat => {
+        cat.split(" ")
+        getActivity(cat[0],cat[1])
+      });
     }
   }
   catch (error) {
