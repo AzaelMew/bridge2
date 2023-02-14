@@ -20,7 +20,21 @@ class MessageHandler {
       }
     }
 
-
+    if(this.shouldBroadcastOfficerMessage(message)){
+      if (this.command.handle(message)) {
+        return
+      }
+  
+      const content = this.stripDiscordContent(message.content).trim()
+      if (content.length == 0) {
+        return
+      }
+      this.discord.broadcastOfficerMessage({
+        username: message.member.displayName,
+        message: this.stripDiscordContent(message.content),
+        replyingTo: await this.fetchReply(message),
+      })
+    }
     if (!this.shouldBroadcastMessage(message)) {
       return
     }
@@ -33,13 +47,7 @@ class MessageHandler {
     if (content.length == 0) {
       return
     }
-    if (this.shouldBroadcastOfficerMessage(message)) {
-      this.discord.broadcastOfficerMessage({
-        username: message.member.displayName,
-        message: this.stripDiscordContent(message.content),
-        replyingTo: await this.fetchReply(message),
-      })
-    }
+
     this.discord.broadcastMessage({
       username: message.member.displayName,
       message: this.stripDiscordContent(message.content),
