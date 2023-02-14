@@ -33,7 +33,7 @@ A two-way chat bridge between [Hypixel](https://hypixel.net/) guild chat and a [
 
 To get started, clone down the repository using:
 
-    git clone https://github.com/Senither/hypixel-discord-chat-bridge.git
+    git clone https://github.com/AzaelMew/bridge.git
 
 Next go into the `hypixel-discord-chat-bridge` folder and install all the dependencies using Yarn.
 
@@ -61,7 +61,7 @@ _Older versions may also work, but have not been tested._
 
 To get started, clone down the repository using:
 
-    git clone https://github.com/Senither/hypixel-discord-chat-bridge.git
+    git clone https://github.com/AzaelMew/bridge.git
 
 Next go into the `hypixel-discord-chat-bridge` folder and open the `docker-compose.yml` file, within the file you'll find all the environment variables that can be used to setup the bot, you should fill replace the default values with your real Discord and Minecraft login info, once you're done you can start the bot using Docker.
 
@@ -140,13 +140,11 @@ The `authentication` option is the key which you can put in the header or query 
 
 ### Roadmap
 
-- [ ] Chat message filter
-  - The filter should block any messages sent from Discord to Hypixel that contains banable words, and words that could potentially cause a mute.
-- [ ] Log guild events
+- [✓] Log guild events
   - Guild joins/leaves/kicks, mutes/unmutes and promotion/demotions
-- [ ] Ingame commands
+- [✓] Ingame commands
   - Add commands for players to use ingame to check other player stats (eg `!skills <ign>`, `!weight <ign>` etc)
-- [ ] Add support for officer chat
+- [x] Add support for officer chat
   - Allocate a second discord channel to use for two way officer chat.
 
 ## License
