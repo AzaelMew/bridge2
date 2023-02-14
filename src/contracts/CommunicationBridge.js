@@ -15,6 +15,10 @@ class CommunicationBridge {
     return this.bridge.onBroadcast(event)
   }
 
+  broadcastOfficerMessage(event) {
+    return this.bridge.onOfficerBroadcast(event)
+  }
+
   broadcastPlayerToggle(event) {
     return this.bridge.onPlayerToggle(event)
   }
