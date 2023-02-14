@@ -146,7 +146,7 @@ class StateHandler extends EventHandler {
     const message = event.toString().trim()
 
     if (this.isLobbyJoinMessage(message)) {
-      return this.bot.chat('/ac §§§§§§§§§')
+      return this.bot.chat('§')
     }
 
     if (this.isPartyMessage(message)) {
@@ -361,7 +361,13 @@ class StateHandler extends EventHandler {
 
       return this.minecraft.broadcastCleanEmbed({ message: `Player \`${user}\` not found.`, color: 'DC143C' })
     }
-    console.log(message)
+    if (this.isOfficerMessage(message)) {
+      this.minecraft.broadcastOfficerMessage({
+        username: username,
+        message: playerMessage,
+        guildRank: guildRank,
+      })
+    }
     if (!this.isGuildMessage(message)) {
       return
     }
