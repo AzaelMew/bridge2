@@ -42,6 +42,7 @@ async function getGMemberFromUUID(uuid, message) {
       adv = []
       vet = []
       champ = []
+      console.log(data.guild.members.length)
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 200));
         if (i <= data.guild.members.length - 1) {
@@ -56,7 +57,7 @@ async function getGMemberFromUUID(uuid, message) {
           return ini
         }
       }
-      while(num == data.guild.members.length){
+      while(num == data.guild.members.length - 1){
         console.log("Hey.")
       }
     }
