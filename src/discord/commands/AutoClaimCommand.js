@@ -42,7 +42,6 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
             //getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
@@ -57,8 +56,7 @@ async function getGMemberFromUUID(uuid, message) {
         await new Promise(resolve => setTimeout(resolve, 100));
         let sel = adv[kissaperkele]
         let cat = sel.split(" ")
-        console.log(cat[0],cat[1])
-        //getActivity(cat[0],cat[1])
+        getActivity(cat[0],cat[1])
       };
     }
   }
@@ -76,10 +74,10 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
+  console.log(username, rank)
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
   for (b = 0; b < Object.keys(data.data).length; b++) {
-    console.log(b)
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
