@@ -362,6 +362,13 @@ class StateHandler extends EventHandler {
       return this.minecraft.broadcastCleanEmbed({ message: `Player \`${user}\` not found.`, color: 'DC143C' })
     }
     if (this.isOfficerMessage(message)) {
+      let parts = message.split(':')
+      let group = parts.shift().trim()
+      let hasRank = group.endsWith(']')
+  
+      let userParts = group.split(' ')
+      let username = userParts[userParts.length - (hasRank ? 2 : 1)]
+      let guildRank = userParts[userParts.length - 1].replace(/[\[\]]/g, '')
       this.minecraft.broadcastOfficerMessage({
         username: username,
         message: playerMessage,
