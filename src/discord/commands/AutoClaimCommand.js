@@ -52,7 +52,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length) {
+        else if (i == data.guild.members.length + 1) {
           return ini
         }
       }
