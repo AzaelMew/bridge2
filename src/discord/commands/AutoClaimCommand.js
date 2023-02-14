@@ -126,12 +126,11 @@ class AutoclaimCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    getGMemberFromUsername("xephor_ex", message).then(init => {
+    getGMemberFromUsername("xephor_ex", message).then(ini => {
       let cat = 0
       let cat2 = 0
       let cat3 = 0
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
-      console.log(ini)
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
         setTimeout(() => {
