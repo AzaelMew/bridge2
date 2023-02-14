@@ -1,4 +1,4 @@
-const CommunicationBridge = require('../contracts/CommunicationBridge').default
+const CommunicationBridge = require('../contracts/CommunicationBridge')
 const StateHandler = require('./handlers/StateHandler')
 const MessageHandler = require('./handlers/MessageHandler')
 const CommandHandler = require('./CommandHandler')
