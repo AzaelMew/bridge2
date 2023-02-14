@@ -41,6 +41,12 @@ class MinecraftManager extends CommunicationBridge {
       this.bot.chat(`/gc ${replyingTo ? `${username} replying to ${replyingTo}:` : `${username}:`} ${message}`)
     }
   }
+  onOfficerBroadcast({ username, message, replyingTo }) {
+    if (this.bot.player !== undefined && message.length + username.length < 254) {
+      this.app.log.broadcast(`${username}: `+ message, 'Minecraft')
+      this.bot.chat(`/oc ${replyingTo ? `${username} replying to ${replyingTo}:` : `${username}:`} ${message}`)
+    }
+  }
 }
 
 module.exports = MinecraftManager
