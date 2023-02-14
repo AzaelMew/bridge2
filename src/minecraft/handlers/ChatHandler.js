@@ -361,7 +361,7 @@ class StateHandler extends EventHandler {
 
       return this.minecraft.broadcastCleanEmbed({ message: `Player \`${user}\` not found.`, color: 'DC143C' })
     }
-
+    console.log(message)
     if (!this.isGuildMessage(message)) {
       return
     }
@@ -390,7 +390,6 @@ class StateHandler extends EventHandler {
     if (playerMessage == '@') {
       return
     }
-    console.log(message)
     this.minecraft.broadcastMessage({
       username: username,
       message: playerMessage,
