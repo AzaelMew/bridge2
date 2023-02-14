@@ -19,7 +19,7 @@ class MessageHandler {
         message.content = message.content.replace("EZ","E Z")
       }
     }
-    if (this.shouldBroadcastOfficerMessage()) {
+    if (this.shouldBroadcastOfficerMessage(message)) {
       this.discord.broadcastOfficerMessage({
         username: message.member.displayName,
         message: this.stripDiscordContent(message.content),
@@ -76,7 +76,7 @@ class MessageHandler {
     return !message.author.bot && message.channel.id == this.discord.app.config.discord.channel && message.content && message.content.length > 0
   }
   shouldBroadcastOfficerMessage(message){
-    return message.channel.id == this.discord.app.config.discord.officer && message.content && message.content.length > 0
+    return !message.author.bot && message.channel.id == this.discord.app.config.discord. && message.content && message.content.length > 0
   }
 }
 
