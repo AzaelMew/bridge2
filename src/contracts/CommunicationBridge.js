@@ -55,4 +55,4 @@ broadcastOnEmbed(event) {
   }
 }
 
-module.exports = CommunicationBridge
+export default CommunicationBridge
