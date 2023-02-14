@@ -42,7 +42,7 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        await new Promise(resolve => setTimeout(resolve, 100));
+        await new Promise(resolve => setTimeout(resolve, 600));
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
