@@ -44,7 +44,6 @@ async function getGMemberFromUUID(uuid, message) {
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 100));
-        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
             getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
