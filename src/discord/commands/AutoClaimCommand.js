@@ -85,8 +85,9 @@ async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   console.log(data.data[0].username, rank)
   let newlvl = 0
-  if (b>=lengthss) done = true
+  
   for (b = 0; b < Object.keys(data.data).length; b++) {
+    if (b>=lengthss) done = true
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
