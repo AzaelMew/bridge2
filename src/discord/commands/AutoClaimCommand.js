@@ -5,6 +5,8 @@ let adv = []
 let vet = []
 let champ = []
 let num = 0
+let cats = 0
+let done = false
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
     return "Error"
@@ -42,7 +44,7 @@ async function getGMemberFromUUID(uuid, message) {
       adv = []
       vet = []
       champ = []
-      console.log(data.guild.members.length)
+      cats = data.guild.members.length
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 200));
         if (i <= data.guild.members.length - 1) {
@@ -67,7 +69,9 @@ async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
   num = num + 1
-  console.log(num)
+  if (num == cats){
+    done = true
+  }
   for (b = 0; b < Object.keys(data.data).length; b++) {
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
@@ -122,6 +126,8 @@ class AutoclaimCommand extends DiscordCommand {
       let cat = 0
       let cat2 = 0
       let cat3 = 0
+    })
+    while (done){
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
@@ -130,7 +136,10 @@ class AutoclaimCommand extends DiscordCommand {
           this.sendMinecraftMessage(`/g setrank ${el}`)
         }, index * interval);
       }
-    })
+      done = false
+    }
+    num = 0
+    cats = 0
     message.channel.send({
       embed: {
         description: `Checking skyblock levels...`,
