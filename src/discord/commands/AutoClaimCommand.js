@@ -56,7 +56,7 @@ async function getGMemberFromUUID(uuid, message) {
           for (s = 0; s < 100; s++) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
-            if(s==150){
+            if(s==250){
               return ini
             }
           }
