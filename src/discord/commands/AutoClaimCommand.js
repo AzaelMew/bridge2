@@ -57,7 +57,7 @@ async function getGMemberFromUUID(uuid, message) {
         await new Promise(resolve => setTimeout(resolve, 100));
         let sel = adv[kissaperkele]
         let cat = sel.split(" ")
-        console.log(cat)
+        console.log(cat[0],cat[1])
         //getActivity(cat[0],cat[1])
       };
     }
