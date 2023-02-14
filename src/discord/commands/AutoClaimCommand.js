@@ -55,10 +55,9 @@ async function getGMemberFromUUID(uuid, message) {
       }
       for (let kissaperkele = 0; kissaperkele < adv.length; ++kissaperkele) {
         await new Promise(resolve => setTimeout(resolve, 100));
-        console.log(kissaperkele)
         let sel = adv[kissaperkele]
         let cat = sel.split(" ")
-        
+        console.log(cat)
         //getActivity(cat[0],cat[1])
       };
     }
