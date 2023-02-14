@@ -72,7 +72,7 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
-  const { data } = await axios.get('http://192.168.100.197:3000/v2/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
+  const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   if (data.data[0].username == "notbudi" || data.data[0].username == "Invictyus" || data.data[0].username == "Jasqer" || data.data[0].username == "Vallekoen" || data.data[0].username == "YesPleases" || data.data[0].username == "zabbir" || data.data[0].username == "Frindlo" || data.data[0].username == "Morithos_" || data.data[0].username == "Nico_the_Creator" || data.data[0].username == "WhenCarrot" || data.data[0].username == "Legendaryspirits" || data.data[0].username == "MistyTM" || data.data[0].username == "Dachichan" || data.data[0].username == "Meir231" || data.data[0].username == "Azael_Nyaa") return
   let newlvl = 0
   for (b = 0; b < Object.keys(data.data).length; b++) {
