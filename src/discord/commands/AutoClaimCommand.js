@@ -80,6 +80,7 @@ async function getActivity(uuid, rank) {
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
+  num = num + 1
   }
   if(rank=="Elder") return
   if(rank=="Guild Master") return
