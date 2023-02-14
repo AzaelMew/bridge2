@@ -20,7 +20,10 @@ class MessageHandler {
       }
     }
 
-    if (!this.shouldBroadcastMessage(message)) {
+    if (!this.shouldBroadcastOfficerMessage(message)){
+      return
+    }
+    else if (!this.shouldBroadcastMessage(message)) {
       return
     }
 
