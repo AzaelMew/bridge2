@@ -122,7 +122,7 @@ async function getStatsFromUUID(name) {
 
   }
   else {
-    let stats = `**Skyblock Level** \n➣ ${Math.floor(sblvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
+    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
     return stats
 
   }
