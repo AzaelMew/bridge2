@@ -53,10 +53,12 @@ async function getGMemberFromUUID(uuid, message) {
           }
         }
         else if (i == data.guild.members.length + 1) {
-          for (s = 0; s < 100 + 2; s++) {
+          for (s = 0; s < 100; s++) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 100));
-            return ini
+            if(s==100){
+              return ini
+            }
           }
         }
       }
