@@ -56,6 +56,7 @@ async function getGMemberFromUUID(uuid, message) {
         }
       }
       while (num = data.guild.members.length){
+        console.log("Welp fuck you.")
         num = 0
         return ini
       }
