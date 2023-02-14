@@ -46,18 +46,15 @@ async function getGMemberFromUUID(uuid, message) {
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
-            await getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
+            //getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
+            adv.push(`${data.guild.members[i].uuid} ${data.guild.members[i].rank}`)
           }
           catch {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length + 1) {
-
-          return ini
-
-        }
       }
+      console.log(adv)
     }
   }
   catch (error) {
