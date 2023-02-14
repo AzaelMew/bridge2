@@ -4,6 +4,8 @@ let ini = []
 let adv = []
 let vet = []
 let champ = []
+let done = false
+let lengthss = 0
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
     return "Error"
@@ -52,12 +54,17 @@ async function getGMemberFromUUID(uuid, message) {
           }
         }
       }
+      let lengthss = adv.length
       for (let kissaperkele = 0; kissaperkele < adv.length; ++kissaperkele) {
         await new Promise(resolve => setTimeout(resolve, 100));
         let sel = adv[kissaperkele]
         let cat = sel.split(" ")
         getActivity(cat[0],cat[1])
       };
+      while(done){
+        done = false
+        return ini
+      }
     }
   }
   catch (error) {
@@ -78,6 +85,7 @@ async function getActivity(uuid, rank) {
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
   console.log(data.data[0].username, rank)
   let newlvl = 0
+  if (b>=lengthss) done = true
   for (b = 0; b < Object.keys(data.data).length; b++) {
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
