@@ -4,8 +4,6 @@ let ini = []
 let adv = []
 let vet = []
 let champ = []
-let done = false
-let lengthss = 0
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
     return "Error"
@@ -44,26 +42,19 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
+        await new Promise(resolve => setTimeout(resolve, 1100));
+        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
-            //getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
-            adv.push(`${data.guild.members[i].uuid} ${data.guild.members[i].rank}`)
+            getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
           }
           catch {
             console.log("fuck you azael.")
           }
         }
-      }
-      let lengthss = adv.length
-      for (let kissaperkele = 0; kissaperkele < adv.length; ++kissaperkele) {
-        await new Promise(resolve => setTimeout(resolve, 100));
-        let sel = adv[kissaperkele]
-        let cat = sel.split(" ")
-        getActivity(cat[0],cat[1])
-      };
-      while(done){
-        done = false
-        return ini
+        else if (i == data.guild.members.length + 1) {
+          return ini
+        }
       }
     }
   }
@@ -81,47 +72,41 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
-  
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
-  console.log(data.data[0].username, rank)
   let newlvl = 0
-  console.log(lengthss)
   for (b = 0; b < Object.keys(data.data).length; b++) {
-    if (b>=lengthss-1){
-      console.log(b + lengthss)
-    }
   if(newlvl < data.data[b].sblevel){
     newlvl = data.data[b].sblevel
   }
   }
   if(rank=="Elder") return
-  if(rank=="Guild") return
+  if(rank=="Guild Master") return
 
   if (newlvl >= 230) {
     if(rank=="Champion") return
     ini.push(`${data.data[0].username} Champion`)
-    console.log(data.data[0].username + " champ")
+    console.log(data.data[0].username + "champ")
 
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
     ini.push(`${data.data[0].username} Knight`)
-    console.log(data.data[0].username + " knight")
+    console.log(data.data[0].username + "knight")
 
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
     ini.push(`${data.data[0].username} Squire`)
-    console.log(data.data[0].username + " squ")
+    console.log(data.data[0].username + "squ")
 
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${data.data[0].username} Recruit`)
-    console.log(data.data[0].username + " rec")
+    console.log(data.data[0].username + "rec")
 
     return
   }
