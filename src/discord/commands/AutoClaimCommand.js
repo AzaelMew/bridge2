@@ -4,6 +4,7 @@ let ini = []
 let adv = []
 let vet = []
 let champ = []
+let num = 0
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
     return "Error"
@@ -42,7 +43,7 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        await new Promise(resolve => setTimeout(resolve, 1100));
+        await new Promise(resolve => setTimeout(resolve, 100));
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
@@ -52,9 +53,10 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length + 1) {
-          return ini
-        }
+      }
+      while (num = data.guild.members.length){
+        num = 0
+        return ini
       }
     }
   }
