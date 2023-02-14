@@ -512,6 +512,10 @@ class StateHandler extends EventHandler {
   isLobbyJoinMessage(message) {
     return (message.endsWith(' the lobby!') || message.endsWith(' the lobby! <<<')) && message.includes('[MVP+')
   }
+  
+  isOfficerMessage(message) {
+    return message.startsWith('Officer >') && message.includes(':')
+  }
 
   isGuildMessage(message) {
     return message.startsWith('Guild >') && message.includes(':')
