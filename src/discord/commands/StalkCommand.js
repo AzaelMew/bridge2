@@ -22,6 +22,9 @@ async function getLocationFromUUID(uuid) {
 
         if (data.session.online == true) {
             if (data.session.gameType == "SKYBLOCK") {
+                if (data.session.mode == "garden") {
+                    location = "Garden"
+                }
                 if (data.session.mode == "dynamic") {
                     location = "Private Island"
                 }
