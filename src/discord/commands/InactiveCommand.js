@@ -74,6 +74,7 @@ async function getGMemberFromUUID(uuid, message) {
 }
 async function getActivity(uuid, message) {
   try {
+    console.log(uuid)
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=0897c9a2-68d5-4040-a0a4-deaa283b1495`)
     const { datatwo } = await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`)
     console.log(datatwo.name)
