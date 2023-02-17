@@ -40,7 +40,6 @@ async function getGMemberFromUUID(uuid, message) {
       kickables = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 150));
-        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
             getActivity(data.guild.members[i].uuid, message)
@@ -51,7 +50,6 @@ async function getGMemberFromUUID(uuid, message) {
         }
         else if (i == data.guild.members.length + 1) {
           for (s = 0; s < 50; s++) {
-            console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
             if (s == 50) {
               return
@@ -77,7 +75,8 @@ async function getGMemberFromUUID(uuid, message) {
 async function getActivity(uuid, message) {
   try {
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=0897c9a2-68d5-4040-a0a4-deaa283b1495`)
-    console.log(data.player.displayname)
+    const { datatwo } = await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`)
+    console.log(datatwo.name)
 
     let lastLogin = data.player.lastLogin
     if (data.player.displayname == "notbudi" || data.player.displayname == "Invictyus" || data.player.displayname == "Jasqer" || data.player.displayname == "Vallekoen" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Morithos_" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Dachichan" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
