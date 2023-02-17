@@ -88,7 +88,7 @@ async function getActivity(uuid, rank) {
   if (name == "notbudi" || name == "Invictyus" || name == "Jasqer" || name == "Vallekoen" || name == "YesPleases" || name == "zabbir" || name == "Frindlo" || name == "Morithos_" || name == "Nico_the_Creator" || name == "WhenCarrot" || name == "Legendaryspirits" || name == "MistyTM" || name == "Dachichan" || name == "Meir231" || name == "Tsukia"|| name == "Azael_Nyaa") return
   let newlvl = 0
   for (b = 0; b < Object.keys(data.profiles).length; b++) {
-  if(newlvl < data.profiles[b]?.members[uuid].leveling.experience){
+  if(newlvl < data.profiles[b]?.members[uuid]?.leveling?.experience){
     newlvl = data.profiles[b]?.members[uuid].leveling.experience
   }
   }
