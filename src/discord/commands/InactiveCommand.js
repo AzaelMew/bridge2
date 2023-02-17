@@ -54,7 +54,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
             if (s == 50) {
-              return kickables
+              return
             }
           }
         }
@@ -107,7 +107,7 @@ class InactiveCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     kickables = []
-    getGMemberFromUsername("xephor_ex", message).then(kickables => {
+    getGMemberFromUsername("xephor_ex", message).then(kickabes => {
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < kickables.length; ++index) {
         let el = kickables[index]
