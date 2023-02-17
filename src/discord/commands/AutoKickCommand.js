@@ -13,6 +13,11 @@ async function getUUIDFromUsername(username) {
     return data.id
   }
 }
+async function getUsernameFromUUID(uuid) {
+  const { data } = await axios.get('https://sessionserver.mojang.com/session/minecraft/profile/' + uuid)
+  let username = data.name
+  return username
+}
 async function getGMemberFromUUID(uuid, message) {
   try {
     if (uuid == undefined) {
@@ -78,19 +83,20 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
-  const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
-  if (data.data[0].username == "notbudi" || data.data[0].username == "Invictyus" || data.data[0].username == "Jasqer" || data.data[0].username == "Vallekoen" || data.data[0].username == "YesPleases" || data.data[0].username == "zabbir" || data.data[0].username == "Frindlo" || data.data[0].username == "Morithos_" || data.data[0].username == "Nico_the_Creator" || data.data[0].username == "WhenCarrot" || data.data[0].username == "Legendaryspirits" || data.data[0].username == "MistyTM" || data.data[0].username == "Dachichan" || data.data[0].username == "Meir231" || data.data[0].username == "Tsukia"|| data.data[0].username == "Azael_Nyaa") return
+  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&uuid=${uuid}`)
+  let name = await getUsernameFromUUID(uuid)
+  if (name == "notbudi" || name == "Invictyus" || name == "Jasqer" || name == "Vallekoen" || name == "YesPleases" || name == "zabbir" || name == "Frindlo" || name == "Morithos_" || name == "Nico_the_Creator" || name == "WhenCarrot" || name == "Legendaryspirits" || name == "MistyTM" || name == "Dachichan" || name == "Meir231" || name == "Tsukia"|| name == "Azael_Nyaa") return
   let newlvl = 0
-  for (b = 0; b < Object.keys(data.data).length; b++) {
-  if(newlvl < data.data[b].sblevel){
-    newlvl = data.data[b].sblevel
+  for (b = 0; b < Object.keys(data.profiles).length; b++) {
+  if(newlvl < data.profiles[b]?.members[uuid].leveling.experience){
+    newlvl = data.profiles[b]?.members[uuid].leveling.experience
   }
   }
   if(rank=="Elder") return
   if(rank=="Guild Master") return
 
-  if (newlvl < 125) {
-    ini.push(`${data.data[0].username}`)
+  if (newlvl < 12500) {
+    ini.push(`${name}`)
     return
   }
   else{
