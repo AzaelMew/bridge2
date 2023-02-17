@@ -42,7 +42,7 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
-        await new Promise(resolve => setTimeout(resolve, 1200));
+        await new Promise(resolve => setTimeout(resolve, 150));
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
@@ -52,8 +52,14 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        if (i == data.guild.members.length) {
-          return ini
+        else if (i == data.guild.members.length + 1) {
+          for (s = 0; s < 220; s++) {
+            console.log(s)
+            await new Promise(resolve => setTimeout(resolve, 50));
+            if(s==220){
+              return
+            }
+          }
         }
       }
     }
@@ -104,7 +110,8 @@ class AutoKickCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    getGMemberFromUsername("xephor_ex", message).then(ini => {
+    getGMemberFromUsername("xephor_ex", message).then(inis => {
+      console.log(inis)
       let cat = 0
       let cat2 = 0
       let cat3 = 0
