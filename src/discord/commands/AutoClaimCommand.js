@@ -87,8 +87,8 @@ async function getActivity(uuid, rank) {
   let name = await getUsernameFromUUID(uuid)
   let newlvl = 0
   for (b = 0; b < Object.keys(data.profiles).length; b++) {
-    if(newlvl < data.profiles[b]?.members[uuid].leveling.experience){
-      newlvl = data.profiles[b]?.members[uuid].leveling.experience
+    if(newlvl < data.profiles[b]?.members[uuid]?.leveling?.experience){
+      newlvl = data.profiles[b]?.members[uuid]?.leveling?.experience
     }
   }
   console.log(newlvl)
