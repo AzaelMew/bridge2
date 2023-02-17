@@ -13,6 +13,11 @@ async function getUUIDFromUsername(username) {
     return data.id
   }
 }
+async function getUsernameFromUUID(uuid) {
+  const { data } = await axios.get('https://sessionserver.mojang.com/session/minecraft/profile/' + uuid)
+  let username = data.name
+  return username
+}
 async function getGMemberFromUUID(uuid, message) {
   try {
     if (uuid == undefined) {
@@ -78,43 +83,46 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
-  const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + uuid + '?key=77ac89bad625453facaa36457eb3cf5c')
+  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&uuid=${uuid}`)
+  let name = await getUsernameFromUUID(uuid)
   let newlvl = 0
-  for (b = 0; b < Object.keys(data.data).length; b++) {
-  if(newlvl < data.data[b].sblevel){
-    newlvl = data.data[b].sblevel
+  for (b = 0; b < Object.keys(data.profiles).length; b++) {
+    if(newlvl < data.profiles[b]?.members[uuid].leveling.experience){
+      newlvl = data.profiles[b]?.members[uuid].leveling.experience
+    }
   }
-  }
+  console.log(newlvl)
+  /*
   if(rank=="Elder") return
   if(rank=="Guild Master") return
 
   if (newlvl >= 230) {
     if(rank=="Champion") return
-    ini.push(`${data.data[0].username} Champion`)
+    ini.push(`${name} Champion`)
     console.log(ini)
     return
   }
   else if (newlvl >= 190) {
     if(rank=="Knight") return
-    ini.push(`${data.data[0].username} Knight`)
+    ini.push(`${name} Knight`)
     console.log(ini)
 
     return
   }
   else if (newlvl >=160) {
     if(rank=="Squire") return
-    ini.push(`${data.data[0].username} Squire`)
+    ini.push(`${name} Squire`)
     console.log(ini)
 
     return
   }
   else {
     if(rank=="Recruit") return
-    ini.push(`${data.data[0].username} Recruit`)
+    ini.push(`${name} Recruit`)
     console.log(ini)
 
     return
-  }
+  }*/
 }
 
 async function getGMemberFromUsername(username, message) {
