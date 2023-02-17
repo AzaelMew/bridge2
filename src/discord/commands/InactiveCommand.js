@@ -41,16 +41,22 @@ async function getGMemberFromUUID(uuid, message) {
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 1100));
         console.log(i)
-        if (i <= data.guild.members.length-1) {
-          try{
+        if (i <= data.guild.members.length - 1) {
+          try {
             getActivity(data.guild.members[i].uuid, message)
           }
-          catch{
+          catch {
             console.log("fuck you azael.")
           }
+        }
+        else if (i == data.guild.members.length + 1) {
+          for (s = 0; s < 220; s++) {
+            console.log(s)
+            await new Promise(resolve => setTimeout(resolve, 50));
+            if (s == 220) {
+              return
+            }
           }
-        if (i == data.guild.members.length) {
-          return kickables
         }
       }
     }
@@ -74,7 +80,7 @@ async function getActivity(uuid, message) {
     console.log(data.player.displayname)
 
     let lastLogin = data.player.lastLogin
-    if (data.player.displayname == "notbudi" || data.player.displayname == "Invictyus" || data.player.displayname == "Jasqer" || data.player.displayname == "Vallekoen" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Morithos_" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot"  || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Dachichan" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
+    if (data.player.displayname == "notbudi" || data.player.displayname == "Invictyus" || data.player.displayname == "Jasqer" || data.player.displayname == "Vallekoen" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Morithos_" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Dachichan" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
     if (new Date().getTime() - lastLogin > 2160000000) {
       kickables.push(data.player.displayname)
       console.log(kickables)
