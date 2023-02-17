@@ -74,10 +74,9 @@ async function getGMemberFromUUID(uuid, message) {
 }
 async function getActivity(uuid, message) {
   try {
-    console.log(uuid)
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=0897c9a2-68d5-4040-a0a4-deaa283b1495`)
     const { datatwo } = await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}`)
-    console.log(datatwo.name)
+    console.log(datatwo)
 
     let lastLogin = data.player.lastLogin
     if (data.player.displayname == "notbudi" || data.player.displayname == "Invictyus" || data.player.displayname == "Jasqer" || data.player.displayname == "Vallekoen" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Morithos_" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Dachichan" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
