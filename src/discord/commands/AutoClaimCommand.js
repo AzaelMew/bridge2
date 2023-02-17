@@ -92,24 +92,24 @@ async function getActivity(uuid, rank) {
     }
   }
   console.log(newlvl)
-  /*
+  
   if(rank=="Elder") return
   if(rank=="Guild Master") return
 
-  if (newlvl >= 230) {
+  if (newlvl >= 23000) {
     if(rank=="Champion") return
     ini.push(`${name} Champion`)
     console.log(ini)
     return
   }
-  else if (newlvl >= 190) {
+  else if (newlvl >= 19000) {
     if(rank=="Knight") return
     ini.push(`${name} Knight`)
     console.log(ini)
 
     return
   }
-  else if (newlvl >=160) {
+  else if (newlvl >=16000) {
     if(rank=="Squire") return
     ini.push(`${name} Squire`)
     console.log(ini)
@@ -122,7 +122,7 @@ async function getActivity(uuid, rank) {
     console.log(ini)
 
     return
-  }*/
+  }
 }
 
 async function getGMemberFromUsername(username, message) {
