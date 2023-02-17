@@ -54,7 +54,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
             if (s == 220) {
-              return
+              return kickables
             }
           }
         }
