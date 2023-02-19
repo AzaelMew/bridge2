@@ -13,7 +13,7 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
-function readFileToArray(filename, callback) {
+async function readFileToArray(filename, callback) {
   // Read file contents
   fs.readFile(filename, 'utf8', (err, data) => {
     if (err) {
@@ -107,7 +107,9 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
+  await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
+    console.log(name)
+    console.log(dataArray)
     if(dataArray.includes(name)){
         return "User has been blocked by the guild blacklist."
     }
