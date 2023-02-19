@@ -61,6 +61,7 @@ async function getStatsFromUsername(username) {
       return "safe"
     }
   });
+  console.log(uuid, a)
   return await getStatsFromUUID(uuid,a)
   
 }
@@ -116,8 +117,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name, a) {
-  if(a !== "safe"){
-    console.log(a)
+  if(a != "safe"){
     return "User has been blocked by the guild blacklist."
   }
   else{
