@@ -65,6 +65,9 @@ class TestCommand extends MinecraftCommand {
             if(dataArray.includes("uuid")){
                 console.log("works")
             }
+            else{
+                console.log("not works")
+            }
           });
 
     }
