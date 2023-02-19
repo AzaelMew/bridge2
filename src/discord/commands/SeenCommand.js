@@ -82,7 +82,7 @@ async function getSeenFromUUID(uuid) {
 async function getSeenFromUsername(username) {
     return await getSeenFromUUID(await getUUIDFromUsername(username))
 }
-class StalkCommand extends DiscordCommand {
+class SeenCommand extends DiscordCommand {
     constructor(discord) {
         super(discord)
 
