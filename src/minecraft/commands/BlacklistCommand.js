@@ -24,7 +24,6 @@ class BlacklistCommand extends MinecraftCommand {
     }
 
     async onCommand(username, message) {
-        username = username.toString().toLowerCase()
         console.log(`"${username}"`)
         if(!array.includes(username)){
             console.log(array)
