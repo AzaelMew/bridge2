@@ -24,7 +24,7 @@ class TestCommand extends MinecraftCommand {
 
   onCommand() {
 
-    fs.readFile('data.json', 'utf8', (err, data) => {
+    fs.readFile('/home/azael/bridge/blacklist.json', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
           return;
