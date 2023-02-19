@@ -16,7 +16,7 @@ let failSafeCD = new Date();
 async function readFileToArray(filename) {
   try {
     // Read file contents
-    const data = await fs.readFile(filename, 'utf8');
+    const data = await fs.readFile(filename, { encoding: 'utf8' });
 
     // Parse file contents into an array of strings
     const dataArray = data.trim() ? data.split('\n') : [];
