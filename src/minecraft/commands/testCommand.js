@@ -25,13 +25,12 @@ class TestCommand extends MinecraftCommand {
           console.error(err);
           return;
         }
-        console.log(data)
         // Parse existing data from JSON format
         const existingData = JSON.parse(data);
-      
+        console.log(existingData)
         // Merge existing data with new data
         const mergedData = Object.assign({}, existingData, newData);
-      
+        console.log(mergedData)
         // Convert merged data to JSON format
         const jsonData = JSON.stringify(mergedData);
       
