@@ -25,8 +25,8 @@ class BlacklistCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         username = username.toString().toLowerCase()
-        if (username != "xephor_ex" || username != "azael_nyaa" || username != "vallekoen") return
         console.log(username)
+        if (username != "xephor_ex" || username != "azael_nyaa" || username != "vallekoen") return
         let args = message.split(" ")
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
