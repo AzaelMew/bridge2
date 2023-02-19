@@ -17,8 +17,8 @@ class TestCommand extends MinecraftCommand {
   constructor(minecraft) {
     super(minecraft)
 
-    this.name = 'welcome'
-    this.aliases = ["wc","welc","w"]
+    this.name = 'test'
+
     this.description = 'Gives needed welcome info'
   }
 
