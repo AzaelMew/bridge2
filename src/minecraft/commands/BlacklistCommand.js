@@ -26,22 +26,24 @@ class BlacklistCommand extends MinecraftCommand {
     async onCommand(username, message) {
         username = username.toString().toLowerCase()
         console.log(username)
-        if(username!="xephor_ex" || username!="azael_nyaa"|| username!="vallekoen") return
+        if (username != "xephor_ex" || username != "azael_nyaa" || username != "vallekoen") return
         let args = message.split(" ")
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
             let blacklistedIDs = blacklist.trim().split('\n');
             if (args[1] == "add") {
                 if (!blacklist.includes(uuid)) {
+                    this.send(`/gc ${args[2]} ${uuid} added to blacklist.`)
                     blacklist += uuid + "\n";
 
                     // write the updated blacklist back to the file
                     fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
-                    this.send(`/gc ${args[2]} ${uuid} added to blacklist.`)
+
 
                 }
             }
             else if (args[1] == "remove") {
+                this.send(`/gc ${args[2]} ${uuid} removed from blacklist.`)
                 const index = blacklistedIDs.indexOf(uuid);
                 if (index > -1) {
                     blacklistedIDs.splice(index, 1);
@@ -49,7 +51,6 @@ class BlacklistCommand extends MinecraftCommand {
                     // write the updated blacklist back to the file
                     blacklist = blacklistedIDs.join('\n') + '\n';
                     fs.writeFileSync('blacklist.txt', blacklist, 'utf-8');
-                    this.send(`/gc ${args[2]} ${uuid} removed from blacklist.`)
                 }
             }
         })
