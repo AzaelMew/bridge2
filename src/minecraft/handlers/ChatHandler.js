@@ -109,6 +109,7 @@ async function getGMemberFromUUID(uuid) {
 }
 async function getStatsFromUUID(name) {
   const result = await findStringByID(name, filePath);
+  console.log(result)
   if(result){
     return "User has been blocked by the Guild Blacklist."
   }
