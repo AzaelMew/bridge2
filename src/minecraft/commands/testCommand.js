@@ -25,16 +25,17 @@ class TestCommand extends MinecraftCommand {
           console.error(err);
           return;
         }
+      
         // Parse existing data from JSON format
         const existingData = JSON.parse(data);
-        console.log(existingData)
-        // Merge existing data with new data
-        const mergedData = Object.assign({}, existingData, newData);
-        console.log(mergedData)
-        // Convert merged data to JSON format
-        const jsonData = JSON.stringify(mergedData);
       
-        // Write merged data back to file
+        // Add new data to existing data
+        existingData.push(newData);
+      
+        // Convert updated data to JSON format
+        const jsonData = JSON.stringify(existingData);
+      
+        // Write updated data back to file
         fs.writeFile('/home/azael/bridge/blacklist.json', jsonData, (err) => {
           if (err) {
             console.error(err);
