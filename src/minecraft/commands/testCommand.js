@@ -22,18 +22,28 @@ class TestCommand extends MinecraftCommand {
 
     fs.readFile('/home/azael/bridge/blacklist.json', 'utf8', (err, data) => {
         if (err) {
-            console.error(err);
-            return;
-          }
-        
-          // Parse existing data from JSON format
-          const existingData = JSON.parse(data);
-        
-          // Add new data to existing array
+          console.error(err);
+          return;
+        }
+      
+        // Parse existing data from JSON format
+        let existingData;
+        try {
+          existingData = JSON.parse(data);
+        } catch (error) {
+          existingData = data;
+        }
+      
+        // Add new data to existing data
+        if (Array.isArray(existingData)) {
           existingData.push(newData);
-        
-          // Convert updated data to JSON format
-          const jsonData = JSON.stringify(existingData);
+        } else {
+          existingData = [existingData, newData];
+        }
+      
+        // Convert updated data to JSON format
+        const jsonData = JSON.stringify(existingData);
+      
         // Write updated data back to file
         fs.writeFile('/home/azael/bridge/blacklist.json', jsonData, (err) => {
           if (err) {
@@ -43,6 +53,7 @@ class TestCommand extends MinecraftCommand {
           console.log('Data added to file successfully!');
         });
       });
+      
     
   }
 }
