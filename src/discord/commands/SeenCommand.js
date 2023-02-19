@@ -71,7 +71,7 @@ async function getSeenFromUUID(uuid) {
             offlineFor = timeSince(Date.now(), lastLogout).toString().trim()
             lastSeen = new Date(lastLogout)
             lastSeen = lastSeen.toUTCString()
-            return `been offline for ${offlineFor}, and last logged out ${lastSeen}`
+            return `Has been offline for ${offlineFor}\nThey last logged out ${lastSeen}`
         }
     }
     catch {
