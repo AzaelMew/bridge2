@@ -22,19 +22,18 @@ class TestCommand extends MinecraftCommand {
 
     fs.readFile('/home/azael/bridge/blacklist.json', 'utf8', (err, data) => {
         if (err) {
-          console.error(err);
-          return;
-        }
-      
-        // Parse existing data from JSON format
-        const existingData = JSON.parse(data);
-      
-        // Add new data to existing data
-        existingData.push(newData);
-      
-        // Convert updated data to JSON format
-        const jsonData = JSON.stringify(existingData);
-      
+            console.error(err);
+            return;
+          }
+        
+          // Parse existing data from JSON format
+          const existingData = JSON.parse(data);
+        
+          // Add new data to existing array
+          existingData.push(newData);
+        
+          // Convert updated data to JSON format
+          const jsonData = JSON.stringify(existingData);
         // Write updated data back to file
         fs.writeFile('/home/azael/bridge/blacklist.json', jsonData, (err) => {
           if (err) {
