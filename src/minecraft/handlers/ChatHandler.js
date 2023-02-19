@@ -2,6 +2,7 @@ const { SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER } = require('constants')
 const EventHandler = require('../../contracts/EventHandler')
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
+const fs = require('fs');
 const { setInterval } = require('timers/promises');
 
 let reta = []
