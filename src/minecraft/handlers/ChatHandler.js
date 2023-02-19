@@ -14,23 +14,7 @@ let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
 let filePath = "/home/azael/bridge/blacklist.txt"
-async function findStringByID(id, filePath) {
-  // read the contents of the text file
-  const data = fs.readFileSync(filePath, 'utf8');
 
-  // search for the ID in the file
-  const index = data.indexOf(id);
-
-  // if the ID is found, return the string
-  if (index !== -1) {
-    const start = data.lastIndexOf('\n', index) + 1;
-    const end = data.indexOf('\n', index);
-    return data.substring(start, end);
-  }
-
-  // if the ID is not found, return null
-  return null;
-}
 function numberWithCommas(x) {
   if (x > 999815672) {
     x = x.toString().split(".")[0]
@@ -108,10 +92,11 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  const result = await findStringByID(name, filePath);
-  console.log(result)
-  if(result){
-    return "User has been blocked by the Guild Blacklist."
+  let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', "utf-8")
+  if(blacklist.includes(name)){
+    return "User has been blocked by the guild blacklist."
+  }else{
+    console.log("User is safe.")
   }
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
