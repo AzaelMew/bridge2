@@ -12,6 +12,22 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
+function readFileToArray(filename, callback) {
+  // Read file contents
+  fs.readFile(filename, 'utf8', (err, data) => {
+    if (err) {
+      callback(err);
+      return;
+    }
+
+    // Parse file contents into an array of strings
+    const dataArray = data.trim() ? data.split('\n') : [];
+
+    // Return array of strings
+    callback(null, dataArray);
+  });
+}
+
 
 function numberWithCommas(x) {
   if (x > 999815672) {
@@ -36,6 +52,7 @@ async function getUUIDFromUsername(username) {
 }
 async function getStatsFromUsername(username) {
   return await getStatsFromUUID(await getUUIDFromUsername(username))
+  
 }
 async function getGMemberFromUsername(username) {
   return await getGMemberFromUUID(await getUUIDFromUsername(username))
@@ -89,7 +106,11 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-
+  readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
+    if(dataArray.includes(name)){
+        return
+    }
+  });
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
   for (b = 0; b < Object.keys(data.data).length; b++) {
