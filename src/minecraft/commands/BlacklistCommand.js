@@ -27,7 +27,7 @@ class BlacklistCommand extends MinecraftCommand {
         let args = message.split(" ")
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
-
+            let blacklistedIDs = blacklist.trim().split('\n');
             if (args[1] == "add") {
                 if (!blacklist.includes(uuid)) {
                     blacklist += uuid + "\n";
