@@ -14,7 +14,7 @@ let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
 let filePath = "/home/azael/bridge/blacklist.txt"
-function findStringByID(id, filePath) {
+async function findStringByID(id, filePath) {
   // read the contents of the text file
   const data = fs.readFileSync(filePath, 'utf8');
 
@@ -108,7 +108,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  const result = findStringByID(name, filePath);
+  const result = await findStringByID(name, filePath);
   if(result){
     return "User has been blocked by the Guild Blacklist."
   }
