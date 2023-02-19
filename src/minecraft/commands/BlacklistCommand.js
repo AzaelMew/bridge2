@@ -57,6 +57,15 @@ class BlacklistCommand extends MinecraftCommand {
                     fs.writeFileSync('blacklist.txt', blacklist, 'utf-8');
                 }
             }
+            else if (args[1] == "check"){
+                if (!blacklist.includes(uuid)){
+                    this.send(`/oc ${args[2]} is not in the blacklist.`)
+                }
+                else{
+                    this.send(`/oc ${args[2]} is blacklisted.`)
+                }
+            }
+
         })
     }
 }
