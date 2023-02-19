@@ -25,7 +25,7 @@ class TestCommand extends MinecraftCommand {
           console.error(err);
           return;
         }
-      
+        console.log(data)
         // Parse existing data from JSON format
         const existingData = JSON.parse(data);
       
