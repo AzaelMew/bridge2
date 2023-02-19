@@ -106,7 +106,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-    const dataArray = await readFileToArray('data.txt'); 
+    const dataArray = await readFileToArray('/home/azael/bridge/blacklist.txt'); 
     if(dataArray.includes(name)){
       return "This user has been blocked by the guilds blacklist."
     }
