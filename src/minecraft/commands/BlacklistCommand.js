@@ -1,7 +1,7 @@
 // Step 3: Use Node.js fs module to write the JSON string to a file on your system
 const fs = require('fs');
 const axios = require("axios");
-
+let array = ["Xephor_EX","Azael_Nyaa","Vallekoen"]
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 async function getUUIDFromUsername(username) {
     if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
@@ -26,7 +26,7 @@ class BlacklistCommand extends MinecraftCommand {
     async onCommand(username, message) {
         username = username.toString().toLowerCase()
         console.log(`"${username}"`)
-        if (username != "xephor_ex" || username != "azael_nyaa" || username != "vallekoen") return
+        if(!array.includes(username)) return;
         let args = message.split(" ")
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
