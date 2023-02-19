@@ -91,7 +91,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  fs.readFile(/home/azael/bridge/blacklist.txt, 'utf8', (err, data) => {
+  fs.readFile("/home/azael/bridge/blacklist.txt", 'utf8', (err, data) => {
     if (err) {
       callback(err);
       return;
