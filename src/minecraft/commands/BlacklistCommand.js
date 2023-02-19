@@ -27,29 +27,16 @@ class BlacklistCommand extends MinecraftCommand {
         let args = message.split(" ")
         getUUIDFromUsername(args[1]).then(uuid => {
             console.log(args[1])
-            fs.readFile('/home/azael/bridge/blacklist.txt', 'utf8', (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-                // Parse existing data into an array (if it's not empty)
-                const existingData = data.trim() ? data.split('\n') : [];
 
-                // Add new string to the existing array
-                existingData.push(uuid);
+            let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
 
-                // Convert updated data back to a string
-                const updatedData = existingData.join('\n');
+            // add the new ID to the blacklist (if it's not already there)
+            if (!blacklist.includes(uuid)) {
+                blacklist += uuid + "\n";
 
-                // Write updated data back to file
-                fs.writeFile('/home/azael/bridge/blacklist.txt', updatedData, (err) => {
-                    if (err) {
-                        console.error(err);
-                        return;
-                    }
-                    console.log('Data added to file successfully!');
-                });
-            });
+                // write the updated blacklist back to the file
+                fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
+            }
         })
     }
 }
