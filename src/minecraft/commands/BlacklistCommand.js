@@ -36,7 +36,7 @@ class BlacklistCommand extends MinecraftCommand {
             let blacklistedIDs = blacklist.trim().split('\n');
             if (args[1] == "add") {
                 if (!blacklist.includes(uuid)) {
-                    this.send(`/gc ${args[2]} ${uuid} added to blacklist.`)
+                    this.send(`/oc ${args[2]} ${uuid} added to blacklist.`)
                     blacklist += uuid + "\n";
 
                     // write the updated blacklist back to the file
@@ -46,7 +46,7 @@ class BlacklistCommand extends MinecraftCommand {
                 }
             }
             else if (args[1] == "remove") {
-                this.send(`/gc ${args[2]} ${uuid} removed from blacklist.`)
+                this.send(`/oc ${args[2]} ${uuid} removed from blacklist.`)
                 const index = blacklistedIDs.indexOf(uuid);
                 if (index > -1) {
                     blacklistedIDs.splice(index, 1);
