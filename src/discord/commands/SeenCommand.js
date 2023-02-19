@@ -65,7 +65,7 @@ async function getSeenFromUUID(uuid) {
         else if (data.online == true) {
             lastLogin = data.last_login;
             onlineFor = timeSince(Date.now(), lastLogin).toString().trim()
-            return `has been online for ${onlineFor}`
+            return `Has been online for ${onlineFor}`
         }
         else {
             offlineFor = timeSince(Date.now(), lastLogout).toString().trim()
