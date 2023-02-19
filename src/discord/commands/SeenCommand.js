@@ -94,7 +94,20 @@ class SeenCommand extends DiscordCommand {
         let args = this.getArgs(message)
         let user = args.shift()
         getSeenFromUsername(user).then(stats => {
-            this.send(`/gc ${user}'s ${stats}`)
+            message.channel.send({
+                embed: {
+                    description: stats,
+                    color: 'cbbeb5',
+                    timestamp: new Date(),
+                    footer: {
+                        text: "BOT",
+                    },
+                    author: {
+                        name: `${user}'s location`,
+                        icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                    },
+                },
+            })
         })
     }
 }
