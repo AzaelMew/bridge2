@@ -117,7 +117,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name, a) {
-  if(a != "safe"){
+  if(a == "User has been blocked by the guild blacklist."){
     return "User has been blocked by the guild blacklist."
   }
   else{
