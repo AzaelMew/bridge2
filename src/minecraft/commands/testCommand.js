@@ -1,8 +1,6 @@
 // Define new data to be added to the file
 const newData = {
-    name: 'Jane Doe',
-    age: 25,
-    email: 'jane.doe@example.com'
+        uuid: "uuid"
   };
 // Step 3: Use Node.js fs module to write the JSON string to a file on your system
 const fs = require('fs');
