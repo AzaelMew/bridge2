@@ -34,7 +34,7 @@ class HelpCommand extends DiscordCommand {
           },
           {
             name: 'Minecraft Commands',
-            value: `These commands can only be used through guild chat in-game.\n\n> **!claim**: Claim guild ranks based on player stats.\n> Refer to <#728262623354683473> for rank requirements.\n\n\`!stats\`: Shows a player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!slayer\`: Shows a player's Slayer stats.\n\`!networth (!nw)\`: Shows a player's networth.\n\`!math\`: Calculation command.\n\`!ping\`: Replies with Pong! to the user.\n\`!seen\`: Shows a specified player's last logout date.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!translate (!trans)\`: Translate text in different languages`
+            value: `These commands can only be used through guild chat in-game.\n\n> **!claim**: Claim guild ranks based on player stats.\n> Refer to <#728262623354683473> for rank requirements.\n\n\`!stats\`: Shows a player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!slayer\`: Shows a player's Slayer stats.\n\`!networth (!nw)\`: Shows a player's networth.\n\`!math\`: Calculation command.\n\`!ping\`: Replies with Pong! to the user.\n\`!seen\`: Shows a specified player's last logout date.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!seen\`: Shows a specified player's last logout date.\n\`!translate (!trans)\`: Translate text in different languages\n\`!farmhelper (!fh)\`: Tells you perfect speed to farm the specified crop`
           },
           {
             name: 'Staff Commands',
