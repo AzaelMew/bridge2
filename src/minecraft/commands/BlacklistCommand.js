@@ -41,8 +41,9 @@ class BlacklistCommand extends MinecraftCommand {
 
                     // write the updated blacklist back to the file
                     fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
-
-
+                }
+                else{
+                    this.send(`/oc ${args[2]} is already in the blacklist.`)
                 }
             }
             else if (args[1] == "remove") {
