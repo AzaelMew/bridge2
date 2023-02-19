@@ -13,22 +13,6 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
-async function readFileToArray(filename, callback) {
-  // Read file contents
-  fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    // Parse file contents into an array of strings
-    const dataArray = data.trim() ? data.split('\n') : [];
-
-    // Return array of strings
-    callback(null, dataArray);
-  });
-}
-
 
 function numberWithCommas(x) {
   if (x > 999815672) {
@@ -107,19 +91,19 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  if(await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
-    if(dataArray.includes(name)){
-      console.log("User has been blocked by the guild blacklist.")
-      return "User has been blocked by the guild blacklist."
+  fs.readFile(/home/azael/bridge/blacklist.txt, 'utf8', (err, data) => {
+    if (err) {
+      callback(err);
+      return;
     }
-    else{
-      console.log("safe")
-      return "safe"
-    }
-  }) !== "safe"){
-    return "User has been blocked by the guild blacklist."
-  }
-  else{
+
+    // Parse file contents into an array of strings
+    const dataArray = data.trim() ? data.split('\n') : [];
+
+    // Return array of strings
+    callback(null, dataArray);
+  });
+  console.log(dataArray)
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     console.log("goes this far c:")
     let newlvl = 0
@@ -157,7 +141,6 @@ async function getStatsFromUUID(name) {
       return stats
   
     }
-  }
 }
 
 class StateHandler extends EventHandler {
