@@ -1,7 +1,5 @@
 // Define new data to be added to the file
-const newData = {
-        uuid: "uuid"
-  };
+const newString = "uuid"
 // Step 3: Use Node.js fs module to write the JSON string to a file on your system
 const fs = require('fs');
 
