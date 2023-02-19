@@ -24,13 +24,30 @@ class TestCommand extends MinecraftCommand {
 
   onCommand() {
 
-    fs.writeFile('/home/azael/bridge/blacklist.json', jsonString, 'utf8', function (err) {
+    fs.readFile('data.json', 'utf8', (err, data) => {
         if (err) {
-            console.log("Error writing file:", err);
-        } else {
-            console.log("File successfully written!");
+          console.error(err);
+          return;
         }
-    });
+      
+        // Parse existing data from JSON format
+        const existingData = JSON.parse(data);
+      
+        // Merge existing data with new data
+        const mergedData = Object.assign({}, existingData, newData);
+      
+        // Convert merged data to JSON format
+        const jsonData = JSON.stringify(mergedData);
+      
+        // Write merged data back to file
+        fs.writeFile('/home/azael/bridge/blacklist.json', jsonData, (err) => {
+          if (err) {
+            console.error(err);
+            return;
+          }
+          console.log('Data added to file successfully!');
+        });
+      });
     
   }
 }
