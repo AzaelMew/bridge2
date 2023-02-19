@@ -18,30 +18,23 @@ class GHCommand extends MinecraftCommand {
         this.send(`/gc 327 Speed | 135° or 45° Angle Yaw`)
     }
     if(args[1]== "potato"){
-        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw`)
-        setTimeout(() => {
-            this.send("/gc Gardens to visit for examples: Azael_Nyaa for normal design | Xephor_EX for Semi-AFK design")
-        }, 500);
+        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
     }
     if(args[1]== "carrot"){
-        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw`)
-        this.send("/gc Gardens to visit for examples: Azael_Nyaa for normal design | Xephor_EX for Semi-AFK design")
+        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
 
     }
     if(args[1]== "wheat"){
-        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw`)
-        this.send("/gc Gardens to visit for examples: Azael_Nyaa for normal design | Xephor_EX for Semi-AFK design")
+        this.send(`/gc Normal: 400 Speed | Ange Angle Yaw, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
 
 
     }
     if(args[1]== "pumpkin"){
-        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw`)
-        this.send("/gc Gardens to visit for examples: Azael_Nyaa for normal design | Xephor_EX for Semi-AFK design")
+        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
 
     }
     if(args[1]== "melon"){
-        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw`)
-        this.send("/gc Gardens to visit for examples: Azael_Nyaa for normal design | Xephor_EX for Semi-AFK design")
+        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
 
     }
     if(args[1]== "cactus"){
