@@ -108,8 +108,6 @@ async function getGMemberFromUUID(uuid) {
 }
 async function getStatsFromUUID(name) {
   let a = await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
-    console.log(name)
-    console.log(dataArray)
     if(dataArray.includes(name)){
         return "User has been blocked by the guild blacklist."
     }
@@ -120,41 +118,44 @@ async function getStatsFromUUID(name) {
   if(a != "safe"){
     return "User has been blocked by the guild blacklist."
   }
-  const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-  let newlvl = 0
-  for (b = 0; b < Object.keys(data.data).length; b++) {
-      if (newlvl < data.data[b].sblevel) {
-          newlvl = data.data[b].sblevel
-      }
-  }
-  let nw = numberWithCommas(data.data[0].networth.networth)
-  let farming = data.data[0]?.skills?.farming.level
-  let mining = data.data[0]?.skills?.mining.level
-  let combat = data.data[0]?.skills?.combat.level
-  let foraging = data.data[0]?.skills?.foraging.level
-  let fishing = data.data[0]?.skills?.fishing.level
-  let enchant = data.data[0]?.skills?.enchanting.level
-  let alch = data.data[0]?.skills?.alchemy.level
-  let taming = data.data[0]?.skills?.taming.level
-  let carp = data.data[0]?.skills?.carpentry.level
-  let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-  let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
-  let wslayer = data.data[0]?.slayer?.wolf.xp
-  let zslayer = data.data[0]?.slayer?.zombie.xp
-  let sslayer = data.data[0]?.slayer?.spider.xp
-  let eslayer = data.data[0]?.slayer?.enderman.xp
-  let bslayer = data.data[0]?.slayer?.blaze.xp
-
-  let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-  if (newlvl >= 135) {
-    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
-    return stats
-
-  }
-  else {
-    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
-    return stats
-
+  else{
+    const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
+    console.log("goes this far c:")
+    let newlvl = 0
+    for (b = 0; b < Object.keys(data.data).length; b++) {
+        if (newlvl < data.data[b].sblevel) {
+            newlvl = data.data[b].sblevel
+        }
+    }
+    let nw = numberWithCommas(data.data[0].networth.networth)
+    let farming = data.data[0]?.skills?.farming.level
+    let mining = data.data[0]?.skills?.mining.level
+    let combat = data.data[0]?.skills?.combat.level
+    let foraging = data.data[0]?.skills?.foraging.level
+    let fishing = data.data[0]?.skills?.fishing.level
+    let enchant = data.data[0]?.skills?.enchanting.level
+    let alch = data.data[0]?.skills?.alchemy.level
+    let taming = data.data[0]?.skills?.taming.level
+    let carp = data.data[0]?.skills?.carpentry.level
+    let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
+    let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
+    let wslayer = data.data[0]?.slayer?.wolf.xp
+    let zslayer = data.data[0]?.slayer?.zombie.xp
+    let sslayer = data.data[0]?.slayer?.spider.xp
+    let eslayer = data.data[0]?.slayer?.enderman.xp
+    let bslayer = data.data[0]?.slayer?.blaze.xp
+  
+    let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
+    if (newlvl >= 135) {
+      let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
+      return stats
+  
+    }
+    else {
+      let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
+      return stats
+  
+    }
   }
 }
 
