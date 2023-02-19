@@ -25,6 +25,7 @@ class BlacklistCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         username = username.toString().toLowerCase()
+        console.log(username)
         if(username!="xephor_ex" || username!="azael_nyaa"|| username!="vallekoen") return
         let args = message.split(" ")
         getUUIDFromUsername(args[2]).then(uuid => {
