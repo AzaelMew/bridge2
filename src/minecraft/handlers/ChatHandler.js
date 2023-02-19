@@ -107,13 +107,19 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
+  let a = await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
     console.log(name)
     console.log(dataArray)
     if(dataArray.includes(name)){
         return "User has been blocked by the guild blacklist."
     }
+    else{
+      return "safe"
+    }
   });
+  if(a != "safe"){
+    return "User has been blocked by the guild blacklist."
+  }
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
   let newlvl = 0
   for (b = 0; b < Object.keys(data.data).length; b++) {
