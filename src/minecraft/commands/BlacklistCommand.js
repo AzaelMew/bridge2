@@ -1,5 +1,6 @@
 // Step 3: Use Node.js fs module to write the JSON string to a file on your system
 const fs = require('fs');
+const axios = require("axios");
 
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 async function getUUIDFromUsername(username) {
