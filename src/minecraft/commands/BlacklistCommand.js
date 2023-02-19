@@ -27,6 +27,7 @@ class BlacklistCommand extends MinecraftCommand {
         username = username.toString().toLowerCase()
         console.log(`"${username}"`)
         if(!array.includes(username)){
+            console.log(array)
             console.log("hello")
             return
         }
