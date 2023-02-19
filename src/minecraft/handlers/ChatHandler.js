@@ -52,17 +52,7 @@ async function getUUIDFromUsername(username) {
   }
 }
 async function getStatsFromUsername(username) {
-  let uuid = await getUUIDFromUsername(username)
-  let a = await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
-    if(dataArray.includes(uuid)){
-      return "User has been blocked by the guild blacklist."
-    }
-    else{
-      return "safe"
-    }
-  });
-  console.log(uuid, a)
-  return await getStatsFromUUID(uuid,a)
+  return await getStatsFromUUID(await getUUIDFromUsername(username))
   
 }
 async function getGMemberFromUsername(username) {
@@ -116,8 +106,17 @@ async function getGMemberFromUUID(uuid) {
     }
   }
 }
-async function getStatsFromUUID(name, a) {
-  if(a == "User has been blocked by the guild blacklist."){
+async function getStatsFromUUID(name) {
+  if(await readFileToArray('/home/azael/bridge/blacklist.txt', (err, dataArray) => {
+    if(dataArray.includes(name)){
+      console.log("User has been blocked by the guild blacklist.")
+      return "User has been blocked by the guild blacklist."
+    }
+    else{
+      console.log("safe")
+      return "safe"
+    }
+  }) !== "safe"){
     return "User has been blocked by the guild blacklist."
   }
   else{
