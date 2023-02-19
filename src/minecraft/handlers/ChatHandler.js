@@ -13,7 +13,7 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
-let filepath = "/home/azael/bridge/blacklist.txt"
+let filePath = "/home/azael/bridge/blacklist.txt"
 function findStringByID(id, filePath) {
   // read the contents of the text file
   const data = fs.readFileSync(filePath, 'utf8');
