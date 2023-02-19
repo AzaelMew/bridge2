@@ -13,23 +13,24 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
+let filepath = "/home/azael/bridge/blacklist.txt"
+function findStringByID(id, filePath) {
+  // read the contents of the text file
+  const data = fs.readFileSync(filePath, 'utf8');
 
-async function readFileToArray(filename) {
-  try {
-    // Read file contents
-    const data = fs.readFile(filename, 'utf8');
+  // search for the ID in the file
+  const index = data.indexOf(id);
 
-    // Parse file contents into an array of strings
-    const dataArray = data.trim() ? data.split('\n') : [];
-
-    // Return array of strings
-    return dataArray;
-  } catch (err) {
-    console.error(`Error reading file: ${err}`);
-    throw err;
+  // if the ID is found, return the string
+  if (index !== -1) {
+    const start = data.lastIndexOf('\n', index) + 1;
+    const end = data.indexOf('\n', index);
+    return data.substring(start, end);
   }
-}
 
+  // if the ID is not found, return null
+  return null;
+}
 function numberWithCommas(x) {
   if (x > 999815672) {
     x = x.toString().split(".")[0]
@@ -53,7 +54,7 @@ async function getUUIDFromUsername(username) {
 }
 async function getStatsFromUsername(username) {
   return await getStatsFromUUID(await getUUIDFromUsername(username))
-  
+
 }
 async function getGMemberFromUsername(username) {
   return await getGMemberFromUUID(await getUUIDFromUsername(username))
@@ -107,47 +108,46 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-    const dataArray = await readFileToArray('/home/azael/bridge/blacklist.txt'); 
-    if(dataArray.includes(name)){
-      return "This user has been blocked by the guilds blacklist."
+  const result = findStringByID(name, filePath);
+  if(result){
+    return "User has been blocked by the Guild Blacklist."
+  }
+  const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
+  let newlvl = 0
+  for (b = 0; b < Object.keys(data.data).length; b++) {
+    if (newlvl < data.data[b].sblevel) {
+      newlvl = data.data[b].sblevel
     }
-    const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-    console.log("goes this far c:")
-    let newlvl = 0
-    for (b = 0; b < Object.keys(data.data).length; b++) {
-        if (newlvl < data.data[b].sblevel) {
-            newlvl = data.data[b].sblevel
-        }
-    }
-    let nw = numberWithCommas(data.data[0].networth.networth)
-    let farming = data.data[0]?.skills?.farming.level
-    let mining = data.data[0]?.skills?.mining.level
-    let combat = data.data[0]?.skills?.combat.level
-    let foraging = data.data[0]?.skills?.foraging.level
-    let fishing = data.data[0]?.skills?.fishing.level
-    let enchant = data.data[0]?.skills?.enchanting.level
-    let alch = data.data[0]?.skills?.alchemy.level
-    let taming = data.data[0]?.skills?.taming.level
-    let carp = data.data[0]?.skills?.carpentry.level
-    let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-    let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
-    let wslayer = data.data[0]?.slayer?.wolf.xp
-    let zslayer = data.data[0]?.slayer?.zombie.xp
-    let sslayer = data.data[0]?.slayer?.spider.xp
-    let eslayer = data.data[0]?.slayer?.enderman.xp
-    let bslayer = data.data[0]?.slayer?.blaze.xp
-  
-    let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-    if (newlvl >= 135) {
-      let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
-      return stats
-  
-    }
-    else {
-      let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
-      return stats
-  
-    }
+  }
+  let nw = numberWithCommas(data.data[0].networth.networth)
+  let farming = data.data[0]?.skills?.farming.level
+  let mining = data.data[0]?.skills?.mining.level
+  let combat = data.data[0]?.skills?.combat.level
+  let foraging = data.data[0]?.skills?.foraging.level
+  let fishing = data.data[0]?.skills?.fishing.level
+  let enchant = data.data[0]?.skills?.enchanting.level
+  let alch = data.data[0]?.skills?.alchemy.level
+  let taming = data.data[0]?.skills?.taming.level
+  let carp = data.data[0]?.skills?.carpentry.level
+  let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
+  let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
+  let wslayer = data.data[0]?.slayer?.wolf.xp
+  let zslayer = data.data[0]?.slayer?.zombie.xp
+  let sslayer = data.data[0]?.slayer?.spider.xp
+  let eslayer = data.data[0]?.slayer?.enderman.xp
+  let bslayer = data.data[0]?.slayer?.blaze.xp
+
+  let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
+  if (newlvl >= 135) {
+    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
+    return stats
+
+  }
+  else {
+    let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Denied`
+    return stats
+
+  }
 }
 
 class StateHandler extends EventHandler {
@@ -387,24 +387,24 @@ class StateHandler extends EventHandler {
       let parts = message.split(':')
       let group = parts.shift().trim()
       let hasRank = group.endsWith(']')
-  
+
       let userParts = group.split(' ')
       let username = userParts[userParts.length - (hasRank ? 2 : 1)]
       let guildRank = userParts[userParts.length - 1].replace(/[\[\]]/g, '')
-  
+
       if (guildRank == username) {
         guildRank = 'Member'
       }
-  
+
       if (this.isMessageFromBot(username)) {
         return
       }
-  
+
       const playerMessage = parts.join(':').trim()
       if (playerMessage.length == 0 || this.command.handle(username, playerMessage)) {
         return
       }
-  
+
       if (playerMessage == '@') {
         return
       }
@@ -558,7 +558,7 @@ class StateHandler extends EventHandler {
   isLobbyJoinMessage(message) {
     return (message.endsWith(' the lobby!') || message.endsWith(' the lobby! <<<')) && message.includes('[MVP+')
   }
-  
+
   isOfficerMessage(message) {
     return message.startsWith('Officer >') && message.includes(':')
   }
