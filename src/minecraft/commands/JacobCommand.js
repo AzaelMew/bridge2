@@ -22,7 +22,8 @@ async function getJacobs() {
                 eventString.push(crop);
             });
             console.log(eventString+" "+timeUntilJacobEvent)
-            return `The next event is in ${timeUntilJacobEvent} and it will have ${eventString}`
+            let contest = `The next event is in ${timeUntilJacobEvent} and it will have ${eventString.replaceAll(",",", ")}`
+            return 
         }
     }
 }
