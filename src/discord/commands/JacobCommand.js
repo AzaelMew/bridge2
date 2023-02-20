@@ -1,4 +1,4 @@
-const MinecraftCommand = require('../../contracts/MinecraftCommand')
+const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 function convertSecondsToMinutesAndSeconds(milliseconds) {
     var minutes = Math.floor(milliseconds / 60000);
@@ -20,12 +20,12 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `Next contest starts in: ${timeUntilJacobEvent} ┃ Crops: ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `The next contest starts in: ${timeUntilJacobEvent}\nCrops: \n\n- ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
 }
-class JacobCommand extends MinecraftCommand {
+class JacobCommand extends DiscordCommand {
     constructor(minecraft) {
         super(minecraft)
 
@@ -36,8 +36,20 @@ class JacobCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         getJacobs().then(contest => {
-            console.log(contest)
-            this.send(`/gc ${contest}`)
+            message.channel.send({
+                embed: {
+                    description: contest.replaceAll(", ","\n- "),
+                    color: 'cbbeb5',
+                    timestamp: new Date(),
+                    footer: {
+                        text: "BOT",
+                    },
+                    author: {
+                        name: `Next Jacob's contest`,
+                    },
+                },
+            })
+            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n","").replaceAll("- ","")}`)
         })
     }
 }
