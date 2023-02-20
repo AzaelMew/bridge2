@@ -44,9 +44,6 @@ class JacobCommand extends DiscordCommand {
                     footer: {
                         text: "BOT",
                     },
-                    author: {
-                        name: `Next Jacob's contest`,
-                    },
                 },
             })
             this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
