@@ -20,7 +20,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `Next contest starts in: ${timeUntilJacobEvent} ┃ Crops: ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `The next contest starts in: ${timeUntilJacobEvent}\nCrops: \n\n- ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
@@ -36,8 +36,9 @@ class JacobCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         getJacobs().then(contest => {
-            console.log(contest)
-            this.send(`/gc ${contest}`)
+            this.minecraft.broadcastCommandEmbed({ username: `Next Jacob's contest`, message: contest.replaceAll(", ","\n- "),
+            })
+            this.send(`/gc ${contest.replaceAll("\n\n- ","").replaceAll("\n"," ┃ ").replaceAll("- ","")}`)
         })
     }
 }
