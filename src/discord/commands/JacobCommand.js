@@ -38,7 +38,7 @@ class JacobCommand extends DiscordCommand {
         getJacobs().then(contest => {
             message.channel.send({
                 embed: {
-                    description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**"),
+                    description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
                     color: 'cbbeb5',
                     timestamp: new Date(),
                     footer: {
