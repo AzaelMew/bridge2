@@ -10,9 +10,11 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
 }
 async function getJacobs() {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
+    console.log(data)
     for (jEvent of data) {
         let currentTime = Date.now();
         let eventTime = jEvent['time'] * 1000;
+        console.log(eventTime)
         if (currentTime < eventTime) {
             let delta = eventTime - currentTime;
             let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
