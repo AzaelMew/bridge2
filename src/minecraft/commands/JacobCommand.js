@@ -23,7 +23,7 @@ async function getJacobs() {
             });
             console.log(eventString+" "+timeUntilJacobEvent)
             let contest = `The next event is in ${timeUntilJacobEvent} and it will have ${eventString.replaceAll(",",", ")}`
-            return 
+            return contest
         }
     }
 }
@@ -38,6 +38,7 @@ class JacobCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         getJacobs().then(contest => {
+            console.log(contest)
             this.send(`/gc ${contest}`)
         })
     }
