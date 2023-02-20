@@ -36,7 +36,7 @@ class JacobCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         getJacobs().then(contest => {
-            this.minecraft.broadcastCommandEmbed2({ username: `Next Jacob's contest`, message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**"),
+            this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
             })
             this.send(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
         })
