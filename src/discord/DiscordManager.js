@@ -139,6 +139,26 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
+  onBroadcastCommandEmbed2({ username, message}) {
+    this.app.log.broadcast(message, 'Event')
+
+    this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
+      channel.send({
+        embed: {
+          description: message,
+          color: '2A2A2A',
+          timestamp: new Date(),
+          footer: {
+            text: "BOT",
+          },
+          author: {
+            name: username,
+          },
+        },
+      })
+    })
+  }
+
   onBroadcastOnEmbed({ username, message}) {
     this.app.log.broadcast(message, 'Event')
 
