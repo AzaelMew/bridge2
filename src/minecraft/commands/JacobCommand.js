@@ -10,7 +10,6 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
 }
 async function getJacobs() {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
-    console.log(data)
     for (jEvent of data) {
         let currentTime = Date.now();
         let eventTime = jEvent['time'] * 1000;
@@ -21,8 +20,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            console.log(eventString+" "+timeUntilJacobEvent)
-            let contest = `The next event is in ${timeUntilJacobEvent} and it will have ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `Next contest starts in: ${timeUntilJacobEvent} | Crops: ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
