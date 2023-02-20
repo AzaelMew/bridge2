@@ -12,12 +12,7 @@ class JokeCommand extends DiscordCommand {
   onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
-    message.channel.send({
-      embed: {
-        description: `<@524222836949123084>`,
-        color: '47F049'
-      }
-    })
+    message.channel.send("<@524222836949123084>")
   }
 }
 module.exports = JokeCommand
