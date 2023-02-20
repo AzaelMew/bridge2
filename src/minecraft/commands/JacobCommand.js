@@ -24,7 +24,7 @@ async function getJacobs() {
         }
     }
 }
-class StatsCommand extends MinecraftCommand {
+class JacobCommand extends MinecraftCommand {
     constructor(minecraft) {
         super(minecraft)
 
@@ -40,4 +40,4 @@ class StatsCommand extends MinecraftCommand {
     }
 }
 
-module.exports = StatsCommand
+module.exports = JacobCommand
