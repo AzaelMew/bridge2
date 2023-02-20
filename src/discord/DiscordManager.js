@@ -151,9 +151,6 @@ class DiscordManager extends CommunicationBridge {
           footer: {
             text: "BOT",
           },
-          author: {
-            name: username,
-          },
         },
       })
     })
