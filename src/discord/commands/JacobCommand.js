@@ -49,7 +49,7 @@ class JacobCommand extends DiscordCommand {
                     },
                 },
             })
-            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n","").replaceAll("- ","")}`)
+            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n- ","").replaceAll("\n"," ┃ ").replaceAll("- ","")}`)
         })
     }
 }
