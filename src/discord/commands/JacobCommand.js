@@ -20,7 +20,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `The next contest starts in: ${timeUntilJacobEvent}\nCrops: \n\n- ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `The next contest starts in: ${timeUntilJacobEvent}\n\nCrops: \n- ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
@@ -38,7 +38,7 @@ class JacobCommand extends DiscordCommand {
         getJacobs().then(contest => {
             message.channel.send({
                 embed: {
-                    description: contest.replaceAll(", ","\n- "),
+                    description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**"),
                     color: 'cbbeb5',
                     timestamp: new Date(),
                     footer: {
@@ -49,7 +49,7 @@ class JacobCommand extends DiscordCommand {
                     },
                 },
             })
-            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n- ","").replaceAll("\n"," ┃ ").replaceAll("- ","")}`)
+            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
         })
     }
 }
