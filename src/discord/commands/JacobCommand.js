@@ -34,7 +34,7 @@ class JacobCommand extends DiscordCommand {
         this.description = "Says users stats"
     }
 
-    async onCommand(username, message) {
+    onCommand(message) {
         getJacobs().then(contest => {
             message.channel.send({
                 embed: {
