@@ -14,7 +14,6 @@ async function getJacobs() {
     for (jEvent of data) {
         let currentTime = Date.now();
         let eventTime = jEvent['time'] * 1000;
-        console.log(eventTime)
         if (currentTime < eventTime) {
             let delta = eventTime - currentTime;
             let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
@@ -22,6 +21,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
+            console.log(eventString+" "+timeUntilJacobEvent)
             return `The next event is in ${timeUntilJacobEvent} and it will have ${eventString}`
         }
     }
