@@ -20,7 +20,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `:Contest starts in: ${timeUntilJacobEvent} | Crops: ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `Contest starts in; ${timeUntilJacobEvent} — ୨୧ — Crops; ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
