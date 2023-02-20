@@ -28,7 +28,7 @@ class StatsCommand extends MinecraftCommand {
     constructor(minecraft) {
         super(minecraft)
 
-        this.name = 'stats'
+        this.name = 'contest'
 
         this.description = "Says users stats"
     }
