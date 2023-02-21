@@ -46,8 +46,10 @@ class KickCommand extends DiscordCommand {
                   },
               },
           })
-        this.sendMinecraftMessage(`/g kick ${user ? user : ''} ${reason ? reason : ''}`)
-      })
+          setTimeout(() => {
+            this.sendMinecraftMessage(`/g kick ${user ? user : ''} ${reason ? reason : ''}`)
+          }, 500);
+        })
     }
   }
 }
