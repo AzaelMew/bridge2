@@ -8,6 +8,10 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
+function capitalize(s)
+{
+    return s[0].toUpperCase() + s.slice(1);
+}
 async function getJacobs(crop) {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
     for (jEvent of data) {
@@ -36,7 +40,20 @@ class CropCommand extends MinecraftCommand {
 
     async onCommand(username, message) {
         let args = message.split(" ")
-        getJacobs(args[1]).then(contest => {
+        let crop = args[1]
+        if(crop.toLowerCase() == "cocoa"){
+            crop = "Cocoa Bean"
+        }
+        if(crop.toLowerCase() == "wart"){
+            crop = "Nether Wart"
+        }
+        if(crop.toLowerCase() == "cane"){
+            crop = "Sugar Cane"
+        }
+        else{
+            capitalize(crop)
+        }
+        getJacobs(crop).then(contest => {
             this.send(`/gc ${contest}`)
         })
     }
