@@ -51,7 +51,7 @@ class CropCommand extends MinecraftCommand {
         let args = message.split(" ")
         let crop = args[1]
         if(crop.toLowerCase() == "cocoa"){
-            crop = "Cocoa Bean"
+            crop = "Cocoa Beans"
             getJacobs(crop).then(contest => {
                 this.send(`/gc ${contest}`)
             })
