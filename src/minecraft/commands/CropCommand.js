@@ -29,7 +29,7 @@ class CropCommand extends MinecraftCommand {
     constructor(minecraft) {
         super(minecraft)
 
-        this.name = 'contest'
+        this.name = 'crop'
 
         this.description = "Says users stats"
     }
