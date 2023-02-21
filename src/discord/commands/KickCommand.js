@@ -29,11 +29,21 @@ class KickCommand extends DiscordCommand {
         let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
         let blacklistedIDs = blacklist.trim().split('\n');
             if (!blacklist.includes(uuid)) {
-                this.send(`/oc ${args[2]} ${uuid} added to blacklist.`)
+              this.sendMinecraftMessage(`/oc ${user} ${uuid} kicked, and added to blacklist.`)
                 blacklist += uuid + "\n";
   
                 fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
             }
+            message.channel.send({
+              embed: {
+                  description: `${user} has been kicked and blacklisted from joining.`,
+                  color: 'cbbeb5',
+                  timestamp: new Date(),
+                  footer: {
+                      text: "BOT",
+                  },
+              },
+          })
         this.sendMinecraftMessage(`/g kick ${user ? user : ''} ${reason ? reason : ''}`)
       })
     }
