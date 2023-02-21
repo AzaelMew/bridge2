@@ -33,7 +33,7 @@ async function getJacobs(crop) {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `The next contest with ${crop} is in ${timeUntilJacobEvent}`
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent}`
             return contest
         }
     }
