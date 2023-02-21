@@ -8,6 +8,16 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+  charactersLength));
+   }
+   return result;
+  }
 async function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -62,7 +72,7 @@ class CropCommand extends MinecraftCommand {
             capitalizeFirstLetter(crop).then(a =>{
                 console.log(a)
                 getJacobs(a).then(contest => {
-                    this.send(`/gc ${contest}`)
+                    this.send(`/gc ${contest} - ${makeid(5)}`)
                 })
             })
         }
