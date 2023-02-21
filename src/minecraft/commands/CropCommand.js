@@ -17,7 +17,6 @@ async function getJacobs(crop) {
     for (jEvent of data) {
         let currentTime = Date.now();
         let eventTime = jEvent['time'] * 1000;
-        console.log(crop)
         if (currentTime < eventTime && jEvent['crops'].includes(crop)) {
             let delta = eventTime - currentTime;
             let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
@@ -62,6 +61,7 @@ class CropCommand extends MinecraftCommand {
         }
         else{
             capitalizeFirstLetter(crop).then(a =>{
+                console.log(a)
                 getJacobs(a).then(contest => {
                     this.send(`/gc ${contest}`)
                 })
