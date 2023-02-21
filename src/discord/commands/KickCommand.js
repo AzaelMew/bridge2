@@ -23,7 +23,7 @@ class KickCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     let reason = args.join(' ')
-    if(user.toLowerCase()=="azael_nyaa") return
+    if(user.toLowerCase()=="azael_nya") return
     else{
       getUUIDFromUsername(user).then(uuid => {
         let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
