@@ -72,7 +72,7 @@ class CropCommand extends MinecraftCommand {
             capitalizeFirstLetter(crop).then(a =>{
                 console.log(a)
                 getJacobs(a).then(contest => {
-                    this.send(`/gc ${contest} - ${makeid(5)}`)
+                    this.send(`/gc ${contest} - ${makeid(8)}`)
                 })
             })
         }
