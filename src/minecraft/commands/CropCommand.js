@@ -61,8 +61,8 @@ class CropCommand extends MinecraftCommand {
             })
         }
         else{
-            capitalizeFirstLetter(crop).then(crop =>{
-                getJacobs(crop).then(contest => {
+            capitalizeFirstLetter(crop).then(a =>{
+                getJacobs(a).then(contest => {
                     this.send(`/gc ${contest}`)
                 })
             })
