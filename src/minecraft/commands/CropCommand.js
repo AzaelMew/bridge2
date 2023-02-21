@@ -44,19 +44,29 @@ class CropCommand extends MinecraftCommand {
         let crop = args[1]
         if(crop.toLowerCase() == "cocoa"){
             crop = "Cocoa Bean"
+            getJacobs(crop).then(contest => {
+                this.send(`/gc ${contest}`)
+            })
         }
-        if(crop.toLowerCase() == "wart"){
+        else if(crop.toLowerCase() == "wart"){
             crop = "Nether Wart"
+            getJacobs(crop).then(contest => {
+                this.send(`/gc ${contest}`)
+            })
         }
-        if(crop.toLowerCase() == "cane"){
+        else if(crop.toLowerCase() == "cane"){
             crop = "Sugar Cane"
+            getJacobs(crop).then(contest => {
+                this.send(`/gc ${contest}`)
+            })
         }
         else{
             capitalize(crop)
+            getJacobs(crop).then(contest => {
+                this.send(`/gc ${contest}`)
+            })
         }
-        getJacobs(crop).then(contest => {
-            this.send(`/gc ${contest}`)
-        })
+
     }
 }
 
