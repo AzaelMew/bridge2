@@ -1,4 +1,5 @@
 const DiscordCommand = require('../../contracts/DiscordCommand')
+const axios = require("axios");
 async function getUUIDFromUsername(username) {
   if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
       return "Error"
