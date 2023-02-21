@@ -9,6 +9,7 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
 function capitalizeFirstLetter(string) {
+    console.log(string.charAt(0).toUpperCase() + string.slice(1))
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 async function getJacobs(crop) {
