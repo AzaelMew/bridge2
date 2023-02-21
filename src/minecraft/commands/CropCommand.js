@@ -8,9 +8,8 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
-function capitalize(s)
-{
-    return s[0].toUpperCase() + s.slice(1);
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 async function getJacobs(crop) {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
@@ -61,7 +60,7 @@ class CropCommand extends MinecraftCommand {
             })
         }
         else{
-            capitalize(crop)
+            capitalizeFirstLetter(crop)
             getJacobs(crop).then(contest => {
                 this.send(`/gc ${contest}`)
             })
