@@ -18,14 +18,14 @@ class GHCommand extends MinecraftCommand {
         this.send(`/gc 327 Speed | 135° or 45° Angle Yaw`)
     }
     else if(args[1]== "potato"){
-        this.send(`/gc Normal: 360 + Sprint or 400 no sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
     }
     else if(args[1]== "carrot"){
-        this.send(`/gc Normal: 360 + Sprint or 400 no sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
 
     }
     else if(args[1]== "wheat"){
-        this.send(`/gc Normal: 360 + Sprint or 400 no sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
     }
     else if(args[1]== "pumpkin"){
         this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
