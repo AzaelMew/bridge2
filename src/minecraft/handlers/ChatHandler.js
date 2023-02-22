@@ -93,9 +93,9 @@ async function getGMemberFromUUID(uuid) {
 }
 async function getStatsFromUUID(name) {
   let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', "utf-8")
-  if(blacklist.includes(name)){
+  if (blacklist.includes(name)) {
     return "User has been blocked by the guild blacklist."
-  }else{
+  } else {
     console.log("User is safe.")
   }
   const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
@@ -156,33 +156,29 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
+    function scheduleNextRun() {
+      // Get the current time
+      const now = new Date();
+      
+      // Calculate the time until the next 10-minute mark
+      const minutesUntilNextTenMinuteMark = 10 - (now.getMinutes() % 10);
+      const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
+      const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
+      const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
+    
+      // Calculate the time until the next scheduled run
+      const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
+    
+      // Schedule the function to run at the desired time
+      setTimeout(function() {
+        runAtTenPastHour();
+      }, timeUntilNextScheduledRun);
+    }
     function runAtTenPastHour() {
       console.log("works")
     }
-    
-function scheduleNextRun() {
-  // Calculate the time until the next 10-minute mark
-  const now = new Date();
-  const minutesUntilNextTenMinuteMark = 10 - (now.getMinutes() % 10);
-  const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
-  const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
-  const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
-
-  // Calculate the time until the next scheduled run
-  const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
-
-  // Schedule the function to run at the desired time
-  setTimeout(function() {
-    runAtTenPastHour();
-    scheduleNextRun();
-  }, timeUntilNextScheduledRun);
-
-  // Run the function immediately if it's already past the 10-minute mark
-  /*if (minutesUntilNextTenMinuteMark == 0 && now.getSeconds() >= 10) {
-    runAtTenPastHour();
-  }*/
-}
-    if(numuwuowo == 0){
+    await ()
+    if (numuwuowo == 0) {
       console.log("Running every hour.")
       numuwuowo = 1
       scheduleNextRun();
