@@ -152,8 +152,6 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
-
-
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
     }
