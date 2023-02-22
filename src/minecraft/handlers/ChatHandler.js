@@ -153,9 +153,6 @@ class StateHandler extends EventHandler {
   onMessage(event) {
     const message = event.toString().trim()
 
-    if (numuwuowo == 0) {
-      console.log("Running every hour.")
-    }
 
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
