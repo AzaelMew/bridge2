@@ -179,13 +179,9 @@ const runAtTenPastHour = () => {
     }
     registerEvents(bot) {
       this.bot = bot
-  
-      this.bot.on('message', (...args) => this.onMessage(...args))
-    }
-    onMessage(event) {
-      const message = event.toString().trim()
       return this.bot.chat("/gc hello test test")
     }
+    
   }
 }
 
