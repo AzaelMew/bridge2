@@ -24,12 +24,10 @@ async function ask() {
         'Very doubtful.',
         'No way.',
         'Maybe',
-        'The answer is hiding inside you',
         'No.',
         'Depends on the mood of the RNGesus',
         'No',
         'Yes',
-        'Hang on',
     ];
     let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
     return eightball[index]
