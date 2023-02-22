@@ -177,7 +177,6 @@ class StateHandler extends EventHandler {
     function runAtTenPastHour() {
       console.log("works")
     }
-    await ()
     if (numuwuowo == 0) {
       console.log("Running every hour.")
       numuwuowo = 1
