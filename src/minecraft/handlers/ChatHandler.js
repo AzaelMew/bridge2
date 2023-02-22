@@ -172,7 +172,7 @@ const scheduleNextRun = () => {
 const runAtTenPastHour = () => {
   // Define the function to be executed at 10 minutes past the hour here
   console.log('Function executed at 10 minutes past the hour');
-  return this.discord.app.minecraft.bot.chat("/gc Hello test test")
+  //return this.discord.app.minecraft.bot.chat("/gc Hello test test")
 }
 
 class StateHandler extends EventHandler {
