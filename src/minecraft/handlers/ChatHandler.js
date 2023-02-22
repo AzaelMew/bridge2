@@ -161,20 +161,28 @@ class StateHandler extends EventHandler {
       return this.bot.chat("/gc Test")
     }
     
-    function scheduleNextRun() {
-      // Calculate the time until the next hour
-      const now = new Date();
-      const timeUntilNextHour = (60 - now.getMinutes()) * 60 * 1000 - now.getSeconds() * 1000 - now.getMilliseconds();
-    
-      // Add 10 minutes to get the desired time
-      const timeUntilTenPastHour = timeUntilNextHour + 3 * 60 * 1000;
-    
-      // Schedule the function to run at the desired time
-      setTimeout(function() {
-        runAtTenPastHour();
-        scheduleNextRun();
-      }, timeUntilTenPastHour);
-    }
+function scheduleNextRun() {
+  // Calculate the time until the next 10-minute mark
+  const now = new Date();
+  const minutesUntilNextTenMinuteMark = 10 - (now.getMinutes() % 10);
+  const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
+  const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
+  const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
+
+  // Calculate the time until the next scheduled run
+  const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
+
+  // Schedule the function to run at the desired time
+  setTimeout(function() {
+    runAtTenPastHour();
+    scheduleNextRun();
+  }, timeUntilNextScheduledRun);
+
+  // Run the function immediately if it's already past the 10-minute mark
+  if (minutesUntilNextTenMinuteMark == 0 && now.getSeconds() >= 10) {
+    runAtTenPastHour();
+  }
+}
     if(numuwuowo == 0){
       console.log("Running every hour.")
       numuwuowo = 1
