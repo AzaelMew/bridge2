@@ -152,7 +152,6 @@ const scheduleNextRun = () => {
   // Schedule the function to run at the desired time
   setTimeout(() => {
     runAtTenPastHour();
-    scheduleNextRun();
   }, timeUntilNextScheduledRun);
 }
 
