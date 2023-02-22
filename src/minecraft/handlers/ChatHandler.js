@@ -172,6 +172,7 @@ const scheduleNextRun = () => {
 const runAtTenPastHour = () => {
   // Define the function to be executed at 10 minutes past the hour here
   console.log('Function executed at 10 minutes past the hour');
+  return this.bot.chat("/gc Hello test test")
 }
 
 class StateHandler extends EventHandler {
@@ -190,10 +191,6 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
-
-    async function runAtTenPastHour() {
-      console.log("works")
-    }
 
     if (numuwuowo == 0) {
       console.log("Running every hour.")
