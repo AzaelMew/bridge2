@@ -135,56 +135,6 @@ async function getStatsFromUUID(name) {
 
   }
 }
-let numuwuowo = 0
-const scheduleNextRun = () => {
-  // Get the current time
-  const now = new Date();
-  
-  // Check if the current time is past the 10 minute mark
-  if (now.getMinutes() >= 10) {
-    // Calculate the time until the next hour
-    const minutesUntilNextHour = 60 - now.getMinutes();
-    const secondsUntilNextHour = 60 - now.getSeconds();
-    const millisecondsUntilNextHour = 1000 - now.getMilliseconds();
-    const timeUntilNextHour = minutesUntilNextHour * 60 * 1000 + secondsUntilNextHour * 1000 + millisecondsUntilNextHour;
-
-    // Schedule the function to run at the next hour mark
-    setTimeout(() => {
-      runAtTenPastHour();
-      scheduleNextRun();
-    }, timeUntilNextHour);
-  } else {
-    // Calculate the time until the next 10 minute mark
-    const minutesUntilNextTenMinuteMark = 10 - now.getMinutes();
-    const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
-    const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
-    const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
-
-    // Schedule the function to run at the next 10 minute mark
-    setTimeout(() => {
-      runAtTenPastHour();
-      scheduleNextRun();
-    }, timeUntilNextTenMinuteMark);
-  }
-}
-
-
-const runAtTenPastHour = () => {
-  class BotHandler extends EventHandler {
-    constructor(minecraft, command) {
-      super()
-  
-      this.minecraft = minecraft
-      this.command = command
-    }
-    registerEvents(bot) {
-      this.bot = bot
-      return this.bot.chat("/gc hello test test")
-    }
-    
-  }
-  module.exports = BotHandler
-}
 
 class StateHandler extends EventHandler {
   constructor(minecraft, command) {
@@ -205,12 +155,8 @@ class StateHandler extends EventHandler {
 
     if (numuwuowo == 0) {
       console.log("Running every hour.")
-      numuwuowo = 1
-      scheduleNextRun();
     }
-    if (this.isTestMessage(message)) {
-      runAtTenPastHour()
-    }
+
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
     }
@@ -497,9 +443,6 @@ class StateHandler extends EventHandler {
     if (message.startsWith("Your new API key is")) {
       return message
     }
-  }
-  isTestMessage(message) {
-    return message
   }
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
