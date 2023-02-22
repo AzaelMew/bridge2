@@ -150,11 +150,12 @@ const scheduleNextRun = () => {
   const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
 
   // Schedule the function to run at the desired time
-  console.log(timeUntilNextScheduledRun)
   setTimeout(() => {
     runAtTenPastHour();
+    scheduleNextRun();
   }, timeUntilNextScheduledRun);
 }
+
 
 const runAtTenPastHour = () => {
   // Define the function to be executed at 10 minutes past the hour here
