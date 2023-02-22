@@ -170,7 +170,7 @@ const scheduleNextRun = () => {
 
 
 const runAtTenPastHour = () => {
-  class StateHandler extends EventHandler {
+  class BotHandler extends EventHandler {
     constructor(minecraft, command) {
       super()
   
@@ -183,6 +183,7 @@ const runAtTenPastHour = () => {
     }
     
   }
+  module.exports = BotHandler
 }
 
 class StateHandler extends EventHandler {
