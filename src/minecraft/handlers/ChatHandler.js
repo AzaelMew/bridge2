@@ -136,6 +136,30 @@ async function getStatsFromUUID(name) {
   }
 }
 let numuwuowo = 0
+const scheduleNextRun = () => {
+  // Get the current time
+  const now = new Date();
+  
+  // Calculate the time until the next 10-minute mark
+  const minutesUntilNextTenMinuteMark = 10 - (now.getMinutes() % 10);
+  const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
+  const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
+  const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
+
+  // Calculate the time until the next scheduled run
+  const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
+
+  // Schedule the function to run at the desired time
+  setTimeout(() => {
+    runAtTenPastHour();
+    scheduleNextRun();
+  }, timeUntilNextScheduledRun);
+}
+
+const runAtTenPastHour = () => {
+  // Define the function to be executed at 10 minutes past the hour here
+  console.log('Function executed at 10 minutes past the hour');
+}
 
 class StateHandler extends EventHandler {
   constructor(minecraft, command) {
@@ -161,6 +185,7 @@ class StateHandler extends EventHandler {
     if (numuwuowo == 0) {
       console.log("Running every hour.")
       numuwuowo = 1
+      scheduleNextRun();
     }
 
     if (this.isLobbyJoinMessage(message)) {
