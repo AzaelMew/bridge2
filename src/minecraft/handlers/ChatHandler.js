@@ -135,6 +135,27 @@ async function getStatsFromUUID(name) {
 
   }
 }
+let numuwuowo = 0
+function runAtTenPastHour() {
+  // Your code goes here
+}
+
+function scheduleNextRun() {
+  // Calculate the time until the next hour
+  const now = new Date();
+  const timeUntilNextHour = (60 - now.getMinutes()) * 60 * 1000 - now.getSeconds() * 1000 - now.getMilliseconds();
+
+  // Add 10 minutes to get the desired time
+  const timeUntilTenPastHour = timeUntilNextHour + 10 * 60 * 1000;
+
+  // Schedule the function to run at the desired time
+  setTimeout(function() {
+    runAtTenPastHour();
+    scheduleNextRun();
+  }, timeUntilTenPastHour);
+}
+
+// Call the scheduleNextRun() function to start the scheduling process
 
 class StateHandler extends EventHandler {
   constructor(minecraft, command) {
@@ -152,6 +173,11 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
+
+    if(numuwuowo == 0){
+      numuwuowo = 1
+      scheduleNextRun();
+    }
 
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
