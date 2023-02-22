@@ -158,7 +158,6 @@ class StateHandler extends EventHandler {
     const message = event.toString().trim()
     function runAtTenPastHour() {
       console.log("works")
-      return this.bot.chat("/gc Test")
     }
     
 function scheduleNextRun() {
