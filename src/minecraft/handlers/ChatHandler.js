@@ -175,6 +175,7 @@ class StateHandler extends EventHandler {
     const message = event.toString().trim()
 
     if(numuwuowo == 0){
+      console.log("Running every hour.")
       numuwuowo = 1
       scheduleNextRun();
     }
