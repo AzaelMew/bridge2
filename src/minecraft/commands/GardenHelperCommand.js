@@ -12,7 +12,7 @@ class GHCommand extends MinecraftCommand {
   onCommand(username, message) {
     let args = message.toLowerCase().split(" ")
     if(args[1]== "cocoa"){
-        this.send(`/gc 150-170 Speed, depending on design. | 40-65° Angle Pitch depending on design.`)
+        this.send(`/gc Whatever the fuck you want, as people can't seem to decide`)
     }
     else if(args[1]== "cane"){
         this.send(`/gc 327 Speed | 135° or 45° Angle Yaw`)
