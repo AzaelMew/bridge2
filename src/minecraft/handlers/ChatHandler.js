@@ -197,9 +197,7 @@ class StateHandler extends EventHandler {
       numuwuowo = 1
       scheduleNextRun();
     }
-    if (this.isTestMessage(message)) {
-      runAtTenPastHour()
-    }
+
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
     }
