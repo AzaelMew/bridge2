@@ -170,9 +170,23 @@ const scheduleNextRun = () => {
 
 
 const runAtTenPastHour = () => {
-  // Define the function to be executed at 10 minutes past the hour here
-  console.log('Function executed at 10 minutes past the hour');
-  //return this.minecraft.bot.chat("/gc Hello test test")
+  class StateHandler extends EventHandler {
+    constructor(minecraft, command) {
+      super()
+  
+      this.minecraft = minecraft
+      this.command = command
+    }
+    registerEvents(bot) {
+      this.bot = bot
+  
+      this.bot.on('message', (...args) => this.onMessage(...args))
+    }
+    onMessage(event) {
+      const message = event.toString().trim()
+      return this.bot.chat("/gc hello test test")
+    }
+  }
 }
 
 class StateHandler extends EventHandler {
