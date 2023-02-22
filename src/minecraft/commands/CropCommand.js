@@ -1,12 +1,12 @@
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
-function convertSecondsToMinutesAndSeconds(milliseconds) {
-    var minutes = Math.floor(milliseconds / 60000);
+function convertSecondsToHoursMinutesAndSeconds(milliseconds) {
+    var hours = Math.floor(milliseconds / 3600000);
+    var minutes = Math.floor((milliseconds % 3600000) / 60000);
     var seconds = ((milliseconds % 60000) / 1000).toFixed(0);
-    //let seconds = milliseconds;
-    //let minutes = Math.floor(seconds / 60);
-    //seconds = Math.floor(seconds % 60);
-    return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    return (hours > 0 ? (hours < 10 ? "0" : "") + hours + ":" : "") + 
+           (minutes < 10 ? "0" : "") + minutes + ":" + 
+           (seconds < 10 ? "0" : "") + seconds;
 }
 function makeid(length) {
     var result           = '';
@@ -28,7 +28,7 @@ async function getJacobs(crop) {
         let eventTime = jEvent['time'] * 1000;
         if (currentTime < eventTime && jEvent['crops'].includes(crop)) {
             let delta = eventTime - currentTime;
-            let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
+            let timeUntilJacobEvent = convertSecondsToHoursMinutesAndSeconds(delta);
             let eventString = [];
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
