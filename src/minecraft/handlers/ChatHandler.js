@@ -137,9 +137,6 @@ async function getStatsFromUUID(name) {
 }
 let numuwuowo = 0
 
-
-// Call the scheduleNextRun() function to start the scheduling process
-
 class StateHandler extends EventHandler {
   constructor(minecraft, command) {
     super()
@@ -156,7 +153,7 @@ class StateHandler extends EventHandler {
 
   onMessage(event) {
     const message = event.toString().trim()
-    function scheduleNextRun() {
+    scheduleNextRun = () => {
       // Get the current time
       const now = new Date();
       
@@ -165,18 +162,26 @@ class StateHandler extends EventHandler {
       const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
       const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
       const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
-    
+  
       // Calculate the time until the next scheduled run
       const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
-    
+  
       // Schedule the function to run at the desired time
-      setTimeout(function() {
-        runAtTenPastHour();
+      setTimeout(() => {
+        this.runAtTenPastHour();
+        this.scheduleNextRun();
       }, timeUntilNextScheduledRun);
     }
-    function runAtTenPastHour() {
+  
+    runAtTenPastHour = () => {
+      // Define the function to be executed at 10 minutes past the hour here
+      console.log('Function executed at 10 minutes past the hour');
+      return this.bot.chat('/gc test test hello')
+    }
+    async function runAtTenPastHour() {
       console.log("works")
     }
+
     if (numuwuowo == 0) {
       console.log("Running every hour.")
       numuwuowo = 1
