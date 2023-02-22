@@ -487,9 +487,7 @@ class StateHandler extends EventHandler {
       return message
     }
   }
-  isTestMessage(message) {
-    return message
-  }
+
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
       reta.push(message + "\n")
