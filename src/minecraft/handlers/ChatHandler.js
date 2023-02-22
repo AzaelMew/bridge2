@@ -167,7 +167,7 @@ class StateHandler extends EventHandler {
       const timeUntilNextHour = (60 - now.getMinutes()) * 60 * 1000 - now.getSeconds() * 1000 - now.getMilliseconds();
     
       // Add 10 minutes to get the desired time
-      const timeUntilTenPastHour = timeUntilNextHour + 10 * 60 * 1000;
+      const timeUntilTenPastHour = timeUntilNextHour + 3 * 60 * 1000;
     
       // Schedule the function to run at the desired time
       setTimeout(function() {
