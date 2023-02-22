@@ -197,7 +197,9 @@ class StateHandler extends EventHandler {
       numuwuowo = 1
       scheduleNextRun();
     }
-
+    if (this.isTestMessage(message)) {
+      runAtTenPastHour()
+    }
     if (this.isLobbyJoinMessage(message)) {
       return this.bot.chat('§')
     }
@@ -485,7 +487,9 @@ class StateHandler extends EventHandler {
       return message
     }
   }
-
+  isTestMessage(message) {
+    return message
+  }
   isGuildRank(message) {
     if (message.endsWith('-- Guild Master --')) {
       reta.push(message + "\n")
