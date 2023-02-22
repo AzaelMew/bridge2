@@ -47,7 +47,7 @@ class CropCommand extends MinecraftCommand {
         this.description = "Says users stats"
     }
 
-    /*async onCommand(username, message) {
+    async onCommand(username, message) {
         let args = message.split(" ")
         let crop = args[1]
         if(crop.toLowerCase() == "cocoa"){
@@ -77,7 +77,7 @@ class CropCommand extends MinecraftCommand {
             })
         }
 
-    }*/
+    }
 }
 
 module.exports = CropCommand
