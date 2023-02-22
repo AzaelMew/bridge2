@@ -178,9 +178,9 @@ function scheduleNextRun() {
   }, timeUntilNextScheduledRun);
 
   // Run the function immediately if it's already past the 10-minute mark
-  if (minutesUntilNextTenMinuteMark == 0 && now.getSeconds() >= 10) {
+  /*if (minutesUntilNextTenMinuteMark == 0 && now.getSeconds() >= 10) {
     runAtTenPastHour();
-  }
+  }*/
 }
     if(numuwuowo == 0){
       console.log("Running every hour.")
