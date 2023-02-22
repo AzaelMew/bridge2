@@ -140,20 +140,32 @@ const scheduleNextRun = () => {
   // Get the current time
   const now = new Date();
   
-  // Calculate the time until the next 10-minute mark
-  const minutesUntilNextTenMinuteMark = 10 - (now.getMinutes() % 10);
-  const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
-  const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
-  const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
+  // Check if the current time is past the 10 minute mark
+  if (now.getMinutes() >= 10) {
+    // Calculate the time until the next hour
+    const minutesUntilNextHour = 60 - now.getMinutes();
+    const secondsUntilNextHour = 60 - now.getSeconds();
+    const millisecondsUntilNextHour = 1000 - now.getMilliseconds();
+    const timeUntilNextHour = minutesUntilNextHour * 60 * 1000 + secondsUntilNextHour * 1000 + millisecondsUntilNextHour;
 
-  // Calculate the time until the next scheduled run
-  const timeUntilNextScheduledRun = Math.max(0, timeUntilNextTenMinuteMark - 10 * 60 * 1000);
+    // Schedule the function to run at the next hour mark
+    setTimeout(() => {
+      runAtTenPastHour();
+      scheduleNextRun();
+    }, timeUntilNextHour);
+  } else {
+    // Calculate the time until the next 10 minute mark
+    const minutesUntilNextTenMinuteMark = 10 - now.getMinutes();
+    const secondsUntilNextTenMinuteMark = 60 - now.getSeconds();
+    const millisecondsUntilNextTenMinuteMark = 1000 - now.getMilliseconds();
+    const timeUntilNextTenMinuteMark = minutesUntilNextTenMinuteMark * 60 * 1000 + secondsUntilNextTenMinuteMark * 1000 + millisecondsUntilNextTenMinuteMark;
 
-  // Schedule the function to run at the desired time
-  setTimeout(() => {
-    runAtTenPastHour();
-    scheduleNextRun();
-  }, timeUntilNextScheduledRun);
+    // Schedule the function to run at the next 10 minute mark
+    setTimeout(() => {
+      runAtTenPastHour();
+      scheduleNextRun();
+    }, timeUntilNextTenMinuteMark);
+  }
 }
 
 
