@@ -161,7 +161,6 @@ class StateHandler extends EventHandler {
     if (numuwuowo == 0) {
       console.log("Running every hour.")
       numuwuowo = 1
-      scheduleNextRun();
     }
 
     if (this.isLobbyJoinMessage(message)) {
