@@ -8,6 +8,10 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
+async function capitalizeFirstLetter(string) {
+    string = string.toLowerCase()
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 async function getJacobs() {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
     for (jEvent of data) {
