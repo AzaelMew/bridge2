@@ -54,6 +54,19 @@ class JacobCommand extends MinecraftCommand {
     async onCommand(username, message) {
         let args = message.split(" ")
         if(args[1] != undefined){
+            let crop = args[1]
+            if(crop.toLowerCase() == "cocoa"){
+                crop = "Cocoa Beans"
+            }
+            else if(crop.toLowerCase() == "wart"){
+                crop = "Nether Wart"
+            }
+            else if(crop.toLowerCase() == "cane"){
+                crop = "Sugar Cane"
+            }
+            else{
+                crop = await capitalizeFirstLetter(crop)
+            }
             getJacobsSpecific(args[1]).then(contest => {
                 this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
                 })
