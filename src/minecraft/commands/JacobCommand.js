@@ -8,6 +8,14 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
+function convertSecondsToHoursMinutesAndSeconds(milliseconds) {
+    var hours = Math.floor(milliseconds / 3600000);
+    var minutes = Math.floor((milliseconds % 3600000) / 60000);
+    var seconds = ((milliseconds % 60000) / 1000).toFixed(0);
+    return (hours > 0 ? (hours < 10 ? "0" : "") + hours + ":" : "") + 
+           (minutes < 10 ? "0" : "") + minutes + ":" + 
+           (seconds < 10 ? "0" : "") + seconds;
+}
 async function capitalizeFirstLetter(string) {
     string = string.toLowerCase()
     return string.charAt(0).toUpperCase() + string.slice(1);
