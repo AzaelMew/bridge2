@@ -32,7 +32,7 @@ async function getJacobs() {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `The next contest starts in: ${timeUntilJacobEvent}\n\nCrops: \n- ${eventString.toString().replaceAll(","," and ")}`
+            let contest = `The next contest starts in: ${timeUntilJacobEvent}\n\nCrops: \n- ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
@@ -50,7 +50,7 @@ async function getJacobsSpecific(crop) {
                 eventString.push(crop);
             });
             eventString = eventString.filter(element => element !== crop)
-            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(","," and ")}`
             return contest
         }
     }
