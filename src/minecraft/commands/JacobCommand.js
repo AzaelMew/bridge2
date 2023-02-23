@@ -29,19 +29,19 @@ async function getJacobs() {
         }
     }
 }
-async function getJacobsSpecific() {
+async function getJacobsSpecific(crop) {
     const { data } = await axios.get("https://dawjaw.net/jacobs")
     for (jEvent of data) {
         let currentTime = Date.now();
         let eventTime = jEvent['time'] * 1000;
-        if (currentTime < eventTime) {
+        if (currentTime < eventTime && jEvent['crops'].includes(crop)) {
             let delta = eventTime - currentTime;
-            let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
+            let timeUntilJacobEvent = convertSecondsToHoursMinutesAndSeconds(delta);
             let eventString = [];
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `The next contest starts in: ${timeUntilJacobEvent}\n\nCrops: \n- ${eventString.toString().replaceAll(",",", ")}`
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent}`
             return contest
         }
     }
