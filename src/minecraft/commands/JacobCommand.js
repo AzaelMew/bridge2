@@ -49,7 +49,11 @@ async function getJacobsSpecific(crop) {
             jEvent['crops'].forEach((crop) => {
                 eventString.push(crop);
             });
-            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(`${crop},`,"").replaceAll(",",", ")}`
+            const index = array.indexOf(crop);
+            if (index > -1) { // only splice array when item is found
+                array.splice(index, 1); // 2nd parameter means remove one item only
+            }
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(",",", ")}`
             return contest
         }
     }
