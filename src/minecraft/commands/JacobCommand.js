@@ -25,6 +25,23 @@ async function getJacobs() {
         }
     }
 }
+async function getJacobsSpecific() {
+    const { data } = await axios.get("https://dawjaw.net/jacobs")
+    for (jEvent of data) {
+        let currentTime = Date.now();
+        let eventTime = jEvent['time'] * 1000;
+        if (currentTime < eventTime) {
+            let delta = eventTime - currentTime;
+            let timeUntilJacobEvent = convertSecondsToMinutesAndSeconds(delta);
+            let eventString = [];
+            jEvent['crops'].forEach((crop) => {
+                eventString.push(crop);
+            });
+            let contest = `The next contest starts in: ${timeUntilJacobEvent}\n\nCrops: \n- ${eventString.toString().replaceAll(",",", ")}`
+            return contest
+        }
+    }
+}
 class JacobCommand extends MinecraftCommand {
     constructor(minecraft) {
         super(minecraft)
@@ -35,11 +52,21 @@ class JacobCommand extends MinecraftCommand {
     }
 
     async onCommand(username, message) {
-        getJacobs().then(contest => {
-            this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
+        let args = message.split(" ")
+        if(args[1] != undefined){
+            getJacobsSpecific(args[1]).then(contest => {
+                this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
+                })
+                this.send(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
             })
-            this.send(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
-        })
+        }
+        else{
+            getJacobs().then(contest => {
+                this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
+                })
+                this.send(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
+            })
+        }
     }
 }
 
