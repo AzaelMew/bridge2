@@ -81,8 +81,6 @@ class JacobCommand extends MinecraftCommand {
                 crop = await capitalizeFirstLetter(crop)
             }
             getJacobsSpecific(crop).then(contest => {
-                this.minecraft.broadcastCommandEmbed2({ message: contest,
-                })
                 this.send(`/gc ${contest}`)
             })
         }
