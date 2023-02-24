@@ -10,7 +10,7 @@ class PingCommand extends MinecraftCommand {
   }
 
   onCommand(username, message) {
-      this.send(`/gc TempestBridge (Bot) has a variety of commands which can be used through the guild chat for things like Networth, Stats, Skills, Fragbot and more! Check discord for more details.`)
+      this.send(`/gc TempestBridge (Bot) has a variety of commands which can be used through the guild chat. Please run !help in the bridge channel in discord.`)
   }
 }
 
