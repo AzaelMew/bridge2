@@ -43,7 +43,7 @@ class GHCommand extends MinecraftCommand {
     }
     else{
         setTimeout(() => {
-            this.send(`/gc Cocoa, Cane, Potato, Carrot, Wheat, Pumpkin, Melon, Cactus`)
+            this.send(`/gc Cocoa, Cane, Potato, Carrot, Wheat, Pumpkin, Melon, Cactus, Wart`)
         }, 500);
         this.send(`/gc Specify which crop you want to know about. The options are:`)
 
