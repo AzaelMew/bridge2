@@ -22,7 +22,9 @@ class GHCommand extends MinecraftCommand {
     }
     else if(args[1]== "carrot"){
         this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
-
+    }
+    else if(args[1]== "wart"){
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed`)
     }
     else if(args[1]== "wheat"){
         this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
