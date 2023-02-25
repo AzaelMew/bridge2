@@ -8,6 +8,18 @@ function convertSecondsToMinutesAndSeconds(milliseconds) {
     //seconds = Math.floor(seconds % 60);
     return (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }
+function convertSecondsToHoursMinutesAndSeconds(milliseconds) {
+    var hours = Math.floor(milliseconds / 3600000);
+    var minutes = Math.floor((milliseconds % 3600000) / 60000);
+    var seconds = ((milliseconds % 60000) / 1000).toFixed(0);
+    return (hours > 0 ? (hours < 10 ? "0" : "") + hours + ":" : "") + 
+           (minutes < 10 ? "0" : "") + minutes + ":" + 
+           (seconds < 10 ? "0" : "") + seconds;
+}
+async function capitalizeFirstLetter(string) {
+    string = string.toLowerCase()
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 function makeid(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -35,6 +47,24 @@ async function getJacobs() {
         }
     }
 }
+async function getJacobsSpecific(crop) {
+    const { data } = await axios.get("https://dawjaw.net/jacobs")
+    for (jEvent of data) {
+        let currentTime = Date.now();
+        let eventTime = jEvent['time'] * 1000;
+        if (currentTime < eventTime && jEvent['crops'].includes(crop)) {
+            let delta = eventTime - currentTime;
+            let timeUntilJacobEvent = convertSecondsToHoursMinutesAndSeconds(delta);
+            let eventString = [];
+            jEvent['crops'].forEach((crop) => {
+                eventString.push(crop);
+            });
+            eventString = eventString.filter(element => element !== crop)
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(","," and ")}`
+            return contest
+        }
+    }
+}
 class JacobCommand extends DiscordCommand {
     constructor(minecraft) {
         super(minecraft)
@@ -44,10 +74,28 @@ class JacobCommand extends DiscordCommand {
         this.description = "Says users stats"
     }
 
-    onCommand(message) {
+    async onCommand(message) {
         let args = this.getArgs(message)
         let crop = args.shift()
         console.log(crop)
+        if(crop != undefined){
+                let crop = args[1]
+                if(crop.toLowerCase() == "cocoa"){
+                    crop = "Cocoa Beans"
+                }
+                else if(crop.toLowerCase() == "wart"){
+                    crop = "Nether Wart"
+                }
+                else if(crop.toLowerCase() == "cane"){
+                    crop = "Sugar Cane"
+                }
+                else{
+                    crop = await capitalizeFirstLetter(crop)
+                }
+                getJacobsSpecific(crop).then(contest => {
+                    this.send(`/gc ${contest}`)
+                })
+        }
         getJacobs().then(contest => {
             message.channel.send({
                 embed: {
