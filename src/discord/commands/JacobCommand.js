@@ -60,7 +60,7 @@ async function getJacobsSpecific(crop) {
                 eventString.push(crop);
             });
             eventString = eventString.filter(element => element !== crop)
-            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(","," and ")}`
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} \n\nand also has:\n ${eventString.toString().replaceAll(","," and ")}`
             return contest
         }
     }
@@ -92,22 +92,34 @@ class JacobCommand extends DiscordCommand {
                     crop = await capitalizeFirstLetter(crop)
                 }
                 getJacobsSpecific(crop).then(contest => {
-                    this.send(`/gc ${contest}`)
+                    message.channel.send({
+                        embed: {
+                            description: contest.replaceAll("\n\nand ","\n\nIt "),
+                            color: 'cbbeb5',
+                            timestamp: new Date(),
+                            footer: {
+                                text: "BOT",
+                            },
+                        },
+                    })
+                    this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n","").replaceAll(":\n","")}`)
                 })
         }
-        getJacobs().then(contest => {
-            message.channel.send({
-                embed: {
-                    description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
-                    color: 'cbbeb5',
-                    timestamp: new Date(),
-                    footer: {
-                        text: "BOT",
+        else{
+            getJacobs().then(contest => {
+                message.channel.send({
+                    embed: {
+                        description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
+                        color: 'cbbeb5',
+                        timestamp: new Date(),
+                        footer: {
+                            text: "BOT",
+                        },
                     },
-                },
+                })
+                this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
             })
-            this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
-        })
+        }
     }
 }
 
