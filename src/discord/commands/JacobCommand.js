@@ -46,9 +46,8 @@ class JacobCommand extends DiscordCommand {
 
     onCommand(message) {
         let args = this.getArgs(message)
-        let test = args.toString().replaceAll(","," ")
-        console.log(test)
-        let user = args.shift()
+        let crop = args.shift()
+        console.log(crop)
         getJacobs().then(contest => {
             message.channel.send({
                 embed: {
