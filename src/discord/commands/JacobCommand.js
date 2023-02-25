@@ -79,7 +79,6 @@ class JacobCommand extends DiscordCommand {
         let crop = args.shift()
         console.log(crop)
         if(crop != undefined){
-                let crop = args[1]
                 if(crop.toLowerCase() == "cocoa"){
                     crop = "Cocoa Beans"
                 }
