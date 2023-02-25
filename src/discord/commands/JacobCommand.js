@@ -60,7 +60,7 @@ async function getJacobsSpecific(crop) {
                 eventString.push(crop);
             });
             eventString = eventString.filter(element => element !== crop)
-            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} \n\nand also has:\n ${eventString.toString().replaceAll(","," and ")}`
+            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} \n\nand also has:\n- ${eventString.toString().replaceAll(","," and ")}`
             return contest
         }
     }
@@ -94,7 +94,7 @@ class JacobCommand extends DiscordCommand {
                 getJacobsSpecific(crop).then(contest => {
                     message.channel.send({
                         embed: {
-                            description: contest.replaceAll("\n\nand ","\n\nIt "),
+                            description: contest.replaceAll("\n\nand ","\n\nIt ").replaceAll(" and ","\n- "),
                             color: 'cbbeb5',
                             timestamp: new Date(),
                             footer: {
@@ -102,7 +102,7 @@ class JacobCommand extends DiscordCommand {
                             },
                         },
                     })
-                    this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n","").replaceAll(":\n","")}`)
+                    this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n","").replaceAll("\n-","")}`)
                 })
         }
         else{
