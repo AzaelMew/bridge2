@@ -10,12 +10,10 @@ class InviteCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    let args = message.content.split(' ')
-    console.log(message.content)
-    console.log(args.shift())
-
+    let args = this.getArgs(message)
     let user = args.shift()
-    //this.sendMinecraftMessage(`/g invite ${user ? user : ''}`)
+
+    this.sendMinecraftMessage(`/g invite ${user ? user : ''}`)
   }
 }
 
