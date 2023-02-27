@@ -16,7 +16,7 @@ class CommandHandler {
   }
 
   handle(message) {
-    console.log(message)
+    console.log(message.content)
     if (!message.content.startsWith(this.prefix)) {
       return false
     }
