@@ -11,7 +11,7 @@ class InviteCommand extends DiscordCommand {
 
   onCommand(message) {
     let args = message.content.split(' ')
-
+    console.log(message.content)
     console.log(args.shift())
 
     let user = args.shift()
