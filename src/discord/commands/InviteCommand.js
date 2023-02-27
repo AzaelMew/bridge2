@@ -10,7 +10,7 @@ class InviteCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    console.log(message)
+    console.log(message.content)
     console.log(this.getArgs(message))
     let args = this.getArgs(message)
     console.log(args)
