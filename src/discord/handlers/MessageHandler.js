@@ -5,21 +5,6 @@ class MessageHandler {
   }
 
   async onMessage(message) {
-    if(message.content.toLowerCase().includes("ez")){
-      if(message.content.includes("ez")){
-        message.content = message.content.replace("ez","e z")
-      }
-      else if(message.content.includes("Ez")){
-        message.content = message.content.replace("Ez","E z")
-      }
-      else if(message.content.includes("eZ")){
-        message.content = message.content.replace("eZ","e Z")
-      }
-      else if(message.content.includes("EZ")){
-        message.content = message.content.replace("EZ","E Z")
-      }
-    }
-
     if(this.shouldBroadcastOfficerMessage(message)){
       if (this.command.handle(message)) {
         return
@@ -47,7 +32,20 @@ class MessageHandler {
     if (content.length == 0) {
       return
     }
-
+    if(message.content.toLowerCase().includes("ez")){
+      if(message.content.includes("ez")){
+        message.content = message.content.replace("ez","e z")
+      }
+      else if(message.content.includes("Ez")){
+        message.content = message.content.replace("Ez","E z")
+      }
+      else if(message.content.includes("eZ")){
+        message.content = message.content.replace("eZ","e Z")
+      }
+      else if(message.content.includes("EZ")){
+        message.content = message.content.replace("EZ","E Z")
+      }
+    }
     this.discord.broadcastMessage({
       username: message.member.displayName,
       message: this.stripDiscordContent(message.content),
