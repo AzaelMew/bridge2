@@ -272,8 +272,7 @@ class ExpressManager {
   patchnotes(request, response) {
     try {
       if (this.app.minecraft.bot?.player) {
-        console.log(request)
-        //this.app.minecraft.bot.chat(`/gc NEW PATCHNOTES! ${request.body.url}`)
+        this.app.minecraft.bot.chat(`/gc NEW PATCHNOTES! ${request.body.url}`)
 
         return response.status(200).json({
           success: true
