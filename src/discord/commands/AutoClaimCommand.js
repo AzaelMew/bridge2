@@ -92,9 +92,9 @@ async function getActivity(uuid, rank) {
     }
   }
   console.log(newlvl)
-  
-  if(rank=="Elder") return
-  if(rank=="Guild Master") return
+  if(rank=="Vanguard") return;
+  if(rank=="Elder") return;
+  if(rank=="Guild Master") return;
 
   if (newlvl >= 23000) {
     if(rank=="Champion") return
@@ -102,16 +102,9 @@ async function getActivity(uuid, rank) {
     console.log(ini)
     return
   }
-  else if (newlvl >= 19000) {
+  else if (newlvl >= 17000) {
     if(rank=="Knight") return
     ini.push(`${name} Knight`)
-    console.log(ini)
-
-    return
-  }
-  else if (newlvl >=16000) {
-    if(rank=="Squire") return
-    ini.push(`${name} Squire`)
     console.log(ini)
 
     return
