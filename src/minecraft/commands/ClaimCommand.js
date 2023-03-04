@@ -46,12 +46,8 @@ async function getStatsFromUUID(name, profile) {
             rank = "champ"
             return rank
         }
-        else if (newlvl >= 190) {
+        else if (newlvl >= 170) {
             rank = "vet"
-            return rank
-        }
-        else if (newlvl >= 160) {
-            rank = "adv"
             return rank
         }
         else {
@@ -93,12 +89,6 @@ class ClaimCommand extends MinecraftCommand {
                 this.send(`/g setrank ${username} Knight`)
                 setTimeout(() => {
                     this.send(`/gc ${username}'s Your rank has been set to Knight! If this is wrong, make sure you're on your main profile, and APIs are on!`)
-                }, 1000);
-            }
-            if (rank == "adv") {
-                this.send(`/g setrank ${username} Squire`)
-                setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Squire! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             if (rank == "ini") {
