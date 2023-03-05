@@ -48,7 +48,6 @@ async function getGMemberFromUUID(uuid, message) {
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 150));
-        let rank = data.guild.members[i].rank
         let joined = data.guild.members[i].joined
         joined = new Date(joined).toLocaleString()
         let newData = data.guild.members[i];
@@ -101,7 +100,7 @@ async function getActivity(uuid, rank, xp) {
   }
   console.log(newlvl)
   if(rank=="Vanguard") {
-    if (xp < 50000){
+    if (xp < 500000){
       
     }
     else{
