@@ -44,7 +44,13 @@ async function getStatsFromUUID(name, profile) {
         let taming = data.data[i]?.skills?.taming.level
         let carp = data.data[i]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = numberWithCommas(data.data[i].dungeons.catacombs.skill.level)
+        let cata = data.data[0].dungeons.catacombs.skill.level
+        if(cata == 50){
+          let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
+          let newNum = total - 569809640
+          let overflow = newNum/200000000
+          cata = cata + overflow
+        }
         let wslayer = data.data[i]?.slayer?.wolf.xp
         let zslayer = data.data[i]?.slayer?.zombie.xp
         let sslayer = data.data[i]?.slayer?.spider.xp
@@ -54,7 +60,7 @@ async function getStatsFromUUID(name, profile) {
         sblvl = sblvl.toString().split(".")
 
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw};`
+        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata.toFixed(2)}; **Networth:** \n➣ $${nw};`
         return stats
       }
       else if (i == Object.keys(data.data).length - 1) {
@@ -69,7 +75,13 @@ async function getStatsFromUUID(name, profile) {
         let taming = data.data[0]?.skills?.taming.level
         let carp = data.data[0]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
+        let cata = data.data[0].dungeons.catacombs.skill.level
+        if(cata == 50){
+          let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
+          let newNum = total - 569809640
+          let overflow = newNum/200000000
+          cata = cata + overflow
+        }
         let wslayer = data.data[0]?.slayer?.wolf.xp
         let zslayer = data.data[0]?.slayer?.zombie.xp
         let sslayer = data.data[0]?.slayer?.spider.xp
@@ -79,7 +91,7 @@ async function getStatsFromUUID(name, profile) {
         sblvl = sblvl.toString().split(".")
 
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw}; `
+        let stats = `**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata.toFixed(2)}; **Networth:** \n➣ $${nw}; `
         return stats
       }
     }
