@@ -32,6 +32,12 @@ async function getDungeonFromUUID(name) {
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let secrets = data.data[0]?.dungeons.secrets_found
     let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress
+    if(lvl == 50){
+      let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
+      let newNum = total - 569809640
+      let overflow = newNum/200000000
+      lvl = lvl + overflow
+    }
     let h = data.data[0].dungeons?.classes?.healer?.levelWithProgress
     let m = data.data[0].dungeons?.classes?.mage?.levelWithProgress
     let b = data.data[0].dungeons?.classes?.berserk?.levelWithProgress
