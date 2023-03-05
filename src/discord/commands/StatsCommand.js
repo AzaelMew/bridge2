@@ -44,7 +44,7 @@ async function getStatsFromUUID(name, profile) {
         let taming = data.data[i]?.skills?.taming.level
         let carp = data.data[i]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = data.data[0].dungeons.catacombs.skill.level
+        let cata = data.data[i].dungeons?.catacombs?.skill?.levelWithProgress || 0
         if(cata == 50){
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
@@ -75,7 +75,7 @@ async function getStatsFromUUID(name, profile) {
         let taming = data.data[0]?.skills?.taming.level
         let carp = data.data[0]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = data.data[0].dungeons.catacombs.skill.level
+        let cata = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress || 0
         if(cata == 50){
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
