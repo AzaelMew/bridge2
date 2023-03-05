@@ -50,7 +50,13 @@ async function getStatsFromUUID(name,profile) {
         let taming = data.data[i]?.skills?.taming.level
         let carp = data.data[i]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = numberWithCommas(data.data[i].dungeons.catacombs.skill.level)
+        let cata = data.data[i].dungeons?.catacombs?.skill?.level
+        if(cata == 50){
+          let total = data.data[i].dungeons?.catacombs?.skill?.totalXp;
+          let newNum = total - 569809640
+          let overflow = newNum/200000000
+          cata = numberWithCommas(cata = lvl + overflow)
+        }        
         let wslayer = data.data[i]?.slayer?.wolf.xp
         let zslayer = data.data[i]?.slayer?.zombie.xp
         let sslayer = data.data[i]?.slayer?.spider.xp
@@ -74,7 +80,13 @@ async function getStatsFromUUID(name,profile) {
         let taming = data.data[0]?.skills?.taming.level
         let carp = data.data[0]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
-        let cata = numberWithCommas(data.data[0].dungeons.catacombs.skill.level)
+        let cata = data.data[0].dungeons?.catacombs?.skill?.level
+        if(cata == 50){
+          let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
+          let newNum = total - 569809640
+          let overflow = newNum/200000000
+          cata = numberWithCommas(cata = lvl + overflow)
+        }
         let wslayer = data.data[0]?.slayer?.wolf.xp
         let zslayer = data.data[0]?.slayer?.zombie.xp
         let sslayer = data.data[0]?.slayer?.spider.xp
