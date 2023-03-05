@@ -48,10 +48,23 @@ async function getGMemberFromUUID(uuid, message) {
       champ = []
       for (i = 0; i < data.guild.members.length + 2; i++) {
         await new Promise(resolve => setTimeout(resolve, 150));
+        let total
+        for (i = 0; i < data.guild.members.length; i++) {
+          if (data.guild.members[i].uuid == targetUUID) {
+            let rank = data.guild.members[i].rank
+            let joined = data.guild.members[i].joined
+            joined = new Date(joined).toLocaleString()
+            let newData = data.guild.members[i];
+            let expValue = Object.values(newData.expHistory)
+ 
+            total = expValue[0] + expValue[1] + expValue[2] + expValue[3] + expValue[4] + expValue[5] + expValue[6]
+          }
+        }
+        let xp = total
         console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
-            getActivity(data.guild.members[i].uuid, data.guild.members[i].rank)
+            getActivity(data.guild.members[i].uuid, data.guild.members[i].rank, xp)
           }
           catch {
             console.log("fuck you azael.")
@@ -82,7 +95,7 @@ async function getGMemberFromUUID(uuid, message) {
     }
   }
 }
-async function getActivity(uuid, rank) {
+async function getActivity(uuid, rank, xp) {
   const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&uuid=${uuid}`)
   let name = await getUsernameFromUUID(uuid)
   let newlvl = 0
@@ -92,7 +105,14 @@ async function getActivity(uuid, rank) {
     }
   }
   console.log(newlvl)
-  if(rank=="Vanguard") return;
+  if(rank=="Vanguard") {
+    if (xp < 50000){
+      
+    }
+    else{
+      return;
+    }
+  };
   if(rank=="Elder") return;
   if(rank=="Guild Master") return;
 
