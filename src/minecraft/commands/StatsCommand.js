@@ -65,7 +65,7 @@ async function getStatsFromUUID(name,profile) {
         let sblvl = data.data[i]?.sblevel
         sblvl = sblvl.toString().split(".")
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw};`
+        let stats = `**On ${profile}:** \n**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata.toFixed(2)}; **Networth:** \n➣ $${nw};`
         return stats
       }
       else if (i == Object.keys(data.data).length - 1){
@@ -85,7 +85,7 @@ async function getStatsFromUUID(name,profile) {
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
           let overflow = newNum/200000000
-          cata = cata = cata + overflow
+          cata = cata + overflow
         }
         let wslayer = data.data[0]?.slayer?.wolf.xp
         let zslayer = data.data[0]?.slayer?.zombie.xp
@@ -95,7 +95,7 @@ async function getStatsFromUUID(name,profile) {
         let sblvl = data.data[0]?.sblevel
         sblvl = sblvl.toString().split(".")
         let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-        let stats = `**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata}; **Networth:** \n➣ $${nw}; `
+        let stats = `**Skyblock Level:** \n➣ ${sblvl[0]}; **Skill Avg:** \n➣ ${sa}; **Slayer:** \n➣ ${slayer}; **Cata:** \n➣ ${cata.toFixed(2)}; **Networth:** \n➣ $${nw}; `
         return stats
       }
     }
