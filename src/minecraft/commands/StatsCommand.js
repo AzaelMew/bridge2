@@ -85,7 +85,7 @@ async function getStatsFromUUID(name,profile) {
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
           let overflow = newNum/200000000
-          cata = numberWithCommas(cata = cata + overflow)
+          cata = cata = cata + overflow
         }
         let wslayer = data.data[0]?.slayer?.wolf.xp
         let zslayer = data.data[0]?.slayer?.zombie.xp
