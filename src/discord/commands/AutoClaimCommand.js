@@ -64,7 +64,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length + 1) {
+        else if (i == data.guild.members.length) {
           for (s = 0; s < 50; s++) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
