@@ -450,15 +450,15 @@ class StateHandler extends EventHandler {
       reta.push(message + "\n")
     }
 
+    if (message.endsWith('-- Vanguard --')) {
+      reta.push(message + "\n")
+    }
+
     if (message.endsWith('-- Champion --')) {
       reta.push(message + "\n")
     }
 
     if (message.endsWith('-- Knight --')) {
-      reta.push(message + "\n")
-    }
-
-    if (message.endsWith('-- Squire --')) {
       reta.push(message + "\n")
     }
 
