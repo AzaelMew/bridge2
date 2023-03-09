@@ -51,7 +51,7 @@ async function getGMemberFromUUID(uuid) {
           let expTime1 = expTime[1].toString()
           date = new Date(expTime1)
           expTime1 = Math.floor(date.getTime() / 1000)
-          expTime1 = `1 day ago`
+          expTime1 = `Yesterday`
           let expTime2 = expTime[2].toString()
           date = new Date(expTime2)
           expTime2 = Math.floor(date.getTime() / 1000)
