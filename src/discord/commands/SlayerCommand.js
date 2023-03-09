@@ -1,4 +1,4 @@
-const MinecraftCommand = require('../../contracts/MinecraftCommand')
+const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 function numberWithCommas(x) {
   if(x>999815672){
@@ -58,7 +58,7 @@ catch (error) {
 }
 }
 
-class SlayerCommand extends MinecraftCommand {
+class SlayerCommand extends DiscordCommand {
     constructor(minecraft) {
       super(minecraft)
   
