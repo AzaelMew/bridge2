@@ -14,7 +14,7 @@ async function getUUIDFromUsername(username){
 async function getLocationFromUUID(uuid){
     let location = "Holy shit you broke me!! Dm Azael!"
     try{
-        const { data } = await axios.get('https://api.hypixel.net/status?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&uuid=' + uuid)
+        const { data } = await axios.get('https://api.hypixel.net/status?key=4fd2ea22-23ec-4543-9141-01288a80adfb&uuid=' + uuid)
             
     if (data.session.online == true){
         if (data.session.gameType == "SKYBLOCK"){

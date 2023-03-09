@@ -64,7 +64,7 @@ function round(value, precision) {
   return Math.round(value * multiplier) / multiplier;
 }
 async function getGMemberFromUUID(uuid) {
-  const { data } = await axios.get('https://api.hypixel.net/guild?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&player=' + uuid)
+  const { data } = await axios.get('https://api.hypixel.net/guild?key=4fd2ea22-23ec-4543-9141-01288a80adfb&player=' + uuid)
   try {
     if (data.guild.name_lower != "tempestsky") {
       let ret = "This player is not in our guild."

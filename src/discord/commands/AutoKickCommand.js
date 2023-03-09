@@ -23,7 +23,7 @@ async function getGMemberFromUUID(uuid, message) {
     if (uuid == undefined) {
       uuid = "a"
     }
-    const { data } = await axios.get('https://api.hypixel.net/guild?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&player=' + uuid)
+    const { data } = await axios.get('https://api.hypixel.net/guild?key=4fd2ea22-23ec-4543-9141-01288a80adfb&player=' + uuid)
     try {
       if (data.guild.name_lower != "tempestsky") {
         let ret = "This player is not in our guild."
@@ -83,7 +83,7 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank) {
-  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=0897c9a2-68d5-4040-a0a4-deaa283b1495&uuid=${uuid}`)
+  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=4fd2ea22-23ec-4543-9141-01288a80adfb&uuid=${uuid}`)
   let name = await getUsernameFromUUID(uuid)
   if (name == "notbudi" || name == "Invictyus" || name == "Jasqer" || name == "Vallekoen" || name == "YesPleases" || name == "zabbir" || name == "Frindlo" || name == "Morithos_" || name == "Nico_the_Creator" || name == "WhenCarrot" || name == "Legendaryspirits" || name == "MistyTM" || name == "Dachichan" || name == "Meir231" || name == "Tsukia"|| name == "Azael_Nyaa") return
   let newlvl = 0
