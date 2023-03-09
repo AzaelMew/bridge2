@@ -70,7 +70,7 @@ class SlayerCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getSlayerFromUser(user).then(stats => {
-      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
+      this.sendMinecraftMessage(`/gc ${user}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
       message.channel.send({
         embed: {
           description: stats.replaceAll(";", "\n").replaceAll(":",""),
@@ -80,7 +80,7 @@ class SlayerCommand extends DiscordCommand {
             text: "BOT",
           },
           author: {
-            name: `${user}'s stats`,
+            name: `${user}'s slayers`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
         },
