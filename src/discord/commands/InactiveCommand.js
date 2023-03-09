@@ -43,7 +43,7 @@ async function getGMemberFromUUID(uuid, message) {
       targetUUID = uuid
       let name
       kickables = []
-      for (i = 0; i < data.guild.members.length + 2; i++) {
+      for (i = 0; i < data.guild.members.length + 1; i++) {
         await new Promise(resolve => setTimeout(resolve, 150));
         if (i <= data.guild.members.length - 1) {
           try {
@@ -53,7 +53,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length + 1) {
+        else if (i == data.guild.members.length) {
           for (s = 0; s < 50; s++) {
             await new Promise(resolve => setTimeout(resolve, 50));
             if (s == 50) {

@@ -46,7 +46,7 @@ async function getGMemberFromUUID(uuid, message) {
       adv = []
       vet = []
       champ = []
-      for (i = 0; i < data.guild.members.length + 2; i++) {
+      for (i = 0; i < data.guild.members.length + 1; i++) {
         await new Promise(resolve => setTimeout(resolve, 150));
         console.log(i)
         if (i <= data.guild.members.length - 1) {
@@ -57,7 +57,7 @@ async function getGMemberFromUUID(uuid, message) {
             console.log("fuck you azael.")
           }
         }
-        else if (i == data.guild.members.length + 1) {
+        else if (i == data.guild.members.length) {
           for (s = 0; s < 60; s++) {
             console.log(s)
             await new Promise(resolve => setTimeout(resolve, 50));
