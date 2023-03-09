@@ -41,7 +41,7 @@ class EightBallCommand extends MinecraftCommand {
   onCommand(username, message) {
     ask().then(ans => {
         setTimeout(() => {
-            this.send(`/gc Magic 8 Ball: ${ans}`)
+            this.send(`/gc ${ans}`)
         }, 1000);
       })
   }
