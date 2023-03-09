@@ -12,29 +12,29 @@ class GHCommand extends MinecraftCommand {
   onCommand(username, message) {
     let args = message.toLowerCase().split(" ")
     if(args[1]== "cocoa"){
-        this.send(`/gc Whatever the fuck you want, as people can't seem to decide`)
+        this.send(`/gc 150 speed w/o Sprint | 55° Angle Pitch`)
     }
     else if(args[1]== "cane"){
         this.send(`/gc 327 Speed | 135° or 45° Angle Yaw`)
     }
     else if(args[1]== "potato"){
-        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter`)
     }
     else if(args[1]== "carrot"){
-        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter`)
     }
     else if(args[1]== "wart"){
-        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter`)
     }
     else if(args[1]== "wheat"){
-        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter, Semi AFK: 116 Speed | 90° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 360 w/ Sprint or 400 w/o Sprint | Angle doesn't matter`)
     }
     else if(args[1]== "pumpkin"){
-        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 380 Speed | 145° or 35° Angle Yaw`)
 
     }
     else if(args[1]== "melon"){
-        this.send(`/gc Normal: 380 Speed | 135° or 45° Angle Yaw, Semi AFK: 327 Speed | 135° or 45° Angle Yaw, Visit Azael_Nyaa for normal design and Xephor_EX for Semi-AFK`)
+        this.send(`/gc Normal: 380 Speed | 145° or 35° Angle Yaw`)
 
     }
     else if(args[1]== "cactus"){
