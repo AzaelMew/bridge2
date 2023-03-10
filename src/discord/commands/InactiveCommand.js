@@ -81,7 +81,7 @@ async function getActivity(uuid, message) {
   try {
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=4fd2ea22-23ec-4543-9141-01288a80adfb`)
     let lastLogin = data.player.lastLogin
-    if (data.player.displayname == "notbudi" || data.player.displayname == "Invictyus" || data.player.displayname == "Jasqer" || data.player.displayname == "Vallekoen" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Morithos_" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Dachichan" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
+    if (data.player.displayname == "Rioiyo" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
     if (new Date().getTime() - lastLogin > 2160000000) {
       kickables.push(data.player.displayname)
       console.log(kickables)
