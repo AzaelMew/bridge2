@@ -85,7 +85,7 @@ async function getGMemberFromUUID(uuid, message) {
 async function getActivity(uuid, rank) {
   const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=4fd2ea22-23ec-4543-9141-01288a80adfb&uuid=${uuid}`)
   let name = await getUsernameFromUUID(uuid)
-  if (name == "notbudi" || name == "Invictyus" || name == "Jasqer" || name == "Vallekoen" || name == "YesPleases" || name == "zabbir" || name == "Frindlo" || name == "Morithos_" || name == "Nico_the_Creator" || name == "WhenCarrot" || name == "Legendaryspirits" || name == "MistyTM" || name == "Dachichan" || name == "Meir231" || name == "Tsukia"|| name == "Azael_Nyaa") return
+  if (data.player.displayname == "Rioiyo" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
   let newlvl = 0
   for (b = 0; b < Object.keys(data.profiles).length; b++) {
   if(newlvl < data.profiles[b]?.members[uuid]?.leveling?.experience){
