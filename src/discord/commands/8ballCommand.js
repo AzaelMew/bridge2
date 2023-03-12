@@ -41,6 +41,8 @@ class EightBallCommand extends DiscordCommand {
   onCommand(message) {
     ask().then(ans => {
         setTimeout(() => {
+          this.sendMinecraftMessage(`/gc ${ans}`)
+
           message.channel.send({
             embed: {
               description: ans,
