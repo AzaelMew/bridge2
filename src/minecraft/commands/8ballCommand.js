@@ -42,6 +42,7 @@ class EightBallCommand extends MinecraftCommand {
     ask().then(ans => {
         setTimeout(() => {
             this.send(`/gc ${ans}`)
+            this.minecraft.broadcastCommandEmbed3({ username: `The Magic 8 Ball`, message: `${ans}`, icon: "https://cdn.discordapp.com/attachments/1045517755044085762/1084545786886504508/mlfaJuO.png" })
         }, 1000);
       })
   }
