@@ -38,11 +38,10 @@ class EightBallCommand extends DiscordCommand {
     this.description = '8ball'
   }
 
-  onCommand(username, message) {
-    let channel = message.channel
+  onCommand(message) {
     ask().then(ans => {
         setTimeout(() => {
-          channel.send({
+          message.channel.send({
             embed: {
               description: ans,
               color: '2A2A2A',
