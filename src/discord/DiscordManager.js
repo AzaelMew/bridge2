@@ -156,11 +156,27 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
-  onBroadcastOnEmbed({ username, message}) {
+  onBroadcastCommandEmbed3({ username, message}) {
     this.app.log.broadcast(message, 'Event')
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
-      let icon = username.split("'")
+      channel.send({
+        embed: {
+          description: message,
+          color: '2A2A2A',
+          timestamp: new Date(),
+          footer: {
+            text: "BOT",
+          },
+        },
+      })
+    })
+  }
+
+  onBroadcastOnEmbed({ username, message, icon}) {
+    this.app.log.broadcast(message, 'Event')
+
+    this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       channel.send({
         embed: {
           title: username,
@@ -169,6 +185,10 @@ class DiscordManager extends CommunicationBridge {
           timestamp: new Date(),
           footer: {
             text: "BOT",
+          },
+          author: {
+            name: username,
+            icon_url: icon,
           },
         },
       })
