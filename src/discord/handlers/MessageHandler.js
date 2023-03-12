@@ -46,6 +46,7 @@ class MessageHandler {
         message.content = message.content.replace("EZ","E Z")
       }
     }
+    if(message.content.toLowerCase().includes("macro")) return;
     this.discord.broadcastMessage({
       username: message.member.displayName,
       message: this.stripDiscordContent(message.content),
