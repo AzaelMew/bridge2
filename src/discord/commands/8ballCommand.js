@@ -39,7 +39,7 @@ class EightBallCommand extends DiscordCommand {
   }
 
   onCommand(username, message) {
-    channel = message.channel
+    let channel = message.channel
     ask().then(ans => {
         setTimeout(() => {
           message.channel.send({
