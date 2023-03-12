@@ -36,6 +36,9 @@ class CommunicationBridge {
   broadcastCommandEmbed2(event) {
     return this.bridge.onBroadcastCommandEmbed2(event)
   }
+  broadcastCommandEmbed3(event) {
+    return this.bridge.onBroadcastCommandEmbed3(event)
+  }
 broadcastOnEmbed(event) {
   return this.bridge.onBroadcastOnEmbed(event)
 }
