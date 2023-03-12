@@ -42,7 +42,7 @@ class EightBallCommand extends DiscordCommand {
     let channel = message.channel
     ask().then(ans => {
         setTimeout(() => {
-          message.channel.send({
+          channel.send({
             embed: {
               description: ans,
               color: '2A2A2A',
