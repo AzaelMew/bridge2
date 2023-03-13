@@ -346,6 +346,9 @@ class StateHandler extends EventHandler {
       return this.minecraft.broadcastCleanEmbed({ message: `Rank not found.`, color: 'DC143C' })
     }
 
+    if(this.isFullMessage(message)) {
+      return this.minecraft.broadcastCleanEmbed({ message: `The guild is currently full.`, color: 'DC143C' })
+    }
 
     if (this.isNotInGuild(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(' ')[0]
@@ -605,6 +608,10 @@ class StateHandler extends EventHandler {
 
   isIncorrectUsage(message) {
     return message.includes('Invalid usage!') && !message.includes(':')
+  }
+
+  isFullMessage(message) {
+    return message.startsWith("Your guild is full!")
   }
 
   isOnlineInvite(message) {
