@@ -425,10 +425,9 @@ class StateHandler extends EventHandler {
     const playerMessage = parts.join(':').trim()
 
     if(message.includes("!8ball")){
-      message = message.replace("!8ball ","")
       this.minecraft.broadcastMessage({
         username: username,
-        message: playerMessage,
+        message: playerMessage.replace("!8ball ",""),
         guildRank: guildRank,
       })
     }
