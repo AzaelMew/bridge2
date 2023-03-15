@@ -57,7 +57,7 @@ async function getCanvasWidthAndHeight(lore) {
     }
   }
 
-  return { height: lore.length * 24 + 15, width: highestWidth + 20 };
+  return { height: lore.length * 24 + 15, width: highestWidth + 32 };
 }
 
 async function renderLore(lore) {
