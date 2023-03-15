@@ -61,6 +61,7 @@ async function getCanvasWidthAndHeight(lore) {
 }
 
 async function renderLore(itemName, lore) {
+  lore = lore.replace(",","")
   lore = lore.split("\n")
   const measurements = await getCanvasWidthAndHeight(lore);
   const canvas = Canvas.createCanvas(measurements.width, measurements.height);
