@@ -133,6 +133,7 @@ async function getData(messageAuthor, message) {
         itemNumber = username;
         username = messageAuthor;
     }
+    console.log(profile)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
 
