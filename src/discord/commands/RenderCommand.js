@@ -138,6 +138,7 @@ async function getData(message) {
     const searchedPlayer = await getPlayer(username, profile).catch((err) => {
         return err
     });
+    console.log(searchedPlayer)
     const playerProfile = searchedPlayer.memberData;
     console.log(playerProfile)
     const inventory = playerProfile?.inv_contents?.data;
