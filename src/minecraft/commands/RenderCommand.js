@@ -116,7 +116,7 @@ async function getPlayer(player, profile) {
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
-    let { 1: username, 2: itemNumber } = message.split(' ');
+    let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
 
     if (!username) username = messageAuthor;
 
