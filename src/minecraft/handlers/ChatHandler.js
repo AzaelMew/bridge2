@@ -560,7 +560,7 @@ class StateHandler extends EventHandler {
             guildRank: guildRank,
             url: responseurl,
           })
-          return this.bot.chat(`/gc ${responseurl}`)
+          return this.bot.chat(`/gc ${username}: ${responseurl}`)
         })
       }
     }
