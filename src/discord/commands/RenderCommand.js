@@ -124,13 +124,12 @@ async function getPlayer(player, profile) {
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
-    let { 2: username, 3: profile, 4: itemNumber } = message.split(' ');
+    let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
     }
     if (!isNaN(Number(username))) {
         itemNumber = username;
-        username = messageAuthor;
     }
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
