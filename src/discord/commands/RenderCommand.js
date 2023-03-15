@@ -82,6 +82,7 @@ async function renderLore(itemName, lore) {
 
 async function getLastProfile(data) {
     const profiles = data.profiles;
+    console.log(profiles)
     return profiles.sort((a, b) => b.selected - a.selected)[0];
 }
 const parseNbt = util.promisify(nbt.parse);
