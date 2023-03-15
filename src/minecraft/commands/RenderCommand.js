@@ -51,18 +51,15 @@ async function renderLore(itemName, lore) {
     const measurements = await getCanvasWidthAndHeight(lore);
     const canvas = Canvas.createCanvas(measurements.width, measurements.height);
     const ctx = canvas.getContext('2d');
-    // BACKGROUND
     ctx.fillStyle = '#100110';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // FONT
     ctx.shadowOffsetX = 3;
     ctx.shadowOffsetY = 3;
     ctx.shadowColor = '#131313';
     ctx.font = '24px Minecraft';
     ctx.fillStyle = '#ffffff';
 
-    // TEXT
     for (const [index, item] of Object.entries(lore)) {
         let width = 10;
         const splitItem = item.split('§');
@@ -174,8 +171,7 @@ class RenderCommand extends MinecraftCommand {
     onCommand(username, message) {
         getData(username, message).then(returnurl => {
             this.send(`/gc ${username}: ${returnurl}`)
-            this.minecraft.broadcastCommandEmbed3({ username: username, message: `${returnurl}`, icon: "https://cdn.discordapp.com/attachments/1045517755044085762/1084545786886504508/mlfaJuO.png", url: "ttps://www.mc-heads.net/avatar/"+username })
-
+            this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
         })
     }
 }
