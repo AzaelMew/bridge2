@@ -8,7 +8,7 @@ class MessageHandler {
     const attachment = message?.attachments.first();
     const url = attachment ? attachment.url : null;
     if(url != null){
-      message.content = message.content, url
+      message.content = `${message.content} ${url}`
     }
     if(this.shouldBroadcastOfficerMessage(message)){
       if (this.command.handle(message)) {
