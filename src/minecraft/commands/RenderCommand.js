@@ -94,6 +94,13 @@ async function decodeData(buffer) {
     const parsedNbt = await parseNbt(buffer);
     return nbt.simplify(parsedNbt);
 }
+function isValidUsername(username) {
+    if (username.match(/^[0-9a-zA-Z_]+$/)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 async function getPlayer(player, profile) {
     if (typeof player !== 'string' || !isValidUsername(player)) {
         throw new Error('Invalid Username');
