@@ -4,6 +4,7 @@ const nbt = require('prismarine-nbt');
 const Canvas = require('canvas');
 const imgur = require('imgur-anonymous-uploader');
 const { url } = require('inspector');
+const util = require('util');
 const uploader = new imgur("318214bc4f4717f");
 
 Canvas.registerFont('./src/fonts/MinecraftRegular-Bmg3.ttf', { family: 'Minecraft' });

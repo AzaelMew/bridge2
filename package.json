@@ -37,6 +37,7 @@
     "node-fetch": "^3.0.0",
     "nodemon": "^2.0.20",
     "package.json": "^2.0.1",
-    "skyhelper-networth": "^1.0.0"
+    "skyhelper-networth": "^1.0.0",
+    "util": "^0.12.5"
   }
 }
