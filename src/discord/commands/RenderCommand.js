@@ -170,7 +170,7 @@ class RenderCommand extends DiscordCommand {
         this.description = 'renders specified slot'
     }
 
-    onCommand(username, message) {
+    onCommand(message) {
         getData(message.content).then(returnurl => {/*
             this.send(`/gc ${username}: ${returnurl}`)
             this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
