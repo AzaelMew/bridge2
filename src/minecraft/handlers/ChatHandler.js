@@ -254,7 +254,8 @@ class StateHandler extends EventHandler {
       return this.bot.chat("/p leave")
     }
     if (this.isSoopyMessage(message)) {
-      if (regex.test(str)) {
+      const regex = /\[ITEM:(\d+)\]/g;
+        if (regex.test(str)) {
         const itemNumber = str.match(regex)[1];
         getItemLore(itemNumber).then(responseurl => {
           this.bot.chat(`/gc ${responseurl}`)
