@@ -120,7 +120,7 @@ async function getPlayer(player, profile) {
         profileData = hypixelResponse.data.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
     }
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
-    console.log(profileData)
+    console.log(profileData.profile_id)
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
