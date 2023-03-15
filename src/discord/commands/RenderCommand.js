@@ -133,6 +133,7 @@ async function getData(message) {
         return "Invalid item number. Must be between 1 and 9."
 
     const searchedPlayer = await getPlayer(username, profile).catch((err) => {
+        console.log(err)
         return err
     });
     const playerProfile = searchedPlayer.memberData;
