@@ -174,7 +174,9 @@ class RenderCommand extends DiscordCommand {
             this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
             message.channel.send({
                 embed: {
-                    description: returnurl,
+                    image: {
+                        url: returnurl,
+                      },
                     color: '2A2A2A',
                     timestamp: new Date(),
                     footer: {
