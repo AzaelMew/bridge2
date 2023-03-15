@@ -82,6 +82,10 @@ async function renderLore(lore) {
     }
     return canvas.toBuffer();
 }
+function getLastProfile(data) {
+    const profiles = data.profiles;
+    return profiles.sort((a, b) => b.selected - a.selected)[0];
+}
 const parseNbt = util.promisify(nbt.parse);
 async function nameToUUID(name) {
     try {
