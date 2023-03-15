@@ -27,6 +27,10 @@ class CommunicationBridge {
     return this.bridge.onOfficerBroadcast(event)
   }
 
+  broadcastNewImage(event) {
+    return this.bridge.onBroadcastNewImage(event)
+  }
+
   broadcastPlayerToggle(event) {
     return this.bridge.onPlayerToggle(event)
   }
