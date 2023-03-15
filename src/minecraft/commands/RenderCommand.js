@@ -164,7 +164,7 @@ class RenderCommand extends MinecraftCommand {
 
     onCommand(username, message) {
         getData(username, message).then(returnurl => {
-            this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
+            this.send(`/gc ${username}: ${returnurl}`)
         })
     }
 }
