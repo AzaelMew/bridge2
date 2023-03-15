@@ -132,10 +132,11 @@ async function getData(message) {
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
     }
-
+    console.log(itemNumber)
     if (!isNaN(Number(username))) {
         itemNumber = username;
     }
+    console.log(itemNumber)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
 
