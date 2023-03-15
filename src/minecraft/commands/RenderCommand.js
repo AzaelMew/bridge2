@@ -1,5 +1,5 @@
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
-const axios = require(axios)
+const axios = require("axios");
 const nbt = require('prismarine-nbt');
 const Canvas = require('canvas');
 const imgur = require('imgur-anonymous-uploader');
