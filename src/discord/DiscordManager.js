@@ -76,7 +76,7 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
-  onTextEmbedBroadcast({ username, message, guildRank }, url) {
+  onTextEmbedBroadcast({ username, message, guildRank, url}) {
     this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Discord`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
       case 'bot':
@@ -86,6 +86,7 @@ class DiscordManager extends CommunicationBridge {
               description: message,
               color: '2A2A2A',
               timestamp: new Date(),
+              image: url,
               footer: {
                 text: guildRank,
               },
