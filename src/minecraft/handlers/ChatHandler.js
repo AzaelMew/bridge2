@@ -547,10 +547,11 @@ class StateHandler extends EventHandler {
     if (message.includes("i.imgur.com") || message.includes("cdn.discordapp.com/attachments")){
       let regex = /(?:^|\s)((?:(?:https?|ftp):\/\/|www\.)\S+(?:\b|$))/gm
       let url = message.match(regex)
-      this.minecraft.broadcastTextEmbed(url[0],{
+      this.minecraft.broadcastTextEmbed({
         username: username,
         message: playerMessage,
         guildRank: guildRank,
+        url: url[0],
       })
       return;
     }
