@@ -258,6 +258,7 @@ class StateHandler extends EventHandler {
     if (this.isSoopyMessage(message)) {
       const regex = /\[ITEM:(\d+)\]/g;
         if (regex.test(message)) {
+        console.log(message)
         const itemNumber = message.match(regex)[0];
         console.log(itemNumber)
         getItemLore(itemNumber).then(responseurl => {
