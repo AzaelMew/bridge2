@@ -168,7 +168,7 @@ class RenderCommand extends DiscordCommand {
     onCommand(message) {
         getData(message.content).then(returnurl => {
             let username = returnurl[0]
-            let returnurl = returnurl[1]
+            returnurl = returnurl[1]
             console.log(returnurl)
             console.log(username)
             this.send(`/gc ${username}: ${returnurl}`)
