@@ -113,7 +113,7 @@ class DiscordManager extends CommunicationBridge {
     }
   }
 
-  onTextEmbedBroadcast({ username, image, icon}) {
+  onBroadcastNewImage({ username, image, icon}) {
     this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Discord`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
       case 'bot':
