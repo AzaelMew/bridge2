@@ -117,10 +117,8 @@ async function getPlayer(player, profile) {
     let profileData = await getLastProfile(hypixelResponse);
     
     if (profile) {
-        console.log(hypixelResponse)
         profileData = hypixelResponse.data.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
     }
-    console.log(profileData)
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
     console.log(profileData.members)
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
@@ -140,11 +138,8 @@ async function getData(message) {
     const searchedPlayer = await getPlayer(username, profile).catch((err) => {
         return err
     });
-    console.log(searchedPlayer)
     const playerProfile = searchedPlayer.memberData;
-    console.log(playerProfile)
     const inventory = playerProfile?.inv_contents?.data;
-    console.log(inventory)
     if (!inventory) {
         return " has no items in their inventory or has their inventory API disabled."
     }
@@ -159,7 +154,7 @@ async function getData(message) {
 
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
-    console.log(uploadResponse.url)
+
     return `${username}awssaw${uploadResponse.url}`
 }
 class RenderCommand extends DiscordCommand {
