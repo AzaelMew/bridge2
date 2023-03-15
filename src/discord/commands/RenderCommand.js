@@ -124,7 +124,7 @@ async function getPlayer(player, profile) {
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
-    let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
+    let { 2: username, 3: profile, 4: itemNumber } = message.split(' ');
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
     }
@@ -167,10 +167,7 @@ class RenderCommand extends DiscordCommand {
     }
 
     onCommand(message) {
-        let args = this.getArgs(message)
-        console.log(message.content)
-        let user = args.shift()
-        getData(user).then(returnurl => {
+        getData(message.content).then(returnurl => {
             this.send(`/gc ${username}: ${returnurl}`)
             this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
         })
