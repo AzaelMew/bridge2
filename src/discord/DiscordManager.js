@@ -98,7 +98,6 @@ class DiscordManager extends CommunicationBridge {
               },
             },
           })
-          channel.send(url)
         })
         break
 
