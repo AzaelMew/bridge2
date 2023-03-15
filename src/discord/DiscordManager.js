@@ -70,6 +70,12 @@ class DiscordManager extends CommunicationBridge {
     }
   }
 
+  onImageBroadcast({url}) {
+    this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
+      channel.send(url)
+    })
+  }
+
   onOfficerBroadcast({ username, message, guildRank }) {
     this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Officer`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
