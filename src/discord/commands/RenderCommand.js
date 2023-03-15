@@ -123,7 +123,7 @@ async function getPlayer(player, profile) {
     console.log(profileData)
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
     console.log(mojangResponse)
-    return { memberData: profileData.members[`'${mojangResponse}'`], profileData, profiles: hypixelResponse.profiles };
+    return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
     console.log(message)
