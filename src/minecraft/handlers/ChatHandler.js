@@ -60,7 +60,7 @@ async function getCanvasWidthAndHeight(lore) {
   return { height: lore.length * 24 + 15, width: highestWidth + 20 };
 }
 
-async function renderLore(itemName, lore) {
+async function renderLore(lore) {
   lore = lore.split("\n")
   const measurements = await getCanvasWidthAndHeight(lore);
   const canvas = Canvas.createCanvas(measurements.width, measurements.height);
@@ -120,13 +120,12 @@ async function getUUIDFromUsername(username) {
 }
 async function getLoreFromID(id) {
   const { data } = await axios.get('https://soopy.dev/api/soopyv2/itemdown/' + id)
-  let lore = `${data[0]}wasdasd${data[1]}`
+  let lore = data[1]
   return lore
 }
 async function getItemLore(id) {
   let lore = await getLoreFromID(id)
-  lore = lore.split("wasdasd")
-  const renderedItem = await renderLore(lore[0],lore[1])
+  const renderedItem = await renderLore(lore)
   const uploadResponse = await uploader.uploadBuffer(renderedItem);
   if (!uploadResponse.url) return "Failed to upload image.";
   else return uploadResponse.url
