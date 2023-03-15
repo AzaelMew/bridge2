@@ -123,7 +123,7 @@ class DiscordManager extends CommunicationBridge {
               color: '2A2A2A',
               timestamp: new Date(),
               footer: {
-                text: "bot",
+                text: "BOT",
               },
               image: {
                 url: image,
