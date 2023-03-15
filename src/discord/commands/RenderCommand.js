@@ -167,11 +167,22 @@ class RenderCommand extends DiscordCommand {
 
     onCommand(message) {
         getData(message.content).then(returnurl => {
-            console.log(returnurl)
-//this.send(`/gc ${username}: ${returnurl}`)
-//this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
-
-    })
+            this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
+            message.channel.send({
+                embed: {
+                    description: returnurl,
+                    color: '2A2A2A',
+                    timestamp: new Date(),
+                    footer: {
+                        text: "BOT",
+                    },
+                    author: {
+                        name: `${username}`,
+                        icon_url: 'https://www.mc-heads.net/avatar/' + username,
+                    },
+                },
+            })
+        })
     }
 }
 
