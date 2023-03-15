@@ -552,6 +552,7 @@ class StateHandler extends EventHandler {
         message: playerMessage,
         guildRank: guildRank,
       })
+      return;
     }
     this.minecraft.broadcastMessage({
       username: username,
