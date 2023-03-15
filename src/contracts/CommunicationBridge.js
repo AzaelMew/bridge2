@@ -15,6 +15,10 @@ class CommunicationBridge {
     return this.bridge.onBroadcast(event)
   }
 
+  broadcastImage(event) {
+    return this.bridge.onImageBroadcast(event)
+  }
+
   broadcastOfficerMessage(event) {
     return this.bridge.onOfficerBroadcast(event)
   }
