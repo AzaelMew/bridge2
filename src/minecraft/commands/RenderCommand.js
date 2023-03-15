@@ -82,7 +82,7 @@ async function renderLore(lore) {
     }
     return canvas.toBuffer();
 }
-function getLastProfile(data) {
+async function getLastProfile(data) {
     const profiles = data.profiles;
     return profiles.sort((a, b) => b.selected - a.selected)[0];
 }
@@ -117,7 +117,7 @@ async function getPlayer(player, profile) {
     if (!hypixelResponse) throw new Error("Couldn't get a response from the API");
     if (hypixelResponse.profiles === null) throw new Error(`Couldn\'t find any Skyblock profile that belongs to ${player}`);
 
-    let profileData = getLastProfile(hypixelResponse);
+    let profileData = await getLastProfile(hypixelResponse);
     if (profile) {
         profileData = hypixelResponse.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
     }
