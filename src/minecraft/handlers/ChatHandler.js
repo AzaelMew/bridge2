@@ -62,7 +62,7 @@ async function getCanvasWidthAndHeight(lore) {
 async function renderLore(itemName, lore) {
   console.log(lore)
   const measurements = await getCanvasWidthAndHeight(lore);
-  const canvas = Canvas.createCanvas(measurements.width, measurements.height);
+  const canvas = Canvas.createCanvas(250, 250);
   const ctx = canvas.getContext('2d');
   // BACKGROUND
   ctx.fillStyle = '#100110';
