@@ -128,6 +128,7 @@ async function getData(messageAuthor, message) {
 
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
+        profile = undefined
     }
     if (!isNaN(Number(username))) {
         itemNumber = username;
