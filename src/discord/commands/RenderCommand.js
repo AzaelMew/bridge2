@@ -115,12 +115,12 @@ async function getPlayer(player, profile) {
     if (!hypixelResponse) throw new Error("Couldn't get a response from the API");
     if (hypixelResponse.profiles === null) throw new Error(`Couldn\'t find any Skyblock profile that belongs to ${player}`);
     let profileData = await getLastProfile(hypixelResponse);
-    console.log(profileData)
+    
     if (profile) {
         console.log(hypixelResponse)
         profileData = hypixelResponse.data.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
     }
-
+    console.log(profileData)
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
 
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
