@@ -160,7 +160,7 @@ async function getData(messageAuthor, message) {
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
 
-    return uploadResponse.url
+    return `${uploadResponse.url}AWSSAW${username}`
 }
 class RenderCommand extends MinecraftCommand {
     constructor(minecraft) {
@@ -172,6 +172,9 @@ class RenderCommand extends MinecraftCommand {
 
     onCommand(username, message) {
         getData(username, message).then(returnurl => {
+            returnurl=returnurl.split("AWSSAW")
+            let username = returnurl[1]
+            returnurl = returnurl[0]
             this.send(`/gc ${username}: ${returnurl}`)
             this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
         })
