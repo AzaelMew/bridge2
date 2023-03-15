@@ -81,6 +81,7 @@ async function renderLore(itemName, lore) {
 }
 
 async function getLastProfile(data) {
+    console.log(data)
     const profiles = data.data.profiles;
     return profiles.sort((a, b) => b.selected - a.selected)[0];
 }
@@ -117,7 +118,6 @@ async function getPlayer(player, profile) {
     let profileData = await getLastProfile(hypixelResponse);
     
     if (profile) {
-        console.log(hypixelResponse.data)
         profileData = hypixelResponse.data.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse.data);
     }
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
