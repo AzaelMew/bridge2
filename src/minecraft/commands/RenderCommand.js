@@ -115,7 +115,7 @@ async function getPlayer(player, profile) {
 
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
-async function getData(message) {
+async function getData(messageAuthor, message) {
     let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
 
     if (!username) username = messageAuthor;
@@ -163,7 +163,7 @@ class RenderCommand extends MinecraftCommand {
     }
 
     onCommand(username, message) {
-        getData(message).then(returnurl => {
+        getData(username, message).then(returnurl => {
             this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
         })
     }
