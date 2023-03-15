@@ -138,10 +138,10 @@ class DiscordManager extends CommunicationBridge {
         break
 
       case 'webhook':
-        message = message.replace(/@/g, '') // Stop pinging @everyone or @here
-        this.app.discord.webhook.send(
+        //message = message.replace(/@/g, '') // Stop pinging @everyone or @here
+        /*this.app.discord.webhook.send(
           message, { username: username, avatarURL: 'https://www.mc-heads.net/avatar/' + username }
-        )
+        )*/
         break
 
       default:
