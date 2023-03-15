@@ -86,7 +86,6 @@ class DiscordManager extends CommunicationBridge {
               description: message,
               color: '2A2A2A',
               timestamp: new Date(),
-              image: url,
               footer: {
                 text: guildRank,
               },
