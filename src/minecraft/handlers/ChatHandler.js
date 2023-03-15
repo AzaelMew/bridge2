@@ -80,7 +80,6 @@ async function renderLore(itemName, lore) {
   for (const [index, item] of Object.entries(lore)) {
     let width = 10;
     const splitItem = item.split('§');
-    console.log(item)
     if (splitItem[0].length == 0) splitItem.shift();
 
     for (const toRenderItem of splitItem) {
