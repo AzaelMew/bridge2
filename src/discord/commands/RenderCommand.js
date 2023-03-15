@@ -169,8 +169,8 @@ class RenderCommand extends DiscordCommand {
         getData(message.content).then(returnurl => {
             console.log(returnurl)
             returnurl=returnurl.split("AWSSAW")
-            let username = returnurl[0]
-            returnurl = returnurl[1]
+            let username = returnurl[1]
+            returnurl = returnurl[0]
             this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
             message.channel.send({
                 embed: {
