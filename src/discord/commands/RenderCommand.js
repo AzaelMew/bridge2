@@ -117,7 +117,7 @@ async function getPlayer(player, profile) {
     let profileData = await getLastProfile(hypixelResponse);
     if (profile) {
         console.log(hypixelResponse)
-        profileData = hypixelResponse.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
+        profileData = hypixelResponse.data.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
     }
 
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
