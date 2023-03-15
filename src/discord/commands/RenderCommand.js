@@ -132,8 +132,6 @@ async function getData(message) {
     if (!isNaN(Number(username))) {
         itemNumber = username;
     }
-    console.log(username)
-    console.log(itemNumber)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
 
@@ -157,7 +155,7 @@ async function getData(message) {
 
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
-
+    console.log(uploadResponse.url)
     return `${username}awssaw${uploadResponse.url}`
 }
 class RenderCommand extends DiscordCommand {
