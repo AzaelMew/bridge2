@@ -5,6 +5,11 @@ class MessageHandler {
   }
 
   async onMessage(message) {
+    const attachment = message?.attachments.first();
+    const url = attachment ? attachment.url : null;
+    if(url != null){
+      message.content = message.content + url
+    }
     if(this.shouldBroadcastOfficerMessage(message)){
       if (this.command.handle(message)) {
         return
