@@ -174,6 +174,8 @@ class RenderCommand extends MinecraftCommand {
     onCommand(username, message) {
         getData(username, message).then(returnurl => {
             this.send(`/gc ${username}: ${returnurl}`)
+            this.minecraft.broadcastCommandEmbed3({ username: username, message: `${ans}`, icon: "https://cdn.discordapp.com/attachments/1045517755044085762/1084545786886504508/mlfaJuO.png", url: "ttps://www.mc-heads.net/avatar/"+username })
+
         })
     }
 }
