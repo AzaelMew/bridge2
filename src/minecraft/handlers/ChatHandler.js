@@ -5,7 +5,10 @@ const axios = require("axios");
 const fs = require('fs');
 const { setInterval } = require('timers/promises');
 const Canvas = require('canvas');
-
+Canvas.registerFont('../../fonts/MinecraftRegular-Bmg3.ttf', { family: 'Minecraft' });
+Canvas.registerFont('../../fonts/minecraft-bold.otf', { family: 'MinecraftBold' });
+Canvas.registerFont('../../fonts/2_Minecraft-Italic.otf', { family: 'MinecraftItalic' });
+Canvas.registerFont('../../fonts/unifont.ttf', { family: 'MinecraftUnicode' });
 
 let reta = []
 var ret = "";
