@@ -650,8 +650,6 @@ class StateHandler extends EventHandler {
     const regex = /\[ITEM:(\d+)\]/g;
     if (regex.test(message)) {
       return message;
-    } else {
-      console.log("No match found");
     }
   }
 
