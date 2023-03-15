@@ -114,7 +114,7 @@ class DiscordManager extends CommunicationBridge {
   }
 
   onBroadcastNewImage({ username, image, icon}) {
-    this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Discord`)
+    this.app.log.broadcast(`${username}: ${image}`, `Discord`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
@@ -123,7 +123,7 @@ class DiscordManager extends CommunicationBridge {
               color: '2A2A2A',
               timestamp: new Date(),
               footer: {
-                text: guildRank,
+                text: "bot",
               },
               image: {
                 url: image,
