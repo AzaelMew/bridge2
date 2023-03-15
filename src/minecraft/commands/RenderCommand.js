@@ -82,7 +82,7 @@ async function renderLore(lore) {
     return canvas.toBuffer();
 }
 async function getLastProfile(data) {
-    console.log(data)
+    console.log(data.data.profiles)
     const profiles = data.profiles;
     return profiles.sort((a, b) => b.selected - a.selected)[0];
 }
