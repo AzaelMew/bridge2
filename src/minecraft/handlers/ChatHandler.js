@@ -259,8 +259,8 @@ class StateHandler extends EventHandler {
       const regex = /\[ITEM:(\d+)\]/g;
         if (regex.test(message)) {
         console.log(message)
-        const itemNumber = message.match(regex);
-        console.log(itemNumber[0])
+        let itemNumber = message.match(regex);
+        itemNumber = itemNumber.replace("[ITEM:","").replace("}","")
         getItemLore(itemNumber).then(responseurl => {
           this.bot.chat(`/gc ${responseurl}`)
           this.minecraft.broadcastImage(responseurl)
