@@ -155,7 +155,7 @@ async function getData(message) {
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
 
-    return uploadResponse.url
+    return `${uploadResponse.url}AWSSAW${username}`
 }
 class RenderCommand extends DiscordCommand {
     constructor(minecraft) {
@@ -167,6 +167,9 @@ class RenderCommand extends DiscordCommand {
 
     onCommand(message) {
         getData(message.content).then(returnurl => {
+            returnurl.split("AWSSAW")
+            let username = returnurl[0]
+            returnurl = returnurl[1]
             this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
             message.channel.send({
                 embed: {
