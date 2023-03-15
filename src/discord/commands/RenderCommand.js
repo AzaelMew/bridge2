@@ -155,7 +155,7 @@ async function getData(message) {
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
 
-    return uploadResponse.url
+    return [username,uploadResponse.url]
 }
 class RenderCommand extends DiscordCommand {
     constructor(minecraft) {
@@ -167,6 +167,10 @@ class RenderCommand extends DiscordCommand {
 
     onCommand(message) {
         getData(message.content).then(returnurl => {
+            let username = returnurl[0]
+            let returnurl = returnurl[1]
+            console.log(returnurl)
+            console.log(username)
             this.send(`/gc ${username}: ${returnurl}`)
             this.minecraft.broadcastNewImage({ username: username, image: `${returnurl}`, icon: 'https://www.mc-heads.net/avatar/' + username })
         })
