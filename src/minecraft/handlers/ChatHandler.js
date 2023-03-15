@@ -119,6 +119,7 @@ async function getUUIDFromUsername(username) {
 }
 async function getLoreFromID(id) {
   const { data } = await axios.get('https://soopy.dev/api/soopyv2/itemdown/' + id)
+  console.log(data)
   let lore = `${data[0]},${data[1]}`
   return lore
 }
