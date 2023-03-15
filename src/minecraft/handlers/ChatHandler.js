@@ -62,7 +62,7 @@ async function getCanvasWidthAndHeight(lore) {
 async function renderLore(itemName, lore) {
   console.log(lore)
   const measurements = await getCanvasWidthAndHeight(lore);
-  const canvas = Canvas.createCanvas(250, 250);
+  const canvas = Canvas.createCanvas(measurements.width, measurements.height);
   const ctx = canvas.getContext('2d');
   // BACKGROUND
   ctx.fillStyle = '#100110';
@@ -79,6 +79,7 @@ async function renderLore(itemName, lore) {
   for (const [index, item] of Object.entries(lore)) {
     let width = 10;
     const splitItem = item.split('§');
+    console.log(item)
     if (splitItem[0].length == 0) splitItem.shift();
 
     for (const toRenderItem of splitItem) {
