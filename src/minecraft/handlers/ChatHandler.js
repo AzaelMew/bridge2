@@ -527,24 +527,6 @@ class StateHandler extends EventHandler {
       })
     }
 
-    if (this.isSoopyMessage(message)) {
-      const regex = /\[ITEM:(\d+)\]/g;
-        if (regex.test(message)) {
-        console.log(message)
-        let itemNumber = message.match(regex);
-        let newplayerMessage = playerMessage.replace(itemNumber,"")
-        itemNumber = itemNumber.toString().replace("[ITEM:","").replace("]","")
-        getItemLore(itemNumber).then(responseurl => {
-          this.minecraft.broadcastTextEmbed({
-            username: username,
-            message: newplayerMessage,
-            guildRank: guildRank,
-            url: responseurl,
-          })
-          return this.bot.chat(`/gc ${responseurl}`)
-        })
-      }
-    }
     if (playerMessage.length == 0 || this.command.handle(username, playerMessage)) {
       return
     }
@@ -564,11 +546,31 @@ class StateHandler extends EventHandler {
       })
       return;
     }
-    this.minecraft.broadcastMessage({
-      username: username,
-      message: playerMessage,
-      guildRank: guildRank,
-    })
+    if (this.isSoopyMessage(message)) {
+      const regex = /\[ITEM:(\d+)\]/g;
+        if (regex.test(message)) {
+        console.log(message)
+        let itemNumber = message.match(regex);
+        let newplayerMessage = playerMessage.replace(itemNumber,"")
+        itemNumber = itemNumber.toString().replace("[ITEM:","").replace("]","")
+        getItemLore(itemNumber).then(responseurl => {
+          this.minecraft.broadcastTextEmbed({
+            username: username,
+            message: newplayerMessage,
+            guildRank: guildRank,
+            url: responseurl,
+          })
+          return this.bot.chat(`/gc ${responseurl}`)
+        })
+      }
+    }
+    else{
+      this.minecraft.broadcastMessage({
+        username: username,
+        message: playerMessage,
+        guildRank: guildRank,
+      })
+    }
   }
 
   apiMessage(message) {
