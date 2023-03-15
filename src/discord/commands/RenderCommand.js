@@ -139,7 +139,7 @@ async function getData(message) {
         return err
     });
     const playerProfile = searchedPlayer.memberData;
-
+    console.log(playerProfile)
     const inventory = playerProfile?.inv_contents?.data;
     console.log(inventory)
     if (!inventory) {
