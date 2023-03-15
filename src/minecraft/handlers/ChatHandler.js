@@ -255,8 +255,8 @@ class StateHandler extends EventHandler {
     }
     if (this.isSoopyMessage(message)) {
       const regex = /\[ITEM:(\d+)\]/g;
-        if (regex.test(str)) {
-        const itemNumber = str.match(regex)[1];
+        if (regex.test(message)) {
+        const itemNumber = message.match(regex)[1];
         getItemLore(itemNumber).then(responseurl => {
           this.bot.chat(`/gc ${responseurl}`)
           this.minecraft.broadcastImage(responseurl)
