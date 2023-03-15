@@ -125,6 +125,7 @@ async function getPlayer(player, profile) {
 }
 async function getData(messageAuthor, message) {
     let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
+    console.log(username)
     if (!username) username = messageAuthor;
 
     if (!isNaN(Number(profile))) {
@@ -140,7 +141,6 @@ async function getData(messageAuthor, message) {
     const searchedPlayer = await getPlayer(username, profile).catch((err) => {
         return err
     });
-    console.log(username)
     const playerProfile = searchedPlayer.memberData;
 
     const inventory = playerProfile?.inv_contents?.data;
