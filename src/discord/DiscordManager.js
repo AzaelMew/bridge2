@@ -76,6 +76,40 @@ class DiscordManager extends CommunicationBridge {
     })
   }
 
+  onBroadcast({ username, message, guildRank }, url) {
+    this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Discord`)
+    switch (this.app.config.discord.messageMode.toLowerCase()) {
+      case 'bot':
+        this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
+          channel.send(url,{
+            embed: {
+              description: message,
+              color: '2A2A2A',
+              timestamp: new Date(),
+              footer: {
+                text: guildRank,
+              },
+              author: {
+                name: username,
+                icon_url: 'https://www.mc-heads.net/avatar/' + username,
+              },
+            },
+          })
+        })
+        break
+
+      case 'webhook':
+        message = message.replace(/@/g, '') // Stop pinging @everyone or @here
+        this.app.discord.webhook.send(
+          message, { username: username, avatarURL: 'https://www.mc-heads.net/avatar/' + username }
+        )
+        break
+
+      default:
+        throw new Error('Invalid message mode: must be bot or webhook')
+    }
+  }
+
   onOfficerBroadcast({ username, message, guildRank }) {
     this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Officer`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
