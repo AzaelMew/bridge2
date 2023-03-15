@@ -46,8 +46,8 @@ async function getCanvasWidthAndHeight(lore) {
     return { height: lore.length * 24 + 15, width: highestWidth + 60 };
 }
 
-async function renderLore(lore) {
-    lore = lore.split("\n")
+async function renderLore(itemName, lore) {
+    if (itemName) lore.unshift(itemName);
     const measurements = await getCanvasWidthAndHeight(lore);
     const canvas = Canvas.createCanvas(measurements.width, measurements.height);
     const ctx = canvas.getContext('2d');
@@ -79,8 +79,10 @@ async function renderLore(lore) {
             width += ctx.measureText(toRenderItem.substring(1)).width;
         }
     }
+
     return canvas.toBuffer();
 }
+
 async function getLastProfile(data) {
     const profiles = data.data.profiles;
     return profiles.sort((a, b) => b.selected - a.selected)[0];
