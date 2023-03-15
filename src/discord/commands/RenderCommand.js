@@ -121,18 +121,13 @@ async function getPlayer(player, profile) {
     if (!profileData) throw new Error(`Couldn't find the specified Skyblock profile that belongs to ${player}.`);
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
-async function getData(messageAuthor, message) {
+async function getData(message) {
     let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
     console.log(username)
-    if (!username) username = messageAuthor;
 
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
         profile = undefined
-    }
-    if (!isNaN(Number(username))) {
-        itemNumber = username;
-        username = messageAuthor;
     }
     console.log(profile)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
