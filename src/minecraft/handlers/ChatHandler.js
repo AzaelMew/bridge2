@@ -549,7 +549,7 @@ class StateHandler extends EventHandler {
       let url = message.match(regex)
       this.minecraft.broadcastTextEmbed({
         username: username,
-        message: playerMessage,
+        message: playerMessage.replace(url[0],""),
         guildRank: guildRank,
         url: url[0],
       })
