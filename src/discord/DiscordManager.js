@@ -72,7 +72,7 @@ class DiscordManager extends CommunicationBridge {
 
   onImageBroadcast({url}) {
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
-      channel.send(url)
+      channel.send(""+url)
     })
   }
 
