@@ -89,6 +89,9 @@ class DiscordManager extends CommunicationBridge {
               footer: {
                 text: guildRank,
               },
+              image: {
+                url: url,
+              },
               author: {
                 name: username,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
