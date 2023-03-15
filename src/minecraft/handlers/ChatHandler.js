@@ -544,6 +544,15 @@ class StateHandler extends EventHandler {
     if (playerMessage == '@') {
       return
     }
+    if (message.includes("i.imgur.com") || message.includes("cdn.discordapp.com/attachments")){
+      let regex = /(?:^|\s)((?:(?:https?|ftp):\/\/|www\.)\S+(?:\b|$))/gm
+      let url = message.match(regex)
+      this.minecraft.broadcastTextEmbed(url[0],{
+        username: username,
+        message: playerMessage,
+        guildRank: guildRank,
+      })
+    }
     this.minecraft.broadcastMessage({
       username: username,
       message: playerMessage,
