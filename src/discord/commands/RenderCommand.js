@@ -124,7 +124,6 @@ async function getPlayer(player, profile) {
     return { memberData: profileData.members[mojangResponse], profileData, profiles: hypixelResponse.profiles };
 }
 async function getData(message) {
-    console.log(message)
     let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
