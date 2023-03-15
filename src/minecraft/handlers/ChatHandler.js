@@ -5,6 +5,10 @@ const axios = require("axios");
 const fs = require('fs');
 const { setInterval } = require('timers/promises');
 const Canvas = require('canvas');
+const imgur = require('imgur-anonymous-uploader');
+const { url } = require('inspector');
+const uploader = new imgur("318214bc4f4717f");
+
 Canvas.registerFont('./src/fonts/MinecraftRegular-Bmg3.ttf', { family: 'Minecraft' });
 Canvas.registerFont('./src/fonts/minecraft-bold.otf', { family: 'MinecraftBold' });
 Canvas.registerFont('./src/fonts/2_Minecraft-Italic.otf', { family: 'MinecraftItalic' });
@@ -88,7 +92,6 @@ async function renderLore(itemName, lore) {
       width += ctx.measureText(toRenderItem.substring(1)).width;
     }
   }
-
   return canvas.toBuffer();
 }
 
@@ -113,6 +116,19 @@ async function getUUIDFromUsername(username) {
     let user = username
     return data.id
   }
+}
+async function getLoreFromID(id) {
+  const { data } = await axios.get('https://soopy.dev/api/soopyv2/itemdown/' + id)
+  let lore = `${data[0]},${data[1]}`
+  return lore
+}
+async function getItemLore(id) {
+  let lore = await getLoreFromID(id)
+  lore = lore.split(",")
+  const renderedItem = await renderLore(lore[0],lore[1])
+  const uploadResponse = await uploader.uploadBuffer(renderedItem);
+  if (!uploadResponse.url) return "Failed to upload image.";
+  else return uploadResponse.url
 }
 async function getStatsFromUsername(username) {
   return await getStatsFromUUID(await getUUIDFromUsername(username))
@@ -236,6 +252,15 @@ class StateHandler extends EventHandler {
 
     if (this.isPartyMessage(message)) {
       return this.bot.chat("/p leave")
+    }
+    if (this.isSoopyMessage(message)) {
+      if (regex.test(str)) {
+        const itemNumber = str.match(regex)[1];
+        getItemLore(itemNumber).then(responseurl => {
+          this.bot.chat(`/gc ${responseurl}`)
+          this.minecraft.broadcastImage(responseurl)
+        })
+      }
     }
     if (this.isPartyMessage2(message)) {
       res = message.match(reg)
@@ -618,6 +643,15 @@ class StateHandler extends EventHandler {
 
   isOnlineMessage(message) {
     return message.endsWith(' ●')
+  }
+
+  isSoopyMessage(message) {
+    const regex = /\[ITEM:(\d+)\]/g;
+    if (regex.test(message)) {
+      return message;
+    } else {
+      console.log("No match found");
+    }
   }
 
   isPartyMessage2(message) {
