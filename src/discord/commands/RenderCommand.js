@@ -136,6 +136,7 @@ async function getData(message) {
         return err
     });
     const playerProfile = searchedPlayer.memberData;
+    console.log(playerProfile)
     const inventory = playerProfile?.inv_contents?.data;
     if (!inventory) {
         return " has no items in their inventory or has their inventory API disabled."
