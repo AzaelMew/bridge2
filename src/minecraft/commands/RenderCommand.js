@@ -37,7 +37,6 @@ async function getCanvasWidthAndHeight(lore) {
 
     let highestWidth = 0;
     for (let i = 0; i < lore.length; i++) {
-        console.log(lore[i])
         const width = ctx.measureText(lore[i].replace(/\u00A7[0-9A-FK-OR]/gi, '')).width;
         if (width > highestWidth) {
             highestWidth = width;
@@ -116,7 +115,7 @@ async function getPlayer(player, profile) {
     const hypixelResponse = await axios.get(`https://api.hypixel.net/skyblock/profiles?uuid=${mojangResponse}&key=4fd2ea22-23ec-4543-9141-01288a80adfb`);
     if (!hypixelResponse) throw new Error("Couldn't get a response from the API");
     if (hypixelResponse.profiles === null) throw new Error(`Couldn\'t find any Skyblock profile that belongs to ${player}`);
-
+    console.log(hypixelResponse)
     let profileData = await getLastProfile(hypixelResponse);
     if (profile) {
         profileData = hypixelResponse.profiles.find((p) => p.cute_name.toLowerCase() === profile.toLowerCase()) || getLastProfile(hypixelResponse);
@@ -137,14 +136,12 @@ async function getData(messageAuthor, message) {
         itemNumber = username;
         username = messageAuthor;
     }
-    console.log(username)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
 
     const searchedPlayer = await getPlayer(username, profile).catch((err) => {
         return err
     });
-    console.log(searchedPlayer)
     const playerProfile = searchedPlayer.memberData;
 
     const inventory = playerProfile?.inv_contents?.data;
