@@ -126,16 +126,13 @@ async function getPlayer(player, profile) {
 async function getData(message) {
     console.log(message)
     let { 1: username, 2: profile, 3: itemNumber } = message.split(' ');
-    console.log(username)
-    console.log(profile)
-    console.log(itemNumber)
     if (!isNaN(Number(profile))) {
         itemNumber = profile;
     }
-    console.log(itemNumber)
     if (!isNaN(Number(username))) {
         itemNumber = username;
     }
+    console.log(username)
     console.log(itemNumber)
     if (itemNumber < 1 || itemNumber > 9 || !itemNumber)
         return "Invalid item number. Must be between 1 and 9."
