@@ -50,6 +50,7 @@ async function getCanvasWidthAndHeight(lore) {
 
   let highestWidth = 0;
   for (let i = 0; i < lore.length; i++) {
+    console.log(lore)
     const width = ctx.measureText(lore[i].replace(/\u00A7[0-9A-FK-OR]/gi, '')).width;
     if (width > highestWidth) {
       highestWidth = width;
