@@ -154,7 +154,7 @@ async function getData(messageAuthor, message) {
         return minecraftClient.chat(`This player does not have an item in slot ${itemNumber}.`);
     }
 
-    const renderedItem = await renderLore(selectedItem?.tag?.display?.Name, selectedItem?.tag?.display?.Lore);
+    const renderedItem = await renderLore(selectedItem?.tag?.display?.Lore);
 
     const uploadResponse = await uploader.uploadBuffer(renderedItem);
     if (!uploadResponse.url) return minecraftClient.chat(`Failed to upload image.`);
