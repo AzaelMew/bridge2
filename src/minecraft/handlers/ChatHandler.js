@@ -258,7 +258,7 @@ class StateHandler extends EventHandler {
     if (this.isSoopyMessage(message)) {
       const regex = /\[ITEM:(\d+)\]/g;
         if (regex.test(message)) {
-        const itemNumber = message.match(regex)[1];
+        const itemNumber = message.match(regex)[0];
         console.log(itemNumber)
         getItemLore(itemNumber).then(responseurl => {
           this.bot.chat(`/gc ${responseurl}`)
