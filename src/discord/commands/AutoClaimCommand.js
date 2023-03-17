@@ -55,7 +55,6 @@ async function getGMemberFromUUID(uuid, message) {
 
         let total = expValue[0] + expValue[1] + expValue[2] + expValue[3] + expValue[4] + expValue[5] + expValue[6]
         let xp = total
-        console.log(i)
         if (i <= data.guild.members.length - 1) {
           try {
             getActivity(data.guild.members[i].uuid, data.guild.members[i].rank, xp)
@@ -99,7 +98,6 @@ async function getActivity(uuid, rank, xp) {
       newlvl = data.profiles[b]?.members[uuid]?.leveling?.experience
     }
   }
-  console.log(newlvl)
   if(rank=="Vanguard") {
     if (xp < 50000){
       
@@ -114,21 +112,17 @@ async function getActivity(uuid, rank, xp) {
   if (newlvl >= 24000) {
     if(rank=="Champion") return
     ini.push(`${name} Champion`)
-    console.log(ini)
     return
   }
   else if (newlvl >= 19000) {
     if(rank=="Knight") return
     ini.push(`${name} Knight`)
-    console.log(ini)
 
     return
   }
   else {
     if(rank=="Recruit") return
     ini.push(`${name} Recruit`)
-    console.log(ini)
-
     return
   }
 }
@@ -146,7 +140,6 @@ class AutoclaimCommand extends DiscordCommand {
 
   onCommand(message) {
     getGMemberFromUsername("xephor_ex", message).then(a => {
-      console.log(a)
       let cat = 0
       let cat2 = 0
       let cat3 = 0
@@ -154,7 +147,6 @@ class AutoclaimCommand extends DiscordCommand {
       for (let index = 0; index < ini.length; ++index) {
         let el = ini[index]
         setTimeout(() => {
-          console.log(el)
           this.sendMinecraftMessage(`/g setrank ${el}`)
         }, index * interval);
       }
