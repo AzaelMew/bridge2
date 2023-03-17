@@ -48,15 +48,15 @@ async function getGMemberFromUUID(uuid, message) {
       champ = []
       for (i = 0; i < data.guild.members.length + 1; i++) {
         await new Promise(resolve => setTimeout(resolve, 10));
-        let joined = data.guild.members[i].joined
-        joined = new Date(joined).toLocaleString()
-        let newData = data.guild.members[i];
-        let expValue = Object.values(newData.expHistory)
-
-        let total = expValue[0] + expValue[1] + expValue[2] + expValue[3] + expValue[4] + expValue[5] + expValue[6]
-        let xp = total
-        console.log(i)
         if (i <= data.guild.members.length - 1) {
+          let joined = data?.guild.members[i]?.joined
+          joined = new Date(joined).toLocaleString()
+          let newData = data.guild.members[i];
+          let expValue = Object.values(newData.expHistory)
+  
+          let total = expValue[0] + expValue[1] + expValue[2] + expValue[3] + expValue[4] + expValue[5] + expValue[6]
+          let xp = total
+          console.log(i)
           try {
             getActivity(data.guild.members[i].uuid, data.guild.members[i].rank, xp)
           }
