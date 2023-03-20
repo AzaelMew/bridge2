@@ -70,7 +70,7 @@ class SlayerCommand extends MinecraftCommand {
   
     async onCommand(username, message) {
       let args = message.split(" ")
-      if (message.endsWith("!slayer")){
+      if (message.endsWith("!slayer") || message.endsWith("!slayers")){
         getSlayerFromUser(username).then(stats=>{
             this.send(`/gc ${username}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
             this.minecraft.broadcastCommandEmbed({ username: `${username}'s slayers`, message: `${stats.replaceAll(";", "\n")}` }) })
