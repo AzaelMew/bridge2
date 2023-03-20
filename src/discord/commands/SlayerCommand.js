@@ -63,7 +63,7 @@ class SlayerCommand extends DiscordCommand {
       super(minecraft)
   
       this.name = 'slayer'
-      this.alias = "slayers"
+      this.aliases = "slayers"
       this.description = "Says users slayers"
     }
   
