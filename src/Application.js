@@ -3,7 +3,7 @@ const DiscordManager = require('./discord/DiscordManager')
 const MinecraftManager = require('./minecraft/MinecraftManager')
 const ExpressManager = require('./express/ExpressManager')
 const Logger = require('./Logger')
-
+require('./ping')
 class Application {
   async register() {
     this.config = new Configuration()
