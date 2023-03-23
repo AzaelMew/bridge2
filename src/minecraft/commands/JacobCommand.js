@@ -50,7 +50,7 @@ async function getJacobsSpecific(crop) {
                 eventString.push(crop);
             });
             eventString = eventString.filter(element => element !== crop)
-            let contest = `The next ${crop} contest is in ${timeUntilJacobEvent} and also has ${eventString.toString().replaceAll(","," and ")}`
+            let contest = `**The next ${crop} contest is in:**\n ${timeUntilJacobEvent} \n\n**and also has:**\n- ${eventString.toString().replaceAll(","," and ")}`
             return contest
         }
     }
@@ -82,7 +82,7 @@ class JacobCommand extends MinecraftCommand {
             }
             getJacobsSpecific(crop).then(contest => {
                 this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll("\n\nand ","\n\nIt ").replaceAll(" and ","\n- ") });
-                this.send(`/gc ${contest}`);
+                this.send(`/gc ${contest.replaceAll("\n\n","").replaceAll(":**\n-","").replaceAll(":**\n","").replaceAll("*","")}`);
             })
         }
         else{
