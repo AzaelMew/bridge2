@@ -81,13 +81,13 @@ class JacobCommand extends MinecraftCommand {
                 crop = await capitalizeFirstLetter(crop)
             }
             getJacobsSpecific(crop).then(contest => {
-                this.send(`/gc ${contest}`)
+                this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll("\n\nand ","\n\nIt ").replaceAll(" and ","\n- ") });
+                this.send(`/gc ${contest}`);
             })
         }
         else{
             getJacobs().then(contest => {
-                this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
-                })
+                this.minecraft.broadcastCommandEmbed2({ message: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n") })
                 this.send(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
             })
         }
