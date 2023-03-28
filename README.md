@@ -77,7 +77,7 @@ You'll need a GitHub account to deploy directly to Replit, as well as a [Replit]
 
 ### Setup Guide
 
-1. First [fork this project](https://github.com/Senither/hypixel-discord-chat-bridge/fork) onto your own GitHub account, once you have a copy of the project on your own account, sign in to Replit and import the project into Replit.
+1. First [fork this project](https://github.com/AzaelMew/bridge/fork) onto your own GitHub account, once you have a copy of the project on your own account, sign in to Replit and import the project into Replit.
 2. Now that the project is imported you should be able to click on the project in the Replit dashboard to create a new project from it, when the project has been created you should be able to select some settings about the project, make sure the selected language is set to `Node.js`, you can leave the _"configure the run button"_ settings as the default.
 3. Next, copy or rename the `config.example.json` file to `config.json`, you can find the files on the left-hand side of the Replit dashboard, when the file has been copied or renamed you should open the file and setup the settings, such as the Minecraft account details, and the Discord information
 4. Lastly you'll need to install all the dependencies for the project, this can be done by selecting the _"Shell"_ tab which should open the shell command prompt, then in that write `yarn install` to install all the dependencies.
@@ -144,9 +144,11 @@ The `authentication` option is the key which you can put in the header or query 
   - Guild joins/leaves/kicks, mutes/unmutes and promotion/demotions
 - [✓] Ingame commands
   - Add commands for players to use ingame to check other player stats (eg `!skills <ign>`, `!weight <ign>` etc)
-- [x] Add support for officer chat
+- [✓] Add support for officer chat
   - Allocate a second discord channel to use for two way officer chat.
 
 ## License
 
 Hypixel Discord Chat Bridge is open-sourced software licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+This all is based on Senither's bridge bot, i've done some of my own edits to it.
