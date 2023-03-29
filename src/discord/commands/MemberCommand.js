@@ -139,7 +139,7 @@ class MemberCommand extends DiscordCommand {
           embeds: [{
             description: `${user}'s guild stats:\n ${ret.replaceAll(";", "\n")}`,
             color: 0x47F049
-          }
+          }]
         })
       }
 
