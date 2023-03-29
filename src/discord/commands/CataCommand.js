@@ -89,7 +89,7 @@ class CatacombsCommand extends DiscordCommand {
             name: `${user}'s cata`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
-        },
+        }],
       })
     })
   }
