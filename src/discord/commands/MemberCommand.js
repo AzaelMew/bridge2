@@ -123,7 +123,7 @@ class MemberCommand extends DiscordCommand {
           embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,
             color: 0x47F049
-          }
+          }]
         })
       }
       else if (ret.toString().includes("This player is not in our guild.")) {

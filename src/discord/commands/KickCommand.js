@@ -44,7 +44,7 @@ class KickCommand extends DiscordCommand {
                   footer: {
                       text: "BOT",
                   },
-              },
+              }],
           })
           setTimeout(() => {
             this.sendMinecraftMessage(`/g kick ${user ? user : ''} ${reason ? reason : ''}`)
