@@ -44,7 +44,7 @@ class EightBallCommand extends DiscordCommand {
           this.sendMinecraftMessage(`/gc ${ans}`)
 
           message.channel.send({
-            embed: {
+            embeds: [{
               description: ans,
               color: '2A2A2A',
               timestamp: new Date(),

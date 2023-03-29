@@ -40,7 +40,7 @@ class CommandHandler {
     else{
       if (command.name == "override" && !this.isMod(message.member)){
         return message.channel.send({
-          embed: {
+          embeds: [{
             description: `You don't have permission to do that.`,
             color: 'DC143C'
           }
@@ -54,7 +54,7 @@ class CommandHandler {
       }
       else if (!this.isCommander(message.member)){
         return message.channel.send({
-          embed: {
+          embeds: [{
             description: `You don't have permission to do that.`,
             color: 'DC143C'
           }

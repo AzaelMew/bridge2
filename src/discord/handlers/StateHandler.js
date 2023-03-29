@@ -24,7 +24,7 @@ class StateHandler {
   onClose() {
     this.discord.client.channels.fetch(this.discord.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           author: { name: `Chat Bridge is Offline` },
           color: 0xF04947
         }

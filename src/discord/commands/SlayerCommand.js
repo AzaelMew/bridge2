@@ -73,7 +73,7 @@ class SlayerCommand extends DiscordCommand {
     getSlayerFromUser(user).then(stats => {
       this.sendMinecraftMessage(`/gc ${user}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
       message.channel.send({
-        embed: {
+        embeds: [{
           description: stats.replaceAll(";", "\n").replaceAll(":",""),
           color: '2A2A2A',
           timestamp: new Date(),

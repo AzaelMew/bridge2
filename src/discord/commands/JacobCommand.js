@@ -93,7 +93,7 @@ class JacobCommand extends DiscordCommand {
                 }
                 getJacobsSpecific(crop).then(contest => {
                     message.channel.send({
-                        embed: {
+                        embeds: [{
                             description: contest.replaceAll("\n\nand ","\n\nIt ").replaceAll(" and ","\n- "),
                             color: 'cbbeb5',
                             timestamp: new Date(),
@@ -108,7 +108,7 @@ class JacobCommand extends DiscordCommand {
         else{
             getJacobs().then(contest => {
                 message.channel.send({
-                    embed: {
+                    embeds: [{
                         description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
                         color: 'cbbeb5',
                         timestamp: new Date(),

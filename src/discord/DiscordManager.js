@@ -49,7 +49,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
-            embed: {
+            embeds: [{
               description: message,
               color: '2A2A2A',
               timestamp: new Date(),
@@ -89,7 +89,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
-            embed: {
+            embeds: [{
               description: message,
               color: '2A2A2A',
               timestamp: new Date(),
@@ -126,7 +126,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
-            embed: {
+            embeds: [{
               color: '2A2A2A',
               timestamp: new Date(),
               footer: {
@@ -162,7 +162,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.officer).then(channel => {
           channel.send({
-            embed: {
+            embeds: [{
               description: message,
               color: '2A2A2A',
               timestamp: new Date(),
@@ -195,7 +195,7 @@ class DiscordManager extends CommunicationBridge {
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           color: color,
           description: message,
         }
@@ -209,7 +209,7 @@ class DiscordManager extends CommunicationBridge {
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       let icon = username.split("'")
       channel.send({
-        embed: {
+        embeds: [{
           description: message,
           color: '2A2A2A',
           timestamp: new Date(),
@@ -230,7 +230,7 @@ class DiscordManager extends CommunicationBridge {
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           description: message,
           color: '2A2A2A',
           timestamp: new Date(),
@@ -247,7 +247,7 @@ class DiscordManager extends CommunicationBridge {
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           description: message,
           color: '2A2A2A',
           timestamp: new Date(),
@@ -269,7 +269,7 @@ class DiscordManager extends CommunicationBridge {
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       let icon = username.split("'")
       channel.send({
-        embed: {
+        embeds: [{
           title: username,
           description: message,
           color: '2A2A2A',
@@ -289,7 +289,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel2).then(channel2 => {
           channel2.send({
-            embed: {
+            embeds: [{
               color: color,
               description: `${message}`,
               timestamp: new Date(),
@@ -321,7 +321,7 @@ class DiscordManager extends CommunicationBridge {
 
     this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           color: color,
           author: {
             name: title,
@@ -340,7 +340,7 @@ class DiscordManager extends CommunicationBridge {
       case 'bot':
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
-            embed: {
+            embeds: [{
               color: color,
               timestamp: new Date(),
               author: {
@@ -373,7 +373,7 @@ class DiscordManager extends CommunicationBridge {
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
             content: content,
-            embed: {
+            embeds: [{
               color: color,
               timestamp: new Date(),
               author: {

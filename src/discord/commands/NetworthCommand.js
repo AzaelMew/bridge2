@@ -96,7 +96,7 @@ class NetworthCommand extends DiscordCommand {
     getNetworthFromUsername(user).then(ret => {
       this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
       message.channel.send({
-        embed: {
+        embeds: [{
           description: ret.replaceAll(".", "\n").replaceAll(":",""),
           color: '2A2A2A',
           timestamp: new Date(),

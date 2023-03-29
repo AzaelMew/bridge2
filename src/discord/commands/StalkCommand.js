@@ -187,7 +187,7 @@ class StalkCommand extends DiscordCommand {
             getLocationFromUsername(user).then(location => {
                 if (location == "Player is Offline") {
                     message.channel.send({
-                        embed: {
+                        embeds: [{
                             description: "is currently offline.",
                             color: 'FF0000',
                             timestamp: new Date(),
@@ -203,7 +203,7 @@ class StalkCommand extends DiscordCommand {
                 }
                 else if (location == "Player doesn't exist") {
                     message.channel.send({
-                        embed: {
+                        embeds: [{
                             description: "does not exist",
                             color: 'FF0000',
                             timestamp: new Date(),
@@ -219,7 +219,7 @@ class StalkCommand extends DiscordCommand {
                 }
                 else if (location != "Player is Offline") {
                     message.channel.send({
-                        embed: {
+                        embeds: [{
                             description: location,
                             color: 'cbbeb5',
                             timestamp: new Date(),
@@ -237,7 +237,7 @@ class StalkCommand extends DiscordCommand {
         }
         catch {
                     message.channel.send({
-                        embed: {
+                        embeds: [{
                             description: `Error`,
                             color: 'FF0000'
                         }

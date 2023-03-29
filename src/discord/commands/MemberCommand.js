@@ -120,7 +120,7 @@ class MemberCommand extends DiscordCommand {
     getGMemberFromUsername(user).then(ret => {
       if (ret.toString().includes("Please confirm the name of the player you're trying to look up.")) {
         message.channel.send({
-          embed: {
+          embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,
             color: '47F049'
           }
@@ -128,7 +128,7 @@ class MemberCommand extends DiscordCommand {
       }
       else if (ret.toString().includes("This player is not in our guild.")) {
         message.channel.send({
-          embed: {
+          embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,
             color: '47F049'
           }
@@ -136,7 +136,7 @@ class MemberCommand extends DiscordCommand {
       }
       else {
         message.channel.send({
-          embed: {
+          embeds: [{
             description: `${user}'s guild stats:\n ${ret.replaceAll(";", "\n")}`,
             color: '47F049'
           }

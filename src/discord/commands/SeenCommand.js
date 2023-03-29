@@ -95,7 +95,7 @@ class SeenCommand extends DiscordCommand {
         let user = args.shift()
         getSeenFromUsername(user).then(stats => {
             message.channel.send({
-                embed: {
+                embeds: [{
                     description: stats,
                     color: 'cbbeb5',
                     timestamp: new Date(),

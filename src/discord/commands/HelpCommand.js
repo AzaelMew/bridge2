@@ -24,7 +24,7 @@ class HelpCommand extends DiscordCommand {
     })
 
     message.channel.send({
-      embed: {
+      embeds: [{
         title: 'Help',
         description: 'Chat with people in-game and gain access to a variety of commands to use!\n\n',
         fields: [

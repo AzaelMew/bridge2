@@ -37,7 +37,7 @@ class KickCommand extends DiscordCommand {
                 fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
             }
             message.channel.send({
-              embed: {
+              embeds: [{
                   description: `${user} has been kicked and blacklisted from joining.`,
                   color: 'cbbeb5',
                   timestamp: new Date(),

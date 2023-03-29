@@ -169,7 +169,7 @@ class RenderCommand extends DiscordCommand {
             returnurl = returnurl[0]
             this.sendMinecraftMessage(`/gc ${username}: ${returnurl}`)
             message.channel.send({
-                embed: {
+                embeds: [{
                     image: {
                         url: returnurl,
                       },
