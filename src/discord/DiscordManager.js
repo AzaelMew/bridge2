@@ -20,6 +20,10 @@ class DiscordManager extends CommunicationBridge {
         parse: ["roles", "users"],
         repliedUser: false,
     },
+    partials: [
+        Partials.Message, // for message
+        Partials.Channel, // for text channel
+    ],
     intents: [
         GatewayIntentBits.Guilds, // for guild related things
         GatewayIntentBits.GuildMessages, // for guild messages things
