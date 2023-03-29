@@ -3,7 +3,7 @@ const StateHandler = require('./handlers/StateHandler')
 const MessageHandler = require('./handlers/MessageHandler')
 const CommandHandler = require('./CommandHandler')
 const { Client, GatewayIntentBits, Partials, ActivityType, EmbedBuilder } = require('discord.js');
-
+Discord = Client
 class DiscordManager extends CommunicationBridge {
   constructor(app) {
     super()
