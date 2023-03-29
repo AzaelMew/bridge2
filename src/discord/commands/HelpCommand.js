@@ -24,7 +24,7 @@ class HelpCommand extends DiscordCommand {
     })
 
     message.channel.send({
-      content: "https://media.discordapp.net/attachments/903390012584894484/1041616688749236385/TEMPEST_-_BRIDGE_2022.png?width=950&height=234",
+      attachment: "https://media.discordapp.net/attachments/903390012584894484/1041616688749236385/TEMPEST_-_BRIDGE_2022.png?width=950&height=234",
       embeds: [{
         title: 'Help',
         description: 'Chat with people in-game and gain access to a variety of commands to use!\n\n',
