@@ -15,7 +15,7 @@ class DiscordManager extends CommunicationBridge {
   }
 
   connect() {
-    this.client = new Client.Client({
+    this.client = new Discord.Client({
       allowedMentions: {
         parse: ["roles", "users"],
         repliedUser: false,
