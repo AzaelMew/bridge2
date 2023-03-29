@@ -286,7 +286,7 @@ class StateHandler extends EventHandler {
     if (this.isLoginMessage(message)) {
       let user = message.split('>')[1].trim().split('joined.')[0].trim()
 
-      return this.minecraft.broadcastPlayerToggle({ username: user, message: `joined.`, color: '47F049' })
+      return this.minecraft.broadcastPlayerToggle({ username: user, message: `joined.`, color: 0x47F049 })
     }
 
     if (this.isLogoutMessage(message)) {
@@ -309,7 +309,7 @@ class StateHandler extends EventHandler {
         message: `${user} joined the guild!`,
         title: `Member Joined`,
         icon: `https://mc-heads.net/avatar/${user}`,
-        color: '47F049'
+        color: 0x47F049
       })
     }
 
@@ -353,7 +353,7 @@ class StateHandler extends EventHandler {
       let username = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
       let newRank = message.replace(/\[(.*?)\]/g, '').trim().split(' to ').pop().trim()
 
-      return this.minecraft.broadcastCleanEmbed({ message: `${username} was promoted to ${newRank}`, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: `${username} was promoted to ${newRank}`, color: 0x47F049 })
     }
 
     if (this.isDemotionMessage(message)) {
@@ -392,19 +392,19 @@ class StateHandler extends EventHandler {
       mes = ret;
       ret = "";
       mes = mes.replaceAll("_", "\\_");
-      return this.minecraft.broadcastCleanEmbed({ message: mes, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: mes, color: 0x47F049 })
     }
 
     if (this.isOnlineInvite(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[2]
 
-      return this.minecraft.broadcastCleanEmbed({ message: `${user} was invited to the guild!`, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: `${user} was invited to the guild!`, color: 0x47F049 })
     }
 
     if (this.isOfflineInvite(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[6].match(/\w+/g)[0]
 
-      return this.minecraft.broadcastCleanEmbed({ message: `${user} was offline invited to the guild!`, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: `${user} was offline invited to the guild!`, color: 0x47F049 })
     }
 
     if (this.isFailedInvite(message)) {
@@ -418,7 +418,7 @@ class StateHandler extends EventHandler {
     }
 
     if (this.isGuildUnmuteMessage(message)) {
-      return this.minecraft.broadcastCleanEmbed({ message: `Guild Chat has been unmuted!`, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: `Guild Chat has been unmuted!`, color: 0x47F049 })
     }
 
     if (this.isUserMuteMessage(message)) {
@@ -431,7 +431,7 @@ class StateHandler extends EventHandler {
     if (this.isUserUnmuteMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[3]
 
-      return this.minecraft.broadcastCleanEmbed({ message: `${user} has been unmuted!`, color: '47F049' })
+      return this.minecraft.broadcastCleanEmbed({ message: `${user} has been unmuted!`, color: 0x47F049 })
     }
 
     if (this.isSetrankFail(message)) {

@@ -120,7 +120,7 @@ class InactiveCommand extends DiscordCommand {
     message.channel.send({
       embeds: [{
         description: `Kicking inactive users...`,
-        color: '47F049'
+        color: 0x47F049
       }
     })
   }

@@ -133,7 +133,7 @@ class AutoKickCommand extends DiscordCommand {
     message.channel.send({
       embeds: [{
         description: `Let the purge... **BEGIN!**`,
-        color: '47F049'
+        color: 0x47F049
       }
     })
   }

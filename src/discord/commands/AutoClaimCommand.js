@@ -161,8 +161,8 @@ class AutoclaimCommand extends DiscordCommand {
     message.channel.send({
       embeds: [{
         description: `Checking skyblock levels...`,
-        color: '47F049'
-      }
+        color: 0x47F049
+      }]
     })
   }
 }

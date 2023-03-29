@@ -122,7 +122,7 @@ class MemberCommand extends DiscordCommand {
         message.channel.send({
           embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,
-            color: '47F049'
+            color: 0x47F049
           }
         })
       }
@@ -130,7 +130,7 @@ class MemberCommand extends DiscordCommand {
         message.channel.send({
           embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,
-            color: '47F049'
+            color: 0x47F049
           }
         })
       }
@@ -138,7 +138,7 @@ class MemberCommand extends DiscordCommand {
         message.channel.send({
           embeds: [{
             description: `${user}'s guild stats:\n ${ret.replaceAll(";", "\n")}`,
-            color: '47F049'
+            color: 0x47F049
           }
         })
       }
