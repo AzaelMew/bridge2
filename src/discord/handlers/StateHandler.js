@@ -27,7 +27,7 @@ class StateHandler {
         embeds: [{
           author: { name: `Chat Bridge is Offline` },
           color: 0xF04947
-        }
+        }]
       }).then(() => { process.exit() })
     }).catch(() => { process.exit() })
   }

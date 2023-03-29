@@ -60,7 +60,7 @@ class DiscordManager extends CommunicationBridge {
                 name: username,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            },
+            }],
           })
         })
         break
@@ -103,7 +103,7 @@ class DiscordManager extends CommunicationBridge {
                 name: username,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            },
+            }],
           })
         })
         break
@@ -139,7 +139,7 @@ class DiscordManager extends CommunicationBridge {
                 name: username,
                 icon_url: icon,
               },
-            },
+            }],
           })
         })
         break
@@ -173,7 +173,7 @@ class DiscordManager extends CommunicationBridge {
                 name: username,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            },
+            }],
           })
         })
         break
@@ -198,7 +198,7 @@ class DiscordManager extends CommunicationBridge {
         embeds: [{
           color: color,
           description: message,
-        }
+        }]
       })
     })
   }
@@ -220,7 +220,7 @@ class DiscordManager extends CommunicationBridge {
             name: username,
             icon_url: 'https://www.mc-heads.net/avatar/' + icon[0],
           },
-        },
+        }],
       })
     })
   }
@@ -237,7 +237,7 @@ class DiscordManager extends CommunicationBridge {
           footer: {
             text: "BOT",
           },
-        },
+        }],
       })
     })
   }
@@ -258,7 +258,7 @@ class DiscordManager extends CommunicationBridge {
             name: username,
             icon_url: icon,
           },
-        },
+        }],
       })
     })
   }
@@ -277,7 +277,7 @@ class DiscordManager extends CommunicationBridge {
           footer: {
             text: "BOT",
           },
-        },
+        }],
       })
     })
   }
@@ -297,7 +297,7 @@ class DiscordManager extends CommunicationBridge {
                 name: `${username}`,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            }
+            }]
           })
         })
         break
@@ -328,7 +328,7 @@ class DiscordManager extends CommunicationBridge {
             icon_url: icon,
           },
           description: message,
-        }
+        }]
       })
     })
   }
@@ -347,7 +347,7 @@ class DiscordManager extends CommunicationBridge {
                 name: `${username} ${message}`,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            }
+            }]
           })
         })
         break
@@ -380,7 +380,7 @@ class DiscordManager extends CommunicationBridge {
                 name: `${username} ${message}`,
                 icon_url: 'https://www.mc-heads.net/avatar/' + username,
               },
-            }
+            }]
           })
         })
         break

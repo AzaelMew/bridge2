@@ -55,7 +55,7 @@ class EightBallCommand extends DiscordCommand {
                 name: `The Magic 8 Ball`,
                 icon_url: 'https://cdn.discordapp.com/attachments/1045517755044085762/1084545786886504508/mlfaJuO.png',
               },
-            },
+            }],
           })
         }, 1000);
       })
