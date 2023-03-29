@@ -100,7 +100,7 @@ class JacobCommand extends DiscordCommand {
                             footer: {
                                 text: "BOT",
                             },
-                        },
+                        }],
                     })
                     this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n\n","").replaceAll(":**\n-","").replaceAll(":**\n","").replaceAll("*","")}`)
                 })
@@ -115,7 +115,7 @@ class JacobCommand extends DiscordCommand {
                         footer: {
                             text: "BOT",
                         },
-                    },
+                    }],
                 })
                 this.sendMinecraftMessage(`/gc ${contest.replaceAll("\n- ","").replaceAll("\n\n"," ┃ ").replaceAll("- ","")}`)
             })
