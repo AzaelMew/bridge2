@@ -107,7 +107,7 @@ class NetworthCommand extends DiscordCommand {
             name: `${user}'s networth`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
-        },
+        }],
       })
     })
   }
