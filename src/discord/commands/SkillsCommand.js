@@ -93,7 +93,7 @@ class SkillsCommand extends DiscordCommand {
             name: `${user}'s skills`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
-        },
+        }],
       })
     })
   }

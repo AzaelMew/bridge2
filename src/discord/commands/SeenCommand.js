@@ -106,7 +106,7 @@ class SeenCommand extends DiscordCommand {
                         name: `${user}'s location`,
                         icon_url: 'https://www.mc-heads.net/avatar/' + user,
                     },
-                },
+                }],
             })
         })
     }
