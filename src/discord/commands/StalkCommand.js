@@ -198,7 +198,7 @@ class StalkCommand extends DiscordCommand {
                                 name: `${user}`,
                                 icon_url: 'https://www.mc-heads.net/avatar/' + user,
                             },
-                        },
+                        }],
                     })
                 }
                 else if (location == "Player doesn't exist") {
@@ -214,7 +214,7 @@ class StalkCommand extends DiscordCommand {
                                 name: `${user}`,
                                 icon_url: 'https://www.mc-heads.net/avatar/' + user,
                             },
-                        },
+                        }],
                     })
                 }
                 else if (location != "Player is Offline") {
@@ -230,7 +230,7 @@ class StalkCommand extends DiscordCommand {
                                 name: `${user}'s location`,
                                 icon_url: 'https://www.mc-heads.net/avatar/' + user,
                             },
-                        },
+                        }],
                     })
                 }
             })
@@ -239,8 +239,8 @@ class StalkCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                             description: `Error`,
-                            color: 'FF0000'
-                        }
+                            color: 0xFF0000
+                        }]
                     })
                 }
             }
