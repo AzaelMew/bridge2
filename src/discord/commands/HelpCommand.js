@@ -53,7 +53,7 @@ class HelpCommand extends DiscordCommand {
             ].join('\n'),
           }
         ],
-        color: 0xfa18a7,
+        color: 0xc61384,
         footer: {
           text: 'Made by Azael'
         },
