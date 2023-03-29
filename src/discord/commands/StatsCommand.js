@@ -135,7 +135,7 @@ class StatsCommand extends DiscordCommand {
             name: `${user}'s stats`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
-        },
+        }],
       })
     })
   }
