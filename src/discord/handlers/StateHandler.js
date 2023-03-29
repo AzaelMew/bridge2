@@ -15,7 +15,6 @@ class StateHandler {
       channel.send({
         embed: {
           author: { name: `Chat Bridge is Online` },
-          description: " ",
           color: '47F049'
         }
       })
