@@ -121,7 +121,7 @@ class InactiveCommand extends DiscordCommand {
       embeds: [{
         description: `Kicking inactive users...`,
         color: 0x47F049
-      }
+      }]
     })
   }
 }
