@@ -2,7 +2,7 @@ const CommunicationBridge = require('../contracts/CommunicationBridge')
 const StateHandler = require('./handlers/StateHandler')
 const MessageHandler = require('./handlers/MessageHandler')
 const CommandHandler = require('./CommandHandler')
-const Discord = require('discord.js')
+const { Client, GatewayIntentBits, Partials, ActivityType, EmbedBuilder } = require('discord.js');
 
 class DiscordManager extends CommunicationBridge {
   constructor(app) {
@@ -15,7 +15,7 @@ class DiscordManager extends CommunicationBridge {
   }
 
   connect() {
-    this.client = new Discord.Client({
+    this.client = new Client.Client({
       allowedMentions: {
         parse: ["roles", "users"],
         repliedUser: false,
