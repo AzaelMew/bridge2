@@ -20,7 +20,7 @@ class StateHandler {
       })
     })
   }
-
+  
   onClose() {
     this.discord.client.channels.fetch(this.discord.app.config.discord.channel).then(channel => {
       channel.send({
