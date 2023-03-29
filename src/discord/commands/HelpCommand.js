@@ -29,14 +29,6 @@ class HelpCommand extends DiscordCommand {
         description: 'Chat with people in-game and gain access to a variety of commands to use!\n\n',
         fields: [
           {
-            name: `Info`,
-            value: [
-              `Prefix: \`${this.discord.app.config.discord.prefix}\``,
-              `Guild Channel: <#${this.discord.app.config.discord.channel}>`,
-              `Command Role: <@&${this.discord.app.config.discord.commandRole}>`,
-            ].join('\n'),
-          },
-          {
             name: 'Discord Commands',
             value: `These commands can only be used in this channel.\n\n\`!help\`: Shows the entire bot's commands list.\n\`!top:\` Shows Top Guild EXP from the specified day.\n\`!online (!on)\`: Shows a list of guild members online.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!seen\`: Shows when a specified player was last online.\n\`!stats\`: Shows a specified player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!contest\`: Tells you when the next Jacob's Contest is\n\`!networth (!nw)\`: Shows a player's networth.\n\`!render\`: Sends specified slots item to discord and in game with a renderer.`
           },
@@ -51,6 +43,14 @@ class HelpCommand extends DiscordCommand {
           {
             name: 'Frag Bot Guide',
             value: `Party our Guild's Bridge Bot through:\n\`/p TempestBridge\`\n\nOnce it joins your party, you have 60 seconds to join any activity in SkyBlock which requires a bot account.`
+          },
+          {
+            name: `Info`,
+            value: [
+              `Prefix: \`${this.discord.app.config.discord.prefix}\``,
+              `Guild Channel: <#${this.discord.app.config.discord.channel}>`,
+              `Command Role: <@&${this.discord.app.config.discord.commandRole}>`,
+            ].join('\n'),
           },
         ],
         color: 0x2eebf4,
