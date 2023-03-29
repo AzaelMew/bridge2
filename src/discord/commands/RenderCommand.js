@@ -182,7 +182,7 @@ class RenderCommand extends DiscordCommand {
                         name: `${username}`,
                         icon_url: 'https://www.mc-heads.net/avatar/' + username,
                     },
-                },
+                }],
             })
         })
     }
