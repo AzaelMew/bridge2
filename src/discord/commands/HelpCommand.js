@@ -58,7 +58,7 @@ class HelpCommand extends DiscordCommand {
           text: 'Made by Azael'
         },
         timestamp: new Date()
-      }
+      }]
     })
   }
 }
