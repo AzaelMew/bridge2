@@ -84,7 +84,7 @@ class SlayerCommand extends DiscordCommand {
             name: `${user}'s slayers`,
             icon_url: 'https://www.mc-heads.net/avatar/' + user,
           },
-        },
+        }],
       })
     })
   }
