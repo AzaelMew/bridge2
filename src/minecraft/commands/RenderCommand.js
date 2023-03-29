@@ -104,7 +104,7 @@ function isValidUsername(username) {
     }
 }
 async function getPlayer(player, profile) {
-    if (typeof player !==  || !isValidUsername(player)) {
+    if (typeof player !== 'string' || !isValidUsername(player)) {
         throw new Error('Invalid Username');
     }
 
