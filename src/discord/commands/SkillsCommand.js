@@ -84,7 +84,7 @@ class SkillsCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           description: skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg","Skill Average").replace("Farm","Farming").replace("Mine","Mining").replace("Comb","Combat").replace("Forage","Foraging").replace("Fish","Fishing").replace("Ench","Enchanting").replace("Alch","Alchemy").replace("Carp","Carpentry").replace("Rune","Runecrafting").replace("Soci","Social"),
-          color: '2A2A2A',
+          color: 0x2A2A2A,
           timestamp: new Date(),
           footer: {
             text: "BOT",

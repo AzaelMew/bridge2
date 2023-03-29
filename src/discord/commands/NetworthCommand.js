@@ -98,7 +98,7 @@ class NetworthCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           description: ret.replaceAll(".", "\n").replaceAll(":",""),
-          color: '2A2A2A',
+          color: 0x2A2A2A,
           timestamp: new Date(),
           footer: {
             text: "BOT",

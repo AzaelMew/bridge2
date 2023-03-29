@@ -173,7 +173,7 @@ class RenderCommand extends DiscordCommand {
                     image: {
                         url: returnurl,
                       },
-                    color: '2A2A2A',
+                    color: 0x2A2A2A,
                     timestamp: new Date(),
                     footer: {
                         text: "BOT",

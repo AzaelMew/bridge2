@@ -46,7 +46,7 @@ class EightBallCommand extends DiscordCommand {
           message.channel.send({
             embeds: [{
               description: ans,
-              color: '2A2A2A',
+              color: 0x2A2A2A,
               timestamp: new Date(),
               footer: {
                 text: "BOT",

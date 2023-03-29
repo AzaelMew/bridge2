@@ -75,7 +75,7 @@ class SlayerCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           description: stats.replaceAll(";", "\n").replaceAll(":",""),
-          color: '2A2A2A',
+          color: 0x2A2A2A,
           timestamp: new Date(),
           footer: {
             text: "BOT",
