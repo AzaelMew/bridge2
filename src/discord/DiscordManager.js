@@ -2,7 +2,7 @@ const CommunicationBridge = require('../contracts/CommunicationBridge')
 const StateHandler = require('./handlers/StateHandler')
 const MessageHandler = require('./handlers/MessageHandler')
 const CommandHandler = require('./CommandHandler')
-const Discord = require('discord.js-light')
+const Discord = require('discord.js')
 
 class DiscordManager extends CommunicationBridge {
   constructor(app) {
