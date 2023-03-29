@@ -189,7 +189,7 @@ class StalkCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                             description: "is currently offline.",
-                            color: 'FF0000',
+                            color: 0xFF0000,
                             timestamp: new Date(),
                             footer: {
                                 text: "BOT",
@@ -205,7 +205,7 @@ class StalkCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                             description: "does not exist",
-                            color: 'FF0000',
+                            color: 0xFF0000,
                             timestamp: new Date(),
                             footer: {
                                 text: "BOT",
