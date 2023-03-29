@@ -21,9 +21,9 @@ class DiscordManager extends CommunicationBridge {
         repliedUser: false,
     },
     intents: [
-       Guilds, // for guild related things
-       GuildMessages, // for guild messages things
-       MessageContent, // enable if you need message content things
+        GatewayIntentBits.Guilds, // for guild related things
+        GatewayIntentBits.GuildMessages, // for guild messages things
+        GatewayIntentBits.MessageContent, // enable if you need message content things
     ],
     })
 
