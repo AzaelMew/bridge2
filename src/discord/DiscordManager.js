@@ -21,13 +21,13 @@ class DiscordManager extends CommunicationBridge {
         repliedUser: false,
     },
     partials: [
-        Partials.Message, // for message
-        Partials.Channel, // for text channel
+        Discord.Partials.Message, // for message
+        Discord.Partials.Channel, // for text channel
     ],
     intents: [
-        GatewayIntentBits.Guilds, // for guild related things
-        GatewayIntentBits.GuildMessages, // for guild messages things
-        GatewayIntentBits.MessageContent, // enable if you need message content things
+        Discord.GatewayIntentBits.Guilds, // for guild related things
+        Discord.GatewayIntentBits.GuildMessages, // for guild messages things
+        Discord.GatewayIntentBits.MessageContent, // enable if you need message content things
     ],
     })
 
