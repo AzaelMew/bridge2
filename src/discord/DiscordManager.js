@@ -32,7 +32,7 @@ class DiscordManager extends CommunicationBridge {
     })
 
     this.client.on('ready', () => this.stateHandler.onReady())
-    this.client.on('message', message => console.log(message))
+    this.client.on('messageCreate', message => this.messageHandler.onMessage(message))
 
     this.client.login(this.app.config.discord.token).catch(error => {
       this.app.log.error(error)
