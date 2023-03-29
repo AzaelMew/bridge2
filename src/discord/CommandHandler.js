@@ -42,8 +42,8 @@ class CommandHandler {
         return message.channel.send({
           embeds: [{
             description: `You don't have permission to do that.`,
-            color: 'DC143C'
-          }
+            color: 0xDC143C
+          }]
         })
       }
       else if (command.name == "help" || command.name == "top" || command.name == "online"|| command.name == "stalk"|| command.name == "stats"|| command.name == "skills"|| command.name == "cata"|| command.name == "networth"|| command.name == "joke"|| command.name == "contest"|| command.name == "seen"|| command.name == "render"){
@@ -56,8 +56,8 @@ class CommandHandler {
         return message.channel.send({
           embeds: [{
             description: `You don't have permission to do that.`,
-            color: 'DC143C'
-          }
+            color: 0xDC143C
+          }]
         })
       }
       else{
