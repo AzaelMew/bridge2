@@ -52,9 +52,11 @@ async function getDungeonFromUUID(name) {
   catch (error) {
     e = error.message
     if (e.includes("status code 500")) {
+      console.log(e)
       return "is an Invalid Username"
     }
     if (e.includes("status code 404")) {
+      console.log(e)
       return "has no Skyblock Profiles"
     }
     else {
