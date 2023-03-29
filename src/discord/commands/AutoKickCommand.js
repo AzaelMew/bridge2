@@ -134,7 +134,7 @@ class AutoKickCommand extends DiscordCommand {
       embeds: [{
         description: `Let the purge... **BEGIN!**`,
         color: 0x47F049
-      }
+      }]
     })
   }
 }
