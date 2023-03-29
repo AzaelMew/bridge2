@@ -20,6 +20,11 @@ class DiscordManager extends CommunicationBridge {
         parse: ["roles", "users"],
         repliedUser: false,
     },
+    intents: [
+       Guilds, // for guild related things
+       GuildMessages, // for guild messages things
+       MessageContent, // enable if you need message content things
+    ],
     })
 
     this.client.on('ready', () => this.stateHandler.onReady())
