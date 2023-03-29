@@ -221,7 +221,7 @@ class StalkCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                             description: location,
-                            color: 'cbbeb5',
+                            color: 0xcbbeb5,
                             timestamp: new Date(),
                             footer: {
                                 text: "BOT",

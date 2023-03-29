@@ -95,7 +95,7 @@ class JacobCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                             description: contest.replaceAll("\n\nand ","\n\nIt ").replaceAll(" and ","\n- "),
-                            color: 'cbbeb5',
+                            color: 0xcbbeb5,
                             timestamp: new Date(),
                             footer: {
                                 text: "BOT",
@@ -110,7 +110,7 @@ class JacobCommand extends DiscordCommand {
                 message.channel.send({
                     embeds: [{
                         description: contest.replaceAll(", ","\n- ").replaceAll("Crops:","**Crops:**").replaceAll("The next contest starts in:","**The next contest starts in:**\n"),
-                        color: 'cbbeb5',
+                        color: 0xcbbeb5,
                         timestamp: new Date(),
                         footer: {
                             text: "BOT",

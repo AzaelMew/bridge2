@@ -97,7 +97,7 @@ class SeenCommand extends DiscordCommand {
             message.channel.send({
                 embeds: [{
                     description: stats,
-                    color: 'cbbeb5',
+                    color: 0xcbbeb5,
                     timestamp: new Date(),
                     footer: {
                         text: "BOT",

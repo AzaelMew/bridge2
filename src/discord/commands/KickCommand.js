@@ -39,7 +39,7 @@ class KickCommand extends DiscordCommand {
             message.channel.send({
               embeds: [{
                   description: `${user} has been kicked and blacklisted from joining.`,
-                  color: 'cbbeb5',
+                  color: 0xcbbeb5,
                   timestamp: new Date(),
                   footer: {
                       text: "BOT",
