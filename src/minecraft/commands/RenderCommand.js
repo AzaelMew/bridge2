@@ -104,7 +104,7 @@ function isValidUsername(username) {
     }
 }
 async function getPlayer(player, profile) {
-    if (typeof player !== ApplicationCommandOptionType.String || !isValidUsername(player)) {
+    if (typeof player !==  || !isValidUsername(player)) {
         throw new Error('Invalid Username');
     }
 
