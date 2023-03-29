@@ -16,12 +16,19 @@ class DiscordManager extends CommunicationBridge {
 
   connect() {
     this.client = new Discord.Client({
-      cacheGuilds: true,
-      cacheChannels: true,
-      cacheOverwrites: false,
-      cacheRoles: true,
-      cacheEmojis: false,
-      cachePresences: false,
+      allowedMentions: {
+        parse: ["roles", "users"],
+        repliedUser: false,
+    },
+    partials: [
+        Partials.Message, // for message
+        Partials.Channel, // for text channel
+    ],
+    intents: [
+        GatewayIntentBits.Guilds, // for guild related things
+        GatewayIntentBits.GuildMessages, // for guild messages things
+        GatewayIntentBits.MessageContent, // enable if you need message content things
+    ],
     })
 
     this.client.on('ready', () => this.stateHandler.onReady())
