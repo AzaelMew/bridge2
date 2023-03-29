@@ -13,10 +13,10 @@ class StateHandler {
 
     this.discord.client.channels.fetch(this.discord.app.config.discord.channel).then(channel => {
       channel.send({
-        embed: {
+        embeds: [{
           author: { name: `Chat Bridge is Online` },
           color: '47F049'
-        }
+        }]
       })
     })
   }
