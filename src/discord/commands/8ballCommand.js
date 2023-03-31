@@ -23,7 +23,6 @@ async function ask() {
         'Depends on the mood of the RNGesus',
         'No',
         'Yes',
-        "Ask shana",
     ];
     let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
     return eightball[index]
