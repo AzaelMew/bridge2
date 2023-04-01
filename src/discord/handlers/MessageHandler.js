@@ -1,3 +1,8 @@
+const imgur = require('imgur-anonymous-uploader');
+const uploader = new imgur("318214bc4f4717f");
+
+
+
 class MessageHandler {
   constructor(discord, command) {
     this.discord = discord
