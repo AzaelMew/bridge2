@@ -107,7 +107,7 @@ async function getPlayer(player, profile) {
     if (typeof player !== 'string' || !isValidUsername(player)) {
         throw new Error('Invalid Username');
     }
-
+    console.log(this.discord.app.config.discord.apikey)
     const mojangResponse = await nameToUUID(player);
     if (!mojangResponse) throw new Error('Player not found');
     const hypixelResponse = await axios.get(`https://api.hypixel.net/skyblock/profiles?uuid=${mojangResponse}&key=${this.discord.app.config.discord.apikey}`);
