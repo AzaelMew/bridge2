@@ -18,7 +18,7 @@ async function getLocationFromUUID(uuid) {
         uuid = "a"
     }
     try {
-        const { data } = await axios.get('https://api.hypixel.net/status?key=${this.discord.app.config.discord.apikey}&uuid=' + uuid)
+        const { data } = await axios.get(`https://api.hypixel.net/status?key=${this.discord.app.config.discord.apikey}&uuid=` + uuid)
 
         if (data.session.online == true) {
             if (data.session.gameType == "SKYBLOCK") {
