@@ -44,7 +44,7 @@ class Configuration {
     MESSAGE_MODE: val => (this.properties.discord.messageMode = val),
     EXPRESS_ENABLED: val => (this.properties.express.enabled = val),
     EXPRESS_PORT: val => (this.properties.express.enabled = val),
-    EXPRESS_AUTHORIZATION: val => (this.properties.express.authorization = val)
+    EXPRESS_AUTHORIZATION: val => (this.properties.express.authorization = val),
   }
 
   constructor() {
