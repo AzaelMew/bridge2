@@ -3,6 +3,7 @@ const DiscordManager = require('./discord/DiscordManager')
 const MinecraftManager = require('./minecraft/MinecraftManager')
 const ExpressManager = require('./express/ExpressManager')
 const Logger = require('./Logger')
+require('dotenv').config();
 
 class Application {
   async register() {
