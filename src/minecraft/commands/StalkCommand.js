@@ -158,6 +158,7 @@ async function getLocationFromUUID(uuid){
     return location
 }
     catch{
+        console.log(this.discord.app.config.discord.apikey)
         location = "Player doesn't exist"
         return location
     }
