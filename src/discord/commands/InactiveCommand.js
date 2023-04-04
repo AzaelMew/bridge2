@@ -23,7 +23,7 @@ async function getGMemberFromUUID(uuid, message) {
     if (uuid == undefined) {
       uuid = "a"
     }
-    const { data } = await axios.get(`https://api.hypixel.net/guild?key=${this.discord.app.config.discord.apikey}&player=` + uuid)
+    const { data } = await axios.get(`https://api.hypixel.net/guild?key=${process.env.APIKEY}&player=` + uuid)
     try {
       if (data.guild.name_lower != "tempestsky") {
         let ret = "This player is not in our guild."
@@ -79,7 +79,7 @@ async function getGMemberFromUUID(uuid, message) {
 }
 async function getActivity(uuid, message) {
   try {
-    const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=${this.discord.app.config.discord.apikey}`)
+    const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=${process.env.APIKEY}`)
     let lastLogin = data.player.lastLogin
     if (data.player.displayname == "Rioiyo" || data.player.displayname == "YesPleases" || data.player.displayname == "zabbir" || data.player.displayname == "Frindlo" || data.player.displayname == "Nico_the_Creator" || data.player.displayname == "WhenCarrot" || data.player.displayname == "Legendaryspirits" || data.player.displayname == "MistyTM" || data.player.displayname == "Meir231" || data.player.displayname == "Azael_Nyaa") return
     if (new Date().getTime() - lastLogin > 2160000000) {

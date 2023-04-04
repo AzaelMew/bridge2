@@ -110,7 +110,7 @@ async function getPlayer(player, profile) {
 
     const mojangResponse = await nameToUUID(player);
     if (!mojangResponse) throw new Error('Player not found');
-    const hypixelResponse = await axios.get(`https://api.hypixel.net/skyblock/profiles?uuid=${mojangResponse}&key=${this.discord.app.config.discord.apikey}`);
+    const hypixelResponse = await axios.get(`https://api.hypixel.net/skyblock/profiles?uuid=${mojangResponse}&key=${process.env.APIKEY}`);
     if (!hypixelResponse) throw new Error("Couldn't get a response from the API");
     if (hypixelResponse.data.profiles === null) throw new Error(`Couldn\'t find any Skyblock profile that belongs to ${player}`);
     let profileData = await getLastProfile(hypixelResponse.data);

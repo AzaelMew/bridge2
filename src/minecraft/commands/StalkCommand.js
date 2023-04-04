@@ -14,7 +14,7 @@ async function getUUIDFromUsername(username){
 async function getLocationFromUUID(uuid){
     let location = "Holy shit you broke me!! Dm Azael!"
     try{
-        const { data } = await axios.get(`https://api.hypixel.net/status?key=${this.discord.app.config.discord.apikey}&uuid=` + uuid)
+        const { data } = await axios.get(`https://api.hypixel.net/status?key=${process.env.APIKEY}&uuid=` + uuid)
             
     if (data.session.online == true){
         if (data.session.gameType == "SKYBLOCK"){
@@ -158,7 +158,7 @@ async function getLocationFromUUID(uuid){
     return location
 }
     catch{
-        console.log(this.discord.app.config.discord.apikey)
+        console.log("a" + process.env.APIKEY)
         location = "Player doesn't exist"
         return location
     }

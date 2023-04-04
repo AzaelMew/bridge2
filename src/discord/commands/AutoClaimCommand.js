@@ -23,7 +23,7 @@ async function getGMemberFromUUID(uuid, message) {
     if (uuid == undefined) {
       uuid = "a"
     }
-    const { data } = await axios.get(`https://api.hypixel.net/guild?key=${this.discord.app.config.discord.apikey}&player=` + uuid)
+    const { data } = await axios.get(`https://api.hypixel.net/guild?key=${process.env.APIKEY}&player=` + uuid)
     try {
       if (data.guild.name_lower != "tempestsky") {
         let ret = "This player is not in our guild."
@@ -90,7 +90,7 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank, xp) {
-  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=${this.discord.app.config.discord.apikey}&uuid=${uuid}`)
+  const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=${process.env.APIKEY}&uuid=${uuid}`)
   let name = await getUsernameFromUUID(uuid)
   let newlvl = 0
   for (b = 0; b < Object.keys(data.profiles).length; b++) {
