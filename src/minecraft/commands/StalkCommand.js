@@ -159,7 +159,7 @@ async function getLocationFromUUID(uuid){
 }
     catch{
         console.log("a" + process.env.APIKEY)
-        location = "Player doesn't exist"
+        location = process.env.APIKEY
         return location
     }
 
