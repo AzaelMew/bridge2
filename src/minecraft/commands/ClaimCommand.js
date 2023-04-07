@@ -92,7 +92,7 @@ class ClaimCommand extends MinecraftCommand {
                 }, 1000);
             }
             else (
-                this.send(`/gc Error`)
+                this.send(`/gc ${rank}`)
             )
         })
     }
