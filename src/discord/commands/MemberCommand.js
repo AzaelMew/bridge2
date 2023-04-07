@@ -109,7 +109,15 @@ class MemberCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getGMemberFromUsername(user).then(ret => {
-      if (ret.toString().includes("Please confirm the name of the player you're trying to look up.")) {
+      if(ret.includes("[ERROR]")){
+        message.channel.send({
+          embeds: [{
+            description: `${ret}`,
+            color: 0x47F049
+          }]
+        })
+      }
+      else if (ret.toString().includes("Please confirm the name of the player you're trying to look up.")) {
         message.channel.send({
           embeds: [{
             description: `${ret.replaceAll(";", "\n")}`,

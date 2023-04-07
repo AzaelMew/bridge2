@@ -32,10 +32,10 @@ async function getDungeonFromUUID(name) {
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
     let secrets = data.data[0]?.dungeons.secrets_found
     let lvl = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress || 0
-    if(lvl == 50){
+    if (lvl == 50) {
       let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
       let newNum = total - 569809640
-      let overflow = newNum/200000000
+      let overflow = newNum / 200000000
       lvl = lvl + overflow
     }
     let h = data.data[0].dungeons?.classes?.healer?.levelWithProgress || 0
@@ -64,14 +64,24 @@ class CatacombsCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!cata")) {
       getDungeonFromUsername(username).then(stats => {
-        this.send(`/gc ${username}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
+        if (stats.includes("[ERROR]")) {
+          this.send(`/gc ${stats}`)
+        }
+        else {
+          this.send(`/gc ${username}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
+          this.minecraft.broadcastCommandEmbed({ username: `${username}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":", "")}` })
+        }
       })
     }
     else {
       getDungeonFromUsername(args[1]).then(stats => {
-        this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":","")}` })
+        if (stats.includes("[ERROR]")) {
+          this.send(`/gc ${stats}`)
+        }
+        else {
+          this.send(`/gc ${args[1]}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
+          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s cata`, message: `${stats.replaceAll(";", "\n").replaceAll(":", "")}` })
+        }
       })
     }
   }

@@ -45,10 +45,10 @@ async function getStatsFromUUID(name, profile) {
         let carp = data.data[i]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
         let cata = data.data[i].dungeons?.catacombs?.skill?.levelWithProgress || 0
-        if(cata == 50){
+        if (cata == 50) {
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
-          let overflow = newNum/200000000
+          let overflow = newNum / 200000000
           cata = cata + overflow
         }
         let wslayer = data.data[i]?.slayer?.wolf.xp
@@ -76,10 +76,10 @@ async function getStatsFromUUID(name, profile) {
         let carp = data.data[0]?.skills?.carpentry.level
         let sa = round((farming + mining + combat + foraging + fishing + enchant + alch + taming + carp) / 9, 1)
         let cata = data.data[0].dungeons?.catacombs?.skill?.levelWithProgress || 0
-        if(cata == 50){
+        if (cata == 50) {
           let total = data.data[0].dungeons?.catacombs?.skill?.totalXp;
           let newNum = total - 569809640
-          let overflow = newNum/200000000
+          let overflow = newNum / 200000000
           cata = cata + overflow
         }
         let wslayer = data.data[0]?.slayer?.wolf.xp
@@ -113,23 +113,41 @@ class StatsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getStatsFromUsername(user).then(stats => {
-      this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*","").replaceAll("\n➣ ","").replaceAll("\n","")}`)
-      message.channel.send({
-        embeds: [{
-          description: stats.replaceAll("; ", "\n").replaceAll(":",""),
-          color: 0x2A2A2A,
-          timestamp: new Date(),
-          footer: {
-            text: "BOT",
-          },
-          author: {
-            name: `${user}'s stats`,
-            icon_url: 'https://www.mc-heads.net/avatar/' + user,
-          },
-        }],
-      })
+      if (stats.includes("[ERROR]")) {
+        this.sendMinecraftMessage(`/gc ${stats}`)
+        message.channel.send({
+          embeds: [{
+            description: stats,
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s stats`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
+      else {
+        this.sendMinecraftMessage(`/gc ${user}'s stats: ${stats.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "")}`)
+        message.channel.send({
+          embeds: [{
+            description: stats.replaceAll("; ", "\n").replaceAll(":", ""),
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s stats`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
     })
   }
 }
-
 module.exports = StatsCommand

@@ -71,6 +71,24 @@ class SkillsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getSkillsFromUsername(user).then(skills => {
+      if(skills.includes("[ERROR]")){
+        this.sendMinecraftMessage(`/gc ${skills}`)
+        message.channel.send({
+          embeds: [{
+            description: skills,
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s skills`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
+      else{
       this.sendMinecraftMessage(`/gc ${user}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
       message.channel.send({
         embeds: [{
@@ -86,6 +104,7 @@ class SkillsCommand extends DiscordCommand {
           },
         }],
       })
+    }
     })
   }
 }

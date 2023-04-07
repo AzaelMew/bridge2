@@ -85,6 +85,24 @@ class NetworthCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getNetworthFromUsername(user).then(ret => {
+      if(ret.includes("[ERROR]")){
+        this.sendMinecraftMessage(`/gc ${ret}`)
+        message.channel.send({
+          embeds: [{
+            description: ret,
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s networth`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
+      else{
       this.sendMinecraftMessage(`/gc ${user}'s networth: ${ret.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
       message.channel.send({
         embeds: [{
@@ -100,6 +118,7 @@ class NetworthCommand extends DiscordCommand {
           },
         }],
       })
+      }
     })
   }
 }

@@ -65,16 +65,7 @@ async function getGMemberFromUUID(uuid, message) {
     }
   }
   catch (error) {
-    e = error.message
-    if (e.includes("status code 500")) {
-      return "Error has occured"
-    }
-    if (e.includes("status code 404")) {
-      return "Error has occured"
-    }
-    else {
-      return error
-    }
+    return `[ERROR] ${error.response.data.reason}`
   }
 }
 async function getActivity(uuid, message) {

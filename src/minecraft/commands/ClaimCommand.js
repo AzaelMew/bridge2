@@ -57,7 +57,7 @@ async function getStatsFromUUID(name, profile) {
 
     }
     catch (error) {
-        return error.response.data.reason
+        return `[ERROR] ${error.response.data.reason}`
     }
 
 }
