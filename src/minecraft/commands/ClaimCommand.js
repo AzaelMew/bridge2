@@ -57,14 +57,7 @@ async function getStatsFromUUID(name, profile) {
 
     }
     catch (error) {
-        e = error.message
-        console.log(e)
-        if (e.includes("status code 500")) {
-            return "is an Invalid Username"
-        }
-        if (e.includes("status code 404")) {
-            return "has no Skyblock Profiles"
-        }
+        return error.response.data.reason
     }
 
 }
