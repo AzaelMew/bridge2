@@ -69,16 +69,7 @@ async function getNetworthFromUUID(name) {
 
   }
   catch (error) {
-    e = error.message
-    if (e.includes("status code 500")) {
-      return "is an Invalid Username"
-    }
-    if (e.includes("status code 404")) {
-      return "has no Skyblock Profiles"
-    }
-    else {
-      return error
-    }
+    return `[ERROR] ${error.response.data.reason}`
   }
 }
 class NetworthCommand extends MinecraftCommand {

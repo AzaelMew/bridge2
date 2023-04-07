@@ -50,18 +50,7 @@ async function getDungeonFromUUID(name) {
 
   }
   catch (error) {
-    e = error.message
-    if (e.includes("status code 500")) {
-      console.log(e)
-      return "is an Invalid Username"
-    }
-    if (e.includes("status code 404")) {
-      console.log(e)
-      return "has no Skyblock Profiles"
-    }
-    else {
-      return error
-    }
+    return `[ERROR] ${error.response.data.reason}`
   }
 }
 class CatacombsCommand extends DiscordCommand {
@@ -76,6 +65,24 @@ class CatacombsCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getDungeonFromUsername(user).then(stats => {
+      if(stats.includes("[ERROR]")){
+        this.sendMinecraftMessage(`/gc ${stats}`)
+        message.channel.send({
+          embeds: [{
+            description: stats,
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s cata`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
+      else{
       this.sendMinecraftMessage(`/gc ${user}'s cata: ${stats.replaceAll("*", "").replaceAll("\n➣ ", "").replaceAll("\n", "").replaceAll(" ;", ", ")}`)
       message.channel.send({
         embeds: [{
@@ -91,6 +98,7 @@ class CatacombsCommand extends DiscordCommand {
           },
         }],
       })
+    }
     })
   }
 }
