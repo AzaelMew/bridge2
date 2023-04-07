@@ -85,23 +85,35 @@ class NetworthCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!nw")) {
       getNetworthFromUsername(username).then(nw => {
+        if(nw.includes("[ERROR]")){
+          this.send(`/gc ${nw}`)
+        }
+        else{
         this.send(`/gc ${username}'s networth: ${nw.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${username}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
-
+        }
       })
     }
     else if (message.endsWith("!networth")) {
       getNetworthFromUsername(username).then(nw => {
+        if(nw.includes("[ERROR]")){
+          this.send(`/gc ${nw}`)
+        }
+        else{
         this.send(`/gc ${username}'s networth: ${nw.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${username}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
-
+        }
       })
     }
     else {
       getNetworthFromUsername(args[1]).then(nw => {
+        if(nw.includes("[ERROR]")){
+          this.send(`/gc ${nw}`)
+        }
+        else{
         this.send(`/gc ${args[1]}'s networth: ${nw.replaceAll("\n", "").replaceAll("*","").replaceAll("➣","")}`)
         this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s networth`, message: `${nw.replaceAll(".", "\n")}` })
-
+        }
       })
     }
   }

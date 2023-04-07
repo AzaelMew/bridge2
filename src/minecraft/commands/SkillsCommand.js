@@ -1,11 +1,11 @@
 const MinecraftCommand = require('../../contracts/MinecraftCommand')
 const axios = require("axios");
 function numberWithCommas(x) {
-  if(x>999815672){
+  if (x > 999815672) {
     x = x.toString().split(".")[0]
     x = x.toString().slice(0, -6) + "815672";
   }
-  else{
+  else {
     x = x.toString().split(".")[0]
   }
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -30,11 +30,11 @@ async function getSkillsFromUsername(username) {
 }
 async function getSkillsFromUUID(name) {
   try {
-    if (name == undefined){
+    if (name == undefined) {
       name = "a"
     }
     const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/' + name + '?key=77ac89bad625453facaa36457eb3cf5c')
-    
+
     let farming = data.data[0]?.skills?.farming.level
     let mining = data.data[0]?.skills?.mining.level
     let combat = data.data[0]?.skills?.combat.level
@@ -53,16 +53,7 @@ async function getSkillsFromUUID(name) {
     return skills
   }
   catch (error) {
-    e = error.message
-    if(e.includes("status code 500")){
-      return "is an Invalid Username"
-    }
-    if(e.includes("status code 404")){
-      return "has no Skyblock Profiles"
-    }
-    else{
-      return error
-    }
+    return `[ERROR] ${error.response.data.reason}`
   }
 }
 
@@ -81,16 +72,24 @@ class SkillsCommand extends MinecraftCommand {
     let args = message.split(" ")
     if (message.endsWith("!skills")) {
       getSkillsFromUsername(username).then(skills => {
-        this.send(`/gc ${username}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${username}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg","Skill Average").replace("Farm","Farming").replace("Mine","Mining").replace("Comb","Combat").replace("Forage","Foraging").replace("Fish","Fishing").replace("Ench","Enchanting").replace("Alch","Alchemy").replace("Carp","Carpentry").replace("Rune","Runecrafting").replace("Soci","Social")}` })
-
+        if (skills.includes("[ERROR]")) {
+          this.send(`/gc ${skills}`)
+        }
+        else {
+          this.send(`/gc ${username}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
+          this.minecraft.broadcastCommandEmbed({ username: `${username}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg", "Skill Average").replace("Farm", "Farming").replace("Mine", "Mining").replace("Comb", "Combat").replace("Forage", "Foraging").replace("Fish", "Fishing").replace("Ench", "Enchanting").replace("Alch", "Alchemy").replace("Carp", "Carpentry").replace("Rune", "Runecrafting").replace("Soci", "Social")}` })
+        }
       })
     }
     else {
       getSkillsFromUsername(args[1]).then(skills => {
-        this.send(`/gc ${args[1]}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
-        this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg","Skill Average").replace("Farm","Farming").replace("Mine","Mining").replace("Comb","Combat").replace("Forage","Foraging").replace("Fish","Fishing").replace("Ench","Enchanting").replace("Alch","Alchemy").replace("Carp","Carpentry").replace("Rune","Runecrafting").replace("Soci","Social")}` })
-
+        if (skills.includes("[ERROR]")) {
+          this.send(`/gc ${skills}`)
+        }
+        else {
+          this.send(`/gc ${args[1]}'s skills: ${skills.replaceAll(";", ",").replaceAll("*", "").replaceAll("\n➣", "").replaceAll("\n", "")}`)
+          this.minecraft.broadcastCommandEmbed({ username: `${args[1]}'s skills`, message: `${skills.replaceAll("; ", "\n").replaceAll(":", "").replace("Skill Avg", "Skill Average").replace("Farm", "Farming").replace("Mine", "Mining").replace("Comb", "Combat").replace("Forage", "Foraging").replace("Fish", "Fishing").replace("Ench", "Enchanting").replace("Alch", "Alchemy").replace("Carp", "Carpentry").replace("Rune", "Runecrafting").replace("Soci", "Social")}` })
+        }
       })
     }
   }
