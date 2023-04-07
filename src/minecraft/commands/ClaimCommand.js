@@ -57,6 +57,7 @@ async function getStatsFromUUID(name, profile) {
 
     }
     catch (error) {
+        console.log(error)
         e = error.message
         if (e.includes("status code 500")) {
             return "is an Invalid Username"
