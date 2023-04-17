@@ -13,7 +13,7 @@ async function getUUIDFromUsername(username) {
 }
 
 async function getLocationFromUUID(uuid) {
-    let location = "Holy shit you broke me!! Dm Azael!"
+    let location = "Unknown Error"
     if (uuid == undefined) {
         uuid = "a"
     }
