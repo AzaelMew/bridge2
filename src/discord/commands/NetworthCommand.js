@@ -68,7 +68,7 @@ async function getNetworthFromUUID(name) {
     return ret
 
   }
-  catch (error) {!stats 
+  catch (error) {
     return `[ERROR] ${error.response.data.reason}`
   }
 }
