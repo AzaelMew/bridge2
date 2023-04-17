@@ -45,16 +45,7 @@ async function getSlayerFromUUID(name){
     return stats
 }
 catch (error) {
-  e = error.message
-  if(e.includes("status code 500")){
-    return "is an Invalid Username"
-  }
-  if(e.includes("status code 404")){
-    return "has no Skyblock Profiles"
-  }
-  else{
-    return error
-  }
+  return `[ERROR] ${error.response.data.reason}`
 }
 }
 
@@ -71,21 +62,40 @@ class SlayerCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     getSlayerFromUser(user).then(stats => {
-      this.sendMinecraftMessage(`/gc ${user}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
-      message.channel.send({
-        embeds: [{
-          description: stats.replaceAll(";", "\n").replaceAll(":",""),
-          color: 0x2A2A2A,
-          timestamp: new Date(),
-          footer: {
-            text: "BOT",
-          },
-          author: {
-            name: `${user}'s slayers`,
-            icon_url: 'https://www.mc-heads.net/avatar/' + user,
-          },
-        }],
-      })
+      if (stats.includes("[ERROR]")) {
+        this.sendMinecraftMessage(`/gc ${stats}`)
+        message.channel.send({
+          embeds: [{
+            description: stats,
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s stats`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
+      else{
+        this.sendMinecraftMessage(`/gc ${user}'s slayers: ${stats.replaceAll(";","").replaceAll("\n","").replaceAll("*","").replaceAll("➣","")}`)
+        message.channel.send({
+          embeds: [{
+            description: stats.replaceAll(";", "\n").replaceAll(":",""),
+            color: 0x2A2A2A,
+            timestamp: new Date(),
+            footer: {
+              text: "BOT",
+            },
+            author: {
+              name: `${user}'s slayers`,
+              icon_url: 'https://www.mc-heads.net/avatar/' + user,
+            },
+          }],
+        })
+      }
     })
   }
   }
