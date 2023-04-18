@@ -42,7 +42,7 @@ class GHCommand extends MinecraftCommand {
 
         }
         else if (args[1] == "mushroom") {
-            this.send(`/gc "233 speed 30degree offset towards way you walking, hold down forwards running into the mushroom block" - and i'm not changin this again.`)
+            this.send(`/gc "233 speed 30degree offset towards way you walking, hold down forwards running into the mushroom block" - and i'm not touching this again.`)
 
         }
         else {
