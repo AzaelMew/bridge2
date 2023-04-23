@@ -47,7 +47,7 @@ async function getGMemberFromUUID(uuid, message) {
       vet = []
       champ = []
       for (i = 0; i < data.guild.members.length + 1; i++) {
-        await new Promise(resolve => setTimeout(resolve, 50));
+        await new Promise(resolve => setTimeout(resolve, 150));
         if (i <= data.guild.members.length - 1) {
           let joined = data?.guild.members[i]?.joined
           joined = new Date(joined).toLocaleString()
