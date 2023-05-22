@@ -37,7 +37,7 @@ class BlacklistCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                           description: `${uuid} added to blacklist.`,
-                          color: 0x2A2A2A,
+                          color: 0x47F049,
                           timestamp: new Date(),
                           footer: {
                             text: "BOT",
@@ -58,7 +58,7 @@ class BlacklistCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                           description: `User is already in the blacklist.`,
-                          color: 0xcbbeb5,
+                          color: 0x2A2A2A,
                           timestamp: new Date(),
                           footer: {
                             text: "BOT",
@@ -103,7 +103,7 @@ class BlacklistCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                           description: `User is not in the blacklist.`,
-                          color: 0xcbbeb5,
+                          color: 0x2A2A2A,
                           timestamp: new Date(),
                           footer: {
                             text: "BOT",
@@ -120,7 +120,7 @@ class BlacklistCommand extends DiscordCommand {
                     message.channel.send({
                         embeds: [{
                           description: `User is blacklisted.`,
-                          color: 0xcbbeb5,
+                          color: 0x2A2A2A,
                           timestamp: new Date(),
                           footer: {
                             text: "BOT",
