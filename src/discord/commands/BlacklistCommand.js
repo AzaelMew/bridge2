@@ -26,10 +26,10 @@ class BlacklistCommand extends DiscordCommand {
         if(message.channel.id != "1074902281130086410") return
         let args = this.getArgs(message)
         let user = args.shift()
-        console.log(user)
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
             let blacklistedIDs = blacklist.trim().split('\n');
+            console.log("b")
             if (args[1] == "add") {
                 if (!blacklist.includes(uuid)) {
                     this.send(`/oc ${args[2]} ${uuid} added to blacklist.`)
