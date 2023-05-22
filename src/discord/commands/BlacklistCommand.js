@@ -72,7 +72,7 @@ class BlacklistCommand extends DiscordCommand {
                     this.sendMinecraftMessage(`/oc ${args[1]} is already in the blacklist.`)
                 }
             }
-            else if (args[1] == "remove") {
+            else if (args[0] == "remove") {
                 this.sendMinecraftMessage(`/oc ${args[1]} ${uuid} removed from blacklist.`)
                 message.channel.send({
                     embeds: [{
@@ -97,7 +97,7 @@ class BlacklistCommand extends DiscordCommand {
                     fs.writeFileSync('blacklist.txt', blacklist, 'utf-8');
                 }
             }
-            else if (args[1] == "check"){
+            else if (args[0] == "check"){
                 if (!blacklist.includes(uuid)){
                     this.sendMinecraftMessage(`/oc ${args[1]} is not in the blacklist.`)
                     message.channel.send({
