@@ -2,6 +2,11 @@
 const fs = require('fs');
 const axios = require("axios");
 const DiscordCommand = require('../../contracts/DiscordCommand')
+async function getUsernameFromUUID(uuid) {
+    const { data } = await axios.get('https://sessionserver.mojang.com/session/minecraft/profile/' + uuid)
+    let username = data.name
+    return username
+  }
 async function getUUIDFromUsername(username) {
     if (!(/^[a-zA-Z0-9_]{2,16}$/mg.test(username))) {
         return "Error"
@@ -26,7 +31,7 @@ class BlacklistCommand extends DiscordCommand {
         if(message.channel.id != "1074902281130086410") return
         let args = this.getArgs(message)
         console.log(args[0])
-        getUUIDFromUsername(args[1]).then(uuid => {
+        getUUIDFromUsername(args[1]).then(async uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
             let blacklistedIDs = blacklist.trim().split('\n');
             console.log(args[1])
@@ -131,6 +136,32 @@ class BlacklistCommand extends DiscordCommand {
                           },
                         }],
                       })
+                }
+            }
+            else if (args[0] == "list"){
+                let blacka = blacklist.split("\n")
+                let lists = []
+                for (i = 0; i < blacka.length + 1; i++) {
+                    await new Promise(resolve => setTimeout(resolve, 250));
+                    getUsernameFromUUID(blacka[i]).then(ign =>  {
+                        ign.push(lists)
+                    })
+                    if(i == blacka.length + 1){
+                        message.channel.send({
+                            embeds: [{
+                              description: "- "+lists.toString().replaceAll(",","\n-"),
+                              color: 0x2A2A2A,
+                              timestamp: new Date(),
+                              footer: {
+                                text: "BOT",
+                              },
+                              author: {
+                                name: `${args[1]}`,
+                                icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
+                              },
+                            }],
+                          })
+                    }
                 }
             }
 
