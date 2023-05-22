@@ -44,7 +44,7 @@ class BlacklistCommand extends DiscordCommand {
                           },
                           author: {
                             name: `${args[1]}`,
-                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                           },
                         }],
                       })
@@ -65,7 +65,7 @@ class BlacklistCommand extends DiscordCommand {
                           },
                           author: {
                             name: `${args[1]}`,
-                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                           },
                         }],
                       })
@@ -84,7 +84,7 @@ class BlacklistCommand extends DiscordCommand {
                       },
                       author: {
                         name: `${args[1]}`,
-                        icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                        icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                       },
                     }],
                   })
@@ -110,7 +110,7 @@ class BlacklistCommand extends DiscordCommand {
                           },
                           author: {
                             name: `${args[1]}`,
-                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                           },
                         }],
                       })
@@ -127,7 +127,7 @@ class BlacklistCommand extends DiscordCommand {
                           },
                           author: {
                             name: `${args[1]}`,
-                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                           },
                         }],
                       })
