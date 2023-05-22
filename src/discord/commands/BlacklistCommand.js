@@ -142,12 +142,7 @@ class BlacklistCommand extends DiscordCommand {
                 let blacka = blacklist.split("\n")
                 let lists = []
                 for (let i = 0; i < blacka.length + 1; i++) {
-                    await new Promise(resolve => setTimeout(resolve, 500));
-                    getUsernameFromUUID(blacka[i]).then(ign =>  {
-                        console.log(ign)
-                        lists.push(ign)
-                    })
-                    if(i == blacka.length + 1){
+                    if(i == blacka.length){
                         message.channel.send({
                             embeds: [{
                               description: "- "+lists.toString().replaceAll(",","\n-"),
@@ -163,6 +158,11 @@ class BlacklistCommand extends DiscordCommand {
                             }],
                           })
                     }
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                    getUsernameFromUUID(blacka[i]).then(ign =>  {
+                        console.log(ign)
+                        lists.push(ign)
+                    })
                 }
             }
 
