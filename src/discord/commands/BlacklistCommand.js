@@ -33,7 +33,21 @@ class BlacklistCommand extends DiscordCommand {
             if (args[0] == "add") {
                 if (!blacklist.includes(uuid)) {
                     console.log("if",uuid)
-                    this.send(`/oc ${args[1]} ${uuid} added to blacklist.`)
+                    this.sendMinecraftMessage(`/oc ${args[1]} ${uuid} added to blacklist.`)
+                    message.channel.send({
+                        embeds: [{
+                          description: `${uuid} added to blacklist.`,
+                          color: 0x2A2A2A,
+                          timestamp: new Date(),
+                          footer: {
+                            text: "BOT",
+                          },
+                          author: {
+                            name: `${args[1]}`,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                          },
+                        }],
+                      })
                     blacklist += uuid + "\n";
 
                     // write the updated blacklist back to the file
@@ -41,11 +55,39 @@ class BlacklistCommand extends DiscordCommand {
                 }
                 else{
                     console.log("else",uuid)
-                    this.send(`/oc ${args[1]} is already in the blacklist.`)
+                    message.channel.send({
+                        embeds: [{
+                          description: `User is already in the blacklist.`,
+                          color: 0xcbbeb5,
+                          timestamp: new Date(),
+                          footer: {
+                            text: "BOT",
+                          },
+                          author: {
+                            name: `${args[1]}`,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                          },
+                        }],
+                      })
+                    this.sendMinecraftMessage(`/oc ${args[1]} is already in the blacklist.`)
                 }
             }
             else if (args[1] == "remove") {
-                this.send(`/oc ${args[1]} ${uuid} removed from blacklist.`)
+                this.sendMinecraftMessage(`/oc ${args[1]} ${uuid} removed from blacklist.`)
+                message.channel.send({
+                    embeds: [{
+                      description: `${uuid} removed from blacklist.`,
+                      color: 0xDC143C,
+                      timestamp: new Date(),
+                      footer: {
+                        text: "BOT",
+                      },
+                      author: {
+                        name: `${args[1]}`,
+                        icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                      },
+                    }],
+                  })
                 const index = blacklistedIDs.indexOf(uuid);
                 if (index > -1) {
                     blacklistedIDs.splice(index, 1);
@@ -57,10 +99,38 @@ class BlacklistCommand extends DiscordCommand {
             }
             else if (args[1] == "check"){
                 if (!blacklist.includes(uuid)){
-                    this.send(`/oc ${args[1]} is not in the blacklist.`)
+                    this.sendMinecraftMessage(`/oc ${args[1]} is not in the blacklist.`)
+                    message.channel.send({
+                        embeds: [{
+                          description: `User is not in the blacklist.`,
+                          color: 0xcbbeb5,
+                          timestamp: new Date(),
+                          footer: {
+                            text: "BOT",
+                          },
+                          author: {
+                            name: `${args[1]}`,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                          },
+                        }],
+                      })
                 }
                 else{
-                    this.send(`/oc ${args[1]} is blacklisted.`)
+                    this.sendMinecraftMessage(`/oc ${args[1]} is blacklisted.`)
+                    message.channel.send({
+                        embeds: [{
+                          description: `User is blacklisted.`,
+                          color: 0xcbbeb5,
+                          timestamp: new Date(),
+                          footer: {
+                            text: "BOT",
+                          },
+                          author: {
+                            name: `${args[1]}`,
+                            icon_url: 'https://www.mc-heads.net/avatar/' + user,
+                          },
+                        }],
+                      })
                 }
             }
 
