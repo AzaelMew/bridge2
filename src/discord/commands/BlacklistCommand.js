@@ -145,7 +145,7 @@ class BlacklistCommand extends DiscordCommand {
                     if(i == blacka.length){
                         message.channel.send({
                             embeds: [{
-                              description: "- "+lists.toString().replaceAll(",","\n-"),
+                              description: "- "+lists.toString().replaceAll(",","\n- "),
                               color: 0x2A2A2A,
                               timestamp: new Date(),
                               footer: {
@@ -153,7 +153,6 @@ class BlacklistCommand extends DiscordCommand {
                               },
                               author: {
                                 name: `${args[1]}`,
-                                icon_url: 'https://www.mc-heads.net/avatar/' + args[1],
                               },
                             }],
                           })
