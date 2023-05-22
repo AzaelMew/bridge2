@@ -152,7 +152,7 @@ class BlacklistCommand extends DiscordCommand {
                                 text: "BOT",
                               },
                               author: {
-                                name: `${args[1]}`,
+                                name: `The Tempest Blacklist`,
                               },
                             }],
                           })
