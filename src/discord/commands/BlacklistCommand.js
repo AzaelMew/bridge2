@@ -29,9 +29,9 @@ class BlacklistCommand extends DiscordCommand {
         getUUIDFromUsername(args[2]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
             let blacklistedIDs = blacklist.trim().split('\n');
-            console.log(uuid)
             if (args[1] == "add") {
                 if (!blacklist.includes(uuid)) {
+                    console.log("if",uuid)
                     this.send(`/oc ${args[2]} ${uuid} added to blacklist.`)
                     blacklist += uuid + "\n";
 
@@ -39,6 +39,7 @@ class BlacklistCommand extends DiscordCommand {
                     fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
                 }
                 else{
+                    console.log("else",uuid)
                     this.send(`/oc ${args[2]} is already in the blacklist.`)
                 }
             }
