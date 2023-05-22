@@ -27,14 +27,14 @@ class BlacklistCommand extends DiscordCommand {
         let args = this.getArgs(message)
         console.log(args)
         let user = args.shift()
-        getUUIDFromUsername(args[2]).then(uuid => {
+        getUUIDFromUsername(args[1]).then(uuid => {
             let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', 'utf-8');
             let blacklistedIDs = blacklist.trim().split('\n');
             console.log(args[1])
-            if (args[1] == "add") {
+            if (args[0] == "add") {
                 if (!blacklist.includes(uuid)) {
                     console.log("if",uuid)
-                    this.send(`/oc ${args[2]} ${uuid} added to blacklist.`)
+                    this.send(`/oc ${args[1]} ${uuid} added to blacklist.`)
                     blacklist += uuid + "\n";
 
                     // write the updated blacklist back to the file
@@ -42,11 +42,11 @@ class BlacklistCommand extends DiscordCommand {
                 }
                 else{
                     console.log("else",uuid)
-                    this.send(`/oc ${args[2]} is already in the blacklist.`)
+                    this.send(`/oc ${args[1]} is already in the blacklist.`)
                 }
             }
             else if (args[1] == "remove") {
-                this.send(`/oc ${args[2]} ${uuid} removed from blacklist.`)
+                this.send(`/oc ${args[1]} ${uuid} removed from blacklist.`)
                 const index = blacklistedIDs.indexOf(uuid);
                 if (index > -1) {
                     blacklistedIDs.splice(index, 1);
@@ -58,10 +58,10 @@ class BlacklistCommand extends DiscordCommand {
             }
             else if (args[1] == "check"){
                 if (!blacklist.includes(uuid)){
-                    this.send(`/oc ${args[2]} is not in the blacklist.`)
+                    this.send(`/oc ${args[1]} is not in the blacklist.`)
                 }
                 else{
-                    this.send(`/oc ${args[2]} is blacklisted.`)
+                    this.send(`/oc ${args[1]} is blacklisted.`)
                 }
             }
 
