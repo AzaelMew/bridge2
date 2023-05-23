@@ -20,7 +20,7 @@ class MessageHandler {
       if (this.command.handle(message)) {
         return
       }
-  
+
       const content = this.stripDiscordContent(message.content).trim()
       if (content.length == 0) {
         return
@@ -48,20 +48,6 @@ class MessageHandler {
     const content = this.stripDiscordContent(message.content).trim()
     if (content.length == 0) {
       return
-    }
-    if(message.content.toLowerCase().includes("ez")){
-      if(message.content.includes("ez")){
-        message.content = message.content.replace("ez","e z")
-      }
-      else if(message.content.includes("Ez")){
-        message.content = message.content.replace("Ez","E z")
-      }
-      else if(message.content.includes("eZ")){
-        message.content = message.content.replace("eZ","e Z")
-      }
-      else if(message.content.includes("EZ")){
-        message.content = message.content.replace("EZ","E Z")
-      }
     }
     if(message.content.toLowerCase().includes("macro")) return;
     this.discord.broadcastMessage({
