@@ -30,7 +30,7 @@ class CommandHandler {
       return false
     }
 
-    if (this.isOwner(message.author)||){
+    if (this.isOwner(message.author)||this.isDyno(message.author)){
       this.discord.app.log.discord(`[${command.name}] ${message.content}`)
       command.onCommand(message)
 
