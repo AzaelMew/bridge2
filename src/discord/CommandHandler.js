@@ -30,7 +30,7 @@ class CommandHandler {
       return false
     }
 
-    if (this.isOwner(message.author)){
+    if (this.isOwner(message.author)||){
       this.discord.app.log.discord(`[${command.name}] ${message.content}`)
       command.onCommand(message)
 
@@ -77,6 +77,9 @@ class CommandHandler {
   }
   isOwner(member) {
     return member.id == this.discord.app.config.discord.ownerId
+  }
+  isDyno(member) {
+    return member.id == "1114978319608328314"
   }
 }
 
