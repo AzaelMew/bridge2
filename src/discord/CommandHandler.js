@@ -79,7 +79,7 @@ class CommandHandler {
     return member.id == this.discord.app.config.discord.ownerId
   }
   isDyno(member) {
-    return member.id == "1114978319608328314"
+    return member.id == "752236274261426212"
   }
 }
 
