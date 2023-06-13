@@ -6,7 +6,7 @@ async function getNeko() {
     return data.results[0].url
 }
 
-class MuteCommand extends DiscordCommand {
+class NekoCommand extends DiscordCommand {
   constructor(discord) {
     super(discord)
 
@@ -35,4 +35,4 @@ class MuteCommand extends DiscordCommand {
   }
 }
 
-module.exports = MuteCommand
+module.exports = NekoCommand
