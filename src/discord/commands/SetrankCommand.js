@@ -16,7 +16,7 @@ class SetrankCommand extends DiscordCommand {
       rank = "Recruit"
     }
     if (rank.toLowerCase() == "vang"){
-      rank = "Vanguard"
+      rank = "Legend"
     }
     if (rank.toLowerCase() == "knight"){
       rank = "Knight"

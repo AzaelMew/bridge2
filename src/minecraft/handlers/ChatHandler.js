@@ -586,7 +586,7 @@ class StateHandler extends EventHandler {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Vanguard --')) {
+    if (message.endsWith('-- Legend --')) {
       reta.push(message + "\n")
     }
 

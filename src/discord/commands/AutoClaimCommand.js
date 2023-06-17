@@ -99,7 +99,7 @@ async function getActivity(uuid, rank, xp) {
     }
   }
   console.log(newlvl)
-  if(rank=="Vanguard") {
+  if(rank=="Legend") {
     if (xp < 50000){
       
     }
