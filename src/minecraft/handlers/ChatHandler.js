@@ -160,7 +160,7 @@ function round(value, precision) {
 async function getGMemberFromUUID(uuid) {
   const { data } = await axios.get(`https://api.hypixel.net/guild?key=${process.env.APIKEY}&player=` + uuid)
   try {
-    if (data.guild.name_lower != "tempestsky") {
+    if (data.guild.name_lower != "saikou") {
       let ret = "This player is not in our guild."
       return ret
     }
@@ -169,7 +169,7 @@ async function getGMemberFromUUID(uuid) {
     let ret = "Please confirm the name of the player you're trying to look up."
     return ret
   }
-  if (data.guild.name_lower != "tempestsky") {
+  if (data.guild.name_lower != "saikou") {
     let ret = "This player is not in our guild."
     return ret
   }
@@ -236,6 +236,7 @@ class StateHandler extends EventHandler {
 
     this.minecraft = minecraft
     this.command = command
+    this.online_member_amount = 0
   }
 
   registerEvents(bot) {
@@ -268,7 +269,6 @@ class StateHandler extends EventHandler {
             }
           }, 60000)
           console.log(`Joined the party of ${userp}`)
-          this.minecraft.broadcastLogEmbed({ username: userp, message: `Partied the bot.`, color: 0x0000FF })
           return this.bot.chat(`/p join ${userp}`)
         }
         else {
@@ -285,12 +285,15 @@ class StateHandler extends EventHandler {
 
     if (this.isLoginMessage(message)) {
       let user = message.split('>')[1].trim().split('joined.')[0].trim()
+      this.online_member_amount = this.online_member_amount + 1
 
       return this.minecraft.broadcastPlayerToggle({ username: user, message: `joined.`, color: 0x47F049 })
     }
 
     if (this.isLogoutMessage(message)) {
       let user = message.split('>')[1].trim().split('left.')[0].trim()
+      this.online_member_amount = this.online_member_amount - 1
+
       return this.minecraft.broadcastPlayerToggle({ username: user, message: `left.`, color: 0xF04947 })
     }
 
@@ -302,7 +305,7 @@ class StateHandler extends EventHandler {
     if (this.isJoinMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
       setTimeout(() => {
-        this.bot.chat(`/gc Welcome to TempestSky ${user}! Run !claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
+        this.bot.chat(`/gc Welcome to Tempest ${user}! Run !claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
       }, Math.floor(Math.random() * (6500 - 4500 + 1) + 4500));
 
       return this.minecraft.broadcastHeadedEmbed({
@@ -380,7 +383,9 @@ class StateHandler extends EventHandler {
     if (this.isIncorrectUsage(message)) {
       return this.minecraft.broadcastCleanEmbed({ message: message.split("'").join("`"), color: 0xDC143C })
     }
-
+    if (this.isGMoTDMessage(message)){
+      this.minecraft.bot.chat(`/g online`)
+    }
     if (this.isGuildRank(message)) {
       mes = reta
       reta = []
@@ -582,7 +587,11 @@ class StateHandler extends EventHandler {
     if (message.endsWith(' ●')) {
       reta.push(message + "\n")
     }
-    if (message.endsWith('-- Elder --')) {
+    if (message.endsWith('-- Staff --')) {
+      reta.push(message + "\n")
+    }
+
+    if (message.endsWith('-- Superior --')) {
       reta.push(message + "\n")
     }
 
@@ -590,25 +599,28 @@ class StateHandler extends EventHandler {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Champion --')) {
+    if (message.endsWith('-- Gamer --')) {
       reta.push(message + "\n")
     }
 
-    if (message.endsWith('-- Knight --')) {
-      reta.push(message + "\n")
-    }
-
-    if (message.endsWith('-- Recruit --')) {
+    if (message.endsWith('-- Saikou --')) {
       reta.push(message + "\n")
     }
     if (message.startsWith('Total Members:')) {
       reta.push("\n" + message + "/125")
     }
-    if (message.startsWith("Online Members")) {
+    if (message.startsWith("Online Members:")) {
       reta.push("\n" + message)
-      return reta
-    }
+      // Channel ID: 1115893017786724424
+      this.online_member_amount = Number(message.split(" ").slice(-1))
+      let channel_online_members_id = "1115893017786724424"
+      let guild_id = '660213511175012363'
+      //console.log(Object.getOwnPropertyNames(this.minecraft.bridge.client))
+      //console.log(Object.getOwnPropertyNames(this.minecraft.bridge.app))
+      let guild = this.minecraft.bridge.client.guilds.cache.get(guild_id)//['client']['guilds']['cache']
 
+      guild.channels.fetch(channel_online_members_id).then(channel => {console.log(`Channel: ${channel}`);channel.setName(message)}).catch(err => console.log(err))
+      return reta}
   }
 
   isGTopMessage(message) {
@@ -800,6 +812,11 @@ class StateHandler extends EventHandler {
 
   isPlayerNotFound(message) {
     return message.startsWith(`Can't find a player by the name of`)
+  }
+
+  isGMoTDMessage(message){
+    //--------------  Guild: Message Of The Day  --------------
+    return message.includes("--------------  Guild: Message Of The Day  --------------")
   }
 }
 

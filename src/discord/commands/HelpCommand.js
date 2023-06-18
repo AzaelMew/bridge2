@@ -34,7 +34,7 @@ class HelpCommand extends DiscordCommand {
           },
           {
             name: 'Minecraft Commands',
-            value: `These commands can only be used through guild chat in-game.\n\n> **!claim**: Claim guild ranks based on player stats.\n> Refer to <#728262623354683473> for rank requirements.\n\n\`!stats\`: Shows a player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!slayer\`: Shows a player's Slayer stats.\n\`!networth (!nw)\`: Shows a player's networth.\n\`!math\`: Calculation command.\n\`!ping\`: Replies with Pong! to the user.\n\`!seen\`: Shows a specified player's last logout date.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!seen\`: Shows a specified player's last logout date.\n\`!translate (!trans)\`: Translate text in different languages\n\`!farmhelper (!fh)\`: Tells you perfect speed to farm the specified crop\n\`!contest\`: Tells you when the next Jacob's Contest is\n\`!render\`: Sends specified slots item to discord and in game with a renderer.`
+            value: `These commands can only be used through guild chat in-game.\n\n> **!claim**: Claim guild ranks based on player stats.\n> Refer to <#660216497502683146> for rank requirements.\n\n\`!stats\`: Shows a player's general stats in SkyBlock.\n\`!skills\`: Shows a player's skills in SkyBlock.\n\`!cata\`: Shows a player's Dungeon stats.\n\`!slayer\`: Shows a player's Slayer stats.\n\`!networth (!nw)\`: Shows a player's networth.\n\`!math\`: Calculation command.\n\`!ping\`: Replies with Pong! to the user.\n\`!seen\`: Shows a specified player's last logout date.\n\`!stalk\`: Shows a specified player's location in Hypixel.\n\`!seen\`: Shows a specified player's last logout date.\n\`!translate (!trans)\`: Translate text in different languages\n\`!farmhelper (!fh)\`: Tells you perfect speed to farm the specified crop\n\`!contest\`: Tells you when the next Jacob's Contest is\n\`!render\`: Sends specified slots item to discord and in game with a renderer.`
           },
           {
             name: 'Staff Commands',
@@ -42,7 +42,7 @@ class HelpCommand extends DiscordCommand {
           },
           {
             name: 'Frag Bot Guide',
-            value: `Party our Guild's Bridge Bot through:\n\`/p TempestBridge\`\n\nOnce it joins your party, you have 60 seconds to join any activity in SkyBlock which requires a bot account.`
+            value: `Party our Guild's Bridge Bot through:\n\`/p Saikou_Bot\`\n\nOnce it joins your party, you have 60 seconds to join any activity in SkyBlock which requires a bot account.`
           },
           {
             name: `Info`,
@@ -55,11 +55,10 @@ class HelpCommand extends DiscordCommand {
         ],
         color: 0x2eebf4,
         footer: {
-          text: 'Made by Azael'
+          text: 'Made by Azael & Marshelix'
         },
         timestamp: new Date()
       }], 
-      files: ["https://media.discordapp.net/attachments/903390012584894484/1041616688749236385/TEMPEST_-_BRIDGE_2022.png?width=950&height=234"]
     })
   }
 }

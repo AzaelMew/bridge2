@@ -51,7 +51,7 @@ class DiscordManager extends CommunicationBridge {
           channel.send({
             embeds: [{
               description: message,
-              color: 0x2A2A2A,
+              color: 0x313338,
               timestamp: new Date(),
               footer: {
                 text: guildRank,
@@ -91,7 +91,7 @@ class DiscordManager extends CommunicationBridge {
           channel.send({
             embeds: [{
               description: message,
-              color: 0x2A2A2A,
+              color: 0x313338,
               timestamp: new Date(),
               footer: {
                 text: guildRank,
@@ -127,7 +127,7 @@ class DiscordManager extends CommunicationBridge {
         this.app.discord.client.channels.fetch(this.app.config.discord.channel).then(channel => {
           channel.send({
             embeds: [{
-              color: 0x2A2A2A,
+              color: 0x313338,
               timestamp: new Date(),
               footer: {
                 text: "BOT",
@@ -164,7 +164,7 @@ class DiscordManager extends CommunicationBridge {
           channel.send({
             embeds: [{
               description: message,
-              color: 0x2A2A2A,
+              color: 0x313338,
               timestamp: new Date(),
               footer: {
                 text: guildRank,
@@ -211,7 +211,7 @@ class DiscordManager extends CommunicationBridge {
       channel.send({
         embeds: [{
           description: message,
-          color: 0x2A2A2A,
+          color: 0x313338,
           timestamp: new Date(),
           footer: {
             text: "BOT",
@@ -232,7 +232,7 @@ class DiscordManager extends CommunicationBridge {
       channel.send({
         embeds: [{
           description: message,
-          color: 0x2A2A2A,
+          color: 0x313338,
           timestamp: new Date(),
           footer: {
             text: "BOT",
@@ -249,7 +249,7 @@ class DiscordManager extends CommunicationBridge {
       channel.send({
         embeds: [{
           description: message,
-          color: 0x2A2A2A,
+          color: 0x313338,
           timestamp: new Date(),
           footer: {
             text: "BOT",
@@ -272,7 +272,7 @@ class DiscordManager extends CommunicationBridge {
         embeds: [{
           title: username,
           description: message,
-          color: 0x2A2A2A,
+          color: 0x313338,
           timestamp: new Date(),
           footer: {
             text: "BOT",

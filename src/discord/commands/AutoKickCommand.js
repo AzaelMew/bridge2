@@ -25,7 +25,7 @@ async function getGMemberFromUUID(uuid, message) {
     }
     const { data } = await axios.get(`https://api.hypixel.net/guild?key=${process.env.APIKEY}&player=` + uuid)
     try {
-      if (data.guild.name_lower != "tempestsky") {
+      if (data.guild.name_lower != "saikou") {
         let ret = "This player is not in our guild."
         return ret
       }
@@ -34,7 +34,7 @@ async function getGMemberFromUUID(uuid, message) {
       let ret = "Please confirm the name of the player you're trying to look up."
       return ret
     }
-    if (data.guild.name_lower != "tempestsky") {
+    if (data.guild.name_lower != "saikou") {
       let ret = "This player is not in our guild."
       return ret
     }

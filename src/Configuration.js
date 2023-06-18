@@ -19,7 +19,7 @@ class Configuration {
       newchannel: null,
       commandRole: '',
       ownerId: '',
-      prefix: '!',
+      prefix: '!!',
       messageMode: 'bot'
     },
     express: {

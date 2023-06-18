@@ -25,7 +25,7 @@ async function getGMemberFromUUID(uuid, message) {
     }
     const { data } = await axios.get(`https://api.hypixel.net/guild?key=${process.env.APIKEY}&player=` + uuid)
     try {
-      if (data.guild.name_lower != "tempestsky") {
+      if (data.guild.name_lower != "saikou") {
         let ret = "This player is not in our guild."
         return ret
       }
@@ -34,7 +34,7 @@ async function getGMemberFromUUID(uuid, message) {
       let ret = "Please confirm the name of the player you're trying to look up."
       return ret
     }
-    if (data.guild.name_lower != "tempestsky") {
+    if (data.guild.name_lower != "saikou") {
       let ret = "This player is not in our guild."
       return ret
     }
@@ -90,8 +90,12 @@ async function getGMemberFromUUID(uuid, message) {
   }
 }
 async function getActivity(uuid, rank, xp) {
+  if(rank=="Staff") return;
+  if(rank=="Guild Master") return;
+  if(rank=="Superior") return;
   const { data } = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=${process.env.APIKEY}&uuid=${uuid}`)
   let name = await getUsernameFromUUID(uuid)
+
   let newlvl = 0
   for (b = 0; b < Object.keys(data.profiles).length; b++) {
     if(newlvl < data.profiles[b]?.members[uuid]?.leveling?.experience){
@@ -99,33 +103,22 @@ async function getActivity(uuid, rank, xp) {
     }
   }
   console.log(newlvl)
-  if(rank=="Legend") {
-    if (xp < 50000){
-      
-    }
-    else{
-      return;
-    }
-  };
-  if(rank=="Elder") return;
-  if(rank=="Guild Master") return;
-
-  if (newlvl >= 24000) {
-    if(rank=="Champion") return
-    ini.push(`${name} Champion`)
+  if (newlvl >= 25000) {
+    if(rank=="Legend") return
+    ini.push(`${name} Legend`)
     console.log(ini)
     return
   }
-  else if (newlvl >= 19000) {
-    if(rank=="Knight") return
-    ini.push(`${name} Knight`)
+  else if (newlvl >= 21000) {
+    if(rank=="Gamer") return
+    ini.push(`${name} Gamer`)
     console.log(ini)
 
     return
   }
   else {
-    if(rank=="Recruit") return
-    ini.push(`${name} Recruit`)
+    if(rank=="Saikou") return
+    ini.push(`${name} Saikou`)
     console.log(ini)
 
     return
