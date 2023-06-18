@@ -56,11 +56,13 @@ class SlayerCommand extends DiscordCommand {
       this.name = 'slayer'
       this.aliases = "slayers"
       this.description = "Says users slayers"
+      this.CommType = "Progression"
     }
   
   onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
+    
     getSlayerFromUser(user).then(stats => {
       if (stats.includes("[ERROR]")) {
         this.sendMinecraftMessage(`/gc ${stats}`)

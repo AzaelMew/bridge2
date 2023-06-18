@@ -7,6 +7,9 @@ class RelogCommand extends DiscordCommand {
     this.name = 'relog'
     this.aliases = ['r']
     this.description = 'Relogs the minecraft client after a given period of time'
+    this.reqRole = "Staff"
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {

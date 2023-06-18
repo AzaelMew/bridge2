@@ -19,12 +19,16 @@ class KickCommand extends DiscordCommand {
     this.name = 'kick'
     this.aliases = ['k']
     this.description = 'Kicks the given user from the guild'
+    this.reqRole = "Staff"
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
     let reason = args.join(' ')
+
     if(user.toLowerCase()=="azael_nya") return
     else{
       getUUIDFromUsername(user).then(uuid => {

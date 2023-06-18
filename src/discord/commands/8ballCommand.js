@@ -34,7 +34,7 @@ class EightBallCommand extends DiscordCommand {
     super(Discord)
 
     this.name = '8ball'
-    this.description = '8ball'
+    this.description = 'The Magic 8 ball'
   }
 
   onCommand(message) {

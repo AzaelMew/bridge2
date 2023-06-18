@@ -218,7 +218,7 @@ async function getStatsFromUUID(name) {
   let bslayer = data.data[0]?.slayer?.blaze.xp
 
   let slayer = numberWithCommas(wslayer + zslayer + sslayer + eslayer + bslayer)
-  if (newlvl >= 150) {
+  if (newlvl >= 180) {
     let stats = `**Skyblock Level** \n➣ ${Math.floor(newlvl)}; **Skill Avg** \n➣ ${sa}; **Slayer** \n➣ ${slayer}; **Cata** \n➣ ${cata}; **Networth** \n➣ $${nw};  Accepted`
     return stats
 
@@ -521,10 +521,10 @@ class StateHandler extends EventHandler {
 
     const playerMessage = parts.join(':').trim()
 
-    if (message.includes("!8ball")) {
+    if (message.includes("!!8ball")) {
       this.minecraft.broadcastMessage({
         username: username,
-        message: playerMessage.replace("!8ball ", ""),
+        message: playerMessage.replace("!!8ball ", ""),
         guildRank: guildRank,
       })
     }

@@ -92,10 +92,10 @@ async function getActivity(uuid, rank) {
     newlvl = data.profiles[b]?.members[uuid].leveling.experience
   }
   }
-  if(rank=="Elder") return
+  if(rank=="Staff") return
   if(rank=="Guild Master") return
 
-  if (newlvl < 13500) {
+  if (newlvl < 18000) {
     ini.push(`${name}`)
     return
   }
@@ -112,11 +112,14 @@ class AutoKickCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'autokick'
-    this.description = 'Kicks people who do not meet the requirements.'
+    this.description = 'Automatically kicks people who do not meet the requirements.'
+    this.reqRole = "Staff"
+    this.CommType = "Guild Admin"
+
   }
 
   onCommand(message) {
-    getGMemberFromUsername("xephor_ex", message).then(inis => {
+    getGMemberFromUsername("xgrumpybean", message).then(inis => {
       console.log(inis)
       let cat = 0
       let cat2 = 0

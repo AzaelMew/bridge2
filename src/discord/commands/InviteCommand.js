@@ -7,6 +7,9 @@ class InviteCommand extends DiscordCommand {
     this.name = 'invite'
     this.aliases = ['i', 'inv']
     this.description = 'Invites the given user to the guild'
+    this.reqRole = "Staff"
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {

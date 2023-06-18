@@ -6,11 +6,11 @@ class ReqsCommand extends MinecraftCommand {
 
     this.name = 'reqs'
     this.aliases = []
-    this.description = 'Reqs'
+    this.description = 'Tells the guild requirements'
   }
 
   onCommand(username, message) {
-    this.send(`/gc Rank Requirements; Recruit - Skyblock Level 150 | Knight - Skyblock Level 190 | Champion - Skyblock Level 240`)
+    this.send(`/gc Rank Requirements; Gamer - Skyblock Level 210 | Legend - Skyblock Level 250 | Superior - Top 5 SB lvl in guild`)
   }
 }
 

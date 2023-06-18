@@ -79,6 +79,7 @@ class NetworthCommand extends MinecraftCommand {
     this.name = 'networth'
     this.aliases = ['nw']
     this.description = "Says users networth"
+    this.CommType = "Statcheck"
   }
 
   async onCommand(username, message) {

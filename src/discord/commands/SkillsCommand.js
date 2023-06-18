@@ -65,6 +65,7 @@ class SkillsCommand extends DiscordCommand {
 
     this.name = 'skills'
     this.description = `Checks user's location`
+    this.CommType = "Progression"
   }
 
   onCommand(message) {

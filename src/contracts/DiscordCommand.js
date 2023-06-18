@@ -1,6 +1,8 @@
 class DiscordCommand {
   constructor(discord) {
     this.discord = discord
+    this.reqRole = "Staff"
+    this.CommType = "General"
   }
 
   getArgs(message) {

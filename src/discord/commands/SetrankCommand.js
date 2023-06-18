@@ -6,6 +6,7 @@ class SetrankCommand extends DiscordCommand {
 
     this.name = 'setrank'
     this.description = `Sets provided user to provded rank`
+    this.CommType = "Guild Admin"
   }
 
   onCommand(message) {

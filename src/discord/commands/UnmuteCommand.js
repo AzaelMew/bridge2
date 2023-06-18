@@ -7,6 +7,8 @@ class UnMuteCommand extends DiscordCommand {
     this.name = 'unmute'
     this.aliases = ['um']
     this.description = 'Unutes the given user for a given amount of time'
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {

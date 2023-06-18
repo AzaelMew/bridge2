@@ -58,7 +58,8 @@ class CatacombsCommand extends DiscordCommand {
       super(discord)
 
       this.name = 'cata'
-      this.description = "Says users dungeon stats"
+      this.description = "Sends player Catacombs stats"
+      this.CommType = "Progression"
     }
 
   onCommand(message) {

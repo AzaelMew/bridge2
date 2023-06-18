@@ -64,7 +64,7 @@ class SkillsCommand extends MinecraftCommand {
     super(minecraft)
 
     this.name = 'skills'
-
+    this.CommType = "Statcheck"
     this.description = "Says users skills"
   }
 

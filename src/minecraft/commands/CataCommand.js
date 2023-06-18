@@ -58,6 +58,7 @@ class CatacombsCommand extends MinecraftCommand {
 
     this.name = 'cata'
     this.description = "Says users dungeon stats"
+    this.CommType = "Statcheck"
   }
 
   async onCommand(username, message) {

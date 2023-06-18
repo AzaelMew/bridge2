@@ -34,10 +34,10 @@ class MessageHandler {
     if (!this.shouldBroadcastMessage(message)) {
       return
     }
-    if(message.content.includes("!8ball")){
+    if(message.content.includes("!!8ball")){
       this.discord.broadcastMessage({
         username: message.member.displayName,
-        message: this.stripDiscordContent(message.content.replace("!8ball ","")),
+        message: this.stripDiscordContent(message.content.replace("!!8ball ","")),
         replyingTo: await this.fetchReply(message),
       })
     }

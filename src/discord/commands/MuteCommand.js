@@ -7,6 +7,9 @@ class MuteCommand extends DiscordCommand {
     this.name = 'mute'
     this.aliases = ['m']
     this.description = 'Mutes the given user for a given amount of time'
+    this.reqRole = "Staff"
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {

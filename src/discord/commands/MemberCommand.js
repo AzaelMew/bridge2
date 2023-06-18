@@ -103,6 +103,7 @@ class MemberCommand extends DiscordCommand {
 
     this.name = 'member'
     this.description = 'Returns Guild Top EXP from specified day'
+    this.reqRole = "Staff"
   }
 
   onCommand(message) {

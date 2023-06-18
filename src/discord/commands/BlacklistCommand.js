@@ -24,7 +24,10 @@ class BlacklistCommand extends DiscordCommand {
 
         this.name = 'blacklist'
 
-        this.description = 'Gives needed welcome info'
+        this.description = 'Blacklists specified players UUID'
+        this.reqRole = "Staff"
+        this.CommType = "Guild Admin"
+
     }
 
     onCommand(message) {

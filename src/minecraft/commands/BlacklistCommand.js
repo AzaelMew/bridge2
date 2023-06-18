@@ -19,7 +19,7 @@ class BlacklistCommand extends MinecraftCommand {
         super(minecraft)
 
         this.name = 'blacklist'
-
+        this.CommType = "Guild Admin"
         this.description = 'Gives needed welcome info'
     }
 

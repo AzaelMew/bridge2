@@ -71,7 +71,7 @@ class JacobCommand extends DiscordCommand {
 
         this.name = 'contest'
 
-        this.description = "Says users stats"
+        this.description = "Tells you when the next contest is"
     }
 
     async onCommand(message) {

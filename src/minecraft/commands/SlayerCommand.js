@@ -66,6 +66,7 @@ class SlayerCommand extends MinecraftCommand {
       this.aliases = "slayers"
 
       this.description = "Says users slayers"
+      this.CommType = "Statcheck"
     }
   
     async onCommand(username, message) {

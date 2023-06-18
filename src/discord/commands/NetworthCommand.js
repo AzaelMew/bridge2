@@ -79,6 +79,7 @@ class NetworthCommand extends DiscordCommand {
       this.name = 'networth'
       this.aliases = ["nw"]
       this.description = `Checks user's location`
+      this.CommType = "Progression"
   }
 
   onCommand(message) {

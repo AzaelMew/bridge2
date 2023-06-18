@@ -114,6 +114,7 @@ class StatsCommand extends MinecraftCommand {
     this.name = 'stats'
 
     this.description = "Says users stats"
+    this.CommType = "Statcheck"
   }
 
   async onCommand(username, message) {

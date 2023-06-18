@@ -8,7 +8,6 @@ class MeowCommand extends DiscordCommand {
     this.name = 'meow'
     this.aliases = ['woof','bark']
     this.description = 'meows (maybe?)'
-    this.reqRole = "User"
   }
 
   onCommand(message) {

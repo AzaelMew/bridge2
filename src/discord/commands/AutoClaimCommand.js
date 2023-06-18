@@ -133,7 +133,10 @@ class AutoclaimCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'autoclaim'
-    this.description = 'Kicks inactive people.'
+    this.description = 'Automatically assigns roles to everyone in guild.'
+    this.reqRole = "Staff"
+    this.CommType = "Staff Only"
+
   }
 
   onCommand(message) {

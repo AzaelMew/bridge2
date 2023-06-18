@@ -7,6 +7,7 @@ class OverrideCommand extends DiscordCommand {
     this.name = 'override'
     this.aliases = ['o']
     this.description = 'Executes commands as the minecraft bot'
+    this.CommType = "Staff Only"
   }
 
   onCommand(message) {

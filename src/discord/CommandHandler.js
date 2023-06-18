@@ -29,57 +29,32 @@ class CommandHandler {
     if (!command) {
       return false
     }
-
-    if (this.isOwner(message.author)||this.isDyno(message.author)){
-      this.discord.app.log.discord(`[${command.name}] ${message.content}`)
-      command.onCommand(message)
-
-      return true
-
+    let commandRole = command.reqRole
+    let able_to_run = (command.name == 'help') || ((commandRole == "User" && this.isUser(message.member)) || (commandRole == "Staff" && this.isCommander(message.member)))
+    if (!able_to_run || (command.name == 'override' && !this.isOwner(message.author))) {
+      return message.channel.send({
+        embeds: [{
+          description: `You don't have permission to do that.`,
+          color: 0xDC143C
+        }]
+      })
     }
-    else{
-      if (command.name == "override" && !this.isMod(message.member)){
-        return message.channel.send({
-          embeds: [{
-            description: `You don't have permission to do that.`,
-            color: 0xDC143C
-          }]
-        })
-      }
-      else if (command.name == "help" || command.name == "top" || command.name == "online"|| command.name == "stalk"|| command.name == "stats"|| command.name == "skills"|| command.name == "cata"|| command.name == "networth"|| command.name == "joke"|| command.name == "contest"|| command.name == "seen"|| command.name == "render"|| command.name == "slayer"){
-        this.discord.app.log.discord(`[${command.name}] ${message.content}`)
-        command.onCommand(message)
-  
-        return true
-      }
-      else if (!this.isCommander(message.member)){
-        return message.channel.send({
-          embeds: [{
-            description: `You don't have permission to do that.`,
-            color: 0xDC143C
-          }]
-        })
-      }
-      else{
-        this.discord.app.log.discord(`[${command.name}] ${message.content}`)
-        command.onCommand(message)
-  
-        return true
-      }
-    }
+
+    this.discord.app.log.discord(`[${command.name}] ${message.content}`)
+    command.onCommand(message)
+
+    return true
   }
-
+  isUser(member){
+    return member.roles.cache.find(r => r.id == this.discord.app.config.discord.userRole) || member.roles.cache.find(r => r.id == this.discord.app.config.discord.memberRole)
+  }
+  
   isCommander(member) {
     return member.roles.cache.find(r => r.id == this.discord.app.config.discord.commandRole)
   }
-  isMod(member) {
-    return member.roles.cache.find(r => r.id == this.discord.app.config.discord.modRole)
-  }
+
   isOwner(member) {
     return member.id == this.discord.app.config.discord.ownerId
-  }
-  isDyno(member) {
-    return member.id == "752236274261426212"
   }
 }
 
