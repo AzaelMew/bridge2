@@ -160,7 +160,7 @@ class DiscordManager extends CommunicationBridge {
     this.app.log.broadcast(`${username} [${guildRank}]: ${message}`, `Officer`)
     switch (this.app.config.discord.messageMode.toLowerCase()) {
       case 'bot':
-        this.app.discord.client.channels.fetch(this.app.config.discord.officer).then(channel => {
+        this.app.discord.client.channels.fetch(this.app.config.discord.officerchannel).then(channel => {
           channel.send({
             embeds: [{
               description: message,

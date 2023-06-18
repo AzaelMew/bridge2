@@ -31,7 +31,7 @@ class BlacklistCommand extends DiscordCommand {
     }
 
     onCommand(message) {
-        if(message.channel.id != "1074902281130086410") return
+        if(message.channel.id != "660219000873287717") return
         let args = this.getArgs(message)
         console.log(args[0])
         getUUIDFromUsername(args[1]).then(async uuid => {
