@@ -28,7 +28,7 @@ class TranslateCommand extends MinecraftCommand {
 
     this.name = 'translate'
     this.aliases = ["trans"]
-    this.description = 'Translates shit'
+    this.description = 'Translates stuff'
   }
 
   async onCommand(username, message) {
