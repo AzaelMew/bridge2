@@ -20,7 +20,7 @@ class CommandHandler {
     if (!message.startsWith(this.prefix)) {
       return false
     }
-
+    console.log(player, message)
     let args = message.slice(this.prefix.length).trim().split(/ +/)
     let commandName = args.shift().toLowerCase()
 
