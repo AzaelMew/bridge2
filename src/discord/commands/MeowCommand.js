@@ -45,16 +45,13 @@ class MeowCommand extends DiscordCommand {
     url = `https://thedogapi.com/api/images/get?format=src&type=gif`
 
     }
-    /*axios(url).then(data => {console.log(data);return data.url}).then(image_url => {
+    axios(url).then(data => {console.log(data.request.res.responseUrl);return data.request.res.responseUrl}).then(image_url => {
       console.log(image_url)
       message_embed.setImage(image_url)
       message.channel.send({
                   embed: message_embed
       })
-    }).catch(err => console.log(err))*/
-    axios.get('url').then(response => {
-        console.log(response)
-    })
+    }).catch(err => console.log(err))
 
   }
 }
