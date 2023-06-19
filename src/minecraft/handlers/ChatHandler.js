@@ -711,7 +711,7 @@ class StateHandler extends EventHandler {
   }
 
   isGuildName(message) {
-    return message.startsWith('Guild Name:') && message.endsWith('TempestSB')
+    return message.startsWith('Guild Name:') && message.endsWith('Saikou')
   }
 
   isLogoutMessage(message) {

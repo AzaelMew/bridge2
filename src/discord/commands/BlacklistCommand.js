@@ -155,7 +155,7 @@ class BlacklistCommand extends DiscordCommand {
                                 text: "BOT",
                               },
                               author: {
-                                name: `The Tempest Blacklist`,
+                                name: `The Saikou Blacklist`,
                               },
                             }],
                           })

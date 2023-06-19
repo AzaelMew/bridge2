@@ -42,16 +42,16 @@ async function getStatsFromUUID(name, profile) {
                 newlvl = data.data[b].sblevel
             }
         }
-        if (newlvl >= 240) {
-            rank = "champ"
+        if (newlvl >= 250) {
+            rank = "leg"
             return rank
         }
-        else if (newlvl >= 190) {
-            rank = "vet"
+        else if (newlvl >= 210) {
+            rank = "game"
             return rank
         }
         else {
-            rank = "ini"
+            rank = "sai"
             return rank
         }
 
@@ -71,24 +71,25 @@ class ClaimCommand extends MinecraftCommand {
     }
     async onCommand(username, message) {
         let args = message.split(" ")
+        console.log(username, message)
         getStatsFromUsername(username, args[1]).then(rank => {
             console.log(rank)
-            if (rank == "champ") {
-                this.send(`/g setrank ${username} Champion`)
+            if (rank == "leg") {
+                this.send(`/g setrank ${username} Legend`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Champion! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s rank has been set to Legend! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
-            if (rank == "vet") {
-                this.send(`/g setrank ${username} Knight`)
+            if (rank == "game") {
+                this.send(`/g setrank ${username} Gamer`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s Your rank has been set to Knight! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s Your rank has been set to Gamer! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
-            if (rank == "ini") {
-                this.send(`/g setrank ${username} Recruit`)
+            if (rank == "sai") {
+                this.send(`/g setrank ${username} Saikou`)
                 setTimeout(() => {
-                    this.send(`/gc ${username}'s rank has been set to Recruit! If this is wrong, make sure you're on your main profile, and APIs are on!`)
+                    this.send(`/gc ${username}'s rank has been set to Saikou! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             else (
