@@ -69,7 +69,7 @@ class ClaimCommand extends MinecraftCommand {
         this.name = 'claim'
         this.description = "Claims ranks"
     }
-    async onCommand(username, message) {
+    async onCommand(username, message, rank) {
         let args = message.split(" ")
         console.log(username, message)
         getStatsFromUsername(username, args[1]).then(rank => {

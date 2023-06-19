@@ -16,11 +16,11 @@ class CommandHandler {
     }
   }
 
-  handle(player, message) {
+  handle(player, message, rank) {
     if (!message.startsWith(this.prefix)) {
       return false
     }
-    console.log(player, message)
+    console.log(player, message, rank)
     let args = message.slice(this.prefix.length).trim().split(/ +/)
     let commandName = args.shift().toLowerCase()
 
@@ -32,7 +32,7 @@ class CommandHandler {
     }
 
     this.minecraft.app.log.minecraft(`${player} - [${command.name}] ${message}`)
-    command.onCommand(player, message)
+    command.onCommand(player, message, rank)
 
     return true
   }
