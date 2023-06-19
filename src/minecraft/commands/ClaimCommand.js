@@ -70,6 +70,7 @@ class ClaimCommand extends MinecraftCommand {
         this.description = "Claims ranks"
     }
     async onCommand(username, message, rank) {
+        if(rank == "Staff") return
         if(rank == "Super") return
         let args = message.split(" ")
         console.log(username, message)
