@@ -80,20 +80,20 @@ class ClaimCommand extends MinecraftCommand {
                     this.send(`/gc ${username}'s rank has been set to Legend! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
-            if (rank == "game") {
+            else if (rank == "game") {
                 this.send(`/g setrank ${username} Gamer`)
                 setTimeout(() => {
                     this.send(`/gc ${username}'s Your rank has been set to Gamer! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
-            if (rank == "sai") {
+            else if (rank == "sai") {
                 this.send(`/g setrank ${username} Saikou`)
                 setTimeout(() => {
                     this.send(`/gc ${username}'s rank has been set to Saikou! If this is wrong, make sure you're on your main profile, and APIs are on!`)
                 }, 1000);
             }
             else (
-                this.send(`/gc ${rank}`)
+                    this.send(`/gc An unknown error occured`)
             )
         })
     }
