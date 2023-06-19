@@ -13,17 +13,17 @@ class SetrankCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
     let rank = args.shift()
-    if (rank.toLowerCase() == "rec"){
-      rank = "Recruit"
+    if (rank.toLowerCase() == "sup"){
+      rank = "Superior"
     }
-    if (rank.toLowerCase() == "vang"){
+    if (rank.toLowerCase() == "leg"){
       rank = "Legend"
     }
-    if (rank.toLowerCase() == "knight"){
-      rank = "Knight"
+    if (rank.toLowerCase() == "gamer"){
+      rank = "Gamer"
     }
-    if (rank.toLowerCase() == "champ"){
-      rank = "Champion"
+    if (rank.toLowerCase() == "saikou"){
+      rank = "Saikou"
     }
     console.log(user, rank)
     this.sendMinecraftMessage(`/g setrank ${user ? user : ''} ${rank ? rank: ''}`)
