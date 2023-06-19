@@ -60,6 +60,7 @@ class CatacombsCommand extends DiscordCommand {
       this.name = 'cata'
       this.description = "Sends player Catacombs stats"
       this.CommType = "Progression"
+      this.reqRole = "User"
     }
 
   onCommand(message) {

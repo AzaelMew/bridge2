@@ -35,6 +35,7 @@ class EightBallCommand extends DiscordCommand {
 
     this.name = '8ball'
     this.description = 'The Magic 8 ball'
+    this.reqRole = "User"
   }
 
   onCommand(message) {

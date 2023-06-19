@@ -108,6 +108,7 @@ class StatsCommand extends DiscordCommand {
     this.name = 'stats'
     this.description = `Checks user's stats`
     this.CommType = "Progression"
+    this.reqRole = "User"
   }
 
   onCommand(message) {

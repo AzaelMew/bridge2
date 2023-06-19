@@ -160,6 +160,7 @@ class RenderCommand extends DiscordCommand {
 
         this.name = 'render'
         this.description = 'renders specified slot'
+        this.reqRole = "User"
     }
 
     onCommand(message) {

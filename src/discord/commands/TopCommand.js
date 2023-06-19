@@ -7,6 +7,7 @@ class GTopCommand extends DiscordCommand {
     this.name = 'top'
     this.aliases = ['g top', 'gtop']
     this.description = 'Returns Guild Top EXP from specified day'
+    this.reqRole = "User"
   }
 
   onCommand(message) {

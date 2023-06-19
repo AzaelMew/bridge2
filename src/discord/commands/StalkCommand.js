@@ -178,6 +178,7 @@ class StalkCommand extends DiscordCommand {
 
         this.name = 'stalk'
         this.description = `Checks user's location`
+        this.reqRole = "User"
     }
 
     onCommand(message) {

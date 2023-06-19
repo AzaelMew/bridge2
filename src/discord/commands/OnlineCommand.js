@@ -7,6 +7,7 @@ class GuildList extends DiscordCommand {
     this.name = 'online'
     this.aliases = ['online', 'on']
     this.description = 'Checks G Online'
+    this.reqRole = "User"
 
   }
 

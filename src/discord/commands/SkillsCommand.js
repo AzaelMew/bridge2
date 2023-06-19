@@ -64,8 +64,9 @@ class SkillsCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'skills'
-    this.description = `Checks user's location`
+    this.description = `Checks user's Skill Levels`
     this.CommType = "Progression"
+    this.reqRole = "User"
   }
 
   onCommand(message) {

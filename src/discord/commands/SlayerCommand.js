@@ -57,6 +57,7 @@ class SlayerCommand extends DiscordCommand {
       this.aliases = "slayers"
       this.description = "Says users slayers"
       this.CommType = "Progression"
+      this.reqRole = "User"
     }
   
   onCommand(message) {

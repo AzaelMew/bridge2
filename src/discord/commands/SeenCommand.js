@@ -88,6 +88,7 @@ class SeenCommand extends DiscordCommand {
 
         this.name = 'seen'
         this.description = `Show's user's last logout date`
+        this.reqRole = "User"
     }
 
     onCommand(message) {

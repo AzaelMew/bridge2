@@ -12,6 +12,7 @@ class NekoCommand extends DiscordCommand {
 
     this.name = 'neko'
     this.description = 'neko'
+    this.reqRole = "User"
   }
 
   onCommand(message) {
