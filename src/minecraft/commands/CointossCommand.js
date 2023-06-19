@@ -15,7 +15,7 @@ class CointossCommand extends MinecraftCommand {
     super(minecraft)
 
     this.name = 'cointoss'
-    this.aliases = ["coinflip"]
+    this.aliases = ["coinflip","cf"]
     this.description = 'cointosses'
   }
 

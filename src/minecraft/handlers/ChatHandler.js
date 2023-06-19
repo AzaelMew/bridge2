@@ -529,7 +529,7 @@ class StateHandler extends EventHandler {
       })
     }
 
-    if (playerMessage.length == 0 || this.command.handle(username, playerMessage)) {
+    if (playerMessage.length == 0 || this.command.handle(username, playerMessage, guildRank)) {
       return
     }
 
