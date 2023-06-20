@@ -305,7 +305,7 @@ class StateHandler extends EventHandler {
     if (this.isJoinMessage(message)) {
       let user = message.replace(/\[(.*?)\]/g, '').trim().split(/ +/g)[0]
       setTimeout(() => {
-        this.bot.chat(`/gc Welcome to Saikou ${user}! Run !claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
+        this.bot.chat(`/gc Welcome to Saikou ${user}! Run !!claim in guild chat to claim your roles and join our discord server for chats, bots, giveaways & more through !discord.`)
       }, Math.floor(Math.random() * (6500 - 4500 + 1) + 4500));
 
       return this.minecraft.broadcastHeadedEmbed({
