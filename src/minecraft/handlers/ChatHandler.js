@@ -22,7 +22,7 @@ let res
 let inParty
 var lastTime = new Date()
 let failSafeCD = new Date();
-let filePath = "/home/azael/bridge/blacklist.txt"
+let filePath = "./blacklist.txt"
 
 const RGBA_COLOR = {
   0: 'rgba(0,0,0,1)',
@@ -186,7 +186,7 @@ async function getGMemberFromUUID(uuid) {
   }
 }
 async function getStatsFromUUID(name) {
-  let blacklist = fs.readFileSync('/home/azael/bridge/blacklist.txt', "utf-8")
+  let blacklist = fs.readFileSync('./blacklist.txt', "utf-8")
   if (blacklist.includes(name)) {
     return "User has been blocked by the guild blacklist."
   } else {
