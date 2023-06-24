@@ -22,7 +22,7 @@ class NekoCommand extends DiscordCommand {
     getNeko().then(data => {
       let neko = data.results[0].url
       let artist = data.results[0].artist_name
-      let artisurl = data.results[0].artist_name
+      let artisurl = data.results[0].source_url
 
         message.channel.send({
             embeds: [{
@@ -32,7 +32,7 @@ class NekoCommand extends DiscordCommand {
                 color: 0x2A2A2A,
                 timestamp: new Date(),
                 footer: {
-                    text: `Artist: (${artist})[${source_url}]`,
+                    text: `Artist: (${artist})[${artisurl}]`,
                 },
             }],
         })
