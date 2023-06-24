@@ -14,9 +14,8 @@ class NekoCommand extends DiscordCommand {
     this.description = 'poke'
     this.reqRole = "User"
   }
-
   onCommand(message) {
-    let author = message.member.displayName
+    let author = message.author.id
     let args = this.getArgs(message)
     let user = args.shift()
 
@@ -25,7 +24,7 @@ class NekoCommand extends DiscordCommand {
         let anime = data.results[0].anime_name
         message.channel.send({
             embeds: [{
-                description: `${author} pokes ${user}`,
+                description: `<@${author}> pokes ${user}`,
                 image: {
                     url: neko,
                   },
