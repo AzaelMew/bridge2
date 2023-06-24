@@ -114,7 +114,7 @@ class InactiveCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           title: 'Bridge Commands',
-          description: kickables,
+          description: kickables.toString(),
       }]
     })
     })
