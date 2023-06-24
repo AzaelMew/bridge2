@@ -73,7 +73,7 @@ async function getActivity(uuid, message) {
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=${process.env.APIKEY}`)
     let lastLogin = data.player.lastLogin
     if (new Date().getTime() - lastLogin > 1209600000) {
-      kickables.push(data.player.displayname)
+      console.log(lastLogin)
       console.log(kickables)
       return kickables
     }
@@ -114,7 +114,7 @@ class InactiveCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           title: 'Bridge Commands',
-          description: kickables.toString(),
+          description: kickables.toString().replaceAll(",",", "),
       }]
     })
     })
