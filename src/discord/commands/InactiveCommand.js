@@ -75,7 +75,7 @@ async function getActivity(uuid, message) {
     if (new Date().getTime() - lastLogin > 1209600000) {
       lastSeen = new Date(lastLogin)
       lastSeen = lastSeen.toUTCString()
-      kickables.push(`${data.player.displayname} - ${lastSeen}\n`)
+      kickables.push(`➣ ${data.player.displayname} - ${lastSeen}\n`)
       console.log(`${kickables}`)
       return kickables
     }
@@ -116,7 +116,7 @@ class InactiveCommand extends DiscordCommand {
       message.channel.send({
         embeds: [{
           title: 'Players who have been inactive:',
-          description: kickables.toString(),
+          description: kickables.toString().replaceAll(",",""),
       }]
     })
     })
