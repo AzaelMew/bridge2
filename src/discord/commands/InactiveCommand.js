@@ -75,6 +75,9 @@ async function getActivity(uuid, message) {
     if (new Date().getTime() - lastLogin > 1209600000) {
       console.log(lastLogin)
       console.log(kickables)
+      let lastSeen = new Date(lastLogout)
+      lastSeen = lastSeen.toUTCString()
+      kickables.push(`${data.player.displayname} - ${lastSeen}`)
       return kickables
     }
   }
