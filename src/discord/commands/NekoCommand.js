@@ -3,7 +3,7 @@ const axios = require("axios");
 
 async function getNeko() {
     const { data } = await axios.get('https://nekos.best/api/v2/neko')
-    return data.results[0].url
+    return data
 }
 
 class NekoCommand extends DiscordCommand {
@@ -19,7 +19,10 @@ class NekoCommand extends DiscordCommand {
     let args = this.getArgs(message)
     let user = args.shift()
 
-    getNeko().then(neko => {
+    getNeko().then(data => {
+      let neko = data.results[0].url
+      let artist = data.results[0].artist_name
+      let artisturl = data.results[0].source_url
         message.channel.send({
             embeds: [{
                 image: {
@@ -28,7 +31,7 @@ class NekoCommand extends DiscordCommand {
                 color: 0x2A2A2A,
                 timestamp: new Date(),
                 footer: {
-                    text: "BOT",
+                    text: `Artist: (${artist})[${artisturl}]`,
                 },
             }],
         })
