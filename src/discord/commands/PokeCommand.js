@@ -10,8 +10,8 @@ class NekoCommand extends DiscordCommand {
   constructor(discord) {
     super(discord)
 
-    this.name = 'neko'
-    this.description = 'neko'
+    this.name = 'poke'
+    this.description = 'poke'
     this.reqRole = "User"
   }
 
