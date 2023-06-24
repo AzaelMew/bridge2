@@ -74,7 +74,7 @@ async function getActivity(uuid, message) {
     let lastLogin = data.player.lastLogin
     if (new Date().getTime() - lastLogin > 1209600000) {
       let lastSeen = (Math.floor(lastLogin / 1000))
-      kickables.push(`➣ ${data.player.displayname} - <t:${lastSeen}>\n`)
+      kickables.push(`➣ ${data.player.displayname} - <t:${lastSeen}:R>\n`)
       console.log(`${kickables}`)
       return kickables
     }
