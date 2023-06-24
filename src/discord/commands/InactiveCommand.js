@@ -73,7 +73,8 @@ async function getActivity(uuid, message) {
     const { data } = await axios.get(`https://api.hypixel.net/player?uuid=${uuid}&key=${process.env.APIKEY}`)
     let lastLogin = data.player.lastLogin
     if (new Date().getTime() - lastLogin > 1209600000) {
-      lastSeen = new Date(lastLogout)
+      lastSeen = new Date(lastLogin)
+      lastSeen = lastSeen.toUTCString()
       kickables.push(`${data.player.displayname} - ${lastSeen}\n`)
       console.log(`${kickables}`)
       return kickables
