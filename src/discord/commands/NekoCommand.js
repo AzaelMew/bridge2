@@ -32,7 +32,7 @@ class NekoCommand extends DiscordCommand {
                 color: 0x2A2A2A,
                 timestamp: new Date(),
                 footer: {
-                    text: `Artist: (${artist})[${artisurl}]`,
+                    text: `Artist: ${artist}`,
                 },
             }],
         })

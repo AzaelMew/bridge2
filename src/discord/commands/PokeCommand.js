@@ -16,6 +16,7 @@ class NekoCommand extends DiscordCommand {
   }
 
   onCommand(message) {
+    let author = message.author.user
     let args = this.getArgs(message)
     let user = args.shift()
 
@@ -24,13 +25,14 @@ class NekoCommand extends DiscordCommand {
         let anime = data.results[0].anime_name
         message.channel.send({
             embeds: [{
+                description: `${author} pokes ${user}`,
                 image: {
                     url: neko,
                   },
                 color: 0x2A2A2A,
                 timestamp: new Date(),
                 footer: {
-                    text: ``,
+                    text: `Anime: ${anime}`,
                 },
             }],
         })
