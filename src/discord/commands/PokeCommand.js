@@ -2,7 +2,7 @@ const DiscordCommand = require('../../contracts/DiscordCommand')
 const axios = require("axios");
 
 async function getNeko() {
-    const { data } = await axios.get('https://nekos.best/api/v2/neko')
+    const { data } = await axios.get('https://nekos.best/api/v2/poke')
     return data
 }
 
@@ -16,7 +16,7 @@ class NekoCommand extends DiscordCommand {
   }
 
   onCommand(message) {
-    let author = message.author.user
+    let author = message.member.displayName
     let args = this.getArgs(message)
     let user = args.shift()
 
