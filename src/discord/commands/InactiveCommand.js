@@ -14,9 +14,9 @@ async function getUUIDFromUsername(username) {
   }
 }
 async function getUsernameFromUUID(uuid) {
-    const { data } = await axios.get('https://sessionserver.mojang.com/session/minecraft/profile/' + uuid)
-    let username = data.name
-    return username
+  const { data } = await axios.get('https://sessionserver.mojang.com/session/minecraft/profile/' + uuid)
+  let username = data.name
+  return username
 }
 async function getGMemberFromUUID(uuid, message) {
   try {
@@ -102,6 +102,7 @@ class InactiveCommand extends DiscordCommand {
     let user = args.shift()
     kickables = []
     getGMemberFromUsername("xephor_ex", message).then(kickabes => {
+      /*
       let interval = 750; // how much time should the delay between two iterations be (in milliseconds)?
       for (let index = 0; index < kickables.length; ++index) {
         let el = kickables[index]
@@ -109,6 +110,13 @@ class InactiveCommand extends DiscordCommand {
           this.sendMinecraftMessage(`/g kick ${el} Kicked due to inactivity, you're free to re apply once you're active.`)
         }, index * interval);
       };
+      */
+      message.channel.send({
+        embeds: [{
+          title: 'Bridge Commands',
+          description: kickables,
+      }]
+    })
     })
     message.channel.send({
       embeds: [{
