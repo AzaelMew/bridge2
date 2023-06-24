@@ -92,6 +92,7 @@ class InactiveCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'kickinactive'
+    this.aliases = ["inactive","inactives"]
     this.description = 'Kicks inactive people.'
     this.reqRole = "Staff"
     this.CommType = "Staff Only"

@@ -119,6 +119,7 @@ class AutoKickCommand extends DiscordCommand {
   }
 
   onCommand(message) {
+    /*
     getGMemberFromUsername("xgrumpybean", message).then(inis => {
       console.log(inis)
       let cat = 0
@@ -133,9 +134,10 @@ class AutoKickCommand extends DiscordCommand {
         }, index * interval);
       }
     })
+    */
     message.channel.send({
       embeds: [{
-        description: `Let the purge... **BEGIN!**`,
+        description: `Command currently disabled.`,
         color: 0x47F049
       }]
     })
