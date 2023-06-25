@@ -63,7 +63,7 @@ class SlayerCommand extends MinecraftCommand {
       super(minecraft)
   
       this.name = 'slayer'
-      this.aliases = "slayers"
+      this.aliases = ["slayers"]
 
       this.description = "Says users slayers"
       this.CommType = "Statcheck"
