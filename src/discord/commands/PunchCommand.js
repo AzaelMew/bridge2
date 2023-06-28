@@ -11,8 +11,8 @@ class NekoCommand extends DiscordCommand {
     super(discord)
 
     this.name = 'hit'
-    this.aliases = ['punch','stab']
-    this.description = 'cuddle'
+    this.aliases = ['punch']
+    this.description = 'punch'
     this.reqRole = "User"
   }
   onCommand(message) {
