@@ -54,7 +54,7 @@ class CommandHandler {
   }
 
   isOwner(member) {
-    return member.id == this.discord.app.config.discord.ownerId
+    return member.id == this.discord.app.config.discord.ownerId || member.id == this.discord.app.config.discord.ownerId2
   }
 }
 
