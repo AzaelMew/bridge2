@@ -10,7 +10,7 @@ class MessageHandler {
   }
 
   async onMessage(message) {
-    console.log(message.content)
+    console.log(message)
     const attachment = message?.attachments.first();
     const url = attachment ? attachment.url : null;
     if(url != null){
