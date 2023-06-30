@@ -16,6 +16,16 @@ class MessageHandler {
     if(url != null){
       message.content = `${message.content} ${url}`
     }
+    let ids = message.content.match(/<@\d{18}>/g)
+    if (ids != null){
+      let idsL = ids.length
+      for(let i = 0; i < idsL; i++) {
+        let data = await this.discord.client.users.fetch(ids[i].replace("<@","").replace(">",""))
+        console.log(data.username)
+        
+        message.content = message.content.replace(ids[i], data.username)
+      }
+    }
     if(this.shouldBroadcastOfficerMessage(message)){
       if (this.command.handle(message)) {
         return
