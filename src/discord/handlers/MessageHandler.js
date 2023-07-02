@@ -26,7 +26,7 @@ class MessageHandler {
       }
     }
     if(this.shouldBraodcastNeko(message)){
-      this.command.handle(message) {
+      if (this.command.handle(message)) {
         return
       }
     }
