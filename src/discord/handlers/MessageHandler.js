@@ -25,6 +25,7 @@ class MessageHandler {
         message.content = message.content.replace(ids[i], data.username)
       }
     }
+    console.log(message.content)
     if(this.shouldBroadcastOfficerMessage(message)){
       if (this.command.handle(message)) {
         return
