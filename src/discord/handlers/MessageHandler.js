@@ -101,7 +101,7 @@ class MessageHandler {
     return !message.author.bot && message.channel.id == this.discord.app.config.discord.channel && message.content && message.content.length > 0
   }
   shouldBraodcastNeko(message) {
-    return !message.author.bot && message.channel.id == "762900792679858176" && message.content && message.content.length > 0
+    return !message.author.bot && message.channel.id == "1125386493821726811" && message.content && message.content.length > 0
   }
   shouldBroadcastOfficerMessage(message){
     return message.author.id != "903335007244914688" && message.channel.id == this.discord.app.config.discord.officerchannel && message.content && message.content.length > 0

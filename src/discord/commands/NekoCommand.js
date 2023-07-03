@@ -19,7 +19,7 @@ class NekoCommand extends DiscordCommand {
   onCommand(message) {
     let args = this.getArgs(message)
     let user = args.shift()
-    if(message.channel.id == 762900792679858176) {
+    if(message.channel.id == 1125386493821726811) {
       getNeko().then(data => {
         let neko = data.results[0].url
         let artist = data.results[0].artist_name
