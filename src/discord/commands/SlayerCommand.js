@@ -49,7 +49,6 @@ async function getSlayerFromUUID(name){
   catch (error) {
     return `[ERROR] ${error.response.data.reason}`
   }
-  }
 }
 
 class SlayerCommand extends DiscordCommand {
