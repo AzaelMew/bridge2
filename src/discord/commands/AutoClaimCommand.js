@@ -103,13 +103,13 @@ async function getActivity(uuid, rank, xp) {
     }
   }
   console.log(newlvl)
-  if (newlvl >= 25000) {
+  if (newlvl >= 28000) {
     if(rank=="Legend") return
     ini.push(`${name} Legend`)
     console.log(ini)
     return
   }
-  else if (newlvl >= 21000) {
+  else if (newlvl >= 23500) {
     if(rank=="Gamer") return
     ini.push(`${name} Gamer`)
     console.log(ini)
