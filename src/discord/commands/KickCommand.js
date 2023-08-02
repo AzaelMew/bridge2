@@ -39,7 +39,7 @@ class KickCommand extends DiscordCommand {
                 //blacklist += uuid + "\n";
   
                 //fs.writeFileSync('/home/azael/bridge/blacklist.txt', blacklist, 'utf-8');
-            }*/
+            }
             message.channel.send({
               embeds: [{
                   description: `${user} has been kicked.`,
@@ -49,7 +49,7 @@ class KickCommand extends DiscordCommand {
                       text: "BOT",
                   },
               }],
-          })
+          })*/
           setTimeout(() => {
             this.sendMinecraftMessage(`/g kick ${user ? user : ''} ${reason ? reason : ''}`)
           }, 500);
