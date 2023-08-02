@@ -25,30 +25,31 @@ async function getSlayerFromUser(username) {
   return await getSlayerFromUUID(await getUUIDFromUsername(username))
 }
 async function getSlayerFromUUID(name){
-  try{
-    if (name == undefined){
-      name = "a"
-    }
-    const { data } = await axios.get('http://192.168.100.197:3000/v1/profiles/'+name+'?key=77ac89bad625453facaa36457eb3cf5c')
-    let wslayerEXP = data.data[0]?.slayer?.wolf.xp
-    let zslayerEXP = data.data[0]?.slayer?.zombie.xp
-    let sslayerEXP = data.data[0]?.slayer?.spider.xp
-    let eslayerEXP = data.data[0]?.slayer?.enderman.xp
-    let bslayerEXP = data.data[0]?.slayer?.blaze.xp
-    let vslayerEXP = data.data[0]?.slayer?.vampire.xp
-    let slayerEXP = numberWithCommas(wslayerEXP+zslayerEXP+sslayerEXP+eslayerEXP+bslayerEXP+vslayerEXP)
-    let wslayerLVL = data.data[0]?.slayer?.wolf.level
-    let zslayerLVL = data.data[0]?.slayer?.zombie.level
-    let sslayerLVL = data.data[0]?.slayer?.spider.level
-    let eslayerLVL = data.data[0]?.slayer?.enderman.level
-    let bslayerLVL = data.data[0]?.slayer?.blaze.level
-    let vslayerLVL = data.data[0]?.slayer?.vampire.level
-    let stats = `**Total Slayer EXP**:\n➣  ${slayerEXP} ;**Zombie level**:\n➣  ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;**Spider level**:\n➣  ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;**Wolf level**:\n➣  ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;**Enderman level**:\n➣  ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;**Blaze level**:\n➣  ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp ;**Vampire level**:\n➣  ${vslayerLVL} - ${numberWithCommas(vslayerEXP)}xp`
-    return stats
-}
-catch (error) {
-  return `[ERROR] ${error.response.data.reason}`
-}
+    try{
+      if (name == undefined){
+        name = "a"
+      }
+      const { data } = await axios.get('http://localhost:3000/v1/profiles/'+name+'?key=77ac89bad625453facaa36457eb3cf5c')
+      let wslayerEXP = data.data[0]?.slayer?.wolf.xp
+      let zslayerEXP = data.data[0]?.slayer?.zombie.xp
+      let sslayerEXP = data.data[0]?.slayer?.spider.xp
+      let eslayerEXP = data.data[0]?.slayer?.enderman.xp
+      let bslayerEXP = data.data[0]?.slayer?.blaze.xp
+      let vslayerEXP = data.data[0]?.slayer?.vampire.xp
+      let slayerEXP = numberWithCommas(wslayerEXP+zslayerEXP+sslayerEXP+eslayerEXP+bslayerEXP+vslayerEXP)
+      let wslayerLVL = data.data[0]?.slayer?.wolf.level
+      let zslayerLVL = data.data[0]?.slayer?.zombie.level
+      let sslayerLVL = data.data[0]?.slayer?.spider.level
+      let eslayerLVL = data.data[0]?.slayer?.enderman.level
+      let bslayerLVL = data.data[0]?.slayer?.blaze.level
+      let vslayerLVL = data.data[0]?.slayer?.vampire.level
+      let stats = `**Total Slayer EXP**:\n➣  ${slayerEXP} ;**Zombie level**:\n➣  ${zslayerLVL} - ${numberWithCommas(zslayerEXP)}xp ;**Spider level**:\n➣  ${sslayerLVL} - ${numberWithCommas(sslayerEXP)}xp ;**Wolf level**:\n➣  ${wslayerLVL} - ${numberWithCommas(wslayerEXP)}xp ;**Enderman level**:\n➣  ${eslayerLVL} - ${numberWithCommas(eslayerEXP)}xp ;**Blaze level**:\n➣  ${bslayerLVL} - ${numberWithCommas(bslayerEXP)}xp ;**Vampire level**:\n➣  ${vslayerLVL} - ${numberWithCommas(vslayerEXP)}xp`
+      return stats
+  }
+  catch (error) {
+    return `[ERROR] ${error.response.data.reason}`
+  }
+  }
 }
 
 class SlayerCommand extends DiscordCommand {
