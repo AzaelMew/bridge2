@@ -10,7 +10,7 @@ class ReqsCommand extends MinecraftCommand {
   }
 
   onCommand(username, message) {
-    this.send(`/gc Rank Requirements; Gamer - Skyblock Level 210 | Legend - Skyblock Level 250 | Superior - Top 5 SB lvl in guild`)
+    this.send(`/gc Rank Requirements; Gamer - Skyblock Level 235 | Legend - Skyblock Level 280 | Superior - Top 5 SB lvl in guild`)
   }
 }
 
